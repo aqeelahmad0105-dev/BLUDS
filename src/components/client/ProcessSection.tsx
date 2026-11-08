@@ -12,43 +12,43 @@ export const ProcessSection: React.FC = () => {
   const steps = [
     {
       num: '01',
-      title: 'Discovery & Architectural Blueprint',
-      timeline: 'Days 1 - 5',
-      desc: 'Our 3 founders conduct technical discovery, map business logic into microservices diagrams, select the ideal tech stack, and deliver a comprehensive RFP roadmap.',
+      title: 'Discovery & Requirement Scoping',
+      timeline: 'Days 1 - 3',
+      desc: 'Our founders analyze your requirements, define exact specifications for your Website, POS Software, Shopify store, or Ad/SEO campaign, and provide a fixed milestone roadmap.',
       icon: Search,
-      highlight: 'System Blueprint + Fixed Scope'
+      highlight: 'Fixed Scope & Direct Consultation'
     },
     {
       num: '02',
-      title: 'UI/UX Design System & Prototype',
-      timeline: 'Sprint 1',
-      desc: 'We craft high-fidelity responsive interfaces in Figma, establish an enterprise design system, and share clickable interactive prototypes for stakeholder approval.',
+      title: 'UI/UX Design & High-Fidelity Prototype',
+      timeline: 'Week 1',
+      desc: 'We design modern, mobile-optimized user interfaces in Figma, structure high-converting layouts, and share interactive previews for your review and approval.',
       icon: Palette,
       highlight: 'Interactive Figma Prototype'
     },
     {
       num: '03',
-      title: 'Bi-Weekly Agile Sprints & CI/CD Staging',
-      timeline: 'Sprints 2 - 5',
-      desc: 'Test-driven development with automated GitHub Actions. Every sprint concludes with a live video demo and staging URL so you test working software in real-time.',
+      title: 'Full-Stack Development & Setup',
+      timeline: 'Weeks 1 - 2',
+      desc: 'We build your custom Next.js website, configure your POS software with barcode & receipt printers, connect Shopify catalogs, or script and edit your 12 viral reels.',
       icon: Terminal,
-      highlight: 'Continuous Staging Deployment'
+      highlight: 'Clean Code & Live Staging'
     },
     {
       num: '04',
-      title: 'Penetration Testing & Load Stressing',
+      title: 'QA Testing, Speed & Security Audit',
       timeline: 'Pre-Launch',
-      desc: 'Before touching production, we execute automated vulnerability scans, database query optimization, sub-100ms API profiling, and SOC2/HIPAA compliance verification.',
+      desc: 'Rigorous cross-device testing across smartphones and desktops, 95+ Google PageSpeed optimization, SSL certificate verification, and payment gateway checkout testing.',
       icon: ShieldCheck,
-      highlight: 'Zero-Vulnerability Security Audit'
+      highlight: 'Zero-Bug Quality Check'
     },
     {
       num: '05',
-      title: 'Zero-Downtime Launch & Continuous Evolution',
-      timeline: 'Go-Live',
-      desc: 'Blue-green cloud deployment with automated failover. We provide 24/7 telemetry monitoring, bug-fixing warranties, and ongoing iterative feature scaling.',
+      title: 'Deployment & Monthly Growth Retainer',
+      timeline: 'Launch & Growth',
+      desc: 'We map your custom domain, launch cloud hosting, train your staff on POS workflows, and maintain continuous support via monthly SEO, maintenance, or Meta Ads management.',
       icon: Rocket,
-      highlight: '99.99% Uptime SLA'
+      highlight: 'Launch & Ongoing Support'
     }
   ];
 

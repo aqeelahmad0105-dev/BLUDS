@@ -86,8 +86,8 @@ export const AdminDashboard: React.FC = () => {
   const [manualEmail, setManualEmail] = useState('');
   const [manualPhone, setManualPhone] = useState('');
   const [manualCompany, setManualCompany] = useState('');
-  const [manualService, setManualService] = useState('Custom Enterprise Software & SaaS');
-  const [manualBudget, setManualBudget] = useState('$25,000 - $50,000');
+  const [manualService, setManualService] = useState('Website Development');
+  const [manualBudget, setManualBudget] = useState('Rs. 20,000 - Rs. 50,000');
   const [manualTimeline, setManualTimeline] = useState('Within 2 Months');
   const [manualMessage, setManualMessage] = useState('');
 
@@ -304,14 +304,14 @@ export const AdminDashboard: React.FC = () => {
       addCaseStudy({
         title: caseForm.title || '',
         client: caseForm.client || '',
-        category: caseForm.category || 'Cloud & SaaS',
+        category: caseForm.category || 'Web Development',
         summary: caseForm.summary || '',
         challenge: caseForm.challenge || '',
         solution: caseForm.solution || '',
         heroImage: caseForm.heroImage || 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-        tags: Array.isArray(caseForm.tags) ? caseForm.tags : ['Cloud', 'High-Load'],
+        tags: Array.isArray(caseForm.tags) ? caseForm.tags : ['Web Development', 'High-Speed'],
         metrics: Array.isArray(caseForm.metrics) ? caseForm.metrics : [{ label: 'Performance', value: '+200%' }],
-        techStack: Array.isArray(caseForm.techStack) ? caseForm.techStack : ['Next.js', 'PostgreSQL'],
+        techStack: Array.isArray(caseForm.techStack) ? caseForm.techStack : ['Next.js', 'Tailwind CSS'],
         liveUrl: caseForm.liveUrl,
         featured: true,
         active: true,
@@ -332,13 +332,13 @@ export const AdminDashboard: React.FC = () => {
     if (isCreatingTestimonial) {
       addTestimonial({
         clientName: testimonialForm.clientName || '',
-        role: testimonialForm.role || 'CTO',
-        company: testimonialForm.company || 'Enterprise Partner',
+        role: testimonialForm.role || 'Business Owner',
+        company: testimonialForm.company || 'Retail / Brand Client',
         location: testimonialForm.location || 'Global',
         rating: testimonialForm.rating || 5,
         quote: testimonialForm.quote || '',
         avatarUrl: testimonialForm.avatarUrl || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-        projectDelivered: testimonialForm.projectDelivered || 'Enterprise Architecture',
+        projectDelivered: testimonialForm.projectDelivered || 'Website Development & Hosting',
         active: true,
       });
     } else if (editingTestimonial) {
@@ -896,15 +896,15 @@ export const AdminDashboard: React.FC = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                   <div className="p-3 rounded-lg bg-[#111111] border border-[#222222]">
                     <span className="text-neutral-500 block text-[10px] font-mono">Top Demand</span>
-                    <div className="font-semibold text-white mt-0.5">Enterprise Cloud & SaaS (42%)</div>
+                    <div className="font-semibold text-white mt-0.5">Web & POS Software (42%)</div>
                   </div>
                   <div className="p-3 rounded-lg bg-[#111111] border border-[#222222]">
                     <span className="text-neutral-500 block text-[10px] font-mono">Growth Sector</span>
-                    <div className="font-semibold text-white mt-0.5">Autonomous AI & Agents (36%)</div>
+                    <div className="font-semibold text-white mt-0.5">SEO & Meta Ads (36%)</div>
                   </div>
                   <div className="p-3 rounded-lg bg-[#111111] border border-[#222222]">
                     <span className="text-neutral-500 block text-[10px] font-mono">Average Deal Size</span>
-                    <div className="font-semibold text-emerald-400 mt-0.5">$38,500 / Retainer</div>
+                    <div className="font-semibold text-emerald-400 mt-0.5">Rs. 25,000 / Engagement</div>
                   </div>
                 </div>
               </div>
@@ -1027,18 +1027,18 @@ export const AdminDashboard: React.FC = () => {
                     setCaseForm({
                       title: '',
                       client: '',
-                      category: 'Cloud & SaaS',
+                      category: 'Web Development',
                       summary: '',
                       challenge: '',
                       solution: '',
                       heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-                      tags: ['SaaS', 'High-Load'],
+                      tags: ['Web Development', 'High-Speed'],
                       metrics: [
-                        { label: 'Latency', value: '-85%' },
-                        { label: 'Uptime', value: '99.99%' },
-                        { label: 'Volume', value: '$10M+' }
+                        { label: 'PageSpeed', value: '98/100' },
+                        { label: 'Conversion', value: '+35%' },
+                        { label: 'Uptime', value: '99.99%' }
                       ],
-                      techStack: ['Next.js', 'PostgreSQL', 'AWS'],
+                      techStack: ['Next.js', 'Tailwind CSS', 'TypeScript'],
                       active: true,
                     });
                   }}
@@ -2005,6 +2005,22 @@ export const AdminDashboard: React.FC = () => {
                     className="w-full px-3 py-1.5 rounded-lg bg-[#141414] border border-[#262626] text-white focus:outline-none focus:border-blue-500"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-neutral-400 mb-1">Service Category *</label>
+                <select
+                  value={caseForm.category || 'Web Development'}
+                  onChange={(e) => setCaseForm({ ...caseForm, category: e.target.value as any })}
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#141414] border border-[#262626] text-white focus:outline-none focus:border-blue-500"
+                >
+                  <option value="Web Development">Web Development</option>
+                  <option value="Shopify & E-Commerce">Shopify & E-Commerce</option>
+                  <option value="POS Software">POS Software</option>
+                  <option value="SEO Optimization">SEO Optimization</option>
+                  <option value="Meta & Google Ads">Meta & Google Ads</option>
+                  <option value="Social Media">Social Media</option>
+                </select>
               </div>
 
               <div>

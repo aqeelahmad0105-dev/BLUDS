@@ -18,33 +18,33 @@ export const FAQSection: React.FC = () => {
     },
     {
       category: 'OPERATING MODEL',
-      question: 'How does your online-first delivery model work across global time zones?',
-      answer: 'We operate as a distributed digital engineering engine with synchronous coverage across North America, Europe, and APAC. Clients receive direct Slack communication channels, asynchronous video walkthroughs on every pull request, and weekly architecture reviews directly with the 3 founders.',
+      question: 'How does your online-first delivery model work with clients?',
+      answer: 'We operate as an agile digital agency with direct communication via WhatsApp (+92 309 9489168) and email (m.bluds2@gmail.com). Clients receive rapid turnaround, live staging previews, and weekly reviews directly with our founding partners.',
     },
     {
       category: 'EXPANSION ROADMAP',
       question: 'When is BLUDS Agency transitioning to physical onsite tech studios?',
-      answer: 'Phase 1 is our current lean, high-velocity online agency. Phase 2 (scheduled for 2026) will introduce physical innovation studios and client war-rooms in key tech hubs, allowing clients to schedule intensive in-person architectural sprints with the founders.',
+      answer: 'Phase 1 is our current lean, high-velocity online agency. Phase 2 (scheduled for 2026) will introduce physical innovation studios and client war-rooms in key tech hubs, allowing clients to schedule in-person strategy and POS hardware sessions with the founders.',
     },
     {
       category: 'INTELLECTUAL PROPERTY',
       question: 'Who owns the code, design assets, and intellectual property?',
-      answer: 'You own 100% of all intellectual property, source code, Figma design files, and deployment configurations from Day 1. Code is committed directly to your organization’s private Git repositories under mutual NDA.',
+      answer: 'You own 100% of all source code, domain ownership, credentials, Figma design files, and deployment configurations from Day 1. There is zero vendor lock-in.',
     },
     {
-      category: 'SPRINT VELOCITY',
-      question: 'What is your typical delivery timeline from concept to production?',
-      answer: 'Most high-growth MVPs and SaaS platforms reach staging within 4 to 8 weeks. We work in disciplined 2-week bi-weekly sprints, deploying tested features to a live staging environment at the end of each cycle so you can test working software continuously.',
+      category: 'DELIVERY TIMELINE',
+      question: 'What is your typical delivery timeline from concept to launch?',
+      answer: 'Custom websites and Shopify store setups typically deploy in 1 to 2 weeks. POS software setups and barcode integrations deploy within 1 to 2 weeks. SEO, Meta Ads, and Social Media management operate on monthly growth cycles with real-time analytics reports.',
     },
     {
       category: 'DIRECT LEADERSHIP',
-      question: 'How do the 3 founders personally supervise our engineering?',
-      answer: 'Unlike traditional software houses that pitch senior partners and delegate execution to junior developers, Ghulam (CTO), Hamza (CPO), and Daniyal (Head of AI) personally architect your infrastructure, design your data schemas, and review every pull request.',
+      question: 'How do the 3 founders personally supervise our project?',
+      answer: 'Unlike traditional agencies that hand off client accounts to junior freelancers, Ghulam (Website Development & Cloud Hosting), Hamza (POS Software & Shopify Integrations), and Daniyal (SEO, Meta Ads & Viral Reels) personally engineer and manage every deliverable.',
     },
     {
-      category: 'SECURITY & HARDENING',
-      question: 'What are your enterprise security and data privacy standards?',
-      answer: 'All systems are engineered following SOC2 Type II, HIPAA, and GDPR compliance best practices. We implement TLS 1.3 encryption in transit, AES-256 at rest, automated vulnerability scanning in GitHub Actions, and zero-data-retention safeguards for custom AI LLM pipelines.',
+      category: 'SECURITY & PERFORMANCE',
+      question: 'What security, performance, and data protection standards do you provide?',
+      answer: 'All websites and stores feature free SSL certificates (HTTPS), sub-second load times (95+ Google PageSpeed), secure payment gateway integrations (Cash on Delivery, Stripe, bank wire), and encrypted automated daily database backups.',
     },
   ];
 

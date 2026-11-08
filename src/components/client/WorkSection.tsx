@@ -7,7 +7,15 @@ export const WorkSection: React.FC = () => {
   const { caseStudies, setActiveModalCaseStudy } = useAgency();
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
-  const categories = ['All', 'FinTech', 'AI & LLM', 'Mobile', 'Cloud & SaaS'];
+  const categories = [
+    'All', 
+    'Web Development', 
+    'Shopify & E-Commerce', 
+    'POS Software', 
+    'SEO Optimization', 
+    'Meta & Google Ads', 
+    'Social Media'
+  ];
 
   const filteredCases = caseStudies.filter((item) => {
     if (!item.active) return false;

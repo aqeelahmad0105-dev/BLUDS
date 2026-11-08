@@ -94,10 +94,10 @@ const AgencyContext = createContext<AgencyContextType | undefined>(undefined);
 const STORAGE_KEYS = {
   SETTINGS: 'bluds_site_settings_v2',
   SERVICES: 'bluds_services_v2',
-  CASES: 'bluds_cases_v1',
-  TESTIMONIALS: 'bluds_testimonials_v1',
-  FOUNDERS: 'bluds_founders_v1',
-  INQUIRIES: 'bluds_inquiries_v1',
+  CASES: 'bluds_cases_v2',
+  TESTIMONIALS: 'bluds_testimonials_v2',
+  FOUNDERS: 'bluds_founders_v2',
+  INQUIRIES: 'bluds_inquiries_v2',
   AUTH: 'bluds_admin_auth_v1',
 };
 

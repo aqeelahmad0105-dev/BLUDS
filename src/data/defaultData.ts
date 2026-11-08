@@ -2,19 +2,19 @@ import { CaseStudy, Founder, Inquiry, Service, SiteSettings, Testimonial } from 
 
 export const initialSiteSettings: SiteSettings = {
   agencyName: 'BLUDS Agency',
-  tagline: 'Engineering Digital Dominance for Visionary Companies',
-  shortPitch: 'Founded by three elite engineers, BLUDS is a premier software house delivering enterprise-grade cloud software, intelligent AI systems, and pixel-perfect digital experiences. Operating globally online, scaling to physical studios.',
+  tagline: 'High-Performance Website Development, POS Software & Digital Growth Systems',
+  shortPitch: 'Founded by three technical partners, BLUDS is a software house delivering custom websites, retail POS systems, Shopify store connections, page-one SEO, and high-ROI Meta & Google Ads campaigns.',
   announcement: {
     enabled: true,
-    text: '🚀 Currently accepting select Q3/Q4 digital transformation projects & enterprise retainers.',
-    tag: 'NEW CLIENT INTAKE OPEN',
-    actionText: 'Book Discovery Call',
+    text: '🚀 Currently taking new projects: Website Development, POS Software, Shopify & Ads/SEO.',
+    tag: 'INTAKE OPEN • WHATSAPP: 03099489168',
+    actionText: 'Message on WhatsApp',
     actionTarget: '#contact'
   },
   operationalModel: {
     currentPhase: 'Phase 1: 100% Online & Distributed Global Engine',
-    phaseBadge: 'ONLINE FIRST • GLOBAL DELIVERY',
-    description: 'We run as a hyper-agile digital-first software house with 24/7 delivery across US, UK, and APAC timezones. No overhead, senior engineering talent on every sprint.',
+    phaseBadge: 'ONLINE FIRST • DIRECT LEAD DELIVERY',
+    description: 'We run as a hyper-agile digital software house providing direct WhatsApp and email communication with transparent milestone pricing.',
     nextMilestone: 'Phase 2: Launching Onsite Experience Labs & Tech Studios in 2026'
   },
   contactInfo: {
@@ -34,9 +34,9 @@ export const initialSiteSettings: SiteSettings = {
     discord: 'https://discord.gg/bluds'
   },
   metrics: {
-    projectsShipped: '48+',
-    clientSatisfactionRate: '99.4%',
-    averageDeliveryWeeks: '4 - 10 wks',
+    projectsShipped: '64+',
+    clientSatisfactionRate: '99.6%',
+    averageDeliveryWeeks: '1 - 4 wks',
     uptimeSLA: '99.99%'
   }
 };
@@ -46,9 +46,9 @@ export const initialFounders: Founder[] = [
     id: 'founder-1',
     name: 'Ghulam',
     role: 'Co-Founder & Chief Technology Officer',
-    focus: 'Distributed Systems, Cloud Architecture & Scalability',
-    bio: 'Veteran full-stack systems architect with deep expertise in fault-tolerant backend infrastructures, microservices, and high-load web architectures. Passionate about zero-downtime deployments and ultra-clean codebases.',
-    expertise: ['Cloud Architecture', 'Distributed Systems', 'Kubernetes / AWS', 'Next.js & Node.js', 'System Security'],
+    focus: 'Website Development, Cloud Architecture & Domain Hosting',
+    bio: 'Lead technical architect specializing in high-speed responsive website development (Next.js, React, Tailwind CSS), cloud deployment, and zero-downtime annual hosting infrastructures.',
+    expertise: ['Website Development', 'Next.js & React', 'Speed Optimization', 'Domain & Cloud Hosting', 'Admin CMS Systems'],
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/ghulam-founder',
@@ -56,16 +56,16 @@ export const initialFounders: Founder[] = [
       twitter: 'https://x.com/ghulam_eng'
     },
     location: 'Remote Lead / Future Onsite Hub',
-    onlineStatusBadge: 'Available for Architecture Reviews',
+    onlineStatusBadge: 'Available for Web Inquiries',
     active: true
   },
   {
     id: 'founder-2',
     name: 'Hamza',
-    role: 'Co-Founder & Chief Product Officer',
-    focus: 'Product Strategy, Enterprise Solutions & Agile Delivery',
-    bio: 'Product strategist and solutions engineer specializing in converting complex business logic into intuitive, high-converting digital products. Leads client discovery sprints and ensures every milestone generates measurable ROI.',
-    expertise: ['Product Roadmapping', 'Enterprise SaaS', 'Agile Scrum', 'FinTech & HealthTech', 'Client Experience'],
+    role: 'Co-Founder & Head of Product Solutions',
+    focus: 'POS Software, Retail Systems & Shopify Integrations',
+    bio: 'Solutions engineer engineering high-speed Point of Sale (POS) software for retail, supermarkets, and restaurants alongside seamless Shopify store connections, catalog sync, and checkout flows.',
+    expertise: ['POS Software Systems', 'Shopify Connection', 'Barcode Scanning', 'Inventory Deductions', 'Payment Gateways'],
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/hamza-product',
@@ -73,24 +73,24 @@ export const initialFounders: Founder[] = [
       twitter: 'https://x.com/hamza_cpo'
     },
     location: 'Global Delivery Lead',
-    onlineStatusBadge: 'In Discovery Sprints',
+    onlineStatusBadge: 'Configuring Client POS',
     active: true
   },
   {
     id: 'founder-3',
     name: 'Daniyal',
-    role: 'Co-Founder & Head of AI & Design Engineering',
-    focus: 'Applied AI, LLM Agents & Ultra-Modern Interactive UI/UX',
-    bio: 'Creative technologist bridging high-end interactive aesthetics (WebGL, micro-animations, glassmorphism) with cutting-edge Generative AI and autonomous agent pipelines. Obsessed with micro-interactions that leave a lasting mark.',
-    expertise: ['Generative AI / LLMs', 'Creative Frontend', 'Three.js & Motion', 'Figma to Code', 'Autonomous Workflows'],
+    role: 'Co-Founder & Head of Growth & Creative Engineering',
+    focus: 'SEO Optimization, Meta & Google Ads, and Viral Reels',
+    bio: 'Growth strategist and creative video engineer running high-ROI Meta & Google Ads campaigns, technical Page-1 SEO optimization, and producing 12 high-retention short-form video reels each month.',
+    expertise: ['SEO Optimization', 'Meta Ads (FB/IG)', 'Google Search & PMax', '12 Viral Reels/Mo', 'GA4 & Tracking'],
     avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/daniyal-ai',
       github: 'https://github.com/daniyal-dev',
       twitter: 'https://x.com/daniyal_ux'
     },
-    location: 'Design & AI Lab',
-    onlineStatusBadge: 'Prototyping Next-Gen Interfaces',
+    location: 'Design & Marketing Lab',
+    onlineStatusBadge: 'Scaling Client Ad Campaigns',
     active: true
   }
 ];
@@ -227,81 +227,121 @@ export const initialServices: Service[] = [
 export const initialCaseStudies: CaseStudy[] = [
   {
     id: 'case-1',
-    title: 'AegisCloud: High-Frequency FinTech Platform',
-    client: 'Aegis Global Capital',
-    category: 'FinTech',
-    summary: 'A sub-millisecond trading intelligence portal processing $45M+ in daily transaction volume with real-time risk calculations.',
-    challenge: 'The client had legacy monolithic software struggling with 8-second query latencies and unexpected downtime during market volatility.',
-    solution: 'Re-architected the entire system into distributed Go microservices with Kafka streaming and a modern Next.js client-facing dashboard with WebSockets.',
-    heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    tags: ['FinTech', 'Distributed Systems', 'Real-Time Data', 'Next.js'],
+    title: 'LuxeMart: Multi-Counter Retail POS Software System',
+    client: 'LuxeMart Superstore',
+    category: 'POS Software',
+    summary: 'A fast, offline-first Point of Sale system with barcode scanner integration, instant thermal receipt printing, real-time inventory deduction, and cloud sync.',
+    challenge: 'The retail client suffered from sluggish billing queues during peak hours, inventory stock mismatches, and lacked real-time daily profit and loss accounting.',
+    solution: 'Engineered a modern desktop/tablet POS system with local SQLite offline resilience, automated barcode lookup, cashier shift closing, and cloud data backup.',
+    heroImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
+    tags: ['POS Software', 'Barcode Scanner', 'Inventory Sync', 'Receipt Printing'],
     metrics: [
-      { label: 'Latency Reduction', value: '94% faster' },
-      { label: 'Daily Trading Volume', value: '$45M+' },
-      { label: 'Platform Uptime', value: '99.998%' }
+      { label: 'Billing Speed', value: '< 2.0s / bill' },
+      { label: 'Stock Accuracy', value: '100% synced' },
+      { label: 'Daily Bills Processed', value: '3,800+' }
     ],
-    techStack: ['Next.js', 'Go', 'Kafka', 'PostgreSQL', 'Tailwind CSS', 'AWS'],
-    liveUrl: 'https://aegis-demo.bludsagency.com',
+    techStack: ['React/Electron', 'Node.js', 'PostgreSQL/SQLite', 'Thermal ESC/POS', 'Barcode Engine'],
+    liveUrl: 'https://bludsagency.com/#contact',
     featured: true,
     active: true
   },
   {
     id: 'case-2',
-    title: 'OmniAgent: Enterprise AI Workflow Automation',
-    client: 'HyperLogistics Inc.',
-    category: 'AI & LLM',
-    summary: 'Multi-agent LLM pipeline that automatically reads bills of lading, orchestrates customs clearance, and predicts cargo delays.',
-    challenge: 'Manual document intake was costing 350+ staff hours every week and creating frequent shipment re-routing errors.',
-    solution: 'Built a specialized Vision-LLM document extractor coupled with an autonomous routing agent that self-verifies customs paperwork and syncs ERP systems.',
-    heroImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-    tags: ['AI Agents', 'LLMs', 'Computer Vision', 'Automation'],
+    title: 'Aura Studio: High-Speed Custom Website & 3D Polish',
+    client: 'Aura Architecture Group',
+    category: 'Web Development',
+    summary: 'Custom responsive corporate website featuring modern dark aesthetic, clean typography, 3D interactive canvas, and sub-second load times.',
+    challenge: 'Their previous template website took 7+ seconds to load, looked outdated on mobile, and failed to generate qualified enterprise architectural inquiries.',
+    solution: 'Built a bespoke Next.js 14 and Tailwind CSS platform with 98/100 Google PageSpeed, mobile-first layouts, and an integrated client inquiry dashboard.',
+    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Web Development', 'Next.js', 'Speed Optimization', 'Admin Dashboard'],
     metrics: [
-      { label: 'Manual Hours Saved', value: '350 hrs/wk' },
-      { label: 'Document Accuracy', value: '99.7%' },
-      { label: 'Processing Speed', value: '45s vs 4 hrs' }
+      { label: 'Google PageSpeed', value: '98 / 100' },
+      { label: 'Mobile Bounce Rate', value: '-48%' },
+      { label: 'Client Inquiries', value: '+190%' }
     ],
-    techStack: ['Python', 'FastAPI', 'Gemini & OpenAI API', 'pgvector', 'React'],
-    liveUrl: 'https://omniagent-demo.bludsagency.com',
+    techStack: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Cloud Hosting'],
+    liveUrl: 'https://bludsagency.com/#contact',
     featured: true,
     active: true
   },
   {
     id: 'case-3',
-    title: 'Kuro Health: Telemedicine & Bio-Vitals App',
-    client: 'Kuro Medical Systems',
-    category: 'Mobile',
-    summary: 'HIPAA-compliant cross-platform mobile app connecting over 120,000 chronic illness patients with certified specialists in real-time.',
-    challenge: 'Needed an ultra-secure video consultation interface with continuous Bluetooth wearable sensor sync that works flawlessly on iOS and low-end Android devices.',
-    solution: 'Delivered an offline-first Flutter application featuring end-to-end encrypted WebRTC video sessions and continuous health metric graphing.',
-    heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
-    tags: ['HealthTech', 'Mobile App', 'Flutter', 'WebRTC'],
+    title: 'Nova Streetwear: High-Conversion Shopify Store Integration',
+    client: 'Nova Apparel Brand',
+    category: 'Shopify & E-Commerce',
+    summary: 'Complete Shopify connection, custom domain setup, product catalog synchronization, payment gateway linkage, and 1-click Cash on Delivery (COD) checkout.',
+    challenge: 'The client needed to connect their standalone web presence to Shopify, resolve payment gateway integration issues, and eliminate high mobile cart abandonment.',
+    solution: 'Connected Shopify Storefront APIs with automated webhook inventory sync, streamlined checkout steps, and configured WhatsApp order notification triggers.',
+    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Shopify', 'E-Commerce', 'Payment Gateway', 'COD Integration'],
     metrics: [
-      { label: 'Active Patients', value: '120,000+' },
-      { label: 'App Store Rating', value: '4.9 ★' },
-      { label: 'Consultation Latency', value: '<150ms' }
+      { label: 'Checkout Conversion', value: '+36%' },
+      { label: 'Cart Abandonment', value: '-29%' },
+      { label: 'Monthly Online Sales', value: 'Rs. 3.8M+' }
     ],
-    techStack: ['Flutter', 'Node.js', 'WebRTC', 'Firebase', 'GCP'],
-    liveUrl: 'https://kurohealth-demo.bludsagency.com',
+    techStack: ['Shopify', 'Liquid', 'Storefront API', 'Webhooks', 'COD Gateway'],
+    liveUrl: 'https://bludsagency.com/#contact',
     featured: true,
     active: true
   },
   {
     id: 'case-4',
-    title: 'NexusCommerce: Headless E-Commerce Engine',
-    client: 'Veloce Luxury Apparel',
-    category: 'Cloud & SaaS',
-    summary: 'Global headless storefront operating across 18 currencies with instant edge page loads and 3D product previews.',
-    challenge: 'Sluggish Shopify frontends were suffering from a 68% cart abandonment rate on mobile devices.',
-    solution: 'Designed and deployed an edge-rendered Next.js frontend with Three.js 3D apparel customization and instant Stripe one-click checkout.',
-    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    tags: ['E-Commerce', 'Next.js', 'Three.js', 'Stripe'],
+    title: 'Apex Dental Care: Google Page-1 SEO Optimization',
+    client: 'Apex Specialty Clinics',
+    category: 'SEO Optimization',
+    summary: 'Data-driven on-page, off-page, and technical SEO campaign taking local search rankings to the #1 spot on Google for high-intent medical queries.',
+    challenge: 'The clinic was invisible on Google search, relying entirely on expensive referrals with zero organic patient bookings from online searches.',
+    solution: 'Executed a complete technical SEO audit, optimized meta schemas, enhanced page load speeds, built local authority citations, and integrated Google Search Console & GA4.',
+    heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    tags: ['SEO Optimization', 'Google Search Console', 'Keyword Ranking', 'Local SEO'],
     metrics: [
-      { label: 'Conversion Increase', value: '+34%' },
-      { label: 'Mobile Bounce Rate', value: '-42%' },
-      { label: 'Page Load Speed', value: '0.4s' }
+      { label: 'Google Search Rank', value: '#1 Ranking' },
+      { label: 'Organic Impressions', value: '+380%' },
+      { label: 'Monthly Inquiries', value: '3.4x Growth' }
     ],
-    techStack: ['Next.js', 'Tailwind CSS', 'Shopify Storefront API', 'Stripe', 'Vercel Edge'],
-    liveUrl: 'https://nexuscommerce-demo.bludsagency.com',
+    techStack: ['Google Search Console', 'GA4', 'Schema.org', 'Technical SEO', 'Ahrefs'],
+    liveUrl: 'https://bludsagency.com/#contact',
+    featured: false,
+    active: true
+  },
+  {
+    id: 'case-5',
+    title: 'Skyline Properties: Meta & Google Ads Paid Acquisition',
+    client: 'Skyline Real Estate Group',
+    category: 'Meta & Google Ads',
+    summary: 'High-ROI paid advertising campaign across Facebook, Instagram (Meta Ads), and Google Search delivering qualified property buyer leads.',
+    challenge: 'Client was burning ad budget on boosted posts with zero lead qualification, high cost-per-click, and untracked conversion data.',
+    solution: 'Configured Meta Pixel & Conversion API (CAPI), structured Google Search campaigns, tested 8 high-converting video hooks, and set up daily lead qualification filters.',
+    heroImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Meta Ads', 'Google Ads', 'Lead Generation', 'Pixel Tracking'],
+    metrics: [
+      { label: 'ROAS Delivered', value: '5.2x Return' },
+      { label: 'Cost Per Lead', value: 'Rs. 360 / lead' },
+      { label: 'Closed Deal Volume', value: 'Rs. 22M+' }
+    ],
+    techStack: ['Meta Ads Manager', 'Google Ads (PMax)', 'Conversion API', 'Google Tag Manager'],
+    liveUrl: 'https://bludsagency.com/#contact',
+    featured: false,
+    active: true
+  },
+  {
+    id: 'case-6',
+    title: 'Glow Essentials: 12 Viral Reels/Month Social Media Management',
+    client: 'Glow Organic Skincare',
+    category: 'Social Media',
+    summary: 'End-to-end social media management producing 12 high-retention short-form video reels per month with professional editing, captions, and monthly analytics.',
+    challenge: 'Stagnant social media accounts with low reach, inconsistent posting, and zero video content strategy to showcase product results.',
+    solution: 'Scripted and edited 12 viral-hook reels per month with trending audio and dynamic captions, published across Instagram and TikTok with detailed monthly analytics.',
+    heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+    tags: ['Social Media', '12 Reels / Month', 'Viral Video Hooks', 'Monthly Analytics'],
+    metrics: [
+      { label: 'Reels Produced', value: '12 / Month' },
+      { label: 'Organic Reel Views', value: '620,000+' },
+      { label: 'Follower Growth', value: '+28,500' }
+    ],
+    techStack: ['Premiere Pro', 'CapCut Pro', 'Meta Business Suite', 'Trending Audio Engine'],
+    liveUrl: 'https://bludsagency.com/#contact',
     featured: false,
     active: true
   }
@@ -310,38 +350,50 @@ export const initialCaseStudies: CaseStudy[] = [
 export const initialTestimonials: Testimonial[] = [
   {
     id: 'test-1',
-    clientName: 'Alexander Wright',
-    role: 'Chief Technology Officer',
-    company: 'Aegis Global Capital',
-    location: 'London, UK',
+    clientName: 'Muhammad Usman',
+    role: 'Founder & Managing Director',
+    company: 'LuxeMart Retail Superstore',
+    location: 'Lahore, Pakistan',
     rating: 5,
-    quote: 'BLUDS Agency did what two legacy consulting agencies failed to do in 9 months. The three founders personally stepped in, designed our distributed system, and delivered 2 weeks ahead of schedule. Their code quality is exemplary.',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'FinTech High-Frequency Platform',
+    quote: 'BLUDS Agency installed and configured our complete POS software system in under 48 hours. The barcode scanner and thermal receipt printer work seamlessly without lag, and we have zero inventory leakage now. Excellent after-sales support!',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    projectDelivered: 'POS Software & Retail System',
     active: true
   },
   {
     id: 'test-2',
-    clientName: 'Elena Rostova',
-    role: 'VP of Digital Innovation',
-    company: 'HyperLogistics Inc.',
-    location: 'San Francisco, USA',
+    clientName: 'Fatima Zahra',
+    role: 'Creative Director',
+    company: 'Nova Apparel Brand',
+    location: 'Karachi, Pakistan',
     rating: 5,
-    quote: 'The AI automation pipeline engineered by BLUDS has completely transformed our supply chain back-office. Their online delivery rhythm was silky smooth, with daily video walkthroughs and zero time-zone friction.',
-    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'Autonomous Multi-Agent AI System',
+    quote: 'They connected our website directly to Shopify and integrated our payment gateways effortlessly. Our store loads instantly on mobile, and the 12 reels produced by their social media team brought us over 40,000 targeted store visits in the first month!',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    projectDelivered: 'Shopify Store & 12 Reels Management',
     active: true
   },
   {
     id: 'test-3',
-    clientName: 'Dr. Marcus Vance',
-    role: 'Medical Director',
-    company: 'Kuro Medical Systems',
-    location: 'Zurich, Switzerland',
+    clientName: 'Tariq Mehmood',
+    role: 'Managing Partner',
+    company: 'Skyline Real Estate Group',
+    location: 'Islamabad, Pakistan',
     rating: 5,
-    quote: 'Finding engineers who understand both high-security compliance and award-winning mobile UX is rare. The BLUDS team treats your startup like their own. We will definitely be partnering with them for our onsite phase!',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'Telemedicine Mobile App',
+    quote: 'Our website built by BLUDS Agency looks stunning and modern. On top of that, their Meta Ads and Google Ads management generated qualified buyer leads from day one at a cost per lead we could not achieve with any other agency.',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    projectDelivered: 'Website Development & Meta Ads',
+    active: true
+  },
+  {
+    id: 'test-4',
+    clientName: 'Dr. Bilal Hashmi',
+    role: 'Chief Medical Consultant',
+    company: 'Apex Specialty Dental Care',
+    location: 'Rawalpindi, Pakistan',
+    rating: 5,
+    quote: 'Their monthly SEO optimization service took our clinic’s website to Page 1 of Google for all our primary keywords within 3 months. Our organic appointment bookings tripled. Highly recommend Aqeel Ahmad and his team!',
+    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
+    projectDelivered: 'Web Development & Page-1 SEO',
     active: true
   }
 ];
@@ -349,14 +401,14 @@ export const initialTestimonials: Testimonial[] = [
 export const initialInquiries: Inquiry[] = [
   {
     id: 'inq-101',
-    clientName: 'David Sterling',
-    email: 'david@sterlingventures.io',
-    phone: '+1 (415) 890-3321',
-    company: 'Sterling Ventures',
-    projectType: 'Custom Enterprise Software & SaaS',
-    budgetRange: '$25,000 - $50,000',
-    timeline: 'Within 2 Months',
-    message: 'We are looking to build a multi-tenant portfolio monitoring dashboard with real-time API integrations into Bloomberg and Carta. We saw your AegisCloud case study and were thoroughly impressed.',
+    clientName: 'Tariq Mehmood',
+    email: 'tariq@alnoorfabrics.com',
+    phone: '+92 321 4455667',
+    company: 'Al-Noor Fabrics',
+    projectType: 'Website Development',
+    budgetRange: 'Rs. 20,000 + Rs. 10,000/mo',
+    timeline: 'Within 2 Weeks',
+    message: 'We need a high-performance modern responsive website for our textile brand with domain hosting setup. Interested in Rs. 20k one-time development and ongoing monthly maintenance.',
     source: 'contact_form',
     status: 'new',
     priority: 'high',
@@ -365,22 +417,22 @@ export const initialInquiries: Inquiry[] = [
       {
         id: 'note-1',
         author: 'Ghulam (CTO)',
-        content: 'Reviewing Bloomberg API sync requirements. Need to prepare 15-minute architecture discovery slide.',
+        content: 'Reviewing domain selection and hosting package (Rs. 7,000 - 8,000/yr). Prepared Next.js design preview.',
         createdAt: '2026-11-08T10:00:00.000Z'
       }
     ],
-    estimatedScope: 'Full-stack Next.js + Go microservices backend with automated data pipeline.'
+    estimatedScope: 'Next.js website, responsive layout, SEO basics, domain and annual cloud hosting setup.'
   },
   {
     id: 'inq-102',
-    clientName: 'Sophia Chen',
-    email: 'sophia@novabiotech.ai',
-    phone: '+1 (650) 442-9901',
-    company: 'Nova Biotech',
-    projectType: 'Applied AI & Autonomous Agent Systems',
-    budgetRange: '$50,000+',
+    clientName: 'Kamran Rafiq',
+    email: 'kamran@metromart.pk',
+    phone: '+92 300 8899112',
+    company: 'Metro Mart Superstore',
+    projectType: 'POS Software (Point of Sale)',
+    budgetRange: 'Rs. 20,000 + Rs. 3,000/mo',
     timeline: 'Immediate (1-2 weeks)',
-    message: 'We have 10,000+ proprietary clinical trials in PDF and raw lab notes. We need a private, on-premise RAG vector pipeline and conversational research assistant with strict HIPAA compliance.',
+    message: 'We operate 3 checkout counters and require a Point of Sale system with fast barcode scanning, thermal receipt printing, real-time inventory deduction, and daily profit/loss reports.',
     source: 'cost_estimator',
     status: 'reviewed',
     priority: 'urgent',
@@ -388,23 +440,23 @@ export const initialInquiries: Inquiry[] = [
     notes: [
       {
         id: 'note-2',
-        author: 'Daniyal (Head of AI)',
-        content: 'Proposed local open-weights model or HIPAA-compliant Azure OpenAI enclave. Client replied to introductory calendar link.',
+        author: 'Hamza (CPO)',
+        content: 'Configuring barcode scanner integration test and ESC/POS thermal printer layout. Client confirmed setup meeting.',
         createdAt: '2026-11-07T18:20:00.000Z'
       }
     ],
-    estimatedScope: 'Custom RAG pipeline with pgvector, Python FastAPI backend, and encrypted web chat portal.'
+    estimatedScope: 'Desktop POS software license (Rs. 20,000) with Rs. 3,000/mo cloud sync and multi-counter support.'
   },
   {
     id: 'inq-103',
-    clientName: 'Liam O’Connor',
-    email: 'liam@finflow.eu',
-    phone: '+353 87 234 5678',
-    company: 'FinFlow Global',
-    projectType: 'Mobile App Engineering (iOS & Android)',
-    budgetRange: '$15,000 - $25,000',
-    timeline: 'Within 3 Months',
-    message: 'Looking for a dedicated team to build our consumer micro-investment app in Flutter with biometric authentication and European Open Banking API integration.',
+    clientName: 'Sarah Khan',
+    email: 'sarah@bloomcosmetics.pk',
+    phone: '+92 333 1122334',
+    company: 'Bloom Cosmetics',
+    projectType: 'Shopify Store & Meta Ads',
+    budgetRange: 'Rs. 17,000 / month',
+    timeline: 'Within 1 Month',
+    message: 'We need Shopify store connection (Rs. 5,000 one-time) with Cash on Delivery setup, plus monthly Meta Ads management (Rs. 12,000/month) to drive online sales.',
     source: 'contact_form',
     status: 'proposal_sent',
     priority: 'medium',
@@ -412,12 +464,12 @@ export const initialInquiries: Inquiry[] = [
     notes: [
       {
         id: 'note-3',
-        author: 'Hamza (CPO)',
-        content: 'Sent initial 8-page technical and pricing proposal. Client reviewing with their board on Tuesday.',
+        author: 'Daniyal (Growth Lead)',
+        content: 'Shared Meta Ads strategy and Shopify COD workflow with client. Ad spend to be funded directly by client.',
         createdAt: '2026-11-06T15:30:00.000Z'
       }
     ],
-    estimatedScope: 'Flutter iOS & Android app, Plaid / Yapily Open Banking SDK integration.'
+    estimatedScope: 'Shopify catalog linkage, COD checkout configuration, and Meta Ads campaign management.'
   }
 ];
 

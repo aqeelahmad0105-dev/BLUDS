@@ -1,31 +1,31 @@
 import React from 'react';
 import { 
+  Globe, 
+  ShoppingBag, 
+  Store, 
+  Search, 
+  Megaphone, 
+  Video, 
   Code2, 
-  Cpu, 
-  Database, 
-  Cloud, 
   Layers, 
-  Workflow, 
-  Terminal, 
-  Smartphone, 
-  ShieldCheck, 
-  GitBranch, 
-  Boxes 
+  Cloud, 
+  BarChart2, 
+  CreditCard 
 } from 'lucide-react';
 
 export const TechMarquee: React.FC = () => {
   const techList = [
-    { name: 'Next.js 14', tag: 'Server Components', icon: Code2 },
-    { name: 'TypeScript', tag: 'Type Safety', icon: Terminal },
-    { name: 'Python & FastAPI', tag: 'AI & Data Services', icon: Cpu },
-    { name: 'AWS & Kubernetes', tag: 'Cloud Infrastructure', icon: Cloud },
-    { name: 'PostgreSQL & pgvector', tag: 'ACID & Vector Storage', icon: Database },
-    { name: 'Flutter', tag: 'Cross-Platform Mobile', icon: Smartphone },
-    { name: 'Docker & CI/CD', tag: 'Automated Pipelines', icon: Boxes },
-    { name: 'OpenAI & Claude API', tag: 'LLM Systems', icon: Workflow },
-    { name: 'Tailwind CSS', tag: 'Design Systems', icon: Layers },
-    { name: 'GraphQL & REST', tag: 'Low-Latency APIs', icon: GitBranch },
-    { name: 'SOC2 Standards', tag: 'Security Hardening', icon: ShieldCheck },
+    { name: 'Website Development', tag: 'Next.js 14 & React 19', icon: Globe },
+    { name: 'Shopify Connection', tag: 'Storefront & COD Checkout', icon: ShoppingBag },
+    { name: 'POS Software', tag: 'Barcode & Thermal Billing', icon: Store },
+    { name: 'Page-1 SEO', tag: 'Google Search Console & GA4', icon: Search },
+    { name: 'Meta Ads Manager', tag: 'High-ROI FB & IG Campaigns', icon: Megaphone },
+    { name: '12 Viral Reels / Mo', tag: 'Social Media Management', icon: Video },
+    { name: 'Google Ads (PMax)', tag: 'High-Intent Search Traffic', icon: BarChart2 },
+    { name: 'Domain & Cloud Hosting', tag: 'High-Speed 99.99% Uptime', icon: Cloud },
+    { name: 'Tailwind CSS', tag: 'Mobile-First Design Systems', icon: Layers },
+    { name: 'Clean Architecture', tag: 'TypeScript & Node.js', icon: Code2 },
+    { name: 'Payment Gateways', tag: 'COD, Stripe & Bank Linkage', icon: CreditCard },
   ];
 
   return (

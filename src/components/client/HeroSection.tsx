@@ -3,10 +3,10 @@ import { useAgency } from '../../context/AgencyContext';
 import {
   ArrowRight,
   Shield,
-  Server,
-  Cpu,
-  Smartphone,
-  Layers,
+  Globe,
+  TrendingUp,
+  ShoppingBag,
+  Store,
   CheckCircle2,
   Lock,
   ArrowUpRight
@@ -24,67 +24,67 @@ export const HeroSection: React.FC = () => {
 
   const architectureConfigs = {
     cloud: {
-      title: 'High-Concurrency Cloud Architecture',
-      spec: 'Multi-Region Kubernetes • Sub-40ms P99 Latency',
+      title: 'Website Development & Speed Architecture',
+      spec: 'Next.js 14 • React 19 • 95+ Google PageSpeed • Mobile Responsive',
       metrics: [
-        { label: 'Throughput', value: '450k req/min' },
-        { label: 'Global Latency', value: '38ms P99' },
-        { label: 'Uptime SLA', value: '99.998%' },
-        { label: 'Failover', value: 'Sub-second' },
+        { label: 'PageSpeed Score', value: '98 / 100' },
+        { label: 'Load Latency', value: '< 0.5s' },
+        { label: 'Uptime SLA', value: '99.99%' },
+        { label: 'Mobile Readiness', value: '100% Tested' },
       ],
       nodes: [
-        { name: 'Cloudflare Edge', role: 'DDoS Defense & Global Caching', status: 'Online' },
-        { name: 'Next.js 14 App Cluster', role: 'Edge-Rendered SSR Hydration', status: 'Optimal' },
-        { name: 'Go Microservices', role: 'Stateful Concurrency Logic', status: 'Healthy' },
-        { name: 'PostgreSQL & pgvector', role: 'ACID Storage & Vector Embeddings', status: 'Synced' },
+        { name: 'Next.js Server Components', role: 'Sub-Second Edge Page Rendering', status: 'Optimal' },
+        { name: 'Tailwind CSS UI Engine', role: 'Clean, Ultra-Fast Responsive Design', status: 'Active' },
+        { name: 'Inquiry & Admin CMS', role: 'Direct WhatsApp & Lead Routing', status: 'Online' },
+        { name: 'Cloud Fast Hosting', role: 'Automated SSL & Domain Infrastructure', status: 'Healthy' },
       ],
     },
     ai: {
-      title: 'Enterprise AI & Autonomous LLM Systems',
-      spec: 'Private Vector Pipeline • Zero Data Retention Safeguards',
+      title: 'SEO Dominance & Meta/Google Ads Engine',
+      spec: 'Page-1 Google Ranking • High-Converting Meta Ads • 12 Viral Reels/Mo',
       metrics: [
-        { label: 'Inference Latency', value: '< 240ms' },
-        { label: 'Extraction Accuracy', value: '99.7%' },
-        { label: 'Vector Similarity', value: 'Cosine 0.94' },
-        { label: 'Compliance', value: 'SOC2 / HIPAA' },
+        { label: 'Average ROAS', value: '4.8x - 5.5x' },
+        { label: 'Google Search Rank', value: '#1 Ranking' },
+        { label: 'Reels Created', value: '12 / Month' },
+        { label: 'Analytics Sync', value: 'GA4 & CAPI' },
       ],
       nodes: [
-        { name: 'Multimodal Ingestion', role: 'PDFs, OCR & Real-time Streams', status: 'Online' },
-        { name: 'Semantic Routing Agent', role: 'Intent & Task Dispatch', status: 'Active' },
-        { name: 'Vector Knowledge Store', role: 'Pinecone / pgvector Clustered', status: 'Synced' },
-        { name: 'Autonomous Action Engine', role: 'ERP & Database Mutation', status: 'Guarded' },
+        { name: 'Google Search Console', role: 'Keyword & Indexing Architecture', status: 'Ranked' },
+        { name: 'Meta Pixel & CAPI', role: 'High-Intent Retargeting & Tracking', status: 'Active' },
+        { name: 'Viral Reel Production', role: '12 Short-Form Videos with Hooks', status: 'Producing' },
+        { name: 'ROAS Optimization Engine', role: 'Weekly Creative & Bid Adjustments', status: 'Optimizing' },
       ],
     },
     mobile: {
-      title: 'Cross-Platform Mobile Engineering',
-      spec: 'Flutter & React Native • 120 FPS Native Hardware Performance',
+      title: 'Shopify Store Connection & E-Commerce Flow',
+      spec: 'Storefront Connection • Payment Gateway & COD • Automated Webhooks',
       metrics: [
-        { label: 'Frame Rendering', value: '120 FPS' },
-        { label: 'App Store Rating', value: '4.9 ★' },
-        { label: 'Offline Sync', value: 'Sub-second SQLite' },
-        { label: 'Crash-Free Rate', value: '99.94%' },
+        { label: 'Checkout Conversion', value: '+35%' },
+        { label: 'Cart Abandonment', value: '-28%' },
+        { label: 'Catalog Sync', value: 'Real-Time' },
+        { label: 'Setup Timeline', value: '1 - 3 Days' },
       ],
       nodes: [
-        { name: 'Native iOS & Android Builds', role: 'Single-Codebase Efficiency', status: 'Compiled' },
-        { name: 'Biometric Enclave', role: 'FaceID & Biometric Tokens', status: 'Secured' },
-        { name: 'Offline Storage Sync', role: 'Conflict-Free SQLite Engine', status: 'Active' },
-        { name: 'Stripe & Mobile Pay', role: 'Native In-App Checkout', status: 'Verified' },
+        { name: 'Shopify Storefront API', role: 'Custom Domain & Catalog Mapping', status: 'Connected' },
+        { name: 'Payment Gateways & COD', role: 'Frictionless 1-Click Mobile Checkout', status: 'Active' },
+        { name: 'Inventory Webhook Pipeline', role: 'Automatic Stock & Order Deduction', status: 'Synced' },
+        { name: 'WhatsApp Order Alerts', role: 'Instant Customer Order Notifications', status: 'Enabled' },
       ],
     },
     enterprise: {
-      title: 'Enterprise Legacy Modernization',
-      spec: 'Monolith to Distributed Microservices Architecture',
+      title: 'Point of Sale (POS) Software & Inventory OS',
+      spec: 'Desktop & Tablet Billing • Barcode Scanning • Multi-Counter Sync',
       metrics: [
-        { label: 'Cloud Efficiency', value: '-48% Infra Spend' },
-        { label: 'Deployment Frequency', value: 'Daily via CI/CD' },
-        { label: 'Test Coverage', value: '94% Automated' },
-        { label: 'Code Handover', value: '100% Client IP' },
+        { label: 'Billing Speed', value: '< 2.0s / bill' },
+        { label: 'Inventory Leakage', value: '0% Discrepancy' },
+        { label: 'Offline Resilience', value: '100% Offline-Safe' },
+        { label: 'Subscription Rate', value: 'Rs. 3,000/mo' },
       ],
       nodes: [
-        { name: 'API Gateway Router', role: 'Strangler Fig Migration Pattern', status: 'Routing' },
-        { name: 'Kafka Event Backbone', role: 'Zero-Loss Message Queues', status: 'Durable' },
-        { name: 'Automated CI/CD Actions', role: 'Blue-Green Staging Deploys', status: 'Passing' },
-        { name: 'Founder Technical Sprints', role: 'Direct Architectural Oversight', status: 'Active' },
+        { name: 'Fast Billing Engine', role: 'Instant Barcode Scan & Cashier Checkout', status: 'Active' },
+        { name: 'Thermal ESC/POS Printer', role: 'High-Speed Custom Receipt Printing', status: 'Ready' },
+        { name: 'Stock & Inventory Vault', role: 'Real-Time Low Stock & Wastage Alerts', status: 'Synced' },
+        { name: 'Cloud P&L Sync Hub', role: 'Daily Sales, Shifts & Profit Analytics', status: 'Protected' },
       ],
     },
   };
@@ -101,20 +101,20 @@ export const HeroSection: React.FC = () => {
           {/* Subtle Status Pill */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111111] border border-[#262626] text-xs text-neutral-300">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-            <span>Founded by 3 Engineers • Global Online Delivery</span>
+            <span>Founded by 3 Engineers • Lead WhatsApp: 03099489168</span>
           </div>
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-            High-Performance Software Engineering for{' '}
+            High-Performance Websites, POS Software &{' '}
             <span className="text-blue-500">
-              Modern Enterprises
+              Digital Growth Systems
             </span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-neutral-400 font-normal leading-relaxed">
-            BLUDS is a software house founded by three technical partners. We build scalable cloud platforms, bespoke AI automation, and high-concurrency systems with direct senior engineering oversight on every sprint.
+            BLUDS is a premier software & digital growth agency. We engineer custom fast-loading websites, retail POS systems, Shopify store connections, page-one SEO optimization, and high-ROI Meta & Google Ads campaigns.
           </p>
 
           {/* CTA Buttons */}
@@ -123,7 +123,7 @@ export const HeroSection: React.FC = () => {
               onClick={() => scrollTo('#contact')}
               className="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-colors flex items-center justify-center gap-2"
             >
-              <span>Schedule Architecture Discovery</span>
+              <span>Connect on WhatsApp (03099489168)</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 
@@ -139,20 +139,20 @@ export const HeroSection: React.FC = () => {
           <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-400 font-mono">
             <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
-              <span>Direct Founder Supervision</span>
+              <span>Transparent Rates in PKR</span>
             </div>
             <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-blue-500" />
-              <span>Bi-Weekly Agile Sprints</span>
+              <span>Fast 1 - 2 Week Delivery</span>
             </div>
             <div className="flex items-center gap-1.5">
               <Shield className="w-3.5 h-3.5 text-blue-500" />
-              <span>100% Client IP Ownership</span>
+              <span>Direct WhatsApp & Call Support</span>
             </div>
           </div>
         </div>
 
-        {/* Clean, Functional Architecture Visualizer (No code snippets, no bloated neon) */}
+        {/* Clean, Functional Architecture Visualizer */}
         <div className="mt-14 max-w-5xl mx-auto">
           <div className="rounded-xl bg-[#0c0c0c] border border-[#222222] overflow-hidden">
             
@@ -160,16 +160,16 @@ export const HeroSection: React.FC = () => {
             <div className="bg-[#121212] px-4 py-3 border-b border-[#222222] flex flex-col md:flex-row md:items-center justify-between gap-3">
               <div className="flex items-center gap-2 text-xs font-medium text-neutral-300">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span>Production Architecture Topology</span>
+                <span>Service Execution Topologies</span>
               </div>
 
               {/* Category Selectors */}
               <div className="flex items-center gap-1 overflow-x-auto pb-1 md:pb-0">
                 {[
-                  { id: 'cloud', label: 'Cloud Architecture', icon: Server },
-                  { id: 'ai', label: 'AI & LLMs', icon: Cpu },
-                  { id: 'mobile', label: 'Mobile Apps', icon: Smartphone },
-                  { id: 'enterprise', label: 'Enterprise Systems', icon: Layers },
+                  { id: 'cloud', label: 'Website Development', icon: Globe },
+                  { id: 'ai', label: 'SEO & Meta Ads', icon: TrendingUp },
+                  { id: 'mobile', label: 'Shopify Store', icon: ShoppingBag },
+                  { id: 'enterprise', label: 'POS Software', icon: Store },
                 ].map((tab) => {
                   const Icon = tab.icon;
                   const isActive = activeArchitecture === tab.id;

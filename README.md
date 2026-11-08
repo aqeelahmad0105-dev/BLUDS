@@ -1,32 +1,49 @@
-# BLUDS Agency — Enterprise Software Engineering & Digital Transformation
+# BLUDS Agency — High-Performance Websites, POS Software & Digital Growth
 
-A high-performance software house and digital consultancy website and management platform engineered for a startup founded by three partners (**Ghulam**, **Hamza**, and **Daniyal**). Built to scale from an online-first global software house into physical onsite innovation labs and client war-rooms in 2026.
+A modern digital software house and client management platform engineered for BLUDS Agency, founded by three partners (**Ghulam**, **Hamza**, and **Daniyal**). Built to deliver custom website development, retail Point of Sale (POS) software, Shopify store integrations, Page-1 SEO, and high-ROI Meta & Google Ads campaigns.
 
 ---
 
-## 🌟 Architecture & Technical Standards
-- **Enterprise Structure & Scale**: Inspired by [Devsinc](https://devsinc.com/) (Service Pillars, Architecture Topology Visualizer, Case Studies, Cost Estimator, Agile Process, Team Structure, Testimonials).
-- **Design Philosophy**: High-contrast, minimal, corporate palette of **Pure Black (`#000000`)**, **Dark Gray surfaces (`#0c0c0c`, `#111111`)**, **Subtle borders (`#222222`)**, and **Deep Cobalt Blue (`#2563eb` / `#1d4ed8`)**. Zero gimmicky neon glows, zero bloated animations.
+## 🌟 Official Services & Pricing Structure
+1. **Website Development**:
+   - One-time development setup: **Rs. 20,000**
+   - Monthly maintenance & security retainer: **Rs. 10,000/month**
+   - Domain & Cloud Hosting: **Rs. 7,000 - 8,000/year** (custom domain dependent)
+2. **SEO Optimization**:
+   - Monthly Retainer: **Rs. 15,000/month** (Google Page-1 ranking, technical audit, keyword indexing, GA4 & GSC reports)
+3. **Meta Ads & Google Ads Management**:
+   - Campaign Management: **Rs. 12,000/month** (Facebook, Instagram & Google Search/PMax; ad spend paid directly by client)
+4. **Shopify Connection & Store Integration**:
+   - One-time setup: **Rs. 5,000** (Shopify store connection, Cash on Delivery setup, product catalog sync)
+5. **Social Media Management**:
+   - Monthly Retainer: **Rs. 20,000/month** (12 viral short-form reels produced & edited, trending audio, monthly analytics)
+6. **Point of Sale (POS) Software**:
+   - Software License: **Rs. 20,000** (one-time setup)
+   - Cloud sync & priority support: **Rs. 3,000/month** subscription (barcode scanning, thermal receipt printing, inventory sync)
+
+---
+
+## 📞 Official Contact Channels
+- **Lead Contact**: Aqeel Ahmad
+- **WhatsApp / Phone**: `03099489168` ([Direct WhatsApp Chat](https://wa.me/923099489168))
+- **Email**: `m.bluds2@gmail.com`
 
 ---
 
 ## 🚀 Key Features
 
 ### 1. Client-Facing Public Platform
-- **Hero & Production Architecture Visualizer**: Interactive topology switcher (Cloud Architecture, AI & LLMs, Mobile Apps, Enterprise Systems) displaying live nodes, latency benchmarks, and 99.99% SLA metrics.
-- **Technology Benchmark Matrix**: Tabbed architectural standards (Frontend, Backend, AI, Mobile, Cloud, Data Streaming) with lead founder attribution.
-- **6 Core Engineering Pillars**: Custom Enterprise Software, Applied AI & Autonomous Agents, Cross-Platform Mobile Apps, Cloud & DevOps Automation, Interactive UI/UX Design, and Dedicated Staffing.
-- **Interactive Project Scope & Cost Estimator**: 
-  - Dynamic 3-step wizard calculating real-time budget brackets and timeline projections.
-  - Direct "Submit Specification to Founders" workflow with instant lead capture.
-- **Production Case Studies**: Filterable by FinTech, AI & LLM, Mobile, and Cloud with live metrics (+94% latency reduction, $45M+ volume, 120k+ users) and interactive deep-dive modals.
+- **Hero & Production Architecture Visualizer**: Interactive switcher (Website Speed Engine, SEO & Ads Marketing, Shopify Connection, POS Software & Billing) with live benchmarks.
+- **Blue SQX Bricks Animation**: Interactive canvas animation under *Trusted by Visionary Brands* and inside *Engineering Services Built for Scale*.
+- **Technology Benchmark Matrix**: 6 service categories (Web Development, POS Systems, Shopify, SEO, Meta & Google Ads, Social Media Reels) with lead founder attribution.
+- **Interactive Project Scope & Cost Estimator**: Real-time PKR budget calculations and timeline projections with direct WhatsApp & Email lead submission.
+- **Real-World Case Studies**: Filterable by Web Development, Shopify & E-Commerce, POS Software, SEO, Meta Ads, and Social Media with deep-dive modals.
 - **The 3 Founders & Roadmap**:
-  - Highlights Ghulam (CTO), Hamza (CPO), and Daniyal (Head of AI & Experience).
+  - Highlights Ghulam (Website Development & Hosting), Hamza (POS Software & Shopify), and Daniyal (SEO & Paid Ads).
   - Outlines the **Phase 1: Online Remote Worldwide** advantage and **Phase 2: Onsite Tech Studios (2026 Target)** expansion roadmap.
-- **5-Stage Agile Delivery Engine**: Discovery -> UI/UX Prototype -> Bi-Weekly Sprints -> Security & Stress Hardening -> Zero-Downtime Launch.
-- **Client Testimonials**: Verified 5-star executive feedback from industry CTOs.
-- **Enterprise FAQ & IP Standards**: Clear answers on 100% client IP ownership, sprint velocity, and security compliance.
-- **Interactive RFP & Contact Section**: Direct lead capture with automatic mutual NDA guarantee.
+- **5-Stage Agile Delivery Engine**: Requirement Scoping -> UI/UX Prototype -> Full-Stack Setup -> QA Testing -> Deployment & Monthly Retainer.
+- **Client Testimonials & FAQ**: Direct answers on 100% IP ownership, transparent rates, and security compliance.
+- **Direct WhatsApp & Email Contact Form**: Sends client briefs directly to Aqeel Ahmad via WhatsApp (`03099489168`) and email (`m.bluds2@gmail.com`).
 
 ---
 
@@ -41,25 +58,19 @@ A high-performance software house and digital consultancy website and management
   - **Password**: `bluds2026`
 - **Dashboard Capabilities**:
   1. **The 3 Founders & Headshots Manager**:
-     - Upload founder photos directly from computer via Base64 file reader or enter image URLs.
+     - Upload founder photos directly via Base64 file reader or enter image URLs.
      - Edit names, official titles, technical focus, bios, skills, and online availability badges.
   2. **Client Inquiries & RFPs Management**:
      - View, filter, and search all inquiries submitted through the contact form or project cost estimator.
      - Status tracking (`New`, `Reviewed`, `Contacted`, `Proposal Sent`, `Won`, `Closed`).
      - Detail view with client brief, message, budget, and timeline.
      - Internal founder collaboration notes thread.
-     - Direct mailto reply trigger with pre-filled subject.
      - Export inquiries to CSV.
-     - Log manual leads (phone calls / external referrals).
-  3. **Executive Overview & KPIs**:
-     - Total intake, conversion rates, active services, expansion roadmap status, and monthly demand distribution chart.
-  4. **Live Website Adjustments**:
+  3. **Live Website Adjustments**:
      - **Services Manager**: Add, edit, delete, or toggle active/inactive services shown on the live website.
-     - **Case Studies Manager**: Add, edit, or toggle portfolio projects with metrics and blueprints.
+     - **Case Studies Manager**: Add, edit, or toggle portfolio projects with service category tagging.
      - **Testimonials Manager**: Add or edit client reviews.
      - **Site Settings & Banner**: Enable/disable top announcement banner, update announcement text, change official phone/email, and update operational milestone descriptions.
-  5. **Instant Reactivity**:
-     - Edits in the Admin dashboard sync immediately to `localStorage` and update the public website in real time without a server restart.
 
 ---
 
@@ -67,7 +78,7 @@ A high-performance software house and digital consultancy website and management
 - **Framework**: React 18 + TypeScript + Vite
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
-- **Error Boundary**: React Error Boundary with safe fallback recovery
+- **Design Aesthetic**: Minimal corporate Black (`#000000`), Dark Gray (`#0c0c0c`), Subtle borders (`#222222`), Cobalt Blue (`#2563eb`)
 - **State & Persistence**: React Context + Reactive LocalStorage persistence
 
 ---

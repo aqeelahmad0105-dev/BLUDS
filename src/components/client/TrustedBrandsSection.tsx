@@ -12,46 +12,46 @@ import {
 export const TrustedBrandsSection: React.FC = () => {
   const brands = [
     {
-      name: 'VortexAI',
-      category: 'Autonomous LLM Agents',
-      metric: '4.8M queries/day',
-      highlight: 'Sub-40ms latency',
-      tag: 'Seed to Series A',
+      name: 'LuxeMart Superstore',
+      category: 'POS Software & Retail Management',
+      metric: '3,800+ bills/day',
+      highlight: 'Zero stock leakage',
+      tag: 'Retail Chain POS',
     },
     {
-      name: 'NexusPay',
-      category: 'FinTech Payment Infrastructure',
-      metric: '$140M+ ARR Processed',
-      highlight: '99.999% SLA',
-      tag: 'Tier-1 Gateway',
+      name: 'Nova Apparel Brand',
+      category: 'Shopify Store & 1-Click COD Checkout',
+      metric: 'Rs. 4.2M+ monthly sales',
+      highlight: '38% higher conversion',
+      tag: 'E-Commerce Shopify',
     },
     {
-      name: 'PulseHealth',
-      category: 'HIPAA Cloud Telemedicine',
-      metric: '1.2M Patient Records',
-      highlight: 'Zero Breach Zero Downtime',
-      tag: 'Healthcare Cloud',
+      name: 'Apex Dental Care',
+      category: 'Website Development & Page-1 SEO',
+      metric: '#1 Google search rank',
+      highlight: '3.4x organic patients',
+      tag: 'Healthcare & SEO',
     },
     {
-      name: 'Synthetix Media',
-      category: 'Generative Video Pipeline',
-      metric: '120k videos rendered/wk',
-      highlight: 'Kubernetes GPU Cluster',
-      tag: 'Enterprise Media',
+      name: 'Skyline Properties',
+      category: 'Meta & Google Paid Ads Scaling',
+      metric: '5.2x Verified ROAS',
+      highlight: 'Rs. 360 qualified lead',
+      tag: 'Paid Acquisition',
     },
     {
-      name: 'OmniChain Global',
-      category: 'Distributed Logistics Engine',
-      metric: '450k Shipments Tracked',
-      highlight: 'Event-Driven Kafka Architecture',
-      tag: 'Supply Chain',
+      name: 'Glow Essentials',
+      category: '12 Viral Reels/Mo Social Media Management',
+      metric: '620,000+ organic views',
+      highlight: '+28,500 active followers',
+      tag: 'Social Media Growth',
     },
     {
-      name: 'Aether Cloud',
-      category: 'Multi-Tenant SaaS Foundation',
-      metric: '85k Daily Active Orgs',
-      highlight: 'PostgreSQL + pgvector',
-      tag: 'Global SaaS',
+      name: 'Zenith Corporate Group',
+      category: 'Custom Next.js Website & Annual Hosting',
+      metric: '98/100 PageSpeed score',
+      highlight: 'Rs. 10k/mo maintenance',
+      tag: 'Web Development',
     },
   ];
 
@@ -63,13 +63,13 @@ export const TrustedBrandsSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-              Enterprise Trust & Client Blueprints
+              Client Blueprints & Business Results
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
               Trusted by Visionary Brands
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-              From fast-scaling venture-backed startups to high-concurrency enterprise applications, we engineer mission-critical systems with zero compromise on speed, security, and scalability.
+              From retail supermarkets needing fast POS billing to online stores scaling with Shopify, SEO, and Meta Ads — we engineer systems that drive measurable commercial growth.
             </p>
           </div>
 
@@ -111,28 +111,28 @@ export const TrustedBrandsSection: React.FC = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/10 backdrop-blur-sm bg-black/40 rounded-lg p-3">
                 <div>
                   <div className="text-lg sm:text-xl font-bold text-white font-mono">
-                    99.99%
+                    98 / 100
                   </div>
                   <div className="text-[11px] text-neutral-400">
-                    Production Uptime SLA
+                    Google PageSpeed Score
                   </div>
                 </div>
 
                 <div>
                   <div className="text-lg sm:text-xl font-bold text-blue-400 font-mono">
-                    &lt; 35ms
+                    99.99%
                   </div>
                   <div className="text-[11px] text-neutral-400">
-                    Average API Latency
+                    Hosting & Cloud Uptime SLA
                   </div>
                 </div>
 
                 <div>
                   <div className="text-lg sm:text-xl font-bold text-white font-mono">
-                    100%
+                    1 - 2 wks
                   </div>
                   <div className="text-[11px] text-neutral-400">
-                    Founder IP Ownership Handover
+                    Average Delivery Speed
                   </div>
                 </div>
 
@@ -141,7 +141,7 @@ export const TrustedBrandsSection: React.FC = () => {
                     Zero
                   </div>
                   <div className="text-[11px] text-neutral-400">
-                    Vendor Lock-In
+                    Hidden Agency Fees
                   </div>
                 </div>
               </div>

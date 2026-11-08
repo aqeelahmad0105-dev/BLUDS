@@ -52,25 +52,25 @@ export const ServicesSection: React.FC = () => {
             {/* Heading Typography */}
             <div className="lg:col-span-7">
               <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-                Core Capabilities & Architecture
+                Official Agency Services
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
                 Engineering Services Built for Scale
               </h2>
               <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-                From greenfield architecture to scaling high-throughput distributed systems, our three founders orchestrate every layer of technical execution.
+                From high-speed Next.js websites and custom POS software to Shopify store integrations, Page-1 SEO, and high-ROI Meta & Google ads.
               </p>
               
               {/* Architecture tags */}
               <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-[#1c1c1c]">
                 <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
-                  High Concurrency
+                  Websites & POS Software
                 </span>
                 <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
-                  Fault-Tolerant Clusters
+                  Shopify & E-Commerce
                 </span>
                 <span className="text-[11px] font-mono text-blue-400 px-2.5 py-1 rounded bg-blue-950/40 border border-blue-800/40">
-                  Direct Founder Oversight
+                  SEO, Meta Ads & 12 Reels/Mo
                 </span>
               </div>
             </div>

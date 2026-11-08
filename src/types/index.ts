@@ -49,7 +49,7 @@ export interface CaseStudy {
   id: string;
   title: string;
   client: string;
-  category: 'Cloud & SaaS' | 'AI & LLM' | 'FinTech' | 'Mobile' | 'Enterprise' | 'Web3';
+  category: 'Web Development' | 'Shopify & E-Commerce' | 'POS Software' | 'SEO Optimization' | 'Meta & Google Ads' | 'Social Media';
   summary: string;
   challenge: string;
   solution: string;

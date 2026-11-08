@@ -20,7 +20,7 @@ export const TestimonialsSection: React.FC = () => {
             What Leaders Say
           </h2>
           <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Direct feedback from CTOs and engineering directors who scaled their platforms with our 3-founder squad.
+            Direct feedback from founders, retail owners, and brand managers who scaled their businesses with BLUDS Agency.
           </p>
         </div>
 

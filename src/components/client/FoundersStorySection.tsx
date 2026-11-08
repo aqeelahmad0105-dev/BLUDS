@@ -25,7 +25,7 @@ export const FoundersStorySection: React.FC = () => {
             The Three Founders
           </h2>
           <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            BLUDS was founded by three technical partners who combined enterprise systems architecture, product roadmapping, and applied AI systems.
+            BLUDS was founded by three technical partners dedicated to high-performance website development, retail POS systems, seamless Shopify integrations, Page-1 SEO, and high-ROI ad funnels.
           </p>
         </div>
 
@@ -41,10 +41,10 @@ export const FoundersStorySection: React.FC = () => {
                 Online Global Delivery Today. Dedicated Onsite Studios in 2026.
               </h3>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                By operating online-first, we eliminate bloated commercial real estate overhead and focus 100% of resources on technical execution. Clients across North America, Europe, and APAC receive 24/7 synchronous sprint delivery directly from senior leadership.
+                By operating online-first, we eliminate bloated commercial agency overhead and focus 100% of resources on technical and marketing execution. Clients receive direct, rapid delivery from our founding partners with zero middleman delays.
               </p>
               <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                As our enterprise client base scales, Phase 2 will establish physical tech studios and client war-rooms for intensive in-person architectural workshops.
+                As our client base scales, Phase 2 will establish physical tech studios and client war-rooms for intensive in-person strategy and POS hardware workshops.
               </p>
 
               {/* Milestones */}
@@ -55,7 +55,7 @@ export const FoundersStorySection: React.FC = () => {
                     <span>Phase 1: Online Remote (Current)</span>
                   </div>
                   <p className="text-[11px] text-neutral-500 mt-1">
-                    Continuous Slack access, bi-weekly sprints, global delivery.
+                    Continuous WhatsApp & email access, rapid turnaround, global delivery.
                   </p>
                 </div>
 
@@ -80,19 +80,19 @@ export const FoundersStorySection: React.FC = () => {
                 <div className="flex items-start gap-2">
                   <span className="text-blue-500 mt-0.5">✓</span>
                   <div>
-                    <strong className="text-white">Direct Supervision:</strong> Ghulam, Hamza, and Daniyal personally review and architect every codebase.
+                    <strong className="text-white">Direct Supervision:</strong> Ghulam, Hamza, and Daniyal personally engineer your websites, POS systems, and marketing funnels.
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <span className="text-blue-500 mt-0.5">✓</span>
                   <div>
-                    <strong className="text-white">100% IP Handover:</strong> Clean Git repositories, complete documentation, and zero proprietary lock-in.
+                    <strong className="text-white">100% IP Handover:</strong> Clean Git repositories, complete admin credentials, and zero proprietary lock-in.
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
                   <span className="text-blue-500 mt-0.5">✓</span>
                   <div>
-                    <strong className="text-white">Fixed Milestone Pricing:</strong> Predictable sprint billing with no hidden agency markups.
+                    <strong className="text-white">Fixed Milestone Pricing:</strong> Predictable transparent billing with no hidden agency markups.
                   </div>
                 </div>
               </div>

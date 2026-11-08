@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  Code2, 
-  Terminal, 
-  Cpu, 
-  Smartphone, 
-  Cloud, 
-  Database, 
+  Globe, 
+  Store, 
+  ShoppingBag, 
+  Search, 
+  Megaphone, 
+  Video, 
   CheckCircle2, 
   ShieldCheck
 } from 'lucide-react';
@@ -19,223 +19,223 @@ interface TechItem {
 }
 
 export const TechMatrixSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('frontend');
+  const [activeTab, setActiveTab] = useState<string>('web');
 
   const categories = [
-    { id: 'frontend', label: 'Frontend & Web', icon: Code2 },
-    { id: 'backend', label: 'Backend & APIs', icon: Terminal },
-    { id: 'ai', label: 'AI & LLMs', icon: Cpu },
-    { id: 'mobile', label: 'Mobile Apps', icon: Smartphone },
-    { id: 'cloud', label: 'Cloud & DevOps', icon: Cloud },
-    { id: 'data', label: 'Data & Streaming', icon: Database },
+    { id: 'web', label: 'Website Development', icon: Globe },
+    { id: 'pos', label: 'POS Software Systems', icon: Store },
+    { id: 'shopify', label: 'Shopify & E-Commerce', icon: ShoppingBag },
+    { id: 'seo', label: 'SEO Optimization', icon: Search },
+    { id: 'ads', label: 'Meta & Google Ads', icon: Megaphone },
+    { id: 'social', label: 'Social Media & Reels', icon: Video },
   ];
 
   const stacksData: Record<string, TechItem[]> = {
-    frontend: [
+    web: [
       {
         name: 'Next.js 14 & React 19',
-        role: 'Server Components & Edge SSR',
-        benchmark: '< 0.4s First Contentful Paint',
-        description: 'Server-rendered web applications with instant client hydration and automated asset optimization.',
+        role: 'Server Components & Speed Architecture',
+        benchmark: '98/100 PageSpeed Rating',
+        description: 'Blazing fast server-rendered web applications with instant client hydration and automated responsive asset delivery.',
         leadFounder: 'Ghulam (CTO)',
       },
       {
-        name: 'TypeScript Strict',
-        role: 'Enterprise Type Safety',
-        benchmark: '100% Compile-Time Verification',
-        description: 'End-to-end typed codebases from database schemas up to React component props, preventing runtime errors.',
+        name: 'Tailwind CSS & Modern Motion',
+        role: 'Clean UI & 3D Interactive Polish',
+        benchmark: 'Zero Unused CSS',
+        description: 'Custom component design systems with responsive layouts, smooth micro-animations, and subtle 3D hover interactions.',
+        leadFounder: 'Daniyal (Creative Lead)',
+      },
+      {
+        name: 'TypeScript & Node.js',
+        role: 'Type-Safe Application Logic',
+        benchmark: '100% Compile Verification',
+        description: 'End-to-end typed codebases preventing runtime errors and ensuring long-term maintainability for corporate websites.',
         leadFounder: 'Ghulam (CTO)',
       },
       {
-        name: 'Tailwind CSS',
-        role: 'Design System & Component Library',
-        benchmark: 'Zero Unused CSS Payload',
-        description: 'Modular design systems with accessible components, crisp dark mode, and responsive layouts.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-      {
-        name: 'Three.js & WebGL',
-        role: 'Interactive 3D Visualizations',
-        benchmark: 'Smooth 60 FPS Rendering',
-        description: 'Custom 3D product visualizers and interactive topology models engineered for low memory consumption.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-    ],
-    backend: [
-      {
-        name: 'Node.js & Go Microservices',
-        role: 'High-Concurrency Business Logic',
-        benchmark: '< 45ms P99 API Response',
-        description: 'Stateless microservices handling high concurrent loads with minimal resource consumption.',
-        leadFounder: 'Ghulam (CTO)',
-      },
-      {
-        name: 'GraphQL & RESTful APIs',
-        role: 'Structured API Contracts',
-        benchmark: 'Zero Over-Fetching',
-        description: 'Modular schemas, query caching, and OpenAPI/Swagger documentation for team integration.',
-        leadFounder: 'Hamza (CPO)',
-      },
-      {
-        name: 'WebSockets & WebRTC',
-        role: 'Real-Time Bi-Directional Streaming',
-        benchmark: '< 80ms Latency',
-        description: 'Real-time collaborative tools, financial tickers, and encrypted peer-to-peer data streams.',
-        leadFounder: 'Ghulam (CTO)',
-      },
-      {
-        name: 'Python FastAPI',
-        role: 'AI Ingestion & Processing',
-        benchmark: 'Async Non-Blocking',
-        description: 'Asynchronous APIs designed to process machine learning workloads and document parsing.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-    ],
-    ai: [
-      {
-        name: 'OpenAI, Claude & Gemini',
-        role: 'Multimodal LLM Integration',
-        benchmark: 'Structured JSON Outputs',
-        description: 'Custom prompt pipelines capable of multi-step business reasoning with strict schema enforcement.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-      {
-        name: 'LangChain & Autonomous Agents',
-        role: 'Multi-Agent Execution Networks',
-        benchmark: 'Self-Correcting Execution',
-        description: 'Autonomous workflows where specialized worker agents collaborate, review outputs, and handle edge cases.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-      {
-        name: 'Pinecone & pgvector',
-        role: 'Vector Embeddings & Semantic Search',
-        benchmark: '< 30ms Vector Matching',
-        description: 'Private enterprise knowledge retrieval with hybrid keyword + semantic search over document stores.',
-        leadFounder: 'Daniyal (Head of AI & Experience)',
-      },
-      {
-        name: 'Self-Hosted Local LLMs',
-        role: 'Air-Gapped Private Infrastructure',
-        benchmark: 'Zero External Data Leakage',
-        description: 'Open-weights models deployed directly inside client VPCs for high-security compliance requirements.',
+        name: 'Cloud Fast Hosting & SSL',
+        role: 'Annual Hosting & Maintenance',
+        benchmark: '99.99% Uptime SLA',
+        description: 'High-speed cloud server deployment with automated SSL certificates, custom domain linkage, and daily security backups.',
         leadFounder: 'Ghulam (CTO)',
       },
     ],
-    mobile: [
+    pos: [
       {
-        name: 'Flutter (iOS & Android)',
-        role: 'Single-Codebase Native Apps',
-        benchmark: '120 FPS Native Compilation',
-        description: 'Cross-platform mobile applications with native compilation to ARM binary on iOS and Android.',
-        leadFounder: 'Hamza (CPO)',
+        name: 'Desktop & Tablet POS Engine',
+        role: 'Retail, Supermarket & Restaurant Billing',
+        benchmark: '< 2.0s Instant Checkout',
+        description: 'Offline-first Point of Sale application designed for fast cashier operations with zero lag during peak store hours.',
+        leadFounder: 'Hamza (Solutions Lead)',
       },
       {
-        name: 'React Native & Expo',
-        role: 'Universal TypeScript Applications',
-        benchmark: 'Shared Web & Mobile Logic',
-        description: 'Fast product development sharing business logic between mobile apps and web portals.',
-        leadFounder: 'Ghulam (CTO)',
+        name: 'Barcode Scanning & Lookup',
+        role: 'Rapid Product Identification',
+        benchmark: '0.1s Fast Scan Latency',
+        description: 'USB and wireless barcode scanner integration with instant SKU lookup, multi-variant pricing, and discount calculations.',
+        leadFounder: 'Hamza (Solutions Lead)',
       },
       {
-        name: 'Offline-First SQLite Sync',
-        role: 'Zero-Network Operational Readiness',
-        benchmark: 'Instant Local Writes',
-        description: 'Background conflict resolution allowing users to work seamlessly in low-connectivity environments.',
-        leadFounder: 'Hamza (CPO)',
+        name: 'Thermal ESC/POS Receipt Printing',
+        role: 'Custom Receipt & Bill Printing',
+        benchmark: 'Instant Paper Cut',
+        description: 'Direct USB/LAN/Bluetooth thermal printer integration with customized business headers, QR codes, and tax calculations.',
+        leadFounder: 'Hamza (Solutions Lead)',
       },
       {
-        name: 'In-App Billing & Stripe',
-        role: 'Subscription Management',
-        benchmark: 'Apple Pay & Google Pay Native',
-        description: 'Localized pricing, receipt verification, and fraud prevention for mobile commerce.',
-        leadFounder: 'Hamza (CPO)',
-      },
-    ],
-    cloud: [
-      {
-        name: 'AWS & Google Cloud',
-        role: 'Auto-Scaling Infrastructure',
-        benchmark: '99.99% Global Uptime SLA',
-        description: 'Multi-zone serverless architectures, container clusters, and global CDN edge routing.',
-        leadFounder: 'Ghulam (CTO)',
-      },
-      {
-        name: 'Terraform & IaC',
-        role: 'Declarative Cloud Management',
-        benchmark: 'Deterministic Staging Clones',
-        description: '100% of cloud resources defined in code repositories with automated drift detection.',
-        leadFounder: 'Ghulam (CTO)',
-      },
-      {
-        name: 'Docker & Kubernetes',
-        role: 'Container Orchestration',
-        benchmark: 'Self-Healing Pods',
-        description: 'Automated horizontal scaling, rolling updates, and blue-green deployments with zero downtime.',
-        leadFounder: 'Ghulam (CTO)',
-      },
-      {
-        name: 'SOC2 & HIPAA Hardening',
-        role: 'Security & Compliance Controls',
-        benchmark: 'AES-256 Encryption Standard',
-        description: 'Role-based access control, automated audit logging, penetration defense, and data protection.',
-        leadFounder: 'Hamza (CPO)',
+        name: 'Inventory Sync & Daily P&L',
+        role: 'Stock Tracking & Shift Reports',
+        benchmark: 'Zero Stock Discrepancies',
+        description: 'Automated stock deduction on each sale, low-inventory notifications, cashier drawer reconciliation, and cloud reports.',
+        leadFounder: 'Hamza (Solutions Lead)',
       },
     ],
-    data: [
+    shopify: [
       {
-        name: 'PostgreSQL & Supabase',
-        role: 'Relational ACID Data Store',
-        benchmark: '100k+ Transactions / Minute',
-        description: 'Row-level security, connection pooling with PgBouncer, and automated continuous replication.',
+        name: 'Shopify Storefront & Theme Setup',
+        role: 'E-Commerce Store Architecture',
+        benchmark: 'Mobile-Optimized UX',
+        description: 'Connecting custom domains to Shopify, configuring high-converting theme layouts, and organizing clean product collections.',
+        leadFounder: 'Hamza (Solutions Lead)',
+      },
+      {
+        name: 'Payment Gateways & COD Linkage',
+        role: 'Checkout & Transaction Processing',
+        benchmark: '1-Click Mobile Checkout',
+        description: 'Integration of Cash on Delivery (COD), local bank transfers, and international payment gateways with fraud protection.',
+        leadFounder: 'Hamza (Solutions Lead)',
+      },
+      {
+        name: 'Webhook & Inventory Auto-Sync',
+        role: 'Real-Time Store Synchronicity',
+        benchmark: 'Sub-Second Webhook Sync',
+        description: 'Automated synchronization between Shopify orders, product catalogs, and warehouse inventory levels via webhooks.',
         leadFounder: 'Ghulam (CTO)',
       },
       {
-        name: 'Redis In-Memory Store',
-        role: 'Sub-Millisecond Key-Value Cache',
-        benchmark: '< 2ms Read / Write Latency',
-        description: 'Session management, API rate limiting, real-time queues, and pub/sub message brokers.',
+        name: 'WhatsApp Order Notifications',
+        role: 'Customer Engagement & Alerts',
+        benchmark: 'Instant Dispatch Alerts',
+        description: 'Triggering automated WhatsApp order confirmation and delivery status notifications to boost customer trust and retention.',
+        leadFounder: 'Daniyal (Creative Lead)',
+      },
+    ],
+    seo: [
+      {
+        name: 'Google Search Console & Indexing',
+        role: 'Technical Search Architecture',
+        benchmark: 'Page-1 Ranking Target',
+        description: 'Fixing crawl errors, submitting dynamic XML sitemaps, and establishing clean canonical URLs for high Google visibility.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+      {
+        name: 'Keyword Research & Competitor Mapping',
+        role: 'High-Intent Search Targeting',
+        benchmark: 'Commercial Intent Focus',
+        description: 'Identifying buyer-intent keywords that competitors are ranking for and building targeted on-page content structures.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+      {
+        name: 'Schema.org & Meta Tags Optimization',
+        role: 'Rich Snippets & CTR Enhancement',
+        benchmark: '+35% Organic Click-Through',
+        description: 'Implementing structured data markup (LocalBusiness, Organization, FAQs) so your website stands out with Google rich snippets.',
         leadFounder: 'Ghulam (CTO)',
       },
       {
-        name: 'Apache Kafka & RabbitMQ',
-        role: 'Event-Driven Message Streaming',
-        benchmark: 'Zero-Message-Loss Durability',
-        description: 'Decoupled event pipelines for transaction logging, audit trails, and multi-tenant webhook queues.',
+        name: 'Google Analytics 4 & Ranking Reports',
+        role: 'Monthly Search Growth Analytics',
+        benchmark: 'Transparent Monthly Audits',
+        description: 'Tracking keyword position movements, organic impressions, user engagement, and sending actionable monthly ranking reports.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+    ],
+    ads: [
+      {
+        name: 'Meta Ads Manager (Facebook & Instagram)',
+        role: 'Lead Generation & E-Commerce Sales',
+        benchmark: '4.5x - 5.5x Target ROAS',
+        description: 'Structuring campaign funnels (Top/Middle/Bottom of Funnel) with high-converting video hooks, carousel ads, and lead forms.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+      {
+        name: 'Google Search & Performance Max (PMax)',
+        role: 'High-Intent Buyer Acquisition',
+        benchmark: 'Top Search Placement',
+        description: 'Capturing active searchers who are ready to buy your services or products right now with optimized negative keywords and bidding.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+      {
+        name: 'Meta Pixel & Conversion API (CAPI)',
+        role: 'Server-Side Event Tracking',
+        benchmark: '100% Data Capture',
+        description: 'Setting up Conversion API to bypass iOS tracking blocks, ensuring your ad algorithms receive accurate purchase and lead data.',
         leadFounder: 'Ghulam (CTO)',
       },
       {
-        name: 'ClickHouse & Time-Series Analytics',
-        role: 'Real-Time Columnar Engine',
-        benchmark: 'Sub-Second Analytical Queries',
-        description: 'Columnar storage engines powering real-time client analytics, attribution, and telemetry.',
-        leadFounder: 'Ghulam (CTO)',
+        name: 'Weekly A/B Creative Testing',
+        role: 'Ad Spend Optimization',
+        benchmark: 'Lowest Cost Per Acquisition',
+        description: 'Continual split-testing of hooks, copy, video angles, and target audiences to maximize results while client funds ad spend.',
+        leadFounder: 'Daniyal (Marketing Lead)',
+      },
+    ],
+    social: [
+      {
+        name: '12 Viral Short-Form Reels / Month',
+        role: 'TikTok, Instagram & Facebook Video Content',
+        benchmark: '12 Produced Videos / Mo',
+        description: 'Scripting, recording guidelines, and editing 12 high-retention short-form reels each month to build massive organic reach.',
+        leadFounder: 'Daniyal (Creative Lead)',
+      },
+      {
+        name: 'Professional Video Editing & Hooks',
+        role: 'High Retention & Dynamic Captions',
+        benchmark: 'Sub-3s Hook Rate',
+        description: 'Using Premiere Pro & CapCut with dynamic jump cuts, bold captions, sound effects, and trending audio to maximize watch time.',
+        leadFounder: 'Daniyal (Creative Lead)',
+      },
+      {
+        name: 'Trending Audio & Algorithm Optimization',
+        role: 'Explore & For-You Page Distribution',
+        benchmark: 'Viral Distribution Reach',
+        description: 'Aligning video releases with active trending audio tracks and hashtag clusters that trigger algorithmic discovery.',
+        leadFounder: 'Daniyal (Creative Lead)',
+      },
+      {
+        name: 'Monthly Social Analytics & Insights',
+        role: 'Account Growth Performance Report',
+        benchmark: 'Monthly Data Breakdown',
+        description: 'Detailed monthly report covering views, follower growth, audience demographics, and top-performing reel metrics.',
+        leadFounder: 'Daniyal (Creative Lead)',
       },
     ],
   };
 
-  const currentItems = stacksData[activeTab] || stacksData.frontend;
+  const currentItems = stacksData[activeTab] || stacksData['web'];
 
   return (
     <section id="technology" className="py-20 bg-black text-white border-t border-[#1f1f1f]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-              Technology Stack
+              Technology & Delivery Stacks
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Architectural Standards & Benchmarks
+              Engineered for Measurable Commercial Results
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-3">
-              We select battle-tested, modern technologies engineered for maximum throughput, low latencies, and rapid sprint delivery.
+              We select battle-tested tools engineered for maximum speed, reliable POS operations, and high-ROI digital marketing.
             </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-300 bg-[#0c0c0c] border border-[#222222] px-3.5 py-2 rounded-lg self-start md:self-auto">
             <ShieldCheck className="w-4 h-4 text-blue-500" />
-            <span>Zero Vendor Lock-In • 100% IP Handover</span>
+            <span>100% Client Ownership • Direct Founder Execution</span>
           </div>
         </div>
 
