@@ -11,6 +11,7 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { Card3D } from '../common/Card3D';
+import { BricksAnimation } from '../common/BricksAnimation';
 
 export const ServicesSection: React.FC = () => {
   const { services, setActiveServiceDetails } = useAgency();
@@ -32,17 +33,60 @@ export const ServicesSection: React.FC = () => {
     <section id="services" className="py-20 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-2xl mb-12">
-          <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-            Core Capabilities
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Engineering Services Built for Scale
-          </h2>
-          <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            From greenfield architecture to scaling high-throughput distributed systems, our three founders orchestrate every layer of technical execution.
-          </p>
+        {/* Section Header with Blue SQX Bricks Animation */}
+        <div className="relative mb-12 rounded-xl border border-[#222222] bg-[#0c0c0c] overflow-hidden p-6 sm:p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            {/* Heading Typography */}
+            <div className="lg:col-span-7">
+              <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
+                Core Capabilities & Architecture
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+                Engineering Services Built for Scale
+              </h2>
+              <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
+                From greenfield architecture to scaling high-throughput distributed systems, our three founders orchestrate every layer of technical execution.
+              </p>
+              
+              {/* Architecture tags */}
+              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-[#1c1c1c]">
+                <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
+                  High Concurrency
+                </span>
+                <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
+                  Fault-Tolerant Clusters
+                </span>
+                <span className="text-[11px] font-mono text-blue-400 px-2.5 py-1 rounded bg-blue-950/40 border border-blue-800/40">
+                  Direct Founder Oversight
+                </span>
+              </div>
+            </div>
+
+            {/* Interactive Blue SQX Bricks Animation Canvas in Heading */}
+            <div className="lg:col-span-5 relative rounded-lg overflow-hidden border border-[#1f2430] bg-black">
+              <div className="px-3 py-2 bg-[#0a0d14] border-b border-[#1f2430] flex items-center justify-between text-[11px] font-mono text-neutral-400">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                  <span>Modular Building Blocks</span>
+                </span>
+                <span className="text-[10px] text-neutral-500">
+                  Hover to illuminate
+                </span>
+              </div>
+              <BricksAnimation
+                height={130}
+                brickWidth={46}
+                brickHeight={20}
+                gap={3}
+                variant="heading"
+                interactive={true}
+                showControls={false}
+                className="w-full"
+              />
+            </div>
+
+          </div>
         </div>
 
         {/* Services Grid */}

@@ -552,3 +552,4 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     </div>
   );
 };
+

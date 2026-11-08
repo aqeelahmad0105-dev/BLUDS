@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar } from '../common/Navbar';
 import { Footer } from '../common/Footer';
 import { HeroSection } from './HeroSection';
+import { TrustedBrandsSection } from './TrustedBrandsSection';
 import { TechMarquee } from './TechMarquee';
 import { ServicesSection } from './ServicesSection';
 import { TechMatrixSection } from './TechMatrixSection';
@@ -21,6 +22,7 @@ export const ClientLandingPage: React.FC = () => {
       <Navbar />
       <main className="flex-1">
         <HeroSection />
+        <TrustedBrandsSection />
         <TechMarquee />
         <ServicesSection />
         <TechMatrixSection />
