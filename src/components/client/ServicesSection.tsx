@@ -10,6 +10,7 @@ import {
   ArrowRight, 
   CheckCircle2
 } from 'lucide-react';
+import { Card3D } from '../common/Card3D';
 
 export const ServicesSection: React.FC = () => {
   const { services, setActiveServiceDetails } = useAgency();
@@ -47,8 +48,9 @@ export const ServicesSection: React.FC = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {activeServices.map((service) => (
-            <div
+            <Card3D
               key={service.id}
+              intensity={6}
               className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors flex flex-col justify-between cursor-pointer"
               onClick={() => setActiveServiceDetails(service)}
             >
@@ -94,7 +96,7 @@ export const ServicesSection: React.FC = () => {
                   </span>
                 )}
               </div>
-            </div>
+            </Card3D>
           ))}
         </div>
 

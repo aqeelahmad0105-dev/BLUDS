@@ -11,6 +11,7 @@ import {
   Lock,
   ArrowUpRight
 } from 'lucide-react';
+import { HeroScene3D } from './HeroScene3D';
 
 export const HeroSection: React.FC = () => {
   const { siteSettings } = useAgency();
@@ -208,49 +209,59 @@ export const HeroSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* Topology Nodes Pipeline */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                {currentArch.nodes.map((node, index) => (
-                  <div
-                    key={index}
-                    className="p-4 rounded-lg bg-[#111111] border border-[#222222] flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between mb-2 text-xs">
-                        <span className="text-neutral-500 font-mono">0{index + 1}</span>
-                        <span className="text-emerald-400 text-[11px] font-mono">{node.status}</span>
-                      </div>
-                      <div className="text-sm font-semibold text-white">
-                        {node.name}
-                      </div>
-                      <div className="text-xs text-neutral-400 mt-1">
-                        {node.role}
-                      </div>
-                    </div>
+              {/* Main 3D Model + Topology Pipeline Split */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                {/* Interactive 3D WebGL Model Showcase */}
+                <div className="lg:col-span-5 h-[320px] sm:h-[380px] rounded-xl bg-[#080808] border border-[#222222] overflow-hidden relative">
+                  <HeroScene3D activeMode={activeArchitecture} />
+                </div>
 
-                    <div className="mt-4 pt-3 border-t border-[#1f1f1f] flex items-center justify-between text-[11px] font-mono text-neutral-500">
-                      <span>Encrypted Pipeline</span>
-                      <Lock className="w-3 h-3 text-neutral-400" />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                {/* Topology Nodes Pipeline & Metrics */}
+                <div className="lg:col-span-7 space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {currentArch.nodes.map((node, index) => (
+                      <div
+                        key={index}
+                        className="p-3.5 rounded-lg bg-[#111111] border border-[#222222] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between mb-1.5 text-xs">
+                            <span className="text-neutral-500 font-mono">0{index + 1}</span>
+                            <span className="text-emerald-400 text-[11px] font-mono">{node.status}</span>
+                          </div>
+                          <div className="text-sm font-semibold text-white">
+                            {node.name}
+                          </div>
+                          <div className="text-xs text-neutral-400 mt-0.5">
+                            {node.role}
+                          </div>
+                        </div>
 
-              {/* Performance Metrics Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                {currentArch.metrics.map((metric, idx) => (
-                  <div
-                    key={idx}
-                    className="p-3 rounded-lg bg-[#111111] border border-[#222222] text-center"
-                  >
-                    <div className="text-lg font-bold text-white">
-                      {metric.value}
-                    </div>
-                    <div className="text-xs text-neutral-400 mt-0.5 font-mono">
-                      {metric.label}
-                    </div>
+                        <div className="mt-3 pt-2.5 border-t border-[#1f1f1f] flex items-center justify-between text-[11px] font-mono text-neutral-500">
+                          <span>Encrypted Pipeline</span>
+                          <Lock className="w-3 h-3 text-neutral-400" />
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+
+                  {/* Performance Metrics Bar */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                    {currentArch.metrics.map((metric, idx) => (
+                      <div
+                        key={idx}
+                        className="p-3 rounded-lg bg-[#111111] border border-[#222222] text-center"
+                      >
+                        <div className="text-base sm:text-lg font-bold text-white">
+                          {metric.value}
+                        </div>
+                        <div className="text-[11px] text-neutral-400 mt-0.5 font-mono">
+                          {metric.label}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
             </div>

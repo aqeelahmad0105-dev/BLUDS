@@ -7,6 +7,7 @@ import {
   Linkedin, 
   Twitter
 } from 'lucide-react';
+import { Card3D } from '../common/Card3D';
 
 export const FoundersStorySection: React.FC = () => {
   const { founders } = useAgency();
@@ -103,100 +104,101 @@ export const FoundersStorySection: React.FC = () => {
         {/* The 3 Founders Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {founders.filter(f => f.active).map((founder, index) => (
-            <div
-              key={founder.id}
-              className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors flex flex-col justify-between"
-            >
-              <div>
-                {/* Avatar and status */}
-                <div className="relative mb-5 flex items-center justify-between">
-                  <div className="w-20 h-20 rounded-xl overflow-hidden border border-[#262626] bg-[#141414]">
-                    <img
-                      src={founder.avatarUrl}
-                      alt={founder.name}
-                      className="w-full h-full object-cover"
-                    />
+            <Card3D key={founder.id} intensity={5}>
+              <div
+                className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors flex flex-col justify-between h-full"
+              >
+                <div>
+                  {/* Avatar and status */}
+                  <div className="relative mb-5 flex items-center justify-between">
+                    <div className="w-20 h-20 rounded-xl overflow-hidden border border-[#262626] bg-[#141414]">
+                      <img
+                        src={founder.avatarUrl}
+                        alt={founder.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <span className="text-[11px] font-mono font-medium bg-[#141414] text-neutral-300 px-2 py-0.5 rounded border border-[#262626]">
+                      Founder 0{index + 1}
+                    </span>
                   </div>
-                  <span className="text-[11px] font-mono font-medium bg-[#141414] text-neutral-300 px-2 py-0.5 rounded border border-[#262626]">
-                    Founder 0{index + 1}
+
+                  {/* Name & Role */}
+                  <div className="mb-2">
+                    <h3 className="text-xl font-bold text-white">
+                      {founder.name}
+                    </h3>
+                    <div className="text-xs text-blue-400 font-medium mt-0.5">
+                      {founder.role}
+                    </div>
+                  </div>
+
+                  <div className="text-xs text-neutral-300 font-medium mb-2">
+                    Focus: <span className="text-white">{founder.focus}</span>
+                  </div>
+
+                  <p className="text-xs text-neutral-400 leading-relaxed mb-4">
+                    {founder.bio}
+                  </p>
+
+                  {/* Expertise tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {founder.expertise.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#141414] border border-[#262626] text-neutral-300"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Social Links & Active Status */}
+                <div className="pt-3 border-t border-[#1c1c1c] flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    {founder.socials.github && (
+                      <a
+                        href={founder.socials.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
+                        aria-label="GitHub"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {founder.socials.linkedin && (
+                      <a
+                        href={founder.socials.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {founder.socials.twitter && (
+                      <a
+                        href={founder.socials.twitter}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
+                        aria-label="Twitter"
+                      >
+                        <Twitter className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
+
+                  <span className="text-[11px] font-mono text-neutral-400 flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    <span>{founder.onlineStatusBadge}</span>
                   </span>
                 </div>
-
-                {/* Name & Role */}
-                <div className="mb-2">
-                  <h3 className="text-xl font-bold text-white">
-                    {founder.name}
-                  </h3>
-                  <div className="text-xs text-blue-400 font-medium mt-0.5">
-                    {founder.role}
-                  </div>
-                </div>
-
-                <div className="text-xs text-neutral-300 font-medium mb-2">
-                  Focus: <span className="text-white">{founder.focus}</span>
-                </div>
-
-                <p className="text-xs text-neutral-400 leading-relaxed mb-4">
-                  {founder.bio}
-                </p>
-
-                {/* Expertise tags */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {founder.expertise.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#141414] border border-[#262626] text-neutral-300"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
               </div>
-
-              {/* Social Links & Active Status */}
-              <div className="pt-3 border-t border-[#1c1c1c] flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  {founder.socials.github && (
-                    <a
-                      href={founder.socials.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
-                      aria-label="GitHub"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {founder.socials.linkedin && (
-                    <a
-                      href={founder.socials.linkedin}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                  {founder.socials.twitter && (
-                    <a
-                      href={founder.socials.twitter}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="p-1.5 rounded bg-[#141414] hover:bg-neutral-800 text-neutral-400 hover:text-white transition-colors"
-                      aria-label="Twitter"
-                    >
-                      <Twitter className="w-3.5 h-3.5" />
-                    </a>
-                  )}
-                </div>
-
-                <span className="text-[11px] font-mono text-neutral-400 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                  <span>{founder.onlineStatusBadge}</span>
-                </span>
-              </div>
-            </div>
+            </Card3D>
           ))}
         </div>
 

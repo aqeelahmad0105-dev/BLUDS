@@ -33,6 +33,7 @@ export default {
       },
       animation: {
         'marquee': 'marquee 45s linear infinite',
+        'spin-slow': 'spin 12s linear infinite',
       },
       keyframes: {
         marquee: {

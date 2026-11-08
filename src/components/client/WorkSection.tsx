@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAgency } from '../../context/AgencyContext';
 import { ArrowUpRight } from 'lucide-react';
+import { Card3D } from '../common/Card3D';
 
 export const WorkSection: React.FC = () => {
   const { caseStudies, setActiveModalCaseStudy } = useAgency();
@@ -52,60 +53,61 @@ export const WorkSection: React.FC = () => {
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredCases.map((project) => (
-            <div
-              key={project.id}
-              onClick={() => setActiveModalCaseStudy(project)}
-              className="group cursor-pointer rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors overflow-hidden flex flex-col"
-            >
-              {/* Image Frame */}
-              <div className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f]">
-                <img
-                  src={project.heroImage}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-black/85 text-neutral-300 border border-neutral-700">
-                    {project.category}
-                  </span>
-                </div>
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/85 border border-neutral-700 flex items-center justify-center text-neutral-300">
-                  <ArrowUpRight className="w-4 h-4" />
-                </div>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <div className="text-xs text-neutral-400 mb-1">
-                    Client: <span className="text-neutral-200 font-medium">{project.client}</span>
+            <Card3D key={project.id} intensity={5}>
+              <div
+                onClick={() => setActiveModalCaseStudy(project)}
+                className="group cursor-pointer rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors overflow-hidden flex flex-col h-full"
+              >
+                {/* Image Frame */}
+                <div className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f]">
+                  <img
+                    src={project.heroImage}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-black/85 text-neutral-300 border border-neutral-700">
+                      {project.category}
+                    </span>
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
-                    {project.summary}
-                  </p>
-                </div>
-
-                {/* Metrics Highlight Pills */}
-                <div className="pt-3 border-t border-[#1c1c1c]">
-                  <div className="grid grid-cols-3 gap-2">
-                    {project.metrics.map((m, idx) => (
-                      <div key={idx} className="p-2 rounded bg-[#111111] border border-[#1f1f1f]">
-                        <div className="text-xs font-semibold text-blue-400 truncate">
-                          {m.value}
-                        </div>
-                        <div className="text-[10px] text-neutral-500 truncate mt-0.5 font-mono">
-                          {m.label}
-                        </div>
-                      </div>
-                    ))}
+                  <div className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/85 border border-neutral-700 flex items-center justify-center text-neutral-300">
+                    <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
 
+                {/* Card Body */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <div className="text-xs text-neutral-400 mb-1">
+                      Client: <span className="text-neutral-200 font-medium">{project.client}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
+                      {project.summary}
+                    </p>
+                  </div>
+
+                  {/* Metrics Highlight Pills */}
+                  <div className="pt-3 border-t border-[#1c1c1c]">
+                    <div className="grid grid-cols-3 gap-2">
+                      {project.metrics.map((m, idx) => (
+                        <div key={idx} className="p-2 rounded bg-[#111111] border border-[#1f1f1f]">
+                          <div className="text-xs font-semibold text-blue-400 truncate">
+                            {m.value}
+                          </div>
+                          <div className="text-[10px] text-neutral-500 truncate mt-0.5 font-mono">
+                            {m.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
               </div>
-            </div>
+            </Card3D>
           ))}
         </div>
 
