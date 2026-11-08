@@ -7,7 +7,10 @@ import {
   Send, 
   CheckCircle2, 
   ShieldCheck, 
-  Clock
+  Clock,
+  MessageSquare,
+  ArrowUpRight,
+  Sparkles
 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
@@ -19,14 +22,54 @@ export const ContactSection: React.FC = () => {
   const [company, setCompany] = useState('');
   const [projectType, setProjectType] = useState(services[0]?.title || 'Website Development');
   const [budgetRange, setBudgetRange] = useState('Rs. 20,000 - 50,000');
-  const [timeline, setTimeline] = useState('Within 2 Months');
+  const [timeline, setTimeline] = useState('Immediate (1-2 wks)');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submittedWhatsAppUrl, setSubmittedWhatsAppUrl] = useState('');
+  const [submittedMailtoUrl, setSubmittedMailtoUrl] = useState('');
+
+  const targetWhatsAppNumber = '923099489168'; // Aqeel Ahmad: 03099489168
+  const targetEmail = 'm.bluds2@gmail.com';
+
+  const generateWhatsAppMessage = () => {
+    return (
+      `*New Project Inquiry - BLUDS Agency*\n\n` +
+      `👤 *Client Name:* ${name.trim()}\n` +
+      `📧 *Email:* ${email.trim()}\n` +
+      `📱 *Phone / WhatsApp:* ${phone.trim() || 'Not provided'}\n` +
+      (company.trim() ? `🏢 *Company:* ${company.trim()}\n` : '') +
+      `🛠️ *Service Required:* ${projectType}\n` +
+      `💰 *Budget Range:* ${budgetRange}\n` +
+      `⏱️ *Target Window:* ${timeline}\n\n` +
+      `💬 *Project Scope & Details:*\n${message.trim()}`
+    );
+  };
+
+  const generateEmailSubject = () => {
+    return `New Project Inquiry: ${projectType} - ${name.trim()}`;
+  };
+
+  const generateEmailBody = () => {
+    return (
+      `Hi Aqeel Ahmad,\n\n` +
+      `I am submitting an inquiry via the BLUDS Agency contact form:\n\n` +
+      `Client Name: ${name.trim()}\n` +
+      `Email: ${email.trim()}\n` +
+      `Phone/WhatsApp: ${phone.trim() || 'Not provided'}\n` +
+      (company.trim() ? `Company: ${company.trim()}\n` : '') +
+      `Service Required: ${projectType}\n` +
+      `Budget Range: ${budgetRange}\n` +
+      `Target Launch Window: ${timeline}\n\n` +
+      `Project Scope & Details:\n${message.trim()}\n\n` +
+      `Best regards,\n${name.trim()}`
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
 
+    // 1. Record inquiry in Agency state / Admin Dashboard
     addInquiry({
       clientName: name.trim(),
       email: email.trim(),
@@ -38,10 +81,23 @@ export const ContactSection: React.FC = () => {
       message: message.trim(),
       source: 'contact_form',
       priority: 'high',
-      estimatedScope: `Targeting ${timeline} launch with ${budgetRange} allocation.`,
+      estimatedScope: `Targeting ${timeline} launch with ${budgetRange} allocation. Direct connect to Aqeel Ahmad.`,
     });
 
+    // 2. Build live WhatsApp & Mailto links
+    const waUrl = `https://wa.me/${targetWhatsAppNumber}?text=${encodeURIComponent(generateWhatsAppMessage())}`;
+    const mailUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(generateEmailSubject())}&body=${encodeURIComponent(generateEmailBody())}`;
+
+    setSubmittedWhatsAppUrl(waUrl);
+    setSubmittedMailtoUrl(mailUrl);
     setSubmitted(true);
+
+    // 3. Automatically launch WhatsApp in new tab for instant connection
+    try {
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    } catch {
+      // Fallback if popup blocked
+    }
   };
 
   return (
@@ -49,16 +105,31 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="max-w-2xl mb-12">
-          <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-            Discovery
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Schedule an Architecture Call
-          </h2>
-          <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Have a project in mind, an existing system to refactor, or an AI system to deploy? Submit your brief below. Ghulam, Hamza, and Daniyal personally review every submission.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="max-w-2xl">
+            <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
+              Direct Contact & Discovery
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+              Connect with Aqeel Ahmad
+            </h2>
+            <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
+              Have a project in mind, an existing system to refactor, or an urgent inquiry? Submit your brief below or connect directly on WhatsApp (<span className="text-white font-mono">03099489168</span>) and Email (<span className="text-white font-mono">m.bluds2@gmail.com</span>).
+            </p>
+          </div>
+
+          {/* Quick WhatsApp Action Button */}
+          <div className="flex items-center gap-3">
+            <a
+              href={`https://wa.me/${targetWhatsAppNumber}?text=${encodeURIComponent('Hello Aqeel, I am reaching out from BLUDS Agency website.')}`}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs transition-colors flex items-center gap-2 shadow-lg shadow-emerald-950/40"
+            >
+              <MessageSquare className="w-4 h-4 fill-black" />
+              <span>Direct WhatsApp: 03099489168</span>
+            </a>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -68,25 +139,53 @@ export const ContactSection: React.FC = () => {
             <div className="p-6 sm:p-8 rounded-xl bg-[#0c0c0c] border border-[#222222]">
               
               {submitted ? (
-                <div className="py-10 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-blue-600/20 text-blue-400 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+                <div className="py-8 text-center space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+                    <CheckCircle2 className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
-                    Brief Received by the 3 Founders
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto leading-relaxed">
-                    Thank you, <strong className="text-white">{name}</strong>. We will review your architecture specifications and reply to <span className="font-mono text-blue-400">{email}</span> within 24 hours.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setMessage('');
-                    }}
-                    className="mt-3 px-4 py-2 rounded-lg bg-[#141414] hover:bg-neutral-800 text-xs text-neutral-300 transition-colors"
-                  >
-                    Submit Another Inquiry
-                  </button>
+                  
+                  <div>
+                    <h3 className="text-xl font-bold text-white">
+                      Brief Logged & Ready to Dispatch
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-300 max-w-md mx-auto mt-1 leading-relaxed">
+                      Thank you, <strong className="text-white">{name}</strong>. Your project brief has been recorded. For the fastest response, send it directly to Aqeel Ahmad via WhatsApp or Email:
+                    </p>
+                  </div>
+
+                  {/* Direct Action Buttons on Success */}
+                  <div className="space-y-2.5 max-w-md mx-auto pt-2">
+                    <a
+                      href={submittedWhatsAppUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full py-3 px-4 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs flex items-center justify-center gap-2 transition-colors shadow-lg"
+                    >
+                      <MessageSquare className="w-4 h-4 fill-black" />
+                      <span>Send Brief via WhatsApp (03099489168)</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
+
+                    <a
+                      href={submittedMailtoUrl}
+                      className="w-full py-3 px-4 rounded-lg bg-[#141414] hover:bg-neutral-800 border border-[#2a2a2a] text-white font-medium text-xs flex items-center justify-center gap-2 transition-colors"
+                    >
+                      <Mail className="w-4 h-4 text-blue-400" />
+                      <span>Send via Email to m.bluds2@gmail.com</span>
+                    </a>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#1c1c1c]">
+                    <button
+                      onClick={() => {
+                        setSubmitted(false);
+                        setMessage('');
+                      }}
+                      className="text-xs text-neutral-400 hover:text-white transition-colors"
+                    >
+                      ← Submit another inquiry
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -101,21 +200,21 @@ export const ContactSection: React.FC = () => {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Sarah Jenkins"
+                        placeholder="Aqeel Ahmad / Client Name"
                         className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                        Work / Corporate Email *
+                        Work / Personal Email *
                       </label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="sarah@company.com"
+                        placeholder="your-email@gmail.com"
                         className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
                       />
                     </div>
@@ -124,26 +223,26 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                        Company or Project
+                        Company / Brand Name
                       </label>
                       <input
                         type="text"
                         value={company}
                         onChange={(e) => setCompany(e.target.value)}
-                        placeholder="Enterprise Inc."
+                        placeholder="Your Brand or Startup"
                         className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                        Phone / WhatsApp
+                        Phone / WhatsApp Number
                       </label>
                       <input
                         type="text"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+1 (555) 000-0000"
+                        placeholder="0300 1234567"
                         className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors"
                       />
                     </div>
@@ -152,7 +251,7 @@ export const ContactSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                        Primary Capability Needed
+                        Service Required
                       </label>
                       <select
                         value={projectType}
@@ -189,7 +288,7 @@ export const ContactSection: React.FC = () => {
                       Target Launch Window
                     </label>
                     <div className="grid grid-cols-3 gap-2">
-                      {['Immediate (1-2 wks)', 'Within 2 Months', '3+ Months'].map((t) => (
+                      {['Immediate (1-2 wks)', 'Within 1 Month', 'Flexible'].map((t) => (
                         <button
                           key={t}
                           type="button"
@@ -208,29 +307,29 @@ export const ContactSection: React.FC = () => {
 
                   <div>
                     <label className="block text-xs font-medium text-neutral-300 mb-1.5">
-                      Technical Scope & Requirements *
+                      Project Scope & Requirements *
                     </label>
                     <textarea
                       required
                       rows={4}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Outline what you are building, existing infrastructure, target concurrency, and key milestones..."
+                      placeholder="Tell us about your project, target audience, feature requirements, or timeline..."
                       className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500 transition-colors resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors flex items-center justify-center gap-1.5"
+                    className="w-full py-3.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-950/40"
                   >
                     <Send className="w-3.5 h-3.5" />
-                    <span>Dispatch RFP to Ghulam, Hamza & Daniyal</span>
+                    <span>Submit & Connect on WhatsApp / Email</span>
                   </button>
 
                   <div className="flex items-center justify-center gap-1.5 text-[11px] text-neutral-500 font-mono">
                     <ShieldCheck className="w-3.5 h-3.5 text-neutral-400" />
-                    <span>Protected by Mutual Non-Disclosure Agreement (NDA)</span>
+                    <span>Direct connection to Aqeel Ahmad (WhatsApp: 03099489168 • Email: m.bluds2@gmail.com)</span>
                   </div>
 
                 </form>
@@ -239,66 +338,104 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right: Founder Contact Info */}
+          {/* Right: Contact Information */}
           <div className="lg:col-span-5 space-y-4">
             <div className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] space-y-4">
               <div>
-                <h3 className="text-base font-semibold text-white">
-                  Direct Engineering Communication
+                <span className="text-[10px] font-mono font-medium text-blue-400 uppercase tracking-wider block mb-1">
+                  Lead Contact
+                </span>
+                <h3 className="text-xl font-bold text-white">
+                  Aqeel Ahmad
                 </h3>
                 <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
-                  You interface directly with the engineers designing and writing your production software.
+                  Direct lead contact for client discovery, custom quotes, website development, and business automation.
                 </p>
               </div>
 
               <div className="space-y-3 pt-3 border-t border-[#1c1c1c] text-xs">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#141414] border border-[#262626] text-neutral-300">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-neutral-500 font-mono">Direct Email</div>
+                {/* WhatsApp & Phone */}
+                <div className="p-3.5 rounded-lg bg-[#111111] border border-[#222222] space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-md bg-[#25D366]/20 text-[#25D366] flex items-center justify-center">
+                        <MessageSquare className="w-3.5 h-3.5 fill-[#25D366]" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-neutral-400 font-mono">WhatsApp & Phone</div>
+                        <a 
+                          href={`https://wa.me/${targetWhatsAppNumber}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-mono text-white font-medium hover:text-[#25D366] transition-colors"
+                        >
+                          03099489168
+                        </a>
+                      </div>
+                    </div>
                     <a
-                      href={`mailto:${siteSettings.contactInfo.email}`}
-                      className="font-mono text-white hover:text-blue-400 transition-colors"
+                      href={`https://wa.me/${targetWhatsAppNumber}?text=${encodeURIComponent('Hello Aqeel, I would like to discuss a project with BLUDS Agency.')}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-2.5 py-1 rounded bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-[10px] transition-colors flex items-center gap-1"
                     >
-                      {siteSettings.contactInfo.email}
+                      <span>Chat</span>
+                      <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                  </div>
+                  <div className="text-[11px] text-neutral-400">
+                    International: <span className="font-mono text-neutral-200">+92 309 9489168</span>
+                  </div>
+                </div>
+
+                {/* Direct Email */}
+                <div className="p-3.5 rounded-lg bg-[#111111] border border-[#222222] space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-md bg-blue-600/20 text-blue-400 flex items-center justify-center">
+                        <Mail className="w-3.5 h-3.5" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] text-neutral-400 font-mono">Direct Email</div>
+                        <a
+                          href={`mailto:${targetEmail}`}
+                          className="font-mono text-white font-medium hover:text-blue-400 transition-colors text-xs"
+                        >
+                          {targetEmail}
+                        </a>
+                      </div>
+                    </div>
+                    <a
+                      href={`mailto:${targetEmail}?subject=${encodeURIComponent('Project Inquiry - BLUDS Agency')}`}
+                      className="px-2.5 py-1 rounded bg-blue-600 hover:bg-blue-500 text-white font-medium text-[10px] transition-colors flex items-center gap-1"
+                    >
+                      <span>Mail</span>
+                      <ArrowUpRight className="w-3 h-3" />
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
+                {/* Operating Model & Availability */}
+                <div className="flex items-start gap-3 pt-2">
                   <div className="p-2 rounded-lg bg-[#141414] border border-[#262626] text-neutral-300">
-                    <Phone className="w-4 h-4" />
+                    <Clock className="w-4 h-4 text-emerald-400" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-neutral-500 font-mono">Telephone & WhatsApp</div>
-                    <div className="font-mono text-white">
-                      {siteSettings.contactInfo.phone}
+                    <div className="text-[11px] text-neutral-500 font-mono">Availability</div>
+                    <div className="text-white text-xs">
+                      24/7 Direct WhatsApp & Sprint Delivery
                     </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <div className="p-2 rounded-lg bg-[#141414] border border-[#262626] text-neutral-300">
-                    <Clock className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-blue-400" />
                   </div>
                   <div>
-                    <div className="text-[11px] text-neutral-500 font-mono">Response Window</div>
-                    <div className="text-neutral-300">
-                      Within 12 to 24 hours guaranteed
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-lg bg-[#141414] border border-[#262626] text-neutral-300">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] text-neutral-500 font-mono">Operating Model</div>
-                    <div className="text-neutral-300">
-                      {siteSettings.contactInfo.headquarters}
+                    <div className="text-[11px] text-neutral-500 font-mono">Operating Hub</div>
+                    <div className="text-neutral-300 text-xs">
+                      Online Global Engine (Expanding Onsite 2026)
                     </div>
                   </div>
                 </div>
@@ -308,11 +445,11 @@ export const ContactSection: React.FC = () => {
             {/* Quality Standard */}
             <div className="p-4 rounded-xl bg-[#0c0c0c] border border-[#222222] text-xs text-neutral-300 space-y-1.5">
               <div className="font-semibold text-white flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-blue-500" />
-                <span>Founder Sprint Guarantee</span>
+                <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                <span>Direct Founder Consultation</span>
               </div>
               <p className="text-[11px] text-neutral-400 leading-relaxed">
-                If deliverables do not match the approved architecture blueprint in Sprint 1, we rework them at zero additional cost.
+                Connect directly with Aqeel Ahmad to get a custom roadmap, pricing proposal, and architectural plan within hours.
               </p>
             </div>
           </div>

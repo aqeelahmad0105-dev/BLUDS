@@ -121,6 +121,9 @@ export const Footer: React.FC = () => {
               Direct Contact
             </h4>
             <div className="space-y-2 text-xs text-neutral-400">
+              <div className="text-white font-medium text-[11px]">
+                Aqeel Ahmad <span className="text-neutral-500 font-normal">• Solutions Lead</span>
+              </div>
               <div className="flex items-start gap-2">
                 <Mail className="w-3.5 h-3.5 text-neutral-400 shrink-0 mt-0.5" />
                 <a
@@ -132,7 +135,14 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-start gap-2">
                 <Phone className="w-3.5 h-3.5 text-neutral-400 shrink-0 mt-0.5" />
-                <span className="font-mono">{siteSettings.contactInfo.phone}</span>
+                <a
+                  href="https://wa.me/923099489168"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-[#25D366] transition-colors font-mono"
+                >
+                  WhatsApp: 03099489168
+                </a>
               </div>
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-neutral-400 shrink-0 mt-0.5" />

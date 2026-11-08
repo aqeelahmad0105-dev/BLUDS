@@ -15,6 +15,7 @@ import { FAQSection } from './FAQSection';
 import { ContactSection } from './ContactSection';
 import { CaseStudyModal } from '../common/CaseStudyModal';
 import { ServiceDetailModal } from '../common/ServiceDetailModal';
+import { FloatingWhatsApp } from '../common/FloatingWhatsApp';
 
 export const ClientLandingPage: React.FC = () => {
   return (
@@ -36,9 +37,10 @@ export const ClientLandingPage: React.FC = () => {
       </main>
       <Footer />
 
-      {/* Global Modals */}
+      {/* Global Modals & Floating Quick Actions */}
       <CaseStudyModal />
       <ServiceDetailModal />
+      <FloatingWhatsApp />
     </div>
   );
 };

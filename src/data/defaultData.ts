@@ -18,11 +18,13 @@ export const initialSiteSettings: SiteSettings = {
     nextMilestone: 'Phase 2: Launching Onsite Experience Labs & Tech Studios in 2026'
   },
   contactInfo: {
-    email: 'founders@bludsagency.com',
-    phone: '+1 (555) 389-2041 / +92 300 1234567',
-    headquarters: 'Global Online Hub (Expanding Onsite Q4)',
-    physicalStudioNote: 'Onsite visits & dedicated client war-rooms available upon scheduled enterprise discovery.',
-    businessHours: '24/7 Synchronous Agile Support across Global Timezones',
+    email: 'm.bluds2@gmail.com',
+    phone: '03099489168',
+    whatsapp: '923099489168',
+    leadContact: 'Aqeel Ahmad',
+    headquarters: 'Global Online Hub (Direct WhatsApp & Email Support)',
+    physicalStudioNote: 'Direct consultation & project discovery available 24/7 on WhatsApp & Email.',
+    businessHours: '24/7 Direct WhatsApp & Email Support (Aqeel Ahmad)',
     calendlyLink: 'https://calendly.com'
   },
   socialLinks: {

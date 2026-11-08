@@ -114,6 +114,8 @@ export interface SiteSettings {
   contactInfo: {
     email: string;
     phone: string;
+    whatsapp?: string;
+    leadContact?: string;
     headquarters: string;
     physicalStudioNote: string;
     businessHours: string;

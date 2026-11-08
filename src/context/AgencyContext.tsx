@@ -92,7 +92,7 @@ interface AgencyContextType {
 const AgencyContext = createContext<AgencyContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  SETTINGS: 'bluds_site_settings_v1',
+  SETTINGS: 'bluds_site_settings_v2',
   SERVICES: 'bluds_services_v2',
   CASES: 'bluds_cases_v1',
   TESTIMONIALS: 'bluds_testimonials_v1',
@@ -146,8 +146,8 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   const loginAdmin = (email: string, pass: string): boolean => {
     // Default admin credentials: admin@bludsagency.com / bluds2026 or admin / admin123
-    const validEmails = ['admin@bludsagency.com', 'admin', 'founders@bludsagency.com'];
-    const validPasswords = ['admin123', 'bluds2026', 'admin'];
+    const validEmails = ['admin@bludsagency.com', 'admin', 'founders@bludsagency.com', 'm.bluds2@gmail.com'];
+    const validPasswords = ['admin123', 'bluds2026', 'admin', 'bluds2025!'];
 
     const normalizedEmail = email.trim().toLowerCase();
     const normalizedPass = pass.trim();

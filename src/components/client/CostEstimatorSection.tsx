@@ -3,7 +3,9 @@ import { useAgency } from '../../context/AgencyContext';
 import { 
   Check, 
   Clock, 
-  Send
+  Send,
+  MessageSquare,
+  ArrowUpRight
 } from 'lucide-react';
 
 export const CostEstimatorSection: React.FC = () => {
@@ -253,24 +255,43 @@ export const CostEstimatorSection: React.FC = () => {
                   <span className="font-medium text-blue-400">{addons.length} selected</span>
                 </div>
                 <div className="flex justify-between text-neutral-300">
-                  <span className="text-neutral-500">Supervision:</span>
-                  <span className="font-medium text-neutral-300">Ghulam, Hamza & Daniyal</span>
+                  <span className="text-neutral-500">Lead Review:</span>
+                  <span className="font-medium text-white">Aqeel Ahmad (03099489168)</span>
                 </div>
               </div>
 
               {/* Dispatch Form */}
               <div className="pt-3 border-t border-[#1f1f1f]">
                 {submitted ? (
-                  <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-600/40 text-center space-y-1">
+                  <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-600/40 text-center space-y-2.5">
                     <div className="text-xs font-bold text-white">Specification Received</div>
                     <p className="text-xs text-neutral-300">
-                      The founders will review this estimate and reply to <span className="text-blue-400 font-mono">{clientEmail}</span> within 24 hours.
+                      Thank you! Aqeel Ahmad will review your estimate. Send it directly on WhatsApp for instant confirmation:
                     </p>
+                    <a
+                      href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                        `*Project Estimate Specification - BLUDS Agency*\n\n` +
+                        `👤 *Client Name:* ${clientName}\n` +
+                        `📧 *Email:* ${clientEmail}\n` +
+                        `🛠️ *Platform / Service:* ${platform}\n` +
+                        `📈 *Scale Tier:* ${scale}\n` +
+                        `🧩 *Selected Add-ons:* ${addons.join(', ') || 'None'}\n` +
+                        `💰 *Estimated Bracket:* Rs. ${minEstimated.toLocaleString()} - Rs. ${maxEstimated.toLocaleString()}\n` +
+                        `⏱️ *Estimated Delivery:* ${estimatedWeeks} Weeks`
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="w-full py-2.5 px-3 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors shadow"
+                    >
+                      <MessageSquare className="w-3.5 h-3.5 fill-black" />
+                      <span>Send Estimate to Aqeel on WhatsApp</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmitEstimate} className="space-y-2.5">
                     <span className="text-xs text-neutral-300 block font-medium">
-                      Submit estimate directly to the 3 founders:
+                      Submit estimate to Aqeel Ahmad:
                     </span>
                     <input
                       type="text"
@@ -283,7 +304,7 @@ export const CostEstimatorSection: React.FC = () => {
                     <input
                       type="email"
                       required
-                      placeholder="work-email@company.com"
+                      placeholder="your-email@gmail.com"
                       value={clientEmail}
                       onChange={(e) => setClientEmail(e.target.value)}
                       className="w-full px-3 py-2 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500"
@@ -293,10 +314,10 @@ export const CostEstimatorSection: React.FC = () => {
                       className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-medium text-white transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Submit Specification to Founders</span>
+                      <span>Submit Specification to Aqeel Ahmad</span>
                     </button>
                     <p className="text-[10px] text-center text-neutral-500 font-mono">
-                      Strict Mutual NDA Guarantee • Zero Spam
+                      Direct WhatsApp: 03099489168 • Email: m.bluds2@gmail.com
                     </p>
                   </form>
                 )}
