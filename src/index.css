@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #000000;
+    --border-subtle: #222222;
+  }
+
+  body {
+    background-color: #000000;
+    color: #e5e5e5;
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Consistent heading styling */
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Subtle, standard scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #404040;
+}
+
+/* Clean, flat surfaces with standard subtle borders */
+.surface-card {
+  background-color: #0c0c0c;
+  border: 1px solid #222222;
+  border-radius: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.surface-card:hover {
+  border-color: #3b82f6;
+}
+
+/* Simple input styling */
+input, textarea, select {
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
