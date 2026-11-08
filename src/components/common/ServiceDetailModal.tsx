@@ -1,6 +1,22 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
-import { X, CheckCircle, ArrowRight, Code2, Cpu, Smartphone, Cloud, Sparkles, Users } from 'lucide-react';
+import { 
+  X, 
+  CheckCircle, 
+  ArrowRight, 
+  Globe,
+  Search,
+  Megaphone,
+  ShoppingBag,
+  Video,
+  Store,
+  Code2, 
+  Cpu, 
+  Smartphone, 
+  Cloud, 
+  Sparkles, 
+  Users 
+} from 'lucide-react';
 
 export const ServiceDetailModal: React.FC = () => {
   const { activeServiceDetails, setActiveServiceDetails, navigate } = useAgency();
@@ -9,6 +25,12 @@ export const ServiceDetailModal: React.FC = () => {
 
   const getIcon = (name: string) => {
     switch (name) {
+      case 'Globe': return <Globe className="w-5 h-5 text-blue-500" />;
+      case 'Search': return <Search className="w-5 h-5 text-blue-500" />;
+      case 'Megaphone': return <Megaphone className="w-5 h-5 text-blue-500" />;
+      case 'ShoppingBag': return <ShoppingBag className="w-5 h-5 text-blue-500" />;
+      case 'Video': return <Video className="w-5 h-5 text-blue-500" />;
+      case 'Store': return <Store className="w-5 h-5 text-blue-500" />;
       case 'Code2': return <Code2 className="w-5 h-5 text-blue-500" />;
       case 'Cpu': return <Cpu className="w-5 h-5 text-blue-500" />;
       case 'Smartphone': return <Smartphone className="w-5 h-5 text-blue-500" />;

@@ -9,40 +9,46 @@ import {
 export const CostEstimatorSection: React.FC = () => {
   const { addInquiry } = useAgency();
 
-  const [platform, setPlatform] = useState<string>('Full-Stack Web App & SaaS');
-  const [scale, setScale] = useState<string>('High-Growth MVP (Sprint 1-4)');
-  const [timeline, setTimeline] = useState<string>('Standard (6 - 10 Weeks)');
-  const [addons, setAddons] = useState<string[]>(['Autonomous AI Integration', 'DevOps CI/CD Automation']);
+  const [platform, setPlatform] = useState<string>('Website Development');
+  const [scale, setScale] = useState<string>('Standard Business Launch');
+  const [timeline, setTimeline] = useState<string>('Standard Delivery');
+  const [addons, setAddons] = useState<string[]>([
+    'Website Maintenance Retainer',
+    'Domain & Cloud Hosting (Annual)'
+  ]);
 
   const [clientName, setClientName] = useState('');
   const [clientEmail, setClientEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const platformOptions = [
-    { id: 'Full-Stack Web App & SaaS', basePrice: 6000, weeks: 6, desc: 'Next.js 14, TypeScript, PostgreSQL, REST/GraphQL' },
-    { id: 'Mobile App (iOS & Android)', basePrice: 7500, weeks: 7, desc: 'Flutter cross-platform, biometric auth, offline sync' },
-    { id: 'Applied AI & LLM Systems', basePrice: 7000, weeks: 5, desc: 'RAG knowledge base, vector DB, autonomous agents' },
-    { id: 'Cloud & DevOps Architecture', basePrice: 4500, weeks: 4, desc: 'Kubernetes, AWS, Terraform, auto-scaling clusters' },
-    { id: 'Full Enterprise Re-platform', basePrice: 12000, weeks: 10, desc: 'Complete legacy rewrite to modern distributed cloud' },
+    { id: 'Website Development', basePrice: 20000, weeks: 2, desc: 'Responsive website, modern UI, 3D polish, admin panel' },
+    { id: 'POS Software (Point of Sale)', basePrice: 20000, weeks: 2, desc: 'Fast billing, inventory, barcode scanner & multi-counter POS' },
+    { id: 'Social Media Management', basePrice: 20000, weeks: 4, desc: '12 engaging reels/mo, editing, trending audio & monthly reports' },
+    { id: 'SEO Optimization', basePrice: 15000, weeks: 4, desc: 'On-page SEO, keyword ranking, GA4 & Google Search Console' },
+    { id: 'Meta Ads & Google Ads Management', basePrice: 12000, weeks: 4, desc: 'High-ROI campaigns & creatives (ad spend paid by client)' },
+    { id: 'Shopify Store Integration', basePrice: 5000, weeks: 1, desc: 'Shopify connection, payment gateway & catalog synchronization' },
   ];
 
   const scaleOptions = [
-    { id: 'Proof-of-Concept / Prototype', multiplier: 0.85, weeksDelta: -2 },
-    { id: 'High-Growth MVP (Sprint 1-4)', multiplier: 1.0, weeksDelta: 0 },
-    { id: 'Enterprise Tier (SOC2 & Scale)', multiplier: 1.45, weeksDelta: 3 },
+    { id: 'Standard Business Launch', multiplier: 1.0, weeksDelta: 0 },
+    { id: 'Growth Tier (Enhanced Features)', multiplier: 1.25, weeksDelta: 1 },
+    { id: 'Enterprise / Multi-Branch System', multiplier: 1.5, weeksDelta: 2 },
   ];
 
   const timelineOptions = [
-    { id: 'Express Speed (4 - 6 Weeks)', multiplier: 1.15 },
-    { id: 'Standard (6 - 10 Weeks)', multiplier: 1.0 },
+    { id: 'Express Delivery (1 - 2 Weeks)', multiplier: 1.15 },
+    { id: 'Standard Delivery', multiplier: 1.0 },
     { id: 'Flexible / Ongoing Retainer', multiplier: 0.95 },
   ];
 
   const addonOptions = [
-    { id: 'Autonomous AI Integration', price: 2000, desc: 'OpenAI/Claude LLM prompt flows & custom embeddings' },
-    { id: 'DevOps CI/CD Automation', price: 1200, desc: 'Zero-downtime GitHub Actions deployment to AWS/GCP' },
-    { id: '24/7 SLA & Incident Response', price: 1500, desc: 'Guaranteed 15-min uptime monitoring by founders' },
-    { id: 'High-End 3D & WebGL Polish', price: 1800, desc: 'Interactive visual models & product demos' },
+    { id: 'Website Maintenance Retainer', price: 10000, desc: 'Rs. 10,000/mo ongoing maintenance, bug fixes & security updates' },
+    { id: 'Domain & Cloud Hosting (Annual)', price: 7500, desc: 'Rs. 7,000 - 8,000/year for domain & high-speed cloud hosting' },
+    { id: 'POS Cloud Sync & Support Subscription', price: 3000, desc: 'Rs. 3,000/mo cloud database backup & priority support' },
+    { id: 'Shopify E-Commerce Connection', price: 5000, desc: 'Rs. 5,000 one-time Shopify store connection & checkout setup' },
+    { id: 'SEO Monthly Growth Retainer', price: 15000, desc: 'Rs. 15,000/mo keyword ranking, backlinks & organic growth reports' },
+    { id: 'Meta & Google Ads Campaign Management', price: 12000, desc: 'Rs. 12,000/mo ad campaign management (client pays ad spend)' },
   ];
 
   const toggleAddon = (id: string) => {
@@ -61,9 +67,9 @@ export const CostEstimatorSection: React.FC = () => {
   }, 0);
 
   const rawTotal = (selectedPlatform.basePrice * selectedScale.multiplier * selectedTimeline.multiplier) + addonsTotal;
-  const minEstimated = Math.round((rawTotal * 0.9) / 500) * 500;
-  const maxEstimated = Math.round((rawTotal * 1.15) / 500) * 500;
-  const estimatedWeeks = Math.max(3, selectedPlatform.weeks + selectedScale.weeksDelta);
+  const minEstimated = Math.round((rawTotal * 0.95) / 500) * 500;
+  const maxEstimated = Math.round((rawTotal * 1.10) / 500) * 500;
+  const estimatedWeeks = Math.max(1, selectedPlatform.weeks + selectedScale.weeksDelta);
 
   const handleSubmitEstimate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -73,12 +79,12 @@ export const CostEstimatorSection: React.FC = () => {
       clientName: clientName.trim(),
       email: clientEmail.trim(),
       projectType: platform,
-      budgetRange: `$${minEstimated.toLocaleString()} - $${maxEstimated.toLocaleString()}`,
+      budgetRange: `Rs. ${minEstimated.toLocaleString()} - Rs. ${maxEstimated.toLocaleString()}`,
       timeline: timeline,
       message: `Configured via Cost Estimator: Platform: ${platform} | Scale: ${scale} | Selected Add-ons: ${addons.join(', ')}. Estimated duration: ${estimatedWeeks} weeks.`,
       source: 'cost_estimator',
       priority: 'high',
-      estimatedScope: `Budget: $${minEstimated.toLocaleString()} - $${maxEstimated.toLocaleString()} (${estimatedWeeks} weeks). Add-ons: ${addons.length} selected.`,
+      estimatedScope: `Budget: Rs. ${minEstimated.toLocaleString()} - Rs. ${maxEstimated.toLocaleString()} (${estimatedWeeks} weeks). Add-ons: ${addons.length} selected.`,
     });
 
     setSubmitted(true);
@@ -133,7 +139,7 @@ export const CostEstimatorSection: React.FC = () => {
                       <div className="text-[11px] text-neutral-400 mt-0.5">{opt.desc}</div>
                     </div>
                     <span className="text-xs font-mono text-neutral-300 shrink-0 ml-2">
-                      ~${opt.basePrice.toLocaleString()}
+                      Rs. {opt.basePrice.toLocaleString()}
                     </span>
                   </button>
                 ))}
@@ -187,7 +193,7 @@ export const CostEstimatorSection: React.FC = () => {
                       <div>
                         <div className="flex items-center justify-between text-xs font-medium mb-1">
                           <span>{addon.id}</span>
-                          <span className="text-neutral-400 font-mono">+${addon.price}</span>
+                          <span className="text-neutral-400 font-mono">+Rs. {addon.price.toLocaleString()}</span>
                         </div>
                         <div className="text-[11px] text-neutral-400 leading-snug">
                           {addon.desc}
@@ -224,7 +230,7 @@ export const CostEstimatorSection: React.FC = () => {
               <div>
                 <div className="text-xs text-neutral-400">Estimated Investment Bracket</div>
                 <div className="text-2xl sm:text-3xl font-bold text-white mt-1">
-                  ${minEstimated.toLocaleString()} - ${maxEstimated.toLocaleString()}
+                  Rs. {minEstimated.toLocaleString()} - Rs. {maxEstimated.toLocaleString()}
                 </div>
                 <div className="text-xs text-neutral-400 mt-1 flex items-center gap-2 font-mono">
                   <Clock className="w-3.5 h-3.5 text-blue-400" />

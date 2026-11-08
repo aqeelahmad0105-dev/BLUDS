@@ -17,8 +17,8 @@ export const ContactSection: React.FC = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
-  const [projectType, setProjectType] = useState(services[0]?.title || 'Custom Enterprise Software & SaaS');
-  const [budgetRange, setBudgetRange] = useState('$25,000 - $50,000');
+  const [projectType, setProjectType] = useState(services[0]?.title || 'Website Development');
+  const [budgetRange, setBudgetRange] = useState('Rs. 20,000 - 50,000');
   const [timeline, setTimeline] = useState('Within 2 Months');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -176,10 +176,10 @@ export const ContactSection: React.FC = () => {
                         onChange={(e) => setBudgetRange(e.target.value)}
                         className="w-full px-3.5 py-2.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white focus:outline-none focus:border-blue-500 transition-colors"
                       >
-                        <option value="$5,000 - $15,000">$5,000 - $15,000 (MVP Prototype)</option>
-                        <option value="$15,000 - $30,000">$15,000 - $30,000 (Growth Tier)</option>
-                        <option value="$30,000 - $60,000">$30,000 - $60,000 (Enterprise Scale)</option>
-                        <option value="$60,000+">$60,000+ (Full Modernization)</option>
+                        <option value="Rs. 5,000 - 20,000">Rs. 5,000 - 20,000 (Shopify / Setup / Ads)</option>
+                        <option value="Rs. 20,000 - 50,000">Rs. 20,000 - 50,000 (Website / POS / SEO Package)</option>
+                        <option value="Rs. 50,000 - 100,000">Rs. 50,000 - 100,000 (Full-Stack Package & Marketing)</option>
+                        <option value="Rs. 100,000+">Rs. 100,000+ (Multi-Service Enterprise Retainer)</option>
                       </select>
                     </div>
                   </div>

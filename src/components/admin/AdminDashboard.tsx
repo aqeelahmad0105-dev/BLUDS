@@ -283,7 +283,7 @@ export const AdminDashboard: React.FC = () => {
         fullDescription: serviceForm.fullDescription || '',
         deliverables: Array.isArray(serviceForm.deliverables) ? serviceForm.deliverables : ['Architecture blueprint', 'Staging deployment', 'Continuous SLA'],
         techStack: Array.isArray(serviceForm.techStack) ? serviceForm.techStack : ['React', 'Node.js', 'PostgreSQL'],
-        startingPrice: serviceForm.startingPrice || 'From $5,000 / sprint',
+        startingPrice: serviceForm.startingPrice || 'Rs. 20,000 (one-time)',
         active: true,
         featured: false,
       });
@@ -931,13 +931,13 @@ export const AdminDashboard: React.FC = () => {
                     setServiceForm({
                       title: '',
                       tagline: '',
-                      iconName: 'Code2',
-                      badge: 'Core Pillar',
+                      iconName: 'Globe',
+                      badge: 'New Offering',
                       shortDescription: '',
                       fullDescription: '',
-                      deliverables: ['Milestone Blueprint', 'Full-stack code', 'Automated tests'],
+                      deliverables: ['Custom milestone execution', 'Senior code review', 'Complete handoff'],
                       techStack: ['React', 'TypeScript', 'Node.js'],
-                      startingPrice: 'From $5,000 / sprint',
+                      startingPrice: 'Rs. 20,000 (one-time)',
                       active: true,
                     });
                   }}

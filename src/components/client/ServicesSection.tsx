@@ -1,6 +1,12 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
 import { 
+  Globe,
+  Search,
+  Megaphone,
+  ShoppingBag,
+  Video,
+  Store,
   Code2, 
   Cpu, 
   Smartphone, 
@@ -20,6 +26,12 @@ export const ServicesSection: React.FC = () => {
 
   const getServiceIcon = (name: string) => {
     switch (name) {
+      case 'Globe': return <Globe className="w-5 h-5 text-blue-500" />;
+      case 'Search': return <Search className="w-5 h-5 text-blue-500" />;
+      case 'Megaphone': return <Megaphone className="w-5 h-5 text-blue-500" />;
+      case 'ShoppingBag': return <ShoppingBag className="w-5 h-5 text-blue-500" />;
+      case 'Video': return <Video className="w-5 h-5 text-blue-500" />;
+      case 'Store': return <Store className="w-5 h-5 text-blue-500" />;
       case 'Code2': return <Code2 className="w-5 h-5 text-blue-500" />;
       case 'Cpu': return <Cpu className="w-5 h-5 text-blue-500" />;
       case 'Smartphone': return <Smartphone className="w-5 h-5 text-blue-500" />;
@@ -129,14 +141,14 @@ export const ServicesSection: React.FC = () => {
               </div>
 
               {/* Bottom Card Action */}
-              <div className="pt-3 border-t border-[#1c1c1c] flex items-center justify-between">
-                <span className="text-xs font-medium text-blue-400 flex items-center gap-1">
+              <div className="pt-3 border-t border-[#1c1c1c] flex items-center justify-between gap-2">
+                <span className="text-xs font-medium text-blue-400 flex items-center gap-1 shrink-0">
                   <span>View Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
                 {service.startingPrice && (
-                  <span className="text-xs font-mono text-neutral-400">
-                    {service.startingPrice.split('/')[0]}
+                  <span className="text-[11px] font-mono text-neutral-300 font-medium text-right truncate">
+                    {service.startingPrice}
                   </span>
                 )}
               </div>

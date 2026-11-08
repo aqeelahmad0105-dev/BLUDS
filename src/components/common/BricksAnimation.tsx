@@ -408,3 +408,4 @@ export const BricksAnimation: React.FC<BricksAnimationProps> = ({
     </div>
   );
 };
+

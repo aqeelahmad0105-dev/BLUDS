@@ -12,6 +12,11 @@ export const FAQSection: React.FC = () => {
 
   const faqs: FAQItem[] = [
     {
+      category: 'TRANSPARENT PRICING',
+      question: 'What are your standard service rates and billing structure?',
+      answer: 'We maintain clear, transparent pricing with zero hidden agency markups: Website Development is Rs. 20,000 (one-time) + Rs. 10,000/mo maintenance (+ Rs. 7,000-8,000/yr domain hosting); SEO Optimization is Rs. 15,000/month; Meta & Google Ads management is Rs. 12,000/month (ad spend paid directly by client); Shopify Store Connection is Rs. 5,000 (one-time); Social Media Management (12 produced reels + monthly analytics) is Rs. 20,000/month; and Point of Sale (POS) Software is Rs. 20,000 (one-time) + Rs. 3,000/month subscription.',
+    },
+    {
       category: 'OPERATING MODEL',
       question: 'How does your online-first delivery model work across global time zones?',
       answer: 'We operate as a distributed digital engineering engine with synchronous coverage across North America, Europe, and APAC. Clients receive direct Slack communication channels, asynchronous video walkthroughs on every pull request, and weekly architecture reviews directly with the 3 founders.',
