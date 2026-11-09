@@ -11,7 +11,10 @@ import {
   Lock,
   ArrowUpRight
 } from 'lucide-react';
-import { HeroScene3D } from './HeroScene3D';
+
+const HeroScene3D = React.lazy(() =>
+  import('./HeroScene3D').then((m) => ({ default: m.HeroScene3D }))
+);
 
 export const HeroSection: React.FC = () => {
   const { siteSettings } = useAgency();
@@ -213,7 +216,16 @@ export const HeroSection: React.FC = () => {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 {/* Interactive 3D WebGL Model Showcase */}
                 <div className="lg:col-span-5 h-[320px] sm:h-[380px] rounded-xl bg-[#080808] border border-[#222222] overflow-hidden relative">
-                  <HeroScene3D activeMode={activeArchitecture} />
+                  <React.Suspense
+                    fallback={
+                      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-xs font-mono text-neutral-500">
+                        <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
+                        <span>Initializing 3D Pipeline...</span>
+                      </div>
+                    }
+                  >
+                    <HeroScene3D activeMode={activeArchitecture} />
+                  </React.Suspense>
                 </div>
 
                 {/* Topology Nodes Pipeline & Metrics */}

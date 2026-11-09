@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { AgencyProvider, useAgency } from './context/AgencyContext';
 import { ClientLandingPage } from './components/client/ClientLandingPage';
-import { AdminLogin } from './components/admin/AdminLogin';
-import { AdminDashboard } from './components/admin/AdminDashboard';
 import { ToastContainer } from './components/common/ToastContainer';
 import { ErrorBoundary } from './components/common/ErrorBoundary';
+
+const AdminLogin = lazy(() =>
+  import('./components/admin/AdminLogin').then((m) => ({ default: m.AdminLogin }))
+);
+const AdminDashboard = lazy(() =>
+  import('./components/admin/AdminDashboard').then((m) => ({ default: m.AdminDashboard }))
+);
 
 const AppContent: React.FC = () => {
   const { currentRoute, isAuthenticated, navigate } = useAgency();
@@ -30,14 +35,30 @@ const AppContent: React.FC = () => {
     if (!isAuthenticated) {
       return (
         <div className="min-h-screen bg-black text-white antialiased">
-          <AdminLogin />
+          <Suspense
+            fallback={
+              <div className="min-h-screen bg-black flex items-center justify-center text-xs font-mono text-neutral-400">
+                Loading Admin Portal...
+              </div>
+            }
+          >
+            <AdminLogin />
+          </Suspense>
           <ToastContainer />
         </div>
       );
     }
     return (
       <div className="min-h-screen bg-black text-white antialiased">
-        <AdminDashboard />
+        <Suspense
+          fallback={
+            <div className="min-h-screen bg-black flex items-center justify-center text-xs font-mono text-neutral-400">
+              Loading Executive Dashboard...
+            </div>
+          }
+        >
+          <AdminDashboard />
+        </Suspense>
         <ToastContainer />
       </div>
     );
