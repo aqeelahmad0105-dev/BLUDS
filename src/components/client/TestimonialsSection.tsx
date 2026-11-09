@@ -9,7 +9,7 @@ export const TestimonialsSection: React.FC = () => {
   const activeReviews = testimonials.filter((t) => t.active);
 
   return (
-    <section className="py-20 bg-black border-t border-[#1f1f1f] text-white">
+    <section id="testimonials" className="py-20 bg-black border-t border-[#1f1f1f] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

@@ -1,790 +1,151 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useAgency } from '../../context/AgencyContext';
-import { 
-  ArrowUpRight, 
-  ArrowRight,
-  Sparkles, 
-  ChevronLeft, 
-  ChevronRight, 
-  Play, 
-  Pause, 
-  TrendingUp, 
-  Layers,
-  CheckCircle2,
-  ExternalLink,
-  MessageSquare,
-  Barcode,
-  Printer,
-  Trash2,
-  Plus,
-  Maximize2
-} from 'lucide-react';
-import { Card3D } from '../common/Card3D';
-import { StaggeredImageReveal, RevealMode } from '../common/StaggeredImageReveal';
+import { ArrowUpRight, ExternalLink, MessageSquare } from 'lucide-react';
 import { OptimizedImage } from '../common/OptimizedImage';
 
-interface MiniPOSItem {
-  id: string;
-  name: string;
-  price: number;
-  qty: number;
-}
+const categories = [
+  'All',
+  'Web Development',
+  'Shopify & E-Commerce',
+  'POS Software',
+  'SEO Optimization',
+  'Meta & Google Ads',
+  'Social Media',
+];
 
 export const WorkSection: React.FC = () => {
-  const { caseStudies, setActiveModalCaseStudy, setIsPOSSimulatorOpen } = useAgency();
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const { caseStudies, setActiveModalCaseStudy } = useAgency();
+  const [activeCategory, setActiveCategory] = useState('All');
 
-  // In-Page Interactive Barcode Scanner State
-  const samplePOSProducts = [
-    { id: 'item-1', name: 'Olper’s Milk 1L Pack', price: 290, barcode: '896400012345' },
-    { id: 'item-2', name: 'Super Basmati Rice 5kg', price: 1750, barcode: '896400098765' },
-    { id: 'item-3', name: 'Shan Biryani Masala Double', price: 160, barcode: '896400033445' },
-    { id: 'item-4', name: 'Nestle Mineral Water 1.5L', price: 130, barcode: '896400011223' }
-  ];
-
-  const [posCart, setPosCart] = useState<MiniPOSItem[]>([
-    { id: 'item-1', name: 'Olper’s Milk 1L Pack', price: 290, qty: 2 },
-    { id: 'item-2', name: 'Super Basmati Rice 5kg', price: 1750, qty: 1 }
-  ]);
-  const [lastScannedName, setLastScannedName] = useState<string | null>('Super Basmati Rice 5kg');
-  const [isScanningAnim, setIsScanningAnim] = useState(false);
-
-  const playScanBeep = () => {
-    try {
-      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1850, audioCtx.currentTime);
-      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.08);
-    } catch {
-      // AudioContext fallback
-    }
-  };
-
-  const handleScanProduct = (product: { id: string; name: string; price: number }) => {
-    playScanBeep();
-    setIsScanningAnim(true);
-    setTimeout(() => setIsScanningAnim(false), 350);
-    setLastScannedName(product.name);
-    setPosCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
-        );
-      }
-      return [...prev, { ...product, qty: 1 }];
-    });
-  };
-
-  const handleClearPosCart = () => {
-    setPosCart([]);
-    setLastScannedName(null);
-  };
-
-  const posSubtotal = posCart.reduce((sum, item) => sum + item.price * item.qty, 0);
-  const posTax = Math.round(posSubtotal * 0.05);
-  const posTotal = posSubtotal + posTax;
-
-  // Featured Showcase State
-  const featuredCases = caseStudies.filter((item) => item.active);
-  const [featuredIndex, setFeaturedIndex] = useState<number>(0);
-  const [previousIndex, setPreviousIndex] = useState<number | null>(null);
-  const [revealMode, setRevealMode] = useState<RevealMode>('vertical');
-  const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  const [progress, setProgress] = useState<number>(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-
-  const categories = [
-    'All', 
-    'Web Development', 
-    'Shopify & E-Commerce', 
-    'POS Software', 
-    'SEO Optimization', 
-    'Meta & Google Ads', 
-    'Social Media'
-  ];
-
-  const filteredCases = caseStudies.filter((item) => {
-    if (!item.active) return false;
-    if (activeCategory === 'All') return true;
-    return item.category === activeCategory;
-  });
-
-  // Current and Previous case for showcase
-  const currentCase = featuredCases[featuredIndex] || featuredCases[0];
-  const prevCase = previousIndex !== null ? featuredCases[previousIndex] : null;
-
-  // Change project handler with transition
-  const handleSelectProject = (newIdx: number) => {
-    if (newIdx === featuredIndex || featuredCases.length === 0) return;
-    setPreviousIndex(featuredIndex);
-    setFeaturedIndex(newIdx);
-    setProgress(0);
-  };
-
-  const handleNextProject = () => {
-    if (featuredCases.length === 0) return;
-    const next = (featuredIndex + 1) % featuredCases.length;
-    handleSelectProject(next);
-  };
-
-  const handlePrevProject = () => {
-    if (featuredCases.length === 0) return;
-    const prev = (featuredIndex - 1 + featuredCases.length) % featuredCases.length;
-    handleSelectProject(prev);
-  };
-
-  // Auto-play timer (6 seconds per slide)
-  useEffect(() => {
-    if (!isPlaying || isHovered || featuredCases.length <= 1) return;
-
-    const intervalTime = 80; // update progress every 80ms
-    const totalDuration = 6000; // 6 seconds
-    const step = (intervalTime / totalDuration) * 100;
-
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev + step >= 100) {
-          handleNextProject();
-          return 0;
-        }
-        return prev + step;
-      });
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [isPlaying, isHovered, featuredIndex, featuredCases.length]);
+  const projects = caseStudies.filter(
+    (project) => project.active && (activeCategory === 'All' || project.category === activeCategory)
+  );
 
   return (
-    <section id="case-studies" className="py-20 bg-black text-white border-t border-[#1f1f1f]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="max-w-2xl">
-            <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-              Our Work & Live Demos
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Real Live Websites & Projects We Built
-            </h2>
-            <p className="text-neutral-400 text-sm sm:text-base mt-2.5 leading-relaxed">
-              Explore real businesses, live websites, Shopify stores, and shop billing POS systems we have deployed. Click any live link to see them running.
-            </p>
-          </div>
-
-          {/* Staggered Animation Feature Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0c0c0c] border border-[#262626] text-xs font-mono text-neutral-300 self-start md:self-auto">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>Verified Live Client Deployments</span>
-          </div>
+    <section id="case-studies" className="border-t border-slate-300 bg-black py-16 text-white sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 max-w-3xl">
+          <span className="mb-2 block text-xs font-mono font-semibold uppercase tracking-wider text-blue-600">
+            Selected Work
+          </span>
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Selected projects.
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-neutral-700 sm:text-base">
+            A selection of work delivered for our clients.
+          </p>
         </div>
 
-        {/* ============================================================== */}
-        {/* PROMINENT FEATURED SHOWCASE WITH STAGGERED IMAGE REVEAL        */}
-        {/* ============================================================== */}
-        {currentCase && (
-          <div 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="mb-14 rounded-2xl bg-[#0c0c0c] border border-[#222222] p-5 sm:p-7 overflow-hidden"
-          >
-            {/* Top Showcase Toolbar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 mb-5 border-b border-[#1c1c1c]">
-              
-              {/* Left: Indicator & Progress */}
-              <div className="flex items-center gap-3">
-                <span className="text-xs font-mono font-semibold text-blue-400 bg-blue-950/40 px-2 py-0.5 rounded border border-blue-900/40">
-                  FEATURED 0{featuredIndex + 1} / 0{featuredCases.length}
-                </span>
-                <span className="text-xs text-neutral-400 font-medium">
-                  {currentCase.client}
-                </span>
-              </div>
-
-              {/* Right: Reveal Mode Selector & Controls */}
-              <div className="flex items-center gap-3">
-                {/* Mode Selector */}
-                <div className="flex items-center p-0.5 rounded-lg bg-[#141414] border border-[#262626] text-[11px] font-mono">
-                  <span className="px-2 text-neutral-500 hidden md:inline">Reveal:</span>
-                  {(['vertical', 'horizontal', 'grid'] as RevealMode[]).map((mode) => (
-                    <button
-                      key={mode}
-                      onClick={() => setRevealMode(mode)}
-                      className={`px-2.5 py-1 rounded-md transition-colors capitalize ${
-                        revealMode === mode
-                          ? 'bg-blue-600 text-white font-medium shadow-sm'
-                          : 'text-neutral-400 hover:text-white'
-                      }`}
-                    >
-                      {mode}
-                    </button>
-                  ))}
-                </div>
-
-                {/* Auto-play & Nav Buttons */}
-                <div className="flex items-center gap-1.5 border-l border-[#222222] pl-3">
-                  <button
-                    onClick={() => setIsPlaying(!isPlaying)}
-                    title={isPlaying ? 'Pause Auto-cycle' : 'Play Auto-cycle'}
-                    className="p-1.5 rounded-lg bg-[#141414] border border-[#262626] text-neutral-400 hover:text-white transition-colors"
-                  >
-                    {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                  </button>
-                  <button
-                    onClick={handlePrevProject}
-                    title="Previous Case Study"
-                    className="p-1.5 rounded-lg bg-[#141414] border border-[#262626] text-neutral-400 hover:text-white transition-colors"
-                  >
-                    <ChevronLeft className="w-3.5 h-3.5" />
-                  </button>
-                  <button
-                    onClick={handleNextProject}
-                    title="Next Case Study"
-                    className="p-1.5 rounded-lg bg-[#141414] border border-[#262626] text-neutral-400 hover:text-white transition-colors"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Showcase Main Stage (Visual + Spec) */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
-              
-              {/* Left: Staggered Image Visual Stage */}
-              <div className="lg:col-span-7">
-                <StaggeredImageReveal
-                  currentSrc={currentCase.heroImage}
-                  previousSrc={prevCase?.heroImage}
-                  alt={currentCase.title}
-                  mode={revealMode}
-                  sliceCount={6}
-                  aspectRatioClass="aspect-[16/10] sm:aspect-[16/9]"
-                  onImageClick={() => setActiveModalCaseStudy(currentCase)}
-                  overlayBadge={
-                    <span className="px-3 py-1 rounded text-xs font-mono font-medium bg-black/85 text-blue-400 border border-neutral-700 backdrop-blur-md">
-                      {currentCase.category}
-                    </span>
-                  }
-                />
-                <div className="mt-2 flex items-center justify-between text-[11px] text-neutral-500 font-mono px-1">
-                  <span>✦ Click image or button to view project story</span>
-                  <span>{currentCase.tags.slice(0, 3).join(' • ')}</span>
-                </div>
-              </div>
-
-              {/* Right: Technical Spec & Performance Metrics */}
-              <div className="lg:col-span-5 space-y-4">
-                
-                {/* Category & Title */}
-                <div>
-                  <div className="text-xs font-mono text-neutral-400 mb-1">
-                    Client: <strong className="text-white font-medium">{currentCase.client}</strong>
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug">
-                    {currentCase.title}
-                  </h3>
-                </div>
-
-                {/* Challenge & Solution Summary */}
-                <div className="space-y-2 text-xs text-neutral-300 leading-relaxed bg-[#111111] p-3.5 rounded-xl border border-[#222222]">
-                  <div>
-                    <span className="text-rose-400 font-mono block text-[10px] uppercase font-semibold">The Problem</span>
-                    <p className="line-clamp-2 text-neutral-400 mt-0.5">{currentCase.challenge}</p>
-                  </div>
-                  <div className="pt-2 border-t border-[#1f1f1f]">
-                    <span className="text-blue-400 font-mono block text-[10px] uppercase font-semibold">What We Delivered</span>
-                    <p className="line-clamp-2 text-neutral-300 mt-0.5">{currentCase.solution}</p>
-                  </div>
-                </div>
-
-                {/* Key Metrics Grid */}
-                <div>
-                  <span className="text-[10px] font-mono uppercase text-neutral-500 tracking-wider block mb-1.5">
-                    Real Results Achieved
-                  </span>
-                  <div className="grid grid-cols-3 gap-2">
-                    {currentCase.metrics.map((m, idx) => (
-                      <div
-                        key={idx}
-                        className="p-2.5 rounded-lg bg-[#111111] border border-[#222222] text-center"
-                      >
-                        <div className="text-base font-bold text-white tracking-tight">
-                          {m.value}
-                        </div>
-                        <div className="text-[10px] text-neutral-400 font-mono truncate mt-0.5">
-                          {m.label}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {currentCase.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-[#141414] border border-[#262626] text-neutral-300"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
-                  {(currentCase.category === 'POS Software' || currentCase.title.toLowerCase().includes('pos')) && (
-                    <button
-                      type="button"
-                      onClick={() => setIsPOSSimulatorOpen(true)}
-                      className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
-                    >
-                      <Barcode className="w-3.5 h-3.5" />
-                      <span>Launch POS Simulator</span>
-                    </button>
-                  )}
-
-                  {currentCase.liveUrl && (
-                    <a
-                      href={currentCase.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Visit Live Website</span>
-                    </a>
-                  )}
-
-                  <button
-                    onClick={() => setActiveModalCaseStudy(currentCase)}
-                    className="px-4 py-2.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2"
-                  >
-                    <span>View Project Story</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-
-                  <a
-                    href={`https://wa.me/923099489168?text=${encodeURIComponent(
-                      `Hello Aqeel, I saw your ${currentCase.title} project on BLUDS Agency and want something similar.`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="px-3.5 py-2.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] text-neutral-200 border border-[#262626] text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                    <span>WhatsApp</span>
-                  </a>
-                </div>
-
-              </div>
-
-            </div>
-
-            {/* Bottom Project Thumbnail Strip */}
-            <div className="mt-7 pt-5 border-t border-[#1c1c1c]">
-              <div className="flex items-center justify-between mb-2 text-xs text-neutral-400">
-                <span className="font-mono text-[11px]">Select Project to Trigger Staggered Reveal:</span>
-                <span className="font-mono text-[10px] text-neutral-500">
-                  {isPlaying ? 'Auto-cycling' : 'Paused'}
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-                {featuredCases.map((item, idx) => {
-                  const isActive = idx === featuredIndex;
-                  return (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => handleSelectProject(idx)}
-                      className={`relative p-2 rounded-lg border text-left transition-all overflow-hidden flex flex-col justify-between ${
-                        isActive
-                          ? 'bg-[#141720] border-blue-500 ring-1 ring-blue-500/50'
-                          : 'bg-[#111111] border-[#222222] hover:border-neutral-600 opacity-75 hover:opacity-100'
-                      }`}
-                    >
-                      <div>
-                        <div className="text-[10px] font-mono text-blue-400 truncate mb-0.5">
-                          {item.category}
-                        </div>
-                        <div className="text-xs font-medium text-white truncate">
-                          {item.client}
-                        </div>
-                      </div>
-
-                      {/* Small thumbnail preview */}
-                      <div className="mt-2 h-8 rounded overflow-hidden bg-black relative">
-                        <OptimizedImage
-                          src={item.heroImage}
-                          alt={item.title}
-                          width={240}
-                          height={64}
-                          className="w-full h-full object-cover"
-                          pictureClassName="w-full h-full block"
-                        />
-                      </div>
-
-                      {/* Progress bar on active card */}
-                      {isActive && (
-                        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#1b253b]">
-                          <div 
-                            className="h-full bg-blue-500 transition-all duration-100"
-                            style={{ width: `${progress}%` }}
-                          />
-                        </div>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-          </div>
-        )}
-
-        {/* ============================================================== */}
-        {/* FILTERABLE ALL CASE STUDIES GRID                               */}
-        {/* ============================================================== */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pt-4 border-t border-[#1a1a1a]">
-          <div>
-            <h3 className="text-lg font-semibold text-white">
-              Browse All Projects & Live Websites
-            </h3>
-            <p className="text-xs text-neutral-400">
-              Filter by service category to explore live demos
-            </p>
-          </div>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-                  activeCategory === cat
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-[#111111] text-neutral-400 hover:text-white border border-[#222222]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+        <div className="mb-7 flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filter projects by service">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setActiveCategory(category)}
+              aria-pressed={activeCategory === category}
+              className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
+                activeCategory === category
+                  ? 'border-blue-600 bg-blue-600 text-white'
+                  : 'border-slate-300 bg-white text-slate-700 hover:border-lime-500 hover:bg-lime-50'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
         </div>
 
-        {/* ============================================================== */}
-        {/* EMBEDDED IN-PAGE LIVE POS BARCODE SCANNER SIMULATOR           */}
-        {/* ============================================================== */}
-        {(activeCategory === 'All' || activeCategory === 'POS Software') && (
-          <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-[#0c0c0c] border border-blue-900/40 relative overflow-hidden">
-            {/* Header info */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#1c1c1c]">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-wider">
-                    Interactive POS Barcode Register • Try Scanning Live
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-                  <span>Supermarket Checkout Barcode Simulator</span>
-                  <span className="text-xs font-mono font-normal text-blue-400 bg-blue-950/60 border border-blue-800/50 px-2 py-0.5 rounded">
-                    LuxeMart Engine
-                  </span>
-                </h3>
-                <p className="text-xs text-neutral-400 mt-1">
-                  Click any sample retail product below to trigger an instant laser beep scan and watch the digital receipt calculate in under 2 seconds.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <button
-                  type="button"
-                  onClick={() => setIsPOSSimulatorOpen(true)}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Full Screen Register</span>
-                </button>
-                <a
-                  href={`https://wa.me/923099489168?text=${encodeURIComponent(
-                    'Hello Aqeel, I tried the live POS barcode scanner on BLUDS Agency and want this billing software for my retail store.'
-                  )}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
-                >
-                  <MessageSquare className="w-3.5 h-3.5 fill-black" />
-                  <span>Get POS For Shop</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Interactive Grid: Left Items to Scan, Right Live Receipt */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-5 items-start">
-              {/* Left Column: Products to scan */}
-              <div className="lg:col-span-7 space-y-3">
-                <div className="flex items-center justify-between text-xs font-mono text-neutral-400">
-                  <span className="flex items-center gap-1.5">
-                    <Barcode className="w-4 h-4 text-blue-400" />
-                    <span>Click Any Product to Scan with Beep:</span>
-                  </span>
-                  <span className="text-[11px] text-neutral-500">
-                    Audio enabled • Web Audio API
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {samplePOSProducts.map((p) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => handleScanProduct(p)}
-                      className="p-3 rounded-xl bg-[#121212] hover:bg-[#181818] border border-[#222222] hover:border-blue-500/60 text-left transition-all group flex items-center justify-between"
-                    >
-                      <div className="space-y-0.5">
-                        <div className="text-xs font-semibold text-white group-hover:text-blue-300 transition-colors">
-                          {p.name}
-                        </div>
-                        <div className="text-[10px] font-mono text-neutral-500">
-                          SKU: {p.barcode}
-                        </div>
-                        <div className="text-xs font-bold text-emerald-400 font-mono">
-                          Rs. {p.price.toLocaleString()}
-                        </div>
-                      </div>
-
-                      <div className="w-8 h-8 rounded-lg bg-blue-600/20 group-hover:bg-blue-600 text-blue-400 group-hover:text-white flex items-center justify-center transition-all shrink-0">
-                        <Plus className="w-4 h-4" />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-
-                {lastScannedName && (
-                  <div className={`p-2.5 rounded-lg border text-xs font-mono flex items-center justify-between transition-all ${
-                    isScanningAnim
-                      ? 'bg-blue-950/80 border-blue-400 text-blue-200 ring-2 ring-blue-500/50'
-                      : 'bg-[#111111] border-[#222222] text-neutral-300'
-                  }`}>
-                    <span className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
-                      <span>Last Scanned: <strong className="text-white">{lastScannedName}</strong></span>
-                    </span>
-                    <span className="text-[10px] text-emerald-400 font-bold">✓ Added to Bill in 0.1s</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Right Column: Live Calculated Receipt */}
-              <div className="lg:col-span-5 rounded-xl border border-[#222222] bg-[#141414] p-4 text-neutral-300 font-mono text-xs space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-[#222222]">
-                  <span className="font-bold text-white text-[11px] uppercase tracking-wider">
-                    Receipt #LXM-9021
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleClearPosCart}
-                    className="text-[11px] text-neutral-400 hover:text-rose-400 flex items-center gap-1 transition-colors"
-                  >
-                    <Trash2 className="w-3 h-3" />
-                    <span>Clear</span>
-                  </button>
-                </div>
-
-                {posCart.length === 0 ? (
-                  <div className="py-6 text-center text-neutral-500 text-xs">
-                    Cart is empty. Click a product on the left to scan.
-                  </div>
-                ) : (
-                  <div className="space-y-2 max-h-36 overflow-y-auto pr-1">
-                    {posCart.map((item) => (
-                      <div key={item.id} className="flex items-center justify-between text-[11px]">
-                        <span className="truncate max-w-[170px] text-white">
-                          {item.name} <span className="text-neutral-500">×{item.qty}</span>
-                        </span>
-                        <span className="font-bold text-neutral-200">
-                          Rs. {(item.price * item.qty).toLocaleString()}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className="pt-2 border-t border-[#222222] space-y-1 text-[11px]">
-                  <div className="flex justify-between text-neutral-400">
-                    <span>Subtotal:</span>
-                    <span>Rs. {posSubtotal.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between text-neutral-400">
-                    <span>GST (5%):</span>
-                    <span>Rs. {posTax.toLocaleString()}</span>
-                  </div>
-                  <div className="flex justify-between text-white font-bold text-sm pt-1 border-t border-[#2a2a2a]">
-                    <span>Total Due:</span>
-                    <span className="text-emerald-400">Rs. {posTotal.toLocaleString()}</span>
-                  </div>
-                </div>
-
-                <div className="pt-2 flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => window.print()}
-                    disabled={posCart.length === 0}
-                    className="flex-1 py-1.5 px-3 rounded-lg bg-[#222222] hover:bg-[#2c2c2c] text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors disabled:opacity-40"
-                  >
-                    <Printer className="w-3.5 h-3.5" />
-                    <span>Print Slip</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setIsPOSSimulatorOpen(true)}
-                    className="flex-1 py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors"
-                  >
-                    <Barcode className="w-3.5 h-3.5" />
-                    <span>Live Register</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {filteredCases.map((project) => (
-            <Card3D key={project.id} intensity={4}>
-              <div
-                className="group rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors overflow-hidden flex flex-col h-full"
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => {
+            return (
+              <article
+                key={project.id}
+                className="overflow-hidden rounded-2xl border border-[#CBD5E1] bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-slate-900/5"
               >
-                {/* Image Frame */}
-                <div 
-                  onClick={() => setActiveModalCaseStudy(project)}
-                  className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f] cursor-pointer"
-                >
-                  <OptimizedImage
-                    src={project.heroImage}
-                    alt={project.title}
-                    width={800}
-                    height={450}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                    pictureClassName="w-full h-full block"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
-                  <div className="absolute top-3 left-3">
-                    <span className="px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-black/85 text-neutral-300 border border-neutral-700 backdrop-blur-sm">
+                <div className="group relative aspect-[16/9] overflow-hidden bg-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => setActiveModalCaseStudy(project)}
+                    className="block h-full w-full text-left"
+                    aria-label={`View ${project.title} case study`}
+                  >
+                    <OptimizedImage
+                      src={project.heroImage}
+                      alt={project.title}
+                      width={800}
+                      height={450}
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      pictureClassName="block h-full w-full"
+                    />
+                    <span className="absolute left-3 top-3 rounded-full bg-white/90 px-3 py-1 text-[10px] font-semibold text-slate-800 shadow-sm">
                       {project.category}
                     </span>
-                  </div>
+                  </button>
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/85 border border-neutral-700 flex items-center justify-center text-neutral-300 hover:text-white hover:border-emerald-500 hover:bg-emerald-600 transition-colors"
-                      title="Visit Live Website"
+                      className="absolute right-3 top-3 rounded-lg bg-white/90 p-2 text-slate-800 transition-colors hover:bg-lime-300"
+                      aria-label={`Visit ${project.client} website`}
                     >
-                      <ExternalLink className="w-4 h-4" />
+                      <ExternalLink className="h-4 w-4" />
                     </a>
                   )}
                 </div>
 
-                {/* Card Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    <div className="text-xs text-neutral-400 mb-1">
-                      Client: <span className="text-neutral-200 font-medium">{project.client}</span>
-                    </div>
-                    <h3 
+                <div className="flex h-full flex-col p-5">
+                  <p className="text-xs font-medium text-slate-500">{project.client}</p>
+                  <button
+                    type="button"
+                    onClick={() => setActiveModalCaseStudy(project)}
+                    className="mt-1 text-left text-lg font-bold leading-snug text-slate-900 hover:text-lime-800"
+                  >
+                    {project.title}
+                  </button>
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600">{project.summary}</p>
+
+                  <div className="mt-4 grid grid-cols-3 gap-2 border-t border-slate-200 pt-4">
+                    {project.metrics.slice(0, 3).map((metric) => (
+                      <div key={metric.label} className="rounded-lg bg-slate-50 p-2">
+                        <div className="truncate text-xs font-bold text-lime-800">{metric.value}</div>
+                        <div className="mt-1 line-clamp-2 text-[10px] leading-tight text-slate-500">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-slate-200 pt-4">
+                    <button
+                      type="button"
                       onClick={() => setActiveModalCaseStudy(project)}
-                      className="text-lg font-semibold text-white mb-2 hover:text-blue-400 transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 rounded-lg bg-slate-100 px-3 py-2 text-xs font-semibold text-slate-800 transition-colors hover:bg-lime-100"
                     >
-                      {project.title}
-                    </h3>
-                    <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
-                      {project.summary}
-                    </p>
-                  </div>
-
-                  {/* Metrics Highlight Pills */}
-                  <div className="pt-3 border-t border-[#1c1c1c] mb-4">
-                    <div className="grid grid-cols-3 gap-2">
-                      {project.metrics.map((m, idx) => (
-                        <div key={idx} className="p-2 rounded bg-[#111111] border border-[#1f1f1f]">
-                          <div className="text-xs font-semibold text-blue-400 truncate">
-                            {m.value}
-                          </div>
-                          <div className="text-[10px] text-neutral-500 truncate mt-0.5 font-mono">
-                            {m.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Real Action Buttons */}
-                  <div className="pt-3 border-t border-[#1a1a1a] flex items-center gap-2">
+                      Case study <ArrowUpRight className="h-3.5 w-3.5" />
+                    </button>
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                        className="inline-flex items-center gap-1 rounded-lg bg-blue-600 px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-blue-500"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        <span>Visit Live Website</span>
+                        Live project <ExternalLink className="h-3.5 w-3.5" />
                       </a>
                     )}
-                    {(project.category === 'POS Software' || project.title.toLowerCase().includes('pos')) && (
-                      <button
-                        type="button"
-                        onClick={() => setIsPOSSimulatorOpen(true)}
-                        className="py-2 px-2.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/60 border border-blue-500/40 text-blue-300 text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
-                        title="Try Live Barcode POS Scanner"
-                      >
-                        <Barcode className="w-3.5 h-3.5 text-blue-400" />
-                        <span>Scanner</span>
-                      </button>
-                    )}
-                    <button
-                      type="button"
-                      onClick={() => setActiveModalCaseStudy(project)}
-                      className="py-2 px-3 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 hover:text-white text-xs font-medium flex items-center justify-center gap-1 transition-colors"
-                    >
-                      <span>Story</span>
-                      <ArrowRight className="w-3 h-3 text-neutral-400" />
-                    </button>
                     <a
-                      href={`https://wa.me/923099489168?text=${encodeURIComponent(
-                        `Hello Aqeel, I saw ${project.title} on BLUDS Agency and want something similar for my business.`
-                      )}`}
+                      href={`https://wa.me/923099489168?text=${encodeURIComponent(`Hello Aqeel, I saw ${project.title} and would like to discuss a similar project.`)}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-2 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-[#25D366] hover:text-[#20bd5a] transition-colors"
-                      title="Inquire on WhatsApp"
+                      aria-label={`Ask about a project like ${project.client}`}
+                      className="ml-auto rounded-lg border border-slate-300 p-2 text-slate-700 transition-colors hover:border-lime-500 hover:bg-lime-50"
                     >
-                      <MessageSquare className="w-4 h-4 fill-[#25D366]" />
+                      <MessageSquare className="h-4 w-4" />
                     </a>
                   </div>
-
                 </div>
-              </div>
-            </Card3D>
-          ))}
+              </article>
+            );
+          })}
         </div>
-
       </div>
     </section>
   );

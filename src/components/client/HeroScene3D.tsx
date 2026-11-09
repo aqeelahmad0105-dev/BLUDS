@@ -5,16 +5,16 @@ import { RotateCw, Eye, Sparkles, Compass } from 'lucide-react';
 interface HeroScene3DProps {
   activeMode: 'cloud' | 'ai' | 'mobile' | 'enterprise';
   className?: string;
+  showControls?: boolean;
 }
 
-export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className = '' }) => {
+export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className = '', showControls = true }) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [isWireframe, setIsWireframe] = useState<boolean>(false);
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
   // References to keep track of mutable Three.js objects across renders
-  const sceneRef = useRef<THREE.Scene | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const mainGroupRef = useRef<THREE.Group | null>(null);
   const activeMeshGroupRef = useRef<THREE.Group | null>(null);
@@ -28,8 +28,6 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
 
     // 1. Scene Setup
     const scene = new THREE.Scene();
-    sceneRef.current = scene;
-
     const width = container.clientWidth || 500;
     const height = container.clientHeight || 400;
 
@@ -41,7 +39,7 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     let renderer: THREE.WebGLRenderer;
     try {
       renderer = new THREE.WebGLRenderer({
-        antialias: true,
+        antialias: window.innerWidth >= 768,
         alpha: true,
         powerPreference: 'high-performance',
       });
@@ -51,31 +49,34 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     }
 
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const getPixelRatio = () => Math.min(
+      window.devicePixelRatio || 1,
+      window.innerWidth < 640 ? 1.25 : window.innerWidth < 1024 ? 1.5 : 2
+    );
+    renderer.setPixelRatio(getPixelRatio());
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
     rendererRef.current = renderer;
 
     // Clear previous children and append canvas
-    container.innerHTML = '';
-    container.appendChild(renderer.domElement);
+    container.replaceChildren(renderer.domElement);
 
     // 4. Lighting Rig (High-Contrast Cobalt & Specular Highlights)
-    const ambientLight = new THREE.AmbientLight(0x0a1020, 2.5);
+    const ambientLight = new THREE.AmbientLight(0x0f172a, 2.5);
     scene.add(ambientLight);
 
     // Deep Cobalt Blue Key Light
-    const keyLight = new THREE.DirectionalLight(0x2563eb, 3.5);
+    const keyLight = new THREE.DirectionalLight(0x3b82f6, 5);
     keyLight.position.set(5, 5, 5);
     scene.add(keyLight);
 
     // Cyan-Blue Rim Light
-    const rimLight = new THREE.DirectionalLight(0x60a5fa, 2.0);
+    const rimLight = new THREE.DirectionalLight(0x60a5fa, 3.5);
     rimLight.position.set(-5, -3, -4);
     scene.add(rimLight);
 
     // Dynamic Cursor Tracking Point Light
-    const pointLight = new THREE.PointLight(0x3b82f6, 4.0, 15);
+    const pointLight = new THREE.PointLight(0x3b82f6, 6.0, 15);
     pointLight.position.set(0, 0, 4);
     scene.add(pointLight);
 
@@ -90,7 +91,7 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     activeMeshGroupRef.current = activeMeshGroup;
 
     // 6. Ambient Constellation Particle Field (Depth & Atmosphere)
-    const particleCount = 280;
+    const particleCount = window.innerWidth < 640 ? 140 : window.innerWidth < 1024 ? 200 : 280;
     const particleGeometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
@@ -201,6 +202,7 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
       const newHeight = container.clientHeight;
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
+      rendererRef.current.setPixelRatio(getPixelRatio());
       rendererRef.current.setSize(newWidth, newHeight);
     };
 
@@ -209,7 +211,8 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
 
     // 9. Animation Loop with Visibility & Focus optimization (stops when out of view/not in focus)
     let animationFrameId: number = 0;
-    let clock = new THREE.Clock();
+    let elapsedTime = 0;
+    let animationStartedAt = 0;
     let isIntersecting = true;
     let isWindowActive = typeof document !== 'undefined' ? !document.hidden : true;
     let isRunning = false;
@@ -217,28 +220,28 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     const startAnimate = () => {
       if (isRunning || !isIntersecting || !isWindowActive) return;
       isRunning = true;
-      clock.start();
-      animate();
+      animationStartedAt = performance.now();
+      animate(animationStartedAt);
     };
 
     const stopAnimate = () => {
       if (!isRunning) return;
+      elapsedTime += (performance.now() - animationStartedAt) / 1000;
       isRunning = false;
-      clock.stop();
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
         animationFrameId = 0;
       }
     };
 
-    const animate = () => {
+    const animate = (timestamp: number) => {
       if (!isRunning || !isIntersecting || !isWindowActive) {
         isRunning = false;
         return;
       }
 
       animationFrameId = requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
+      const currentElapsedTime = elapsedTime + (timestamp - animationStartedAt) / 1000;
 
       // Smooth lerping of mouse target
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.05;
@@ -251,14 +254,14 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
       // Update Point Light position to follow cursor
       pointLight.position.x = mouseRef.current.x * 3.5;
       pointLight.position.y = mouseRef.current.y * 3.5;
-      pointLight.position.z = 3.5 + Math.sin(elapsedTime * 2) * 0.5;
+      pointLight.position.z = 3.5 + Math.sin(currentElapsedTime * 2) * 0.5;
 
       // Rotate Main Group
       if (mainGroupRef.current) {
         if (autoRotate && !dragRef.current.isDown) {
-          mainGroupRef.current.rotation.y = elapsedTime * 0.35 + dragRef.current.rotY;
-          mainGroupRef.current.rotation.x = Math.sin(elapsedTime * 0.25) * 0.15 + dragRef.current.rotX + mouseRef.current.y * 0.2;
-          mainGroupRef.current.rotation.z = Math.cos(elapsedTime * 0.2) * 0.08;
+          mainGroupRef.current.rotation.y = currentElapsedTime * 0.35 + dragRef.current.rotY;
+          mainGroupRef.current.rotation.x = Math.sin(currentElapsedTime * 0.25) * 0.15 + dragRef.current.rotX + mouseRef.current.y * 0.2;
+          mainGroupRef.current.rotation.z = Math.cos(currentElapsedTime * 0.2) * 0.08;
         } else {
           mainGroupRef.current.rotation.y = dragRef.current.rotY;
           mainGroupRef.current.rotation.x = dragRef.current.rotX + mouseRef.current.y * 0.2;
@@ -271,24 +274,25 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
 
       // Slowly rotate particle field
       if (particlesRef.current) {
-        particlesRef.current.rotation.y = -elapsedTime * 0.04;
-        particlesRef.current.rotation.x = elapsedTime * 0.02;
+        particlesRef.current.rotation.y = -currentElapsedTime * 0.04;
+        particlesRef.current.rotation.x = currentElapsedTime * 0.02;
       }
 
       // Animate child elements inside mode group (orbiting rings, nodes, etc.)
-      if (activeMeshGroupRef.current) {
-        activeMeshGroupRef.current.children.forEach((child, index) => {
+      const children = activeMeshGroupRef.current?.children;
+      if (children) {
+        for (const child of children) {
           if (child.name === 'orbitRing1') {
-            child.rotation.z = elapsedTime * 0.5;
-            child.rotation.x = Math.PI / 4 + Math.sin(elapsedTime * 0.5) * 0.1;
+            child.rotation.z = currentElapsedTime * 0.5;
+            child.rotation.x = Math.PI / 4 + Math.sin(currentElapsedTime * 0.5) * 0.1;
           } else if (child.name === 'orbitRing2') {
-            child.rotation.y = -elapsedTime * 0.6;
+            child.rotation.y = -currentElapsedTime * 0.6;
             child.rotation.z = Math.PI / 3;
           } else if (child.name === 'pulsingCore') {
-            const scale = 1 + Math.sin(elapsedTime * 3) * 0.06;
+            const scale = 1 + Math.sin(currentElapsedTime * 3) * 0.06;
             child.scale.set(scale, scale, scale);
           }
-        });
+        }
       }
 
       renderer.render(scene, camera);
@@ -355,14 +359,22 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
       window.removeEventListener('touchend', handleTouchEnd);
 
       // Dispose three.js resources
+      const disposedGeometries = new Set<THREE.BufferGeometry>();
+      const disposedMaterials = new Set<THREE.Material>();
       scene.traverse((object) => {
-        if (object instanceof THREE.Mesh || object instanceof THREE.LineSegments || object instanceof THREE.Points) {
-          object.geometry?.dispose();
-          if (Array.isArray(object.material)) {
-            object.material.forEach((mat) => mat.dispose());
-          } else {
-            object.material?.dispose();
+        if (object instanceof THREE.Mesh || object instanceof THREE.Line || object instanceof THREE.Points) {
+          if (!disposedGeometries.has(object.geometry)) {
+            object.geometry.dispose();
+            disposedGeometries.add(object.geometry);
           }
+
+          const materials = Array.isArray(object.material) ? object.material : [object.material];
+          materials.forEach((material) => {
+            if (!disposedMaterials.has(material)) {
+              material.dispose();
+              disposedMaterials.add(material);
+            }
+          });
         }
       });
       renderer.dispose();
@@ -377,37 +389,48 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     const activeGroup = activeMeshGroupRef.current;
     if (!activeGroup) return;
 
-    // Clear existing children
+    const disposedGeometries = new Set<THREE.BufferGeometry>();
+    const disposedMaterials = new Set<THREE.Material>();
     while (activeGroup.children.length > 0) {
-      const child = activeGroup.children[0] as THREE.Mesh;
-      child.geometry?.dispose();
-      if (Array.isArray(child.material)) {
-        child.material.forEach((m) => m.dispose());
-      } else {
-        child.material?.dispose();
-      }
+      const child = activeGroup.children[0];
+      child.traverse((object) => {
+        if (object instanceof THREE.Mesh || object instanceof THREE.Line || object instanceof THREE.Points) {
+          if (!disposedGeometries.has(object.geometry)) {
+            object.geometry.dispose();
+            disposedGeometries.add(object.geometry);
+          }
+
+          const materials = Array.isArray(object.material) ? object.material : [object.material];
+          materials.forEach((material) => {
+            if (!disposedMaterials.has(material)) {
+              material.dispose();
+              disposedMaterials.add(material);
+            }
+          });
+        }
+      });
       activeGroup.remove(child);
     }
 
     // Common High-End Metallic Material
     const metallicMaterial = new THREE.MeshStandardMaterial({
-      color: 0x0f172a,
+      color: 0x1f2937,
       metalness: 0.9,
       roughness: 0.15,
       wireframe: isWireframe,
-      emissive: 0x1d4ed8,
-      emissiveIntensity: isWireframe ? 0.35 : 0.12,
+      emissive: 0x1e3a8a,
+      emissiveIntensity: isWireframe ? 0.55 : 0.35,
     });
 
     const glowWireMaterial = new THREE.LineBasicMaterial({
       color: 0x60a5fa,
       transparent: true,
-      opacity: 0.85,
+      opacity: 1,
     });
 
     const coreMaterial = new THREE.MeshStandardMaterial({
-      color: 0x2563eb,
-      emissive: 0x3b82f6,
+      color: 0x3b82f6,
+      emissive: 0x2563eb,
       emissiveIntensity: 0.9,
       roughness: 0.1,
       metalness: 0.95,
@@ -417,7 +440,7 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     const ringMaterial = new THREE.LineBasicMaterial({
       color: 0x3b82f6,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.85,
     });
 
     // Helper: Add orbiting satellites
@@ -573,7 +596,8 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
         title="Click and drag to rotate 3D system architecture"
       />
 
-      {/* Floating 3D Control Pill & Hint (Styled as minimal corporate HUD) */}
+      {showControls && (
+        <>
       <div className="absolute top-3 right-3 flex items-center gap-1.5 z-20 pointer-events-auto">
         {/* Wireframe toggle */}
         <button
@@ -621,7 +645,8 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
           <span>Interactive 3D WebGL • Drag to rotate 360°</span>
         </span>
       </div>
+        </>
+      )}
     </div>
   );
 };
-

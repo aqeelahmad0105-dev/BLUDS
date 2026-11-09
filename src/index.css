@@ -5,21 +5,78 @@
 @layer base {
   :root {
     --bg-main: #000000;
+    --color-primary: #e5e5e5;
+    --color-accent: #3b82f6;
     --border-subtle: #222222;
   }
 
   body {
-    background-color: #000000;
+    background-color: var(--bg-main);
     color: #e5e5e5;
     overflow-x: hidden;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
-  /* Consistent heading styling */
   h1, h2, h3, h4, h5, h6 {
     color: #ffffff;
     letter-spacing: -0.02em;
   }
+}
+
+@layer utilities {
+  .bg-white,
+  .bg-gray-50,
+  .bg-gray-100,
+  .bg-slate-50,
+  .bg-slate-100 {
+    background-color: #0c0c0c !important;
+  }
+
+  [class~="bg-white/70"],
+  [class~="bg-white/80"],
+  [class~="bg-white/90"] {
+    background-color: rgb(12 12 12 / 90%) !important;
+  }
+
+  .text-slate-900,
+  .text-slate-800 {
+    color: #e5e5e5 !important;
+  }
+
+  .text-slate-700,
+  .text-slate-600 {
+    color: #a3a3a3 !important;
+  }
+
+  .border-slate-200,
+  .border-slate-300,
+  .border-gray-200,
+  .border-gray-300 {
+    border-color: #262626 !important;
+  }
+
+  [class~="border-[#CBD5E1]"] {
+    border-color: #262626 !important;
+  }
+
+  .bg-lime-50,
+  .bg-lime-100,
+  .hover\:bg-lime-50:hover,
+  .hover\:bg-lime-100:hover {
+    background-color: #172554 !important;
+  }
+
+  .text-lime-700,
+  .text-lime-800 {
+    color: #93c5fd !important;
+  }
+
+  .border-lime-200,
+  .border-lime-500,
+  .hover\:border-lime-500:hover {
+    border-color: #2563eb !important;
+  }
+
 }
 
 /* Subtle, standard scrollbar */
