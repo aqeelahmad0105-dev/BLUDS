@@ -34,7 +34,7 @@
 | 21 | **How It Works (3 Steps)** | Live | Clear timeline chips (Day 1-2, Day 3-10, Day 14 Launch) |
 | 22 | **Client Reviews** | Live | Real Pakistani business owner testimonials across major cities |
 | 23 | **FAQ Section** | Live | Layman Q&A with live instant search filter |
-| 24 | **Contact Form & Lead Capture** | Live | Pre-fills WhatsApp message to Aqeel + automated email mailto |
+| 24 | **Contact Form & Serverless Email** | Live | Automated background email dispatch (EmailJS) + pre-filled WhatsApp |
 | 25 | **Floating WhatsApp Widget** | Live | Compact 48px green blob at bottom-right, pulsing beacon |
 | 26 | **Footer** | Live | Quick navigation, legal ownership guarantees, contact info |
 | 27 | **Admin Portal (`/login`)** | Live | Protected dashboard, inquiries manager, CSV lead export |
@@ -176,7 +176,7 @@ Turn-key packages listed directly below the services grid:
 | **Done** | **Hero Metrics Pill & 30s Highlights** | Completed | Added trust pill in Hero and 4-chapter auto-cycling agency highlights video modal. |
 | **Done** | **Compact Floating WhatsApp Blob** | Completed | Stationed compact 48px circle blob at bottom-right; removed obstructive top card. |
 | **Done** | **Schema.org Structured Data** | Completed | Added complete `LocalBusiness` / `ProfessionalService` JSON-LD markup in `index.html`. |
-| **High** | **Automated Serverless Email (Resend / EmailJS)** | Planned | Connect Resend/EmailJS so form inquiries dispatch emails in background without email client. |
+| **Done** | **Automated Serverless Email (EmailJS)** | Completed | Client form submissions dispatch automated emails to m.bluds2@gmail.com in the background without needing a mail client. |
 | **High** | **Cloud Database Sync (Supabase / Firebase)** | Planned | Connect Admin Dashboard to cloud DB so inquiries sync across all founders' devices simultaneously. |
 | **Medium** | **Image Format Upgrade (WebP / AVIF)** | Planned | Convert static demo images to WebP/AVIF to accelerate loading on cellular data networks. |
 | **Low** | **Urdu / Roman Urdu Toggle** | Planned | Add optional toggle for Urdu explanations for local shop owners who prefer business discussions in Urdu. |

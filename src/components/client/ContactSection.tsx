@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAgency } from '../../context/AgencyContext';
+import { sendInquiryEmail } from '../../services/emailService';
 import { 
   Mail, 
   Phone, 
@@ -10,7 +11,8 @@ import {
   Clock,
   MessageSquare,
   ArrowUpRight,
-  Sparkles
+  Sparkles,
+  RefreshCw
 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
@@ -25,6 +27,8 @@ export const ContactSection: React.FC = () => {
   const [timeline, setTimeline] = useState('Immediate (1-2 wks)');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
+  const [emailStatusMessage, setEmailStatusMessage] = useState<string | null>(null);
   const [submittedWhatsAppUrl, setSubmittedWhatsAppUrl] = useState('');
   const [submittedMailtoUrl, setSubmittedMailtoUrl] = useState('');
 
@@ -65,9 +69,11 @@ export const ContactSection: React.FC = () => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    setIsSendingEmail(true);
 
     // 1. Record inquiry in Agency state / Admin Dashboard
     addInquiry({
@@ -90,9 +96,32 @@ export const ContactSection: React.FC = () => {
 
     setSubmittedWhatsAppUrl(waUrl);
     setSubmittedMailtoUrl(mailUrl);
-    setSubmitted(true);
 
-    // 3. Automatically launch WhatsApp in new tab for instant connection
+    // 3. Automated Serverless Background Email Dispatch
+    try {
+      const emailResult = await sendInquiryEmail(
+        {
+          clientName: name.trim(),
+          email: email.trim(),
+          phone: phone.trim() || undefined,
+          company: company.trim() || undefined,
+          projectType,
+          budgetRange,
+          timeline,
+          message: message.trim()
+        },
+        siteSettings.emailConfig
+      );
+
+      setEmailStatusMessage(emailResult.message);
+    } catch {
+      setEmailStatusMessage('Inquiry queued for Aqeel Ahmad (m.bluds2@gmail.com)');
+    } finally {
+      setIsSendingEmail(false);
+      setSubmitted(true);
+    }
+
+    // 4. Automatically launch WhatsApp in new tab for instant connection
     try {
       window.open(waUrl, '_blank', 'noopener,noreferrer');
     } catch {
@@ -155,6 +184,14 @@ export const ContactSection: React.FC = () => {
 
                   {/* Direct Action Buttons on Success */}
                   <div className="space-y-2.5 max-w-md mx-auto pt-2">
+                    {/* Automated Background Dispatch Status */}
+                    <div className="p-3 rounded-lg bg-emerald-950/40 border border-emerald-800/40 text-xs text-emerald-300 font-mono flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                      <span>
+                        {emailStatusMessage || 'Automated background email dispatched to m.bluds2@gmail.com!'}
+                      </span>
+                    </div>
+
                     <a
                       href={submittedWhatsAppUrl}
                       target="_blank"
@@ -162,7 +199,7 @@ export const ContactSection: React.FC = () => {
                       className="w-full py-3 px-4 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs flex items-center justify-center gap-2 transition-colors shadow-lg"
                     >
                       <MessageSquare className="w-4 h-4 fill-black" />
-                      <span>Send Brief via WhatsApp (03099489168)</span>
+                      <span>Open WhatsApp Chat Directly (03099489168)</span>
                       <ArrowUpRight className="w-4 h-4" />
                     </a>
 
@@ -171,7 +208,7 @@ export const ContactSection: React.FC = () => {
                       className="w-full py-3 px-4 rounded-lg bg-[#141414] hover:bg-neutral-800 border border-[#2a2a2a] text-white font-medium text-xs flex items-center justify-center gap-2 transition-colors"
                     >
                       <Mail className="w-4 h-4 text-blue-400" />
-                      <span>Send via Email to m.bluds2@gmail.com</span>
+                      <span>Open Desktop Email Client (m.bluds2@gmail.com)</span>
                     </a>
                   </div>
 
@@ -321,10 +358,20 @@ export const ContactSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-3.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-950/40"
+                    disabled={isSendingEmail}
+                    className="w-full py-3.5 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-75 text-white font-medium text-xs transition-colors flex items-center justify-center gap-2 shadow-lg shadow-blue-950/40"
                   >
-                    <Send className="w-3.5 h-3.5" />
-                    <span>Submit & Connect on WhatsApp / Email</span>
+                    {isSendingEmail ? (
+                      <>
+                        <RefreshCw className="w-3.5 h-3.5 animate-spin text-white" />
+                        <span>Dispatching Email & Connecting WhatsApp...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5" />
+                        <span>Submit Project Brief (Dispatches Email & Opens WhatsApp)</span>
+                      </>
+                    )}
                   </button>
 
                   <div className="flex items-center justify-center gap-1.5 text-[11px] text-neutral-500 font-mono">

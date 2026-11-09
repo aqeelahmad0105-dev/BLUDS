@@ -107,6 +107,17 @@ export interface Founder {
   active: boolean;
 }
 
+export interface SiteEmailConfig {
+  enabled: boolean;
+  provider: 'emailjs' | 'web3forms' | 'formspree';
+  recipientEmail: string;
+  emailjsServiceId?: string;
+  emailjsTemplateId?: string;
+  emailjsPublicKey?: string;
+  web3formsAccessKey?: string;
+  formspreeId?: string;
+}
+
 export interface SiteSettings {
   agencyName: string;
   tagline: string;
@@ -146,6 +157,7 @@ export interface SiteSettings {
     averageDeliveryWeeks: string;
     uptimeSLA: string;
   };
+  emailConfig?: SiteEmailConfig;
 }
 
 export interface EstimatorChoice {

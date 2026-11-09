@@ -38,6 +38,16 @@ export const initialSiteSettings: SiteSettings = {
     clientSatisfactionRate: '99.6%',
     averageDeliveryWeeks: '1 - 2 Weeks',
     uptimeSLA: '100% Guaranteed'
+  },
+  emailConfig: {
+    enabled: true,
+    provider: 'emailjs',
+    recipientEmail: 'm.bluds2@gmail.com',
+    emailjsServiceId: '',
+    emailjsTemplateId: '',
+    emailjsPublicKey: '',
+    web3formsAccessKey: '',
+    formspreeId: ''
   }
 };
 

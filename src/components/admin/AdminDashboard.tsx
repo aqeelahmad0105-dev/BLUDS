@@ -1373,6 +1373,231 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                 </div>
 
+                {/* 4. Automated Serverless Email Dispatch (EmailJS & Web3Forms) */}
+                <div className="p-5 rounded-xl bg-[#0c0c0c] border border-[#222222] space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-blue-500" />
+                        <h3 className="text-sm font-semibold text-white">
+                          Automated Background Email Dispatch
+                        </h3>
+                        <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950/60 text-emerald-400 border border-emerald-800/50">
+                          ZERO-BACKEND
+                        </span>
+                      </div>
+                      <p className="text-xs text-neutral-400 mt-1">
+                        Sends client inquiries automatically to your inbox in the background without needing a desktop mail client.
+                      </p>
+                    </div>
+
+                    <label className="flex items-center gap-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={settingsForm.emailConfig?.enabled ?? true}
+                        onChange={(e) =>
+                          setSettingsForm({
+                            ...settingsForm,
+                            emailConfig: {
+                              provider: settingsForm.emailConfig?.provider || 'emailjs',
+                              recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                              enabled: e.target.checked,
+                              emailjsServiceId: settingsForm.emailConfig?.emailjsServiceId || '',
+                              emailjsTemplateId: settingsForm.emailConfig?.emailjsTemplateId || '',
+                              emailjsPublicKey: settingsForm.emailConfig?.emailjsPublicKey || '',
+                              web3formsAccessKey: settingsForm.emailConfig?.web3formsAccessKey || '',
+                              formspreeId: settingsForm.emailConfig?.formspreeId || ''
+                            }
+                          })
+                        }
+                        className="rounded border-neutral-700 text-blue-600 focus:ring-0"
+                      />
+                      <span className="text-xs text-neutral-300">Active</span>
+                    </label>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-medium text-neutral-300 mb-1">
+                        Recipient Destination Email
+                      </label>
+                      <input
+                        type="email"
+                        value={settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com'}
+                        onChange={(e) =>
+                          setSettingsForm({
+                            ...settingsForm,
+                            emailConfig: {
+                              ...settingsForm.emailConfig,
+                              enabled: settingsForm.emailConfig?.enabled ?? true,
+                              provider: settingsForm.emailConfig?.provider || 'emailjs',
+                              recipientEmail: e.target.value
+                            }
+                          })
+                        }
+                        placeholder="m.bluds2@gmail.com"
+                        className="w-full px-3 py-2 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white focus:outline-none focus:border-blue-500 font-mono"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-medium text-neutral-300 mb-1">
+                        Active Provider
+                      </label>
+                      <select
+                        value={settingsForm.emailConfig?.provider || 'emailjs'}
+                        onChange={(e) =>
+                          setSettingsForm({
+                            ...settingsForm,
+                            emailConfig: {
+                              ...settingsForm.emailConfig,
+                              enabled: settingsForm.emailConfig?.enabled ?? true,
+                              recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                              provider: e.target.value as any
+                            }
+                          })
+                        }
+                        className="w-full px-3 py-2 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white focus:outline-none focus:border-blue-500"
+                      >
+                        <option value="emailjs">EmailJS (Recommended - Free 200 emails/mo)</option>
+                        <option value="web3forms">Web3Forms (Free Access Key)</option>
+                        <option value="formspree">Formspree Endpoint</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* EmailJS Credentials Fields */}
+                  <div className="p-3.5 rounded-lg bg-[#121212] border border-[#262626] space-y-3">
+                    <span className="text-[11px] font-mono text-blue-400 font-semibold uppercase block">
+                      EmailJS Configuration (Create free account at emailjs.com)
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div>
+                        <label className="block text-[11px] text-neutral-400 mb-1">
+                          Service ID
+                        </label>
+                        <input
+                          type="text"
+                          value={settingsForm.emailConfig?.emailjsServiceId || ''}
+                          onChange={(e) =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              emailConfig: {
+                                ...settingsForm.emailConfig,
+                                enabled: settingsForm.emailConfig?.enabled ?? true,
+                                provider: 'emailjs',
+                                recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                                emailjsServiceId: e.target.value
+                              }
+                            })
+                          }
+                          placeholder="service_xxxx"
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-[#181818] border border-[#333333] text-xs text-white font-mono focus:outline-none focus:border-blue-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[11px] text-neutral-400 mb-1">
+                          Template ID
+                        </label>
+                        <input
+                          type="text"
+                          value={settingsForm.emailConfig?.emailjsTemplateId || ''}
+                          onChange={(e) =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              emailConfig: {
+                                ...settingsForm.emailConfig,
+                                enabled: settingsForm.emailConfig?.enabled ?? true,
+                                provider: 'emailjs',
+                                recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                                emailjsTemplateId: e.target.value
+                              }
+                            })
+                          }
+                          placeholder="template_xxxx"
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-[#181818] border border-[#333333] text-xs text-white font-mono focus:outline-none focus:border-blue-500"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-[11px] text-neutral-400 mb-1">
+                          Public Key
+                        </label>
+                        <input
+                          type="text"
+                          value={settingsForm.emailConfig?.emailjsPublicKey || ''}
+                          onChange={(e) =>
+                            setSettingsForm({
+                              ...settingsForm,
+                              emailConfig: {
+                                ...settingsForm.emailConfig,
+                                enabled: settingsForm.emailConfig?.enabled ?? true,
+                                provider: 'emailjs',
+                                recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                                emailjsPublicKey: e.target.value
+                              }
+                            })
+                          }
+                          placeholder="public_key_xxxx"
+                          className="w-full px-2.5 py-1.5 rounded-lg bg-[#181818] border border-[#333333] text-xs text-white font-mono focus:outline-none focus:border-blue-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Web3Forms / Formspree Optional Keys */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div>
+                      <label className="block text-[11px] text-neutral-400 mb-1">
+                        Web3Forms Access Key (Optional Alternative)
+                      </label>
+                      <input
+                        type="text"
+                        value={settingsForm.emailConfig?.web3formsAccessKey || ''}
+                        onChange={(e) =>
+                          setSettingsForm({
+                            ...settingsForm,
+                            emailConfig: {
+                              ...settingsForm.emailConfig,
+                              enabled: settingsForm.emailConfig?.enabled ?? true,
+                              provider: settingsForm.emailConfig?.provider || 'emailjs',
+                              recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                              web3formsAccessKey: e.target.value
+                            }
+                          })
+                        }
+                        placeholder="e.g. 550e8400-e29b-41d4-a716-446655440000"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white font-mono focus:outline-none focus:border-blue-500"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] text-neutral-400 mb-1">
+                        Formspree Form ID (Optional Alternative)
+                      </label>
+                      <input
+                        type="text"
+                        value={settingsForm.emailConfig?.formspreeId || ''}
+                        onChange={(e) =>
+                          setSettingsForm({
+                            ...settingsForm,
+                            emailConfig: {
+                              ...settingsForm.emailConfig,
+                              enabled: settingsForm.emailConfig?.enabled ?? true,
+                              provider: settingsForm.emailConfig?.provider || 'emailjs',
+                              recipientEmail: settingsForm.emailConfig?.recipientEmail || 'm.bluds2@gmail.com',
+                              formspreeId: e.target.value
+                            }
+                          })
+                        }
+                        placeholder="e.g. xdoqzpkq"
+                        className="w-full px-2.5 py-1.5 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white font-mono focus:outline-none focus:border-blue-500"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* Save button */}
                 <div className="flex justify-end">
                   <button
