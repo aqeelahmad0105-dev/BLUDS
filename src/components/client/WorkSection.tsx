@@ -12,13 +12,14 @@ import {
   Layers,
   CheckCircle2,
   ExternalLink,
-  MessageSquare
+  MessageSquare,
+  Barcode
 } from 'lucide-react';
 import { Card3D } from '../common/Card3D';
 import { StaggeredImageReveal, RevealMode } from '../common/StaggeredImageReveal';
 
 export const WorkSection: React.FC = () => {
-  const { caseStudies, setActiveModalCaseStudy } = useAgency();
+  const { caseStudies, setActiveModalCaseStudy, setIsPOSSimulatorOpen } = useAgency();
   const [activeCategory, setActiveCategory] = useState<string>('All');
 
   // Featured Showcase State
@@ -271,6 +272,17 @@ export const WorkSection: React.FC = () => {
 
                 {/* Action Buttons */}
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                  {(currentCase.category === 'POS Software' || currentCase.title.toLowerCase().includes('pos')) && (
+                    <button
+                      type="button"
+                      onClick={() => setIsPOSSimulatorOpen(true)}
+                      className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                    >
+                      <Barcode className="w-3.5 h-3.5" />
+                      <span>Launch POS Simulator</span>
+                    </button>
+                  )}
+
                   {currentCase.liveUrl && (
                     <a
                       href={currentCase.liveUrl}
@@ -285,7 +297,7 @@ export const WorkSection: React.FC = () => {
 
                   <button
                     onClick={() => setActiveModalCaseStudy(currentCase)}
-                    className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2"
+                    className="px-4 py-2.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2"
                   >
                     <span>View Project Story</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -480,6 +492,17 @@ export const WorkSection: React.FC = () => {
                         <ExternalLink className="w-3.5 h-3.5" />
                         <span>Visit Live Website</span>
                       </a>
+                    )}
+                    {(project.category === 'POS Software' || project.title.toLowerCase().includes('pos')) && (
+                      <button
+                        type="button"
+                        onClick={() => setIsPOSSimulatorOpen(true)}
+                        className="py-2 px-2.5 rounded-lg bg-blue-950/60 hover:bg-blue-900/60 border border-blue-500/40 text-blue-300 text-xs font-semibold flex items-center justify-center gap-1 transition-colors"
+                        title="Try Live Barcode POS Scanner"
+                      >
+                        <Barcode className="w-3.5 h-3.5 text-blue-400" />
+                        <span>Scanner</span>
+                      </button>
                     )}
                     <button
                       type="button"

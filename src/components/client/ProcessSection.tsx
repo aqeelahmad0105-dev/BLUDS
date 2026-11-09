@@ -12,7 +12,7 @@ export const ProcessSection: React.FC = () => {
     {
       num: '01',
       title: 'Talk to Us on WhatsApp',
-      timeline: '10-Minute Chat',
+      timeline: 'Day 1 - 2 • 10-Minute Chat',
       desc: 'Tell Aqeel Ahmad what your business needs (a website, shop billing software, Shopify store, or ads). We listen, answer all questions in plain language, and give you an exact fixed price in PKR.',
       icon: MessageSquare,
       highlight: 'Free Advice • Exact PKR Price',
@@ -22,7 +22,7 @@ export const ProcessSection: React.FC = () => {
     {
       num: '02',
       title: 'We Build & Set Everything Up',
-      timeline: '1 - 2 Weeks',
+      timeline: 'Day 3 - 10 • We Build & Polish',
       desc: 'Our founders handle the entire work — designing your website, connecting your domain, setting up POS software with your barcode scanner, or scripting your 12 reels. You get a private link to review and test.',
       icon: Wrench,
       highlight: 'Test Everything Before Launch',
@@ -32,7 +32,7 @@ export const ProcessSection: React.FC = () => {
     {
       num: '03',
       title: 'Launch Live & Start Growing',
-      timeline: 'Ready for Business',
+      timeline: 'Day 14 • Final Launch & Scale',
       desc: 'We launch your website live, train your shop staff on the billing software, and start running your ads. We stay with you every month to provide maintenance, updates, and fast WhatsApp help.',
       icon: Rocket,
       highlight: 'Direct Ongoing Support',

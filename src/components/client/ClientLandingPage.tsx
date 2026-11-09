@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAgency } from '../../context/AgencyContext';
 import { Navbar } from '../common/Navbar';
 import { Footer } from '../common/Footer';
 import { HeroSection } from './HeroSection';
@@ -16,8 +17,12 @@ import { ContactSection } from './ContactSection';
 import { CaseStudyModal } from '../common/CaseStudyModal';
 import { ServiceDetailModal } from '../common/ServiceDetailModal';
 import { FloatingWhatsApp } from '../common/FloatingWhatsApp';
+import { POSSimulatorModal } from '../common/POSSimulatorModal';
+import { RateCardModal } from '../common/RateCardModal';
 
 export const ClientLandingPage: React.FC = () => {
+  const { isPOSSimulatorOpen, setIsPOSSimulatorOpen, isRateCardOpen, setIsRateCardOpen } = useAgency();
+
   return (
     <div className="relative min-h-screen flex flex-col justify-between selection:bg-cobalt-600 selection:text-white bg-black">
       <Navbar />
@@ -41,6 +46,8 @@ export const ClientLandingPage: React.FC = () => {
       <CaseStudyModal />
       <ServiceDetailModal />
       <FloatingWhatsApp />
+      <POSSimulatorModal isOpen={isPOSSimulatorOpen} onClose={() => setIsPOSSimulatorOpen(false)} />
+      <RateCardModal isOpen={isRateCardOpen} onClose={() => setIsRateCardOpen(false)} />
     </div>
   );
 };

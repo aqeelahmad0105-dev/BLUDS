@@ -5,7 +5,10 @@ import {
   Clock, 
   Send,
   MessageSquare,
-  ArrowUpRight
+  ArrowUpRight,
+  Printer,
+  Download,
+  Globe
 } from 'lucide-react';
 
 export const CostEstimatorSection: React.FC = () => {
@@ -14,6 +17,7 @@ export const CostEstimatorSection: React.FC = () => {
   const [platform, setPlatform] = useState<string>('Website Development');
   const [scale, setScale] = useState<string>('Standard Business Launch');
   const [timeline, setTimeline] = useState<string>('Standard Delivery');
+  const [currency, setCurrency] = useState<'PKR' | 'USD' | 'AED'>('PKR');
   const [addons, setAddons] = useState<string[]>([
     'Website Maintenance Retainer',
     'Domain & Cloud Hosting (Annual)'
@@ -22,6 +26,18 @@ export const CostEstimatorSection: React.FC = () => {
   const [clientName, setClientName] = useState('');
   const [clientEmail, setClientEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+
+  const currencyRates = {
+    PKR: { symbol: 'Rs.', rate: 1 },
+    USD: { symbol: '$', rate: 1 / 280 },
+    AED: { symbol: 'AED', rate: 1 / 76 },
+  };
+
+  const formatPrice = (pkrAmount: number) => {
+    const { symbol, rate } = currencyRates[currency];
+    const converted = Math.round(pkrAmount * rate);
+    return `${symbol} ${converted.toLocaleString()}`;
+  };
 
   const platformOptions = [
     { id: 'Website Development', basePrice: 20000, weeks: 2, desc: 'Responsive website, modern UI, 3D polish, admin panel' },
@@ -223,20 +239,46 @@ export const CostEstimatorSection: React.FC = () => {
                 <span className="text-xs font-medium text-neutral-300">
                   Estimated Summary
                 </span>
-                <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2 py-0.5 rounded">
-                  Fixed Honest Price
-                </span>
+
+                {/* Currency Switcher */}
+                <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[#141414] border border-[#262626] text-[11px] font-mono">
+                  {(['PKR', 'USD', 'AED'] as const).map((curr) => (
+                    <button
+                      key={curr}
+                      type="button"
+                      onClick={() => setCurrency(curr)}
+                      className={`px-2 py-0.5 rounded transition-colors ${
+                        currency === curr
+                          ? 'bg-blue-600 text-white font-medium shadow-sm'
+                          : 'text-neutral-400 hover:text-white'
+                      }`}
+                    >
+                      {curr}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Price Projection */}
               <div>
-                <div className="text-xs text-neutral-400">Total Estimated Price (PKR)</div>
+                <div className="text-xs text-neutral-400">Total Estimated Price ({currency})</div>
                 <div className="text-2xl sm:text-3xl font-bold text-white mt-1">
-                  Rs. {minEstimated.toLocaleString()} - Rs. {maxEstimated.toLocaleString()}
+                  {formatPrice(minEstimated)} - {formatPrice(maxEstimated)}
                 </div>
-                <div className="text-xs text-neutral-400 mt-1 flex items-center gap-2 font-mono">
-                  <Clock className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Ready in ~{estimatedWeeks} Weeks</span>
+                <div className="text-xs text-neutral-400 mt-1 flex items-center justify-between font-mono">
+                  <span className="flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-blue-400" />
+                    <span>Ready in ~{estimatedWeeks} Weeks</span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    className="text-[11px] text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
+                    title="Print or Save PDF Quotation"
+                  >
+                    <Printer className="w-3.5 h-3.5" />
+                    <span>Print / PDF Quote</span>
+                  </button>
                 </div>
               </div>
 

@@ -87,6 +87,10 @@ interface AgencyContextType {
   setActiveModalCaseStudy: (study: CaseStudy | null) => void;
   activeServiceDetails: Service | null;
   setActiveServiceDetails: (service: Service | null) => void;
+  isPOSSimulatorOpen: boolean;
+  setIsPOSSimulatorOpen: (open: boolean) => void;
+  isRateCardOpen: boolean;
+  setIsRateCardOpen: (open: boolean) => void;
 }
 
 const AgencyContext = createContext<AgencyContextType | undefined>(undefined);
@@ -235,6 +239,8 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   // Modals
   const [activeModalCaseStudy, setActiveModalCaseStudy] = useState<CaseStudy | null>(null);
   const [activeServiceDetails, setActiveServiceDetails] = useState<Service | null>(null);
+  const [isPOSSimulatorOpen, setIsPOSSimulatorOpen] = useState<boolean>(false);
+  const [isRateCardOpen, setIsRateCardOpen] = useState<boolean>(false);
 
   // Sync to local storage
   useEffect(() => {
@@ -530,6 +536,10 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setActiveModalCaseStudy,
         activeServiceDetails,
         setActiveServiceDetails,
+        isPOSSimulatorOpen,
+        setIsPOSSimulatorOpen,
+        isRateCardOpen,
+        setIsRateCardOpen,
       }}
     >
       {children}

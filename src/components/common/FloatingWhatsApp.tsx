@@ -31,8 +31,9 @@ export const FloatingWhatsApp: React.FC = () => {
         </svg>
 
         {/* Non-intrusive hover tooltip */}
-        <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 px-2.5 py-1 rounded-md bg-[#0c0c0c] border border-[#262626] text-white text-[11px] font-medium whitespace-nowrap shadow-xl">
-          WhatsApp: 03099489168
+        <span className="pointer-events-none absolute right-14 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-150 px-3 py-1.5 rounded-lg bg-[#0c0c0c] border border-[#262626] text-white text-[11px] font-medium whitespace-nowrap shadow-xl flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span>WhatsApp: 03099489168 • Replies in ~15m</span>
         </span>
       </a>
     </div>
