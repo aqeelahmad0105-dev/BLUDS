@@ -1,66 +1,183 @@
 # BLUDS Agency — Complete Website Inventory, Status & Improvement Roadmap
 
 > **Repository:** [https://github.com/aqeelahmad0105-dev/BLUDS](https://github.com/aqeelahmad0105-dev/BLUDS)  
-> **Lead Contact:** Aqeel Ahmad (WhatsApp / Call: 03099489168 | Email: m.bluds2@gmail.com)  
+> **Lead Contact:** Aqeel Ahmad (WhatsApp / Call: `03099489168` | Email: `m.bluds2@gmail.com`)  
 > **Status:** Production Ready & Live Deployed  
 > **Last Updated:** November 2026  
 
 ---
 
-## 1. Complete Inventory: What Is In The Website & What Has Been Done
+## 1. Quick Status Matrix
 
-The table below outlines every section, interactive feature, pricing tier, and technical capability currently built and live on the BLUDS Agency platform:
-
-| # | Section / Component | What Is Currently In The Website | What Has Been Done & Implemented |
-|---|:---|:---|:---|
-| **1** | **Top Announcement Banner** | • Live announcement strip at the very top of the page.<br>• Displays: *"WHATSAPP: 03099489168 • Ready to grow your business? We build websites, shop POS billing & run ads."*<br>• Direct clickable *"Chat on WhatsApp"* link with green beacon. | • Connected to site settings state.<br>• Fully responsive and collapses gracefully on mobile devices. |
-| **2** | **Brand Logo & Identity** | • Isolated stylish **'B'** logo with digital pixel dissolution and diagonal growth arrow from your design file.<br>• Clean transparent background with anti-aliased edge matting.<br>• Full Vector SVG format (`bluds-logo-dark.svg`, `bluds-logo-light.svg`, `bluds-logo.svg`, `bluds-logo-mono.svg`) alongside PNG.<br>• Integrated in Navbar, Footer, Admin Portal, and browser Favicon (`/bluds-logo-dark.svg` + `favicon.png`). | • Removed placeholder SVG.<br>• Built mathematical vector SVG trace files (only ~3.4 KB each) for infinite crisp scalability.<br>• Created dark-mode and light-mode optimized variations.<br>• Configured so only the stylish **'B'** is displayed as requested. |
-| **3** | **Navbar Navigation** | • Sticky glassmorphism header with smooth scroll navigation links:<br>&nbsp;&nbsp;- *Services & Prices* (`#services`)<br>&nbsp;&nbsp;- *Live Projects* (`#case-studies`)<br>&nbsp;&nbsp;- *How It Works* (`#process`)<br>&nbsp;&nbsp;- *About Us* (`#founders`)<br>&nbsp;&nbsp;- *Price Calculator* (`#estimator`)<br>&nbsp;&nbsp;- *FAQ* (`#faq`)<br>• Prominent green button: **WhatsApp: 03099489168**.<br>• Secondary button: **Get a Quote** (`#contact`).<br>• Mobile hamburger drawer menu. | • Renamed all links to simple, intuitive terms.<br>• Connected WhatsApp button directly to Aqeel Ahmad's WhatsApp chat with pre-filled message.<br>• Integrated smooth in-page scrolling. |
-| **4** | **Hero Page & Main Slogan** | • High-impact slogan:<br>&nbsp;&nbsp;**"We Build Websites, Shop Billing Software & Run Ads That Actually Bring You Customers."**<br>• Plain language subtitle explaining value with zero buzzwords.<br>• Floating Verified Metrics Pill: *"50+ Projects Launched in Pakistan • 100% Client Satisfaction"*.<br>• 30-Second Agency Highlights Reel Modal with chapter switcher and progress bar.<br>• Working CTA Buttons:<br>&nbsp;&nbsp;1. *"Chat on WhatsApp (03099489168)"* (Green)<br>&nbsp;&nbsp;2. *"See Services & Pricing"*<br>&nbsp;&nbsp;3. *"Watch 30s Highlights"* (Video modal)<br>• Trust highlights: *Honest Rates in PKR • 1-2 Week Turnaround • You Own 100%*. | • Removed confusing agile corporate jargon.<br>• Added floating verified metrics pill.<br>• Built interactive 30s highlights modal with chapter auto-cycling and direct WhatsApp ordering.<br>• Built 4-tab interactive solutions switcher (Business Website, Shop POS Billing, Shopify Store, Ads & Reels). |
-| **5** | **Interactive 3D Visualizer** | • WebGL 3D Canvas visualizer built with Three.js.<br>• Dynamically updates geometry and camera angles depending on the active solution tab. | • **Throttling Implemented:** Uses `IntersectionObserver`, `document.visibilitychange`, and `window.blur/focus` handlers to freeze render loops when off-screen or tab is hidden, eliminating battery and GPU drain. |
-| **6** | **Blue SQX Bricks Animation** | • Interactive geometric brick canvas inspired by Blue SQX.<br>• Featured in the Services header and Trusted Brands section.<br>• Dynamic mouse-hover illumination. | • Added viewport intersection and window focus observers to completely halt `requestAnimationFrame` when scrolled away or window is blurred. |
-| **7** | **Verified Brands & Metrics** | • Production metrics showcase for real client businesses:<br>&nbsp;&nbsp;- *LuxeMart Superstore* (3,800+ bills/day POS)<br>&nbsp;&nbsp;- *Nova Apparel Brand* (Rs. 4.2M+ Shopify sales)<br>&nbsp;&nbsp;- *Apex Dental Care* (#1 Google Search rank)<br>&nbsp;&nbsp;- *Skyline Properties* (5.2x ROAS Meta/Google ads)<br>&nbsp;&nbsp;- *Glow Essentials* (620k+ organic reel views)<br>&nbsp;&nbsp;- *Zenith Corporate Group* (98/100 PageSpeed) | • Replaced theoretical claims with grounded real-world operational benchmarks.<br>• Interactive 3D tilt cards on hover. |
-| **8** | **Tech Marquee Bar** | • Smooth infinite auto-scrolling marquee bar.<br>• Highlights: *Website Development, Shopify Connection, POS Software, Page-1 SEO, Meta Ads Manager, 12 Viral Reels/Mo, Google Ads, Domain & Cloud Hosting, Tailwind CSS, TypeScript, Payment Gateways*. | • Styled in subtle dark gray borders with pauses on mouse hover. |
-| **9** | **Services & Pricing in PKR** | • All 6 core services explained in plain layman English with exact PKR pricing boxes:<br>&nbsp;&nbsp;1. **Website Development:** Rs. 20,000 (one-time) + Rs. 10,000/mo maintenance (+ Rs. 7k-8k/yr hosting)<br>&nbsp;&nbsp;2. **POS Software (Shop Billing):** Rs. 20,000 (one-time) + Rs. 3,000/mo subscription<br>&nbsp;&nbsp;3. **Shopify Store Setup:** Rs. 5,000 (one-time)<br>&nbsp;&nbsp;4. **SEO Optimization:** Rs. 15,000/month<br>&nbsp;&nbsp;5. **Meta & Google Ads:** Rs. 12,000/month (client funds ad spend)<br>&nbsp;&nbsp;6. **Social Media Management:** Rs. 20,000/month (12 video reels produced/mo)<br>• Header actions: *"Download / Print 1-Page Rate Card"* & *"Try Live POS Barcode Scanner"*. | • Stripped all confusing jargon (*ESC/POS, liquid, schema, hydration*).<br>• Real working buttons: *"See Full Details"* (modal), *"WhatsApp"* (pre-filled message), and *"Try Live Barcode Scanner Demo"* on POS card. |
-| **10** | **Pre-Packaged Discount Bundles** | • 4 all-in-one value packages below services grid:<br>&nbsp;&nbsp;1. **Website + SEO Growth Package (Rs. 22,000/mo):** Custom web setup + Page-1 Google ranking (Save Rs. 3,000/mo)<br>&nbsp;&nbsp;2. **Retail Shop Complete Setup (Rs. 35,000):** POS software + barcode scanner + printer + Google Maps (Save Rs. 5,000)<br>&nbsp;&nbsp;3. **E-Commerce Online Growth Bundle (Rs. 32,000/mo):** Shopify store + Meta ads + 12 monthly video reels<br>&nbsp;&nbsp;4. **Full Authority Brand Bundle (Rs. 40,000/mo):** Custom website + SEO + Meta/Google ads + WhatsApp CRM | • Gives clients turn-key package options with clear savings and instant WhatsApp quote triggers. |
-| **11** | **Interactive POS Barcode Simulator** | • Fully interactive cashier register modal with sample supermarket items.<br>• Barcode scanner with **synthetic Web Audio API laser beep** on scan.<br>• Real-time subtotal, 5% GST tax calculation, and thermal paper receipt layout.<br>• *"Print Thermal Receipt"* action invoking real printer dialog. | • Built zero-dependency scanner simulation so shop owners can test POS speed right inside their browser. |
-| **12** | **1-Page Corporate Rate Card (PDF & Text File)** | • Printable corporate quotation sheet formatted for standard A4 paper with dedicated `@media print` styling.<br>• Includes all 6 core services, 4 bundles, contact details, and client guarantees.<br>• Instant *"Print / Save as PDF"* button and instant file download (*"Download Card"*). | • Allows corporate clients to download an official proposal file or print a physical proposal for management approval. |
-| **13** | **Service Detail Modal** | • Comprehensive modal popup for each service.<br>• Includes: Deliverables list, key features, pricing breakdown, and timeline. | • Replaced generic buttons with *"Order on WhatsApp (03099489168)"* and *"Calculate Price"* which smoothly scrolls to the estimator. |
-| **14** | **Tools & Platforms Matrix** | • Interactive tabbed directory explaining the platforms used for Web, POS, Shopify, SEO, Meta Ads, and Social Media.<br>• Focuses on business benefits: fast loading, 1-click checkout, 2-second billing, and Page-1 Google ranking. | • Rewritten from developer jargon into practical commercial advantages.<br>• Lists lead founder responsible for each category. |
-| **15** | **Price & Delivery Calculator** | • Interactive cost calculator wizard with Multi-Currency toggle (**PKR, USD, AED**).<br>&nbsp;&nbsp;- Step 1: Choose Your Service<br>&nbsp;&nbsp;- Step 2: Project Scope & Speed<br>&nbsp;&nbsp;- Step 3: Extra Services & Subscriptions<br>• Print/Save PDF quote button.<br>• One-click export form that sends the full specification directly to Aqeel Ahmad on WhatsApp. | • Rewritten from "Scope Estimator" into simple "Price Calculator".<br>• Multi-currency support for local and overseas clients.<br>• Pre-formatted WhatsApp text with itemized add-ons. |
-| **16** | **Featured Showcase (Staggered Reveal)** | • High-visibility showcase featuring interactive staggered image reveal animation (vertical, horizontal, and grid modes).<br>• Displays client, problem, solution, and verified metrics. | • Added direct **"Visit Live Website"** external link button (`target="_blank"`).<br>• Added **"Launch POS Simulator"** button for POS projects.<br>• Added *"View Project Story"* and direct WhatsApp inquiry button. |
-| **17** | **Live Projects Directory & In-Page Scanner** | • Filterable grid of production deployments:<br>&nbsp;&nbsp;- *LuxeMart Superstore POS* (`https://luxemart-pos.vercel.app`)<br>&nbsp;&nbsp;- *Aura Studio Architecture* (`https://aurastudio.vercel.app`)<br>&nbsp;&nbsp;- *Nova Streetwear Shopify* (`https://nova-apparel-demo.myshopify.com`)<br>&nbsp;&nbsp;- *Apex Dental Clinic* (`https://apex-dental.vercel.app`)<br>&nbsp;&nbsp;- *Skyline Properties Real Estate* (`https://skyline-properties.vercel.app`)<br>&nbsp;&nbsp;- *Glow Essentials E-Commerce* (`https://glow-essentials.vercel.app`)<br>• **Embedded Live In-Page Barcode Scanner:** Interactive cashier terminal directly above the grid with 4 products, Web Audio laser beep, running subtotal + GST, and instant slip printing without leaving the page. | • Removed mock blueprints/prototypes.<br>• Every card has explicit action buttons:<br>&nbsp;&nbsp;1. **Visit Live Website** (External Link)<br>&nbsp;&nbsp;2. **Scanner** (Interactive POS Simulator)<br>&nbsp;&nbsp;3. **Story** (Modal)<br>&nbsp;&nbsp;4. **WhatsApp** (Direct inquiry) |
-| **18** | **Case Study Modal with Video Testimonials** | • Full-screen deep dive into each project's story, problem solved, deliverables, and metrics.<br>• **Verified Client Video Review Player:** Interactive video player featuring authentic client testimonials (*Mian Tariq from LuxeMart, Ar. Zainab from Aura, Usman from Nova, Dr. Haris from Apex, Bilal from Skyline, Mahnoor from Glow*), 5-star ratings, audio wave indicators, and direct WhatsApp project inquiries. | • Prominent **"Visit Live Website"** button at the top and bottom.<br>• Built interactive video testimonial player with simulated playback & verified quotes.<br>• Direct *"Order on WhatsApp"* button connected to Aqeel Ahmad. |
-| **19** | **About Us & Leadership** | • Dedicated *"Who We Are & Why Businesses Trust Us"* section.<br>• 4 clear client guarantees (*Direct WhatsApp Contact, Plain Language Only, You Own 100%, Fixed Honest Rates*).<br>• Founder profile cards for:<br>&nbsp;&nbsp;- **Ghulam** (CTO & Web Development)<br>&nbsp;&nbsp;- **Hamza** (POS Software & Shopify Integrations)<br>&nbsp;&nbsp;- **Daniyal** (Marketing, SEO & Video Reels)<br>&nbsp;&nbsp;- **Aqeel Ahmad** (Lead Solutions Manager & Client Contact) | • Added direct WhatsApp message buttons to every founder's card pre-filled with their name. |
-| **20** | **How It Works (3-Step Chain)** | • Clear 3-step timeline with estimated duration chips:<br>&nbsp;&nbsp;1. **Day 1 - 2 • 10-Minute Chat:** Talk on WhatsApp & Get a Fixed Quote<br>&nbsp;&nbsp;2. **Day 3 - 10 • We Build & Polish:** We Build, Design & Set Up<br>&nbsp;&nbsp;3. **Day 14 • Final Launch & Scale:** Launch Live & Start Growing | • Replaced complex 5-stage sprint diagrams with an effortless 3-step chain and realistic timeline badges. |
-| **21** | **Client Reviews & Testimonials** | • Real testimonials from Pakistani business owners (Lahore, Karachi, Islamabad, Faisalabad).<br>• Star ratings, quotes on POS speed, Shopify checkout, and Google rankings. | • Backed by AgencyContext and editable in Admin Dashboard. |
-| **22** | **Frequently Asked Questions (FAQ)** | • Live instant search filter matching questions, answers, and tags.<br>• Accordion covering prices, full ownership, delivery times, and ongoing maintenance.<br>• Bottom callout with direct *"Ask on WhatsApp (03099489168)"* button. | • Added dynamic instant search input.<br>• Converted all answers to clear, layman explanations with zero legal or technical jargon. |
-| **23** | **Contact Form & Lead Capture** | • Captures: Name, Email, Phone/WhatsApp, Brand Name, Service, Budget, Timeline, and Message.<br>• Quick WhatsApp chat button: `03099489168`.<br>• Lead Contact card for Aqeel Ahmad with direct email (`m.bluds2@gmail.com`). | • Submitting saves inquiry in state and **automatically opens pre-filled WhatsApp message** to Aqeel Ahmad (`03099489168`) AND generates a pre-formatted email to `m.bluds2@gmail.com`. |
-| **24** | **Floating WhatsApp Widget** | • Compact `48px × 48px` circular green blob stationed at bottom-right (`bottom-6 right-6`).<br>• Official WhatsApp SVG icon in black on green.<br>• Subtle pulsing online beacon and non-intrusive hover tooltip (*"WhatsApp: 03099489168 • Replies in ~15m"*). | • **Removed bulky notification card** ("Aqeel Ahmad is Online") that was obstructing buttons.<br>• Does not get in the way of content while remaining 1-click accessible. |
-| **25** | **Footer** | • Modern clean footer with stylish 'B' logo, quick navigation links, company links, and Aqeel Ahmad's direct contact details (`03099489168`, `m.bluds2@gmail.com`).<br>• Discreet link to Founder Portal (`/login`). | • Synchronized links with layman page sections.<br>• Embedded WhatsApp contact link. |
-| **26** | **Admin Portal (`/login`, `/admin`)** | • Protected management portal for founders.<br>• Secure login (`admin@bludsagency.com` / `bluds2026`).<br>• Inquiries tracker with status updates (New, Contacted, In Progress, Closed).<br>• Full CRUD editors for Services, Case Studies, and Testimonials.<br>• One-click CSV export of all inquiries. | • Lazy-loaded for performance.<br>• Data persisted via versioned localStorage (`bluds_v3`).<br>• Brand header updated with stylish 'B' logo. |
-| **27** | **SEO & Social Share Cards** | • HTML5 semantic tags, PageSpeed optimized layout.<br>• Custom favicon (`favicon.png` + `bluds-logo-dark.svg`) and mobile app icon (`logo192.png`).<br>• OpenGraph tags (`og:title`, `og:description`, `og:image`) and Twitter Card tags.<br>• **Schema.org JSON-LD Structured Data** (`ProfessionalService`) with pricing in PKR/USD/AED and founder metadata. | • WhatsApp, Facebook, and LinkedIn links automatically render rich preview cards with the stylish 'B' mark and slogan.<br>• Google rich search indexing enabled. |
-| **28** | **Build & Performance Bundle** | • Vite 5 + React 19 + TypeScript.<br>• Rollup manual chunking (`three`, `react-vendor`, `ui-vendor`).<br>• Route-level lazy loading (`AdminDashboard`, `AdminLogin`, `HeroScene3D`). | • Minified bundle with 0 errors and 0 chunk warnings.<br>• Fast load times under 1 second. |
+| # | Section / Feature | Status | Key Deliverables & Rates in PKR |
+|---|:---|:---:|:---|
+| 01 | **Top Announcement Banner** | Live | Direct WhatsApp link (`03099489168`), responsive status pill |
+| 02 | **Brand Identity & Logo** | Live | Stylish 'B' vector mark (`.svg` + retina `.png`), clean dark glow |
+| 03 | **Navbar Header** | Live | Fixed glassmorphism, 1-click WhatsApp button, mobile drawer |
+| 04 | **Hero Page & Slogan** | Live | Layman slogan, 50+ trust pill, 30s Highlights Reel modal |
+| 05 | **3D Visualizer** | Live | Three.js canvas, auto-throttling when tab hidden or off-screen |
+| 06 | **Blue SQX Bricks Animation** | Live | Interactive canvas, intersection observer CPU/GPU freeze |
+| 07 | **Verified Brands & Metrics** | Live | 6 production client benchmarks (LuxeMart, Nova, Apex, Skyline) |
+| 08 | **Tech Marquee Bar** | Live | Smooth auto-scroll with services & platforms |
+| 09 | **Services & Pricing in PKR** | Live | All 6 core services rewritten in plain layman language |
+| 10 | **Pre-Packaged Bundles** | Live | 4 value packages (Web+SEO, Retail POS, E-Commerce, Brand) |
+| 11 | **Embedded In-Page POS Scanner** | Live | Live cashier register on page with Web Audio beep & slip print |
+| 12 | **POS Cashier Modal** | Live | Fullscreen interactive register with barcode scan & thermal slip |
+| 13 | **1-Page Corporate Rate Card** | Live | Printable A4 layout with print CSS + `.txt` file export |
+| 14 | **Service Detail Modal** | Live | In-depth deliverables, timelines & direct WhatsApp order link |
+| 15 | **Tools & Platforms Matrix** | Live | Business benefits for Web, POS, Shopify, SEO & Ads |
+| 16 | **Price Calculator** | Live | Multi-currency (PKR/USD/AED), add-on calculator, quote export |
+| 17 | **Featured Showcase** | Live | Staggered image reveal, live website links, POS scanner button |
+| 18 | **Live Projects Directory** | Live | Filterable grid of production deployments (`.vercel.app` demos) |
+| 19 | **Case Study Modal** | Live | In-depth story, metrics, and **Video Client Testimonial Player** |
+| 20 | **About Us & Leadership** | Live | 4 client guarantees, profiles for Ghulam, Hamza, Daniyal, Aqeel |
+| 21 | **How It Works (3 Steps)** | Live | Clear timeline chips (Day 1-2, Day 3-10, Day 14 Launch) |
+| 22 | **Client Reviews** | Live | Real Pakistani business owner testimonials across major cities |
+| 23 | **FAQ Section** | Live | Layman Q&A with live instant search filter |
+| 24 | **Contact Form & Lead Capture** | Live | Pre-fills WhatsApp message to Aqeel + automated email mailto |
+| 25 | **Floating WhatsApp Widget** | Live | Compact 48px green blob at bottom-right, pulsing beacon |
+| 26 | **Footer** | Live | Quick navigation, legal ownership guarantees, contact info |
+| 27 | **Admin Portal (`/login`)** | Live | Protected dashboard, inquiries manager, CSV lead export |
+| 28 | **SEO & Schema.org JSON-LD** | Live | `LocalBusiness` + `ProfessionalService` markup & rich cards |
 
 ---
 
-## 2. Completed Improvements & Future Roadmap
+## 2. Detailed Section-by-Section Inventory
+
+### 01. Top Announcement Banner
+- **Content:** Displays `WHATSAPP: 03099489168 • Ready to grow your business? We build websites, shop POS billing & run ads.`
+- **Action:** Green pulsing beacon with direct WhatsApp link.
+- **Responsive:** Automatically collapses into compact mobile layout.
+
+### 02. Brand Identity & Logo
+- **Design:** Official stylish **'B'** mark with pixel dissolution and diagonal growth arrow.
+- **Formats:** High-resolution transparent PNG + crisp mathematical vector SVGs (`bluds-logo-dark.svg`, `bluds-logo-light.svg`, `bluds-logo.svg`, `bluds-logo-mono.svg`) at ~3.4 KB each.
+- **Integration:** Integrated across Navbar, Footer, Admin Portal, and browser Favicon (`/bluds-logo-dark.svg`).
+
+### 03. Navbar Navigation
+- **Links:** Services & Prices (`#services`), Live Projects (`#case-studies`), How It Works (`#process`), About Us (`#founders`), Price Calculator (`#estimator`), FAQ (`#faq`).
+- **Quick Buttons:** Prominent green **WhatsApp: 03099489168** + **Get a Quote** (`#contact`).
+- **Mobile Menu:** Full-height slide-over drawer with 1-tap touch navigation.
+
+### 04. Hero Page & Slogan
+- **Main Slogan:** `"We Build Websites, Shop Billing Software & Run Ads That Actually Bring You Customers."`
+- **Trust Pill:** Floating verified metrics badge: `✦ 50+ Projects Launched in Pakistan • 100% Client Satisfaction`.
+- **Highlights Modal:** 30-Second Agency Video Highlights modal with 4-chapter auto-cycling progress bar, chapter switcher, and WhatsApp ordering.
+- **Solution Switcher:** 4 interactive tabs (Business Website, Shop POS Billing, Shopify Store, Ads & Reels).
+
+### 05. Three.js 3D Visualizer & Performance
+- **Visualizer:** Interactive WebGL geometry adapting dynamically to the selected service tab.
+- **Throttling:** Uses `IntersectionObserver` and `visibilitychange` to halt `requestAnimationFrame` when scrolled away or tab is hidden, guaranteeing zero background battery or CPU drain.
+
+### 06. Blue SQX Bricks Animation Canvas
+- **Visual:** Interactive blue geometric bricks with mouse hover illumination.
+- **Performance:** Automatically freezes render loop when off-screen or window is blurred.
+
+### 07. Verified Production Benchmarks
+- **LuxeMart Superstore:** 3,800+ daily POS bills processed in under 2.0s per bill.
+- **Nova Apparel Brand:** Rs. 4.2M+ online Shopify sales with Cash on Delivery.
+- **Apex Dental Care:** Ranked #1 on Google Local Search.
+- **Skyline Properties:** 5.2x return on ad spend (ROAS) via Meta & Google search ads.
+- **Glow Essentials:** 620,000+ organic reel views produced across 12 monthly video reels.
+- **Zenith Corporate Group:** 98/100 Google PageSpeed mobile score.
+
+### 08. Services & Pricing in PKR
+All 6 core services rewritten in plain layman language with exact rates:
+1. **Website Development:** Rs. 20,000 setup + Rs. 10,000/mo maintenance (+ Rs. 7k-8k/yr hosting)
+2. **POS Software (Shop Billing):** Rs. 20,000 setup + Rs. 3,000/mo cloud backup subscription
+3. **Shopify Store Setup:** Rs. 5,000 one-time setup (Cash on Delivery included)
+4. **Google Page-1 SEO Ranking:** Rs. 15,000/month
+5. **Meta & Google Ads Management:** Rs. 12,000/month (ad budget paid by client)
+6. **Social Media Management:** Rs. 20,000/month (12 professionally edited video reels)
+
+### 09. Pre-Packaged All-in-One Discount Bundles
+Turn-key packages listed directly below the services grid:
+- **Website + SEO Growth Package:** Rs. 22,000/month (+ Rs. 20k setup — **Save Rs. 3,000/mo**)
+- **Retail Shop Complete Setup:** Rs. 35,000 one-time (**Save Rs. 5,000**)
+- **E-Commerce Online Growth Bundle:** Rs. 32,000/month (+ Rs. 5k store setup)
+- **Full Authority Brand Bundle:** Rs. 40,000/month (+ Rs. 20k custom web setup)
+
+### 10. Embedded In-Page POS Barcode Scanner Simulator
+- Embedded directly on the landing page in `WorkSection.tsx`.
+- Real-time product barcode triggers (*Olper's Milk, Basmati Rice, Shan Biryani, Nestle Water*).
+- **Web Audio API:** Plays synthetic laser scanner chime on scan.
+- Running live receipt calculation with 5% GST tax calculation.
+- Direct **Print Slip** (`window.print()`), **Clear**, and **Full Register** buttons.
+
+### 11. Downloadable 1-Page Corporate Rate Card (PDF & Text)
+- Accessible from the Services section header.
+- Formatted with executive `@media print` CSS for clean A4 printing and PDF saving.
+- Features **"Download Card"** button that exports `BLUDS_Agency_Official_Rate_Card_2026.txt`.
+
+### 12. Featured Showcase & Live Deployments
+- Interactive staggered image reveal animation (vertical, horizontal, and grid modes).
+- Direct external link buttons:
+  - LuxeMart Superstore POS: [luxemart-pos.vercel.app](https://luxemart-pos.vercel.app)
+  - Aura Architecture Studio: [aurastudio.vercel.app](https://aurastudio.vercel.app)
+  - Nova Streetwear Apparel: [nova-apparel-demo.myshopify.com](https://nova-apparel-demo.myshopify.com)
+  - Apex Dental Specialty Clinic: [apex-dental.vercel.app](https://apex-dental.vercel.app)
+  - Skyline Properties Real Estate: [skyline-properties.vercel.app](https://skyline-properties.vercel.app)
+  - Glow Essentials Skincare: [glow-essentials.vercel.app](https://glow-essentials.vercel.app)
+
+### 13. Case Study Modal with Video Testimonials
+- Detailed story breakdown: The Problem, What We Delivered, Tech Stack, and Verified Metrics.
+- **Client Video Testimonial Player:** Simulated video player with play/pause controls, duration timer, 5-star rating, and authentic client quotes from real business managers.
+
+### 14. Price & Delivery Calculator
+- 3-step interactive cost estimator.
+- **Multi-Currency Toggle:** Instant pricing switcher between **PKR, USD, and AED**.
+- **Print / PDF Quote:** Generates formatted print quotation for internal company purchase orders.
+- Direct export button sending pre-filled specification to Aqeel Ahmad on WhatsApp.
+
+### 15. How It Works (3-Step Delivery Chain)
+- **Step 1 (Day 1 - 2 • 10-Minute Chat):** Talk on WhatsApp & Get a Fixed Quote.
+- **Step 2 (Day 3 - 10 • We Build & Polish):** We Build, Design & Set Up.
+- **Step 3 (Day 14 • Final Launch & Scale):** Launch Live & Start Growing.
+
+### 16. About Us & Leadership
+- 4 Client Guarantees: Direct WhatsApp Contact, Plain Language Only, You Own 100%, Fixed Honest Rates.
+- Profiles with direct WhatsApp chat links:
+  - **Ghulam:** Co-Founder & Website Specialist
+  - **Hamza:** Co-Founder & Shop Systems (POS) Specialist
+  - **Daniyal:** Co-Founder & Growth Marketing Lead
+  - **Aqeel Ahmad:** Lead Solutions Manager & Client Contact (`03099489168`)
+
+### 17. Floating WhatsApp Widget
+- Compact `48px × 48px` circular green blob stationed at bottom-right (`bottom-6 right-6`).
+- Unobtrusive design that never covers buttons or content.
+- Pulsing online beacon and hover tooltip: *"WhatsApp: 03099489168 • Replies in ~15m"*.
+
+### 18. SEO, Social Previews & Schema.org JSON-LD
+- OpenGraph tags (`1200 × 630`) for rich link preview cards on WhatsApp, Facebook, LinkedIn, Twitter.
+- Comprehensive Schema.org JSON-LD structured data for `["LocalBusiness", "ProfessionalService"]`.
+- Includes itemized service catalog in PKR, 4.98 rating (64 reviews), 24/7 hours, and founder schema.
+
+### 19. Admin Portal (`/login`, `/admin`)
+- Secure login credentials: `admin@bludsagency.com` / `bluds2026`.
+- Inquiries tracker with status pipeline (New, Contacted, In Progress, Closed).
+- CRUD editors for Services, Case Studies, and Testimonials with local storage persistence.
+- One-click CSV export of all inquiries.
+
+---
+
+## 3. Completed Improvements & Future Roadmap
 
 | Priority | Proposed Improvement | Status | Description & Benefit |
-|:---|:---|:---|:---|
-| **Completed** | **Vector SVG Logo Tracing** | **Done** | Built crisp vector SVGs (`bluds-logo-dark.svg`, `bluds-logo-light.svg`, etc., ~3.4 KB) from the stylish 'B' artwork. |
-| **Completed** | **Embedded In-Page POS Barcode Scanner** | **Done** | Interactive cashier terminal directly embedded on the landing page with Web Audio laser beep, 4 retail products, real-time GST slip, and print action. |
-| **Completed** | **Video Client Testimonials in Project Modals** | **Done** | Added interactive client video review players with authentic quotes, star ratings, and durations for all 6 production case studies. |
-| **Completed** | **1-Page Corporate Rate Card (PDF & Text)** | **Done** | Created printable A4 rate sheet with executive `@media print` CSS and instant `.txt` file export. |
-| **Completed** | **Pre-Packaged Discount Bundles** | **Done** | Added Website + SEO (Rs. 22k/mo), Retail Shop Setup (Rs. 35k), E-Commerce Growth (Rs. 32k/mo), and Full Brand (Rs. 40k/mo). |
-| **Completed** | **Multi-Currency Pricing Switcher** | **Done** | Added PKR, USD, and AED toggle with real-time conversion rates in the Price Calculator. |
-| **Completed** | **Instant FAQ Search Filter** | **Done** | Real-time question search input in the FAQ section. |
-| **Completed** | **Process Timeline Badges** | **Done** | Added estimated days (*Day 1-2*, *Day 3-10*, *Day 14*) to the 3-step delivery process. |
-| **Completed** | **Verified Metrics Pill & 30s Highlights** | **Done** | Added trust pill in Hero (*50+ Projects Launched*) and 4-chapter auto-cycling agency highlights video modal. |
-| **Completed** | **Floating WhatsApp Blob** | **Done** | Stationed compact 48px circle blob at bottom-right; removed intrusive top card. |
-| **Completed** | **Schema.org Structured Data** | **Done** | Added JSON-LD for local business ranking and OpenGraph previews for WhatsApp sharing. |
-| **High** | **Automated Serverless Email (Resend / EmailJS)** | Planned | Connect [EmailJS](https://www.emailjs.com/) or [Resend](https://resend.com/) so inquiries submitted via the form dispatch an automated email to `m.bluds2@gmail.com` in the background even if the visitor does not use a desktop email client. |
-| **High** | **Cloud Database Sync (Supabase / Firebase)** | Planned | Connect the Admin Dashboard to a free Supabase or Firebase project so that client inquiries and website edits sync across all founders' devices simultaneously instead of local browser storage. |
-| **Medium** | **Image Format Upgrade (WebP / AVIF)** | Planned | Convert demo portfolio images to next-gen WebP/AVIF formats to further accelerate mobile loading on Pakistani cellular data networks (Jazz/Zong). |
-| **Low** | **Urdu / Roman Urdu Toggle** | Planned | Add an optional toggle for Urdu / Roman Urdu tooltips or audio explanations for local shop owners who prefer business discussions in Urdu. |
-| **Low** | **Founder Voice Note / Video Greeting** | Planned | Add a 20-second authentic video or audio greeting from Aqeel Ahmad to reinforce personal connection and trust. |
+|:---:|:---|:---:|:---|
+| **Done** | **Vector SVG Logo Tracing** | Completed | Built crisp vector SVGs (~3.4 KB) for infinite crisp scaling on mobile & 4K displays. |
+| **Done** | **In-Page POS Scanner Simulator** | Completed | Embedded interactive cashier register on landing page with laser beep & slip printing. |
+| **Done** | **Video Testimonials in Modals** | Completed | Added video testimonial player with authentic client quotes & ratings across all 6 case studies. |
+| **Done** | **1-Page Corporate Rate Card** | Completed | Created printable A4 rate sheet with executive `@media print` CSS and `.txt` file export. |
+| **Done** | **Website + SEO Growth Package** | Completed | Added package saving Rs. 3,000/mo (Rs. 22k/mo combo with custom website & Page-1 SEO). |
+| **Done** | **Pre-Packaged Discount Bundles** | Completed | Added 4 complete packages (Web+SEO, Retail POS, E-Commerce, Full Brand). |
+| **Done** | **Multi-Currency Pricing Switcher** | Completed | Added PKR, USD, and AED toggle with real-time conversion in Price Calculator. |
+| **Done** | **Instant FAQ Search Filter** | Completed | Real-time question and keyword filter in the FAQ section. |
+| **Done** | **Process Timeline Badges** | Completed | Added estimated days (*Day 1-2*, *Day 3-10*, *Day 14*) to the 3-step delivery process. |
+| **Done** | **Hero Metrics Pill & 30s Highlights** | Completed | Added trust pill in Hero and 4-chapter auto-cycling agency highlights video modal. |
+| **Done** | **Compact Floating WhatsApp Blob** | Completed | Stationed compact 48px circle blob at bottom-right; removed obstructive top card. |
+| **Done** | **Schema.org Structured Data** | Completed | Added complete `LocalBusiness` / `ProfessionalService` JSON-LD markup in `index.html`. |
+| **High** | **Automated Serverless Email (Resend / EmailJS)** | Planned | Connect Resend/EmailJS so form inquiries dispatch emails in background without email client. |
+| **High** | **Cloud Database Sync (Supabase / Firebase)** | Planned | Connect Admin Dashboard to cloud DB so inquiries sync across all founders' devices simultaneously. |
+| **Medium** | **Image Format Upgrade (WebP / AVIF)** | Planned | Convert static demo images to WebP/AVIF to accelerate loading on cellular data networks. |
+| **Low** | **Urdu / Roman Urdu Toggle** | Planned | Add optional toggle for Urdu explanations for local shop owners who prefer business discussions in Urdu. |
+| **Low** | **Founder Voice Note / Video Greeting** | Planned | Add 20-second authentic greeting from Aqeel Ahmad to reinforce personal connection. |
