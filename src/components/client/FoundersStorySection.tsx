@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
+import { OptimizedImage } from '../common/OptimizedImage';
 import { 
   MessageSquare,
   CheckCircle2,
@@ -95,10 +96,13 @@ export const FoundersStorySection: React.FC = () => {
                 {/* Photo and Status */}
                 <div className="relative mb-4 flex items-center justify-between">
                   <div className="w-16 h-16 rounded-xl overflow-hidden border border-[#262626] bg-[#141414]">
-                    <img
+                    <OptimizedImage
                       src={founder.avatarUrl}
                       alt={founder.name}
+                      width={128}
+                      height={128}
                       className="w-full h-full object-cover"
+                      pictureClassName="w-full h-full block"
                     />
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950/40 border border-emerald-900/40 px-2 py-0.5 rounded">

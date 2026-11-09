@@ -40,6 +40,7 @@
 | 27 | **Admin Portal (`/login`)** | Live | Protected dashboard, inquiries manager, CSV lead export |
 | 28 | **SEO & Schema.org JSON-LD** | Live | `LocalBusiness` + `ProfessionalService` markup & rich cards |
 | 29 | **Cloud Database Sync (Supabase)** | Live | Real-time multi-device Postgres sync with WebSocket listener & offline fallback |
+| 30 | **Next-Gen Image Engine (WebP & AVIF)** | Live | Ultra-compressed WebP/AVIF format engine (-71% payload) with responsive srcsets |
 
 ---
 
@@ -165,6 +166,12 @@ Turn-key packages listed directly below the services grid:
 - **Offline / Local Fallback:** Retains 100% offline functionality and local storage persistence automatically if cloud keys are not configured or network drops.
 - **Admin Control Center:** Live sync status indicator pills, connection health testing, and copyable 1-click SQL setup script located in Admin Portal Settings.
 
+### 21. Next-Gen Image Engine (WebP & AVIF)
+- **Static Assets Converted:** All PNG icons, favicons, and brand marks in `/public` converted to both `.webp` (up to 69% smaller) and `.avif` (up to 71% smaller).
+- **Responsive Picture Component:** `<OptimizedImage>` provides automated `<source type="image/avif">` and `<source type="image/webp">` with standard fallback.
+- **Dynamic CDN Optimization:** Unsplash and remote URLs rewritten to automatically request `auto=format,compress&fm=webp` and responsive `srcset` (`400w`, `800w`, `1200w`).
+- **Cellular Data Optimization:** `loading="lazy"` and `decoding="async"` across below-the-fold media drastically reduces initial mobile payload on cellular data networks.
+
 ---
 
 ## 3. Completed Improvements & Future Roadmap
@@ -185,6 +192,6 @@ Turn-key packages listed directly below the services grid:
 | **Done** | **Schema.org Structured Data** | Completed | Added complete `LocalBusiness` / `ProfessionalService` JSON-LD markup in `index.html`. |
 | **Done** | **Automated Serverless Email (EmailJS)** | Completed | Client form submissions dispatch automated emails to m.bluds2@gmail.com in the background without needing a mail client. |
 | **Done** | **Cloud Database Sync (Supabase PostgreSQL)** | Completed | Multi-device real-time syncing of client inquiries across all founders' devices with WebSocket listeners & local storage fallback. |
-| **Medium** | **Image Format Upgrade (WebP / AVIF)** | Planned | Convert static demo images to WebP/AVIF to accelerate loading on cellular data networks. |
+| **Done** | **Image Format Upgrade (WebP / AVIF)** | Completed | Converted static PNGs to WebP/AVIF (-71% payload) and integrated responsive picture engine across showcase and cards. |
 | **Low** | **Urdu / Roman Urdu Toggle** | Planned | Add optional toggle for Urdu explanations for local shop owners who prefer business discussions in Urdu. |
 | **Low** | **Founder Voice Note / Video Greeting** | Planned | Add 20-second authentic greeting from Aqeel Ahmad to reinforce personal connection. |

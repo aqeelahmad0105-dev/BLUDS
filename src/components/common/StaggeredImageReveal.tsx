@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getOptimizedImageUrl } from '../../utils/imageOptimizer';
 
 export type RevealMode = 'vertical' | 'horizontal' | 'grid';
 
@@ -43,6 +44,10 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
     const wave = row + col;
     return base + wave * 55;
   };
+
+  // Convert to high-speed WebP format for cellular data speed
+  const optCurrentSrc = getOptimizedImageUrl(currentSrc, { format: 'webp', width: 1200, quality: 75 });
+  const optPrevSrc = previousSrc ? getOptimizedImageUrl(previousSrc, { format: 'webp', width: 1200, quality: 75 }) : null;
 
   return (
     <div
@@ -135,7 +140,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                     }}
                   >
                     <img
-                      src={previousSrc}
+                      src={optPrevSrc || previousSrc}
                       alt={alt}
                       className="absolute top-0 h-full max-w-none object-cover"
                       style={{
@@ -163,7 +168,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                     }}
                   >
                     <img
-                      src={previousSrc}
+                      src={optPrevSrc || previousSrc}
                       alt={alt}
                       className="absolute left-0 w-full max-w-none object-cover"
                       style={{
@@ -198,7 +203,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                     }}
                   >
                     <img
-                      src={previousSrc}
+                      src={optPrevSrc || previousSrc}
                       alt={alt}
                       className="absolute max-w-none object-cover"
                       style={{
@@ -234,7 +239,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                   }}
                 >
                   <img
-                    src={currentSrc}
+                    src={optCurrentSrc}
                     alt={alt}
                     className="absolute top-0 h-full max-w-none object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     style={{
@@ -264,7 +269,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                   }}
                 >
                   <img
-                    src={currentSrc}
+                    src={optCurrentSrc}
                     alt={alt}
                     className="absolute left-0 w-full max-w-none object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     style={{
@@ -301,7 +306,7 @@ export const StaggeredImageReveal: React.FC<StaggeredImageRevealProps> = ({
                   }}
                 >
                   <img
-                    src={currentSrc}
+                    src={optCurrentSrc}
                     alt={alt}
                     className="absolute max-w-none object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     style={{

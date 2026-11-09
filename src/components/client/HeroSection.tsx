@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAgency } from '../../context/AgencyContext';
+import { OptimizedImage } from '../common/OptimizedImage';
 import {
   ArrowRight,
   Globe,
@@ -40,7 +41,7 @@ export const HeroSection: React.FC = () => {
       duration: '0:00 - 0:08',
       desc: 'Custom-designed responsive websites engineered for speed, mobile responsiveness, and direct WhatsApp customer inquiries.',
       badge: 'Rs. 20,000 One-Time',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
       highlights: ['Loads under 1.0 second', 'Zero generic copied templates', 'Direct WhatsApp inquiry forms'],
     },
     {
@@ -48,7 +49,7 @@ export const HeroSection: React.FC = () => {
       duration: '0:08 - 0:16',
       desc: 'Rapid cashier operations for supermarkets, clothing retail, and restaurants with barcode scanning and thermal receipt printing.',
       badge: '< 2.0s Instant Bill',
-      image: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
       highlights: ['Instant USB/Wireless barcode lookup', 'Thermal ESC/POS receipt cuts', 'Daily shift profit & stock deduction'],
     },
     {
@@ -56,7 +57,7 @@ export const HeroSection: React.FC = () => {
       duration: '0:16 - 0:23',
       desc: 'Complete Shopify storefront connected to custom domain, courier shipping rates, and 1-click Cash on Delivery (COD) checkout.',
       badge: 'Rs. 5,000 One-Time',
-      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
       highlights: ['Pakistani courier COD integration', 'Instant WhatsApp order alerts', 'Automated inventory tracking'],
     },
     {
@@ -64,7 +65,7 @@ export const HeroSection: React.FC = () => {
       duration: '0:23 - 0:30',
       desc: 'Rank on Page #1 of Google search and run high-converting Meta (Facebook & Instagram) and Google search advertising campaigns.',
       badge: '5.2x Target ROAS',
-      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
       highlights: ['Google Page-1 keyword ranking', '12 produced viral video reels/mo', 'Transparent weekly lead reports'],
     },
   ];
@@ -458,10 +459,14 @@ export const HeroSection: React.FC = () => {
               </div>
 
               {/* Visual Chapter Media */}
-              <img
+              <OptimizedImage
                 src={videoChapters[activeChapter].image}
                 alt={videoChapters[activeChapter].title}
+                width={1200}
+                height={675}
+                priority={true}
                 className="w-full h-full object-cover brightness-[0.75] transition-all duration-700 ease-out"
+                pictureClassName="w-full h-full block"
               />
 
               {/* Gradient Backdrop */}

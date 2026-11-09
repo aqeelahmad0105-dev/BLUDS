@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
 import { Star } from 'lucide-react';
+import { OptimizedImage } from '../common/OptimizedImage';
 
 export const TestimonialsSection: React.FC = () => {
   const { testimonials } = useAgency();
@@ -47,9 +48,11 @@ export const TestimonialsSection: React.FC = () => {
 
               {/* Client Info */}
               <div className="pt-3 border-t border-[#1c1c1c] flex items-center gap-3">
-                <img
+                <OptimizedImage
                   src={review.avatarUrl}
                   alt={review.clientName}
+                  width={80}
+                  height={80}
                   className="w-10 h-10 rounded-full object-cover border border-[#262626] shrink-0 bg-[#141414]"
                 />
                 <div className="overflow-hidden">

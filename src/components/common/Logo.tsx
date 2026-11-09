@@ -5,7 +5,7 @@ interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showWordmark?: boolean;
   variant?: 'default' | 'dark' | 'light' | 'mono';
-  format?: 'svg' | 'png';
+  format?: 'svg' | 'png' | 'webp' | 'avif';
 }
 
 export const Logo: React.FC<LogoProps> = ({
@@ -30,9 +30,9 @@ export const Logo: React.FC<LogoProps> = ({
   };
 
   const getLogoSrc = () => {
-    if (format === 'png') {
-      return '/bluds-logo.png';
-    }
+    if (format === 'avif') return '/bluds-logo.avif';
+    if (format === 'webp') return '/bluds-logo.webp';
+    if (format === 'png') return '/bluds-logo.png';
     switch (variant) {
       case 'light':
         return '/bluds-logo-light.svg';
@@ -48,13 +48,19 @@ export const Logo: React.FC<LogoProps> = ({
 
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
-      {/* Scalable Vector Stylish B Logo */}
+      {/* Scalable Vector & WebP/AVIF Stylish B Logo */}
       <div className={`relative ${sizeClasses[size]} shrink-0 flex items-center justify-center`}>
-        <img
-          src={getLogoSrc()}
-          alt="BLUDS Logo"
-          className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(37,99,235,0.35)] hover:drop-shadow-[0_4px_14px_rgba(37,99,235,0.6)] transition-all duration-200"
-        />
+        <picture>
+          <source type="image/avif" srcSet="/bluds-logo.avif" />
+          <source type="image/webp" srcSet="/bluds-logo.webp" />
+          <img
+            src={getLogoSrc()}
+            alt="BLUDS Logo"
+            width={size === 'xl' ? 64 : size === 'lg' ? 48 : size === 'md' ? 40 : 32}
+            height={size === 'xl' ? 64 : size === 'lg' ? 48 : size === 'md' ? 40 : 32}
+            className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(37,99,235,0.35)] hover:drop-shadow-[0_4px_14px_rgba(37,99,235,0.6)] transition-all duration-200"
+          />
+        </picture>
       </div>
 
       {/* Optional Wordmark */}

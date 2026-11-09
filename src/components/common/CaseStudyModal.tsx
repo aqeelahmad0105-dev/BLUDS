@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAgency } from '../../context/AgencyContext';
+import { OptimizedImage } from './OptimizedImage';
 import { 
   X, 
   ExternalLink, 
@@ -86,10 +87,14 @@ export const CaseStudyModal: React.FC = () => {
         <div className="overflow-y-auto p-5 sm:p-7 space-y-6">
           {/* Hero Banner */}
           <div className="relative rounded-lg overflow-hidden aspect-video max-h-64 w-full border border-[#222222] bg-black">
-            <img
+            <OptimizedImage
               src={activeModalCaseStudy.heroImage}
               alt={activeModalCaseStudy.title}
+              width={1200}
+              height={675}
+              priority={true}
               className="w-full h-full object-cover"
+              pictureClassName="w-full h-full block"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-black/40 to-transparent" />
             <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between gap-4">
@@ -171,10 +176,13 @@ export const CaseStudyModal: React.FC = () => {
               <div className="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
                 {/* Video Screen Reel */}
                 <div className="md:col-span-5 relative rounded-lg overflow-hidden aspect-[4/3] bg-black border border-[#262626] group shadow-inner">
-                  <img
+                  <OptimizedImage
                     src={activeModalCaseStudy.videoTestimonial.posterImage}
                     alt={activeModalCaseStudy.videoTestimonial.speakerName}
+                    width={800}
+                    height={600}
                     className={`w-full h-full object-cover transition-transform duration-500 ${isPlayingVideo ? 'scale-105' : 'group-hover:scale-102'}`}
+                    pictureClassName="w-full h-full block"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
 

@@ -67,7 +67,7 @@ export const initialFounders: Founder[] = [
     focus: 'Custom Websites, Mobile Speed & Hosting',
     bio: 'Specialist in building fast, beautiful websites that look great on smartphones, load in under 1 second, and give your business a trusted, professional look.',
     expertise: ['Custom Websites', 'Fast on Mobile', 'WhatsApp Integration', 'Domain Setup', 'Annual Hosting'],
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format,compress&fm=webp&fit=crop&w=400&q=75',
     socials: {
       linkedin: 'https://linkedin.com/in/ghulam-founder',
       github: 'https://github.com/ghulam-tech',
@@ -84,7 +84,7 @@ export const initialFounders: Founder[] = [
     focus: 'Shop Billing (POS) & Shopify Online Stores',
     bio: 'Builds easy-to-use billing software for shops and retail stores with barcode scanning and instant receipt printing, alongside Shopify stores with Cash on Delivery.',
     expertise: ['Shop POS Billing', 'Shopify Stores', 'Barcode Scanners', 'Receipt Printers', 'Stock Tracking'],
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format,compress&fm=webp&fit=crop&w=400&q=75',
     socials: {
       linkedin: 'https://linkedin.com/in/hamza-product',
       github: 'https://github.com/hamza-builds',
@@ -101,7 +101,7 @@ export const initialFounders: Founder[] = [
     focus: 'Google Page-1 Ranking, 12 Video Reels & Ads',
     bio: 'Helps businesses get more customers through Page-1 Google ranking, targeted Facebook/Instagram/Google ads, and 12 monthly video reels with viral hooks.',
     expertise: ['Google Ranking (SEO)', 'Facebook & Instagram Ads', '12 Video Reels/Mo', 'Google Ads', 'Monthly Reports'],
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format,compress&fm=webp&fit=crop&w=400&q=75',
     socials: {
       linkedin: 'https://linkedin.com/in/daniyal-ai',
       github: 'https://github.com/daniyal-dev',
@@ -118,7 +118,7 @@ export const initialFounders: Founder[] = [
     focus: 'Direct Client Communication & WhatsApp Support',
     bio: 'Your primary contact at BLUDS Agency. Available 24/7 on WhatsApp (03099489168) and email for quick quotes, project status, and questions in plain language.',
     expertise: ['WhatsApp: 03099489168', 'Direct Quotes', 'Fast Delivery', 'Zero Middlemen', 'Customer Support'],
-    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format,compress&fm=webp&fit=crop&w=400&q=75',
     socials: {
       linkedin: 'https://linkedin.com/in/aqeel-ahmad',
       github: 'https://github.com/aqeelahmad0105-dev',
@@ -268,7 +268,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: 'Fast billing software for retail shops and supermarkets. Features barcode scanning, instant receipt printing, real-time inventory deduction, and daily profit tracking.',
     challenge: 'Long customer checkout queues during evening rush hours, frequent stock counting mistakes, and no way to know exact daily profits.',
     solution: 'Installed our custom desktop & tablet POS system with instant barcode scanning, thermal receipt printing, and daily profit/loss reports.',
-    heroImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['Live POS Software', 'Barcode Scanner', 'Thermal Receipts', 'Inventory Sync'],
     metrics: [
       { label: 'Billing Speed', value: '< 2.0s / bill' },
@@ -281,7 +281,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Mian Tariq',
       role: 'General Manager',
       company: 'LuxeMart Superstore (Gulberg, Lahore)',
-      posterImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:45',
       rating: 5,
       quote: 'Hamza and the BLUDS team set up our entire supermarket checkout in 48 hours. Billing time dropped from 30 seconds to under 2 seconds per customer. Our evening cashier queues are completely smooth now.'
@@ -297,7 +297,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: 'Custom mobile-friendly website with instant load speeds, clean modern layout, and direct WhatsApp customer inquiries.',
     challenge: 'Their previous template website took 7+ seconds to load, looked broken on mobile phones, and brought zero inquiries.',
     solution: 'Designed and built a fast custom website that loads in under 1 second, displays their project portfolio cleanly, and connects directly to WhatsApp.',
-    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['Live Website', 'Mobile Fast', 'WhatsApp Inquiries', 'Admin Panel'],
     metrics: [
       { label: 'Page Load Speed', value: '0.6 Seconds' },
@@ -310,7 +310,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Ar. Zainab Malik',
       role: 'Principal Architect',
       company: 'Aura Architecture Group (F-7, Islamabad)',
-      posterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:38',
       rating: 5,
       quote: 'Ghulam built us a custom site that loads instantly on iPhones and showcases our design renderings with zero lag. In the first month alone, we received 14 qualified commercial inquiries through the WhatsApp button.'
@@ -326,7 +326,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: 'Live Shopify store with Cash on Delivery (COD) setup, automated WhatsApp order alerts, and mobile-friendly 1-click checkout.',
     challenge: 'Needed to get their clothing brand online quickly with trusted Pakistani Cash on Delivery checkout and mobile responsiveness.',
     solution: 'Configured complete Shopify store with brand logo, linked Cash on Delivery, set up courier shipping, and configured instant WhatsApp order notifications.',
-    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['Live Shopify Store', 'Cash on Delivery', '1-Click Checkout', 'WhatsApp Alerts'],
     metrics: [
       { label: 'Checkout Rate', value: '+36%' },
@@ -339,7 +339,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Usman Sheikh',
       role: 'Founder & CEO',
       company: 'Nova Apparel Brand (Karachi)',
-      posterImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:52',
       rating: 5,
       quote: 'Setting up Cash on Delivery and Trax courier integration was completely seamless. We went from zero online sales to doing over Rs. 3.8M in our second month on Shopify.'
@@ -355,7 +355,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: 'Ranked #1 on Google for high-intent local dental searches, driving direct patient calls and daily appointment bookings.',
     challenge: 'Clinic was invisible on Google search, relying only on expensive word-of-mouth with zero patients finding them online.',
     solution: 'Optimized their website and Google Maps business profile for local dental keywords, taking them to the #1 spot on Google.',
-    heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['Live Clinic Site', 'Google Page 1', 'Google Maps Business', 'Patient Bookings'],
     metrics: [
       { label: 'Google Search Rank', value: '#1 on Google' },
@@ -368,7 +368,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Dr. Haris Mehmood',
       role: 'Chief Dental Surgeon',
       company: 'Apex Dental Care (DHA Phase 5, Lahore)',
-      posterImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:41',
       rating: 5,
       quote: 'Within 60 days of Daniyal managing our local SEO, Apex Dental ranked #1 on Google for dental implants and cosmetic dentistry in Lahore. Direct patient bookings tripled.'
@@ -384,7 +384,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: 'Targeted Facebook, Instagram, and Google Search ad campaigns delivering verified buyer leads directly to the sales team WhatsApp.',
     challenge: 'Wasting budget on boosted posts that generated thousands of views but zero serious property buyer inquiries.',
     solution: 'Structured targeted lead generation ads on Facebook, Instagram, and Google Search with pre-qualifying questions to capture serious buyers.',
-    heroImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['Live Ads Campaign', 'Verified Buyer Leads', 'WhatsApp Funnel', 'Weekly Tracking'],
     metrics: [
       { label: 'Return on Ad Spend', value: '5.2x Return' },
@@ -397,7 +397,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Chaudhry Bilal',
       role: 'Managing Director',
       company: 'Skyline Properties (Bahria Town)',
-      posterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:49',
       rating: 5,
       quote: 'BLUDS ran our Meta & Google search campaigns with real buyer filters. Instead of time-wasters, our sales team closed Rs. 22M in verified property and villa bookings.'
@@ -413,7 +413,7 @@ export const initialCaseStudies: CaseStudy[] = [
     summary: '12 professionally produced and edited video reels per month with trending audio and viral hooks, generating over 600k views.',
     challenge: 'Stagnant social media accounts with low reach, inconsistent posting, and zero video content to showcase skincare results.',
     solution: 'Produced and edited 12 short video reels each month with eye-catching hooks, clean subtitles, and trending audio, published across Instagram & TikTok.',
-    heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format,compress&fm=webp&fit=crop&w=1200&q=75',
     tags: ['12 Reels / Month', 'Viral Video Hooks', 'Instagram & TikTok', 'Monthly Analytics'],
     metrics: [
       { label: 'Reels Created', value: '12 / Month' },
@@ -426,7 +426,7 @@ export const initialCaseStudies: CaseStudy[] = [
       speakerName: 'Mahnoor Khan',
       role: 'Brand Director',
       company: 'Glow Organic Skincare',
-      posterImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+      posterImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format,compress&fm=webp&fit=crop&w=800&q=75',
       duration: '0:36',
       rating: 5,
       quote: 'Their 12 monthly video reels with viral hooks completely transformed our Instagram. One reel hit 340,000 views, bringing thousands of new customers without paying for ads.'
@@ -445,7 +445,7 @@ export const initialTestimonials: Testimonial[] = [
     location: 'Lahore, Pakistan',
     rating: 5,
     quote: 'The POS billing software completely solved our evening rush. Billing that used to take 2 minutes now takes 2 seconds with the barcode scanner and thermal printer. Hamza set everything up at our shop seamlessly.',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format,compress&fm=webp&fit=crop&w=200&q=75',
     projectDelivered: 'Shop POS Software & Barcode System',
     active: true
   },
@@ -457,7 +457,7 @@ export const initialTestimonials: Testimonial[] = [
     location: 'Karachi, Pakistan',
     rating: 5,
     quote: 'BLUDS set up our Shopify store with Cash on Delivery in just 2 days. The 12 video reels Daniyal produces each month gave our brand instant credibility and orders started coming in immediately.',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format,compress&fm=webp&fit=crop&w=200&q=75',
     projectDelivered: 'Shopify Store + 12 Reels Monthly',
     active: true
   },
@@ -469,7 +469,7 @@ export const initialTestimonials: Testimonial[] = [
     location: 'Islamabad, Pakistan',
     rating: 5,
     quote: 'Ghulam built our company website and it loads instantly on mobile. Daniyal manages our Facebook and Google ads, delivering serious buyer inquiries every single day. Honest pricing with zero hidden fees.',
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format,compress&fm=webp&fit=crop&w=200&q=75',
     projectDelivered: 'Custom Website + Meta & Google Ads',
     active: true
   },
@@ -481,7 +481,7 @@ export const initialTestimonials: Testimonial[] = [
     location: 'Faisalabad, Pakistan',
     rating: 5,
     quote: 'Our clinic is now ranked #1 on Google when people search for dentists in our area. We receive direct calls and patient appointments every day through Google Maps. Highly recommend BLUDS Agency.',
-    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format,compress&fm=webp&fit=crop&w=200&q=75',
     projectDelivered: 'Google Page-1 SEO Optimization',
     active: true
   }

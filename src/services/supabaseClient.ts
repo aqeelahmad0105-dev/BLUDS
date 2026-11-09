@@ -295,3 +295,4 @@ export async function deleteCloudInquiry(
     return false;
   }
 }
+

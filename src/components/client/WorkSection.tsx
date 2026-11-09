@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { Card3D } from '../common/Card3D';
 import { StaggeredImageReveal, RevealMode } from '../common/StaggeredImageReveal';
+import { OptimizedImage } from '../common/OptimizedImage';
 
 interface MiniPOSItem {
   id: string;
@@ -423,10 +424,13 @@ export const WorkSection: React.FC = () => {
 
                       {/* Small thumbnail preview */}
                       <div className="mt-2 h-8 rounded overflow-hidden bg-black relative">
-                        <img
+                        <OptimizedImage
                           src={item.heroImage}
                           alt={item.title}
+                          width={240}
+                          height={64}
                           className="w-full h-full object-cover"
+                          pictureClassName="w-full h-full block"
                         />
                       </div>
 
@@ -669,10 +673,13 @@ export const WorkSection: React.FC = () => {
                   onClick={() => setActiveModalCaseStudy(project)}
                   className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f] cursor-pointer"
                 >
-                  <img
+                  <OptimizedImage
                     src={project.heroImage}
                     alt={project.title}
+                    width={800}
+                    height={450}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                    pictureClassName="w-full h-full block"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
                   <div className="absolute top-3 left-3">
