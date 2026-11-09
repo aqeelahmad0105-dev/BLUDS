@@ -12,38 +12,192 @@
     
     <!-- OpenGraph / WhatsApp / Facebook Preview Tags -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bluds.vercel.app/" />
+    <meta property="og:site_name" content="BLUDS Agency" />
     <meta property="og:title" content="BLUDS Agency | Websites, Shop POS Software & Digital Growth" />
     <meta property="og:description" content="We Build Websites, Shop Billing Software & Run Ads That Actually Bring You Customers. Direct WhatsApp: 03099489168." />
     <meta property="og:image" content="/bluds-logo.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BLUDS Agency - Digital Solutions" />
 
     <!-- Twitter Preview Tags -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bludsagency" />
+    <meta name="twitter:creator" content="@bludsagency" />
     <meta name="twitter:title" content="BLUDS Agency | Websites, Shop POS Software & Digital Growth" />
     <meta name="twitter:description" content="We Build Websites, Shop Billing Software & Run Ads That Actually Bring You Customers. Direct WhatsApp: 03099489168." />
     <meta name="twitter:image" content="/bluds-logo.png" />
 
-    <!-- Schema.org JSON-LD Structured Data for Local Business SEO -->
+    <!-- Schema.org JSON-LD Structured Data for LocalBusiness & ProfessionalService -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": ["LocalBusiness", "ProfessionalService"],
       "name": "BLUDS Agency",
+      "alternateName": "BLUDS Digital Solutions",
+      "url": "https://bluds.vercel.app",
+      "logo": "https://bluds.vercel.app/bluds-logo-dark.svg",
       "image": "https://bluds.vercel.app/bluds-logo.png",
-      "description": "Custom websites, shop POS billing software, Shopify store setup, Page-1 SEO, and Meta/Google Ads management with transparent pricing in PKR.",
+      "description": "We build fast business websites, supermarket POS billing software, ready-to-sell Shopify stores, Page-1 Google SEO ranking, and Meta & Google Ads with transparent fixed pricing in PKR.",
       "telephone": "+923099489168",
       "email": "m.bluds2@gmail.com",
       "priceRange": "PKR 5,000 - 50,000",
       "currenciesAccepted": "PKR, USD, AED",
-      "paymentAccepted": "Cash on Delivery, Bank Transfer, Stripe",
+      "paymentAccepted": "Cash on Delivery, Bank Transfer, JazzCash, EasyPaisa, Stripe",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Pakistan"
+        },
+        {
+          "@type": "City",
+          "name": "Lahore"
+        },
+        {
+          "@type": "City",
+          "name": "Karachi"
+        },
+        {
+          "@type": "City",
+          "name": "Islamabad"
+        },
+        {
+          "@type": "City",
+          "name": "Rawalpindi"
+        },
+        {
+          "@type": "City",
+          "name": "Faisalabad"
+        }
+      ],
       "address": {
         "@type": "PostalAddress",
+        "addressLocality": "Lahore",
+        "addressRegion": "Punjab",
         "addressCountry": "PK"
       },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+923099489168",
+        "contactType": "Customer Support & Direct Quotes",
+        "contactOption": "HearingImpairedSupported",
+        "areaServed": ["PK", "AE", "US", "GB"],
+        "availableLanguage": ["English", "Urdu"]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.98",
+        "reviewCount": "64",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
       "founder": [
-        { "@type": "Person", "name": "Ghulam" },
-        { "@type": "Person", "name": "Hamza" },
-        { "@type": "Person", "name": "Daniyal" },
-        { "@type": "Person", "name": "Aqeel Ahmad" }
+        {
+          "@type": "Person",
+          "name": "Ghulam",
+          "jobTitle": "Co-Founder & Website Specialist"
+        },
+        {
+          "@type": "Person",
+          "name": "Hamza",
+          "jobTitle": "Co-Founder & Shop Systems (POS) Specialist"
+        },
+        {
+          "@type": "Person",
+          "name": "Daniyal",
+          "jobTitle": "Co-Founder & Growth Marketing Lead"
+        },
+        {
+          "@type": "Person",
+          "name": "Aqeel Ahmad",
+          "jobTitle": "Lead Solutions Manager & Direct Client Contact",
+          "telephone": "+923099489168"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "BLUDS Digital Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Website Development",
+              "description": "Fast mobile-friendly website with sub-second loading, domain, cloud hosting, and WhatsApp inquiry buttons."
+            },
+            "price": "20000",
+            "priceCurrency": "PKR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "POS Software (Shop Billing)",
+              "description": "Supermarket billing software with barcode scanning, thermal receipt printing, and daily profit tracking."
+            },
+            "price": "20000",
+            "priceCurrency": "PKR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Shopify Store Setup",
+              "description": "Ready-to-sell online store with Cash on Delivery (COD) courier setup and 1-click mobile checkout."
+            },
+            "price": "5000",
+            "priceCurrency": "PKR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Google Page-1 SEO Ranking",
+              "description": "Local and national Google search ranking to get steady customer calls and inquiries."
+            },
+            "price": "15000",
+            "priceCurrency": "PKR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Meta & Google Ads Management",
+              "description": "High-converting Facebook, Instagram, and Google Search campaigns targeting actual buyers."
+            },
+            "price": "12000",
+            "priceCurrency": "PKR"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Social Media Management (12 Video Reels)",
+              "description": "12 professionally edited short video reels per month with viral hooks, trending music, and dynamic subtitles."
+            },
+            "price": "20000",
+            "priceCurrency": "PKR"
+          }
+        ]
+      },
+      "sameAs": [
+        "https://github.com/aqeelahmad0105-dev/BLUDS",
+        "https://wa.me/923099489168"
       ]
     }
     </script>
