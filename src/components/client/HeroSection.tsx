@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAgency } from '../../context/AgencyContext';
 import {
   ArrowRight,
@@ -8,7 +8,13 @@ import {
   Store,
   CheckCircle2,
   MessageSquare,
-  Sparkles
+  Sparkles,
+  Play,
+  Pause,
+  X,
+  ExternalLink,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 
 const HeroScene3D = React.lazy(() =>
@@ -18,11 +24,80 @@ const HeroScene3D = React.lazy(() =>
 export const HeroSection: React.FC = () => {
   const { siteSettings } = useAgency();
   const [activeSolution, setActiveSolution] = useState<'website' | 'marketing' | 'shopify' | 'pos'>('website');
+  const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [activeChapter, setActiveChapter] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [chapterProgress, setChapterProgress] = useState(0);
 
   const scrollTo = (id: string) => {
     const el = document.querySelector(id);
     el?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const videoChapters = [
+    {
+      title: '1. Fast Business Websites',
+      duration: '0:00 - 0:08',
+      desc: 'Custom-designed responsive websites engineered for speed, mobile responsiveness, and direct WhatsApp customer inquiries.',
+      badge: 'Rs. 20,000 One-Time',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+      highlights: ['Loads under 1.0 second', 'Zero generic copied templates', 'Direct WhatsApp inquiry forms'],
+    },
+    {
+      title: '2. Retail POS Billing Software',
+      duration: '0:08 - 0:16',
+      desc: 'Rapid cashier operations for supermarkets, clothing retail, and restaurants with barcode scanning and thermal receipt printing.',
+      badge: '< 2.0s Instant Bill',
+      image: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
+      highlights: ['Instant USB/Wireless barcode lookup', 'Thermal ESC/POS receipt cuts', 'Daily shift profit & stock deduction'],
+    },
+    {
+      title: '3. Shopify Store with Cash on Delivery',
+      duration: '0:16 - 0:23',
+      desc: 'Complete Shopify storefront connected to custom domain, courier shipping rates, and 1-click Cash on Delivery (COD) checkout.',
+      badge: 'Rs. 5,000 One-Time',
+      image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
+      highlights: ['Pakistani courier COD integration', 'Instant WhatsApp order alerts', 'Automated inventory tracking'],
+    },
+    {
+      title: '4. Page-1 SEO & High-ROI Ads',
+      duration: '0:23 - 0:30',
+      desc: 'Rank on Page #1 of Google search and run high-converting Meta (Facebook & Instagram) and Google search advertising campaigns.',
+      badge: '5.2x Target ROAS',
+      image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80',
+      highlights: ['Google Page-1 keyword ranking', '12 produced viral video reels/mo', 'Transparent weekly lead reports'],
+    },
+  ];
+
+  // Auto-advance 30s highlights sequence when modal is open
+  useEffect(() => {
+    if (!videoModalOpen || !isPlaying) return;
+
+    const interval = 100;
+    const durationPerChapter = 7500; // 7.5 seconds per chapter = 30s total
+    const step = (interval / durationPerChapter) * 100;
+
+    const timer = setInterval(() => {
+      setChapterProgress((prev) => {
+        if (prev + step >= 100) {
+          setActiveChapter((curr) => (curr + 1) % videoChapters.length);
+          return 0;
+        }
+        return prev + step;
+      });
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, [videoModalOpen, isPlaying, activeChapter]);
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setVideoModalOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const solutionConfigs = {
     website: {
@@ -104,10 +179,20 @@ export const HeroSection: React.FC = () => {
         {/* Main Content Hero Header */}
         <div className="max-w-3xl mx-auto text-center space-y-5">
           
-          {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111111] border border-[#262626] text-xs text-neutral-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>Direct WhatsApp Support: 03099489168 • Founded by Ghulam, Hamza & Daniyal</span>
+          {/* Trust & Floating Verified Metrics Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111111] border border-[#262626] text-xs text-neutral-300">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Direct WhatsApp: 03099489168</span>
+            </div>
+
+            {/* Floating Verified Metrics Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-950/40 border border-blue-800/40 text-xs font-mono text-blue-300 shadow-sm shadow-blue-950/40">
+              <Sparkles className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <span className="text-white font-semibold">50+ Projects Launched in Pakistan</span>
+              <span className="text-neutral-500">•</span>
+              <span className="text-emerald-400 font-medium">100% Client Satisfaction</span>
+            </div>
           </div>
 
           {/* Slogan & Main Heading (100% Layman, Clear & Punchy) */}
@@ -141,6 +226,23 @@ export const HeroSection: React.FC = () => {
             >
               <span>See Services & Pricing</span>
               <ArrowRight className="w-4 h-4" />
+            </button>
+
+            {/* 30s Video Highlights Modal Trigger */}
+            <button
+              type="button"
+              onClick={() => {
+                setActiveChapter(0);
+                setChapterProgress(0);
+                setIsPlaying(true);
+                setVideoModalOpen(true);
+              }}
+              className="w-full sm:w-auto px-5 py-3.5 rounded-lg bg-[#111111] hover:bg-[#161616] text-white border border-[#262626] hover:border-neutral-700 font-medium text-sm transition-colors flex items-center justify-center gap-2 group"
+            >
+              <div className="w-5 h-5 rounded-full bg-blue-600/30 border border-blue-500/50 flex items-center justify-center text-blue-400 group-hover:scale-110 transition-transform">
+                <Play className="w-2.5 h-2.5 fill-current ml-0.5" />
+              </div>
+              <span>Watch 30s Highlights</span>
             </button>
           </div>
 
@@ -299,6 +401,169 @@ export const HeroSection: React.FC = () => {
         </div>
 
       </div>
+
+      {/* ============================================================== */}
+      {/* 30-SECOND AGENCY VIDEO HIGHLIGHTS MODAL                         */}
+      {/* ============================================================== */}
+      {videoModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          {/* Backdrop */}
+          <div
+            onClick={() => setVideoModalOpen(false)}
+            className="fixed inset-0 bg-black/90 backdrop-blur-md transition-opacity"
+          />
+
+          {/* Dialog Container */}
+          <div className="relative w-full max-w-3xl bg-[#0c0c0c] border border-[#262626] rounded-2xl overflow-hidden z-10 shadow-2xl flex flex-col text-white">
+            
+            {/* Modal Top Bar */}
+            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#1f1f1f] bg-[#121212]">
+              <div className="flex items-center gap-3">
+                <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-semibold bg-blue-950/60 text-blue-400 border border-blue-800/50">
+                  30s HIGHLIGHTS • 0{activeChapter + 1} / 0{videoChapters.length}
+                </span>
+                <span className="text-xs font-medium text-neutral-300 hidden sm:inline">
+                  {videoChapters[activeChapter].title}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  title={isPlaying ? 'Pause Highlights' : 'Resume Highlights'}
+                  className="p-1.5 rounded-lg bg-[#1a1a1a] border border-[#2a2a2a] text-neutral-300 hover:text-white transition-colors"
+                >
+                  {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setVideoModalOpen(false)}
+                  className="p-1.5 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-800 transition-colors"
+                  aria-label="Close highlights"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+
+            {/* Video Stage Frame */}
+            <div className="relative aspect-video max-h-[360px] bg-black overflow-hidden border-b border-[#1f1f1f]">
+              {/* Top Progress Bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-black/60 z-20">
+                <div
+                  className="h-full bg-blue-500 transition-all duration-100 ease-linear"
+                  style={{ width: `${chapterProgress}%` }}
+                />
+              </div>
+
+              {/* Visual Chapter Media */}
+              <img
+                src={videoChapters[activeChapter].image}
+                alt={videoChapters[activeChapter].title}
+                className="w-full h-full object-cover brightness-[0.75] transition-all duration-700 ease-out"
+              />
+
+              {/* Gradient Backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+
+              {/* Overlay Content */}
+              <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 space-y-2">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-950/80 text-emerald-400 border border-emerald-800/80 backdrop-blur-sm">
+                    {videoChapters[activeChapter].badge}
+                  </span>
+                  <span className="text-[11px] font-mono text-neutral-400">
+                    {videoChapters[activeChapter].duration}
+                  </span>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  {videoChapters[activeChapter].title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed max-w-xl">
+                  {videoChapters[activeChapter].desc}
+                </p>
+
+                {/* Bullets */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {videoChapters[activeChapter].highlights.map((h, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-0.5 rounded text-[10px] font-mono bg-black/70 border border-neutral-700 text-neutral-200 backdrop-blur-sm"
+                    >
+                      ✦ {h}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Chapter Selection Bar */}
+            <div className="p-4 bg-[#0e0e0e] border-b border-[#1c1c1c]">
+              <div className="text-[11px] font-mono text-neutral-400 mb-2 flex items-center justify-between">
+                <span>Select Section to Jump:</span>
+                <span>{isPlaying ? 'Auto-playing sequence' : 'Paused'}</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {videoChapters.map((chap, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => {
+                      setActiveChapter(idx);
+                      setChapterProgress(0);
+                    }}
+                    className={`p-2.5 rounded-lg border text-left transition-all ${
+                      activeChapter === idx
+                        ? 'bg-blue-950/50 border-blue-500 ring-1 ring-blue-500/40 text-white'
+                        : 'bg-[#141414] border-[#222222] text-neutral-400 hover:text-white'
+                    }`}
+                  >
+                    <div className="text-[10px] font-mono text-blue-400 truncate">
+                      {chap.duration}
+                    </div>
+                    <div className="text-xs font-medium truncate mt-0.5">
+                      {chap.title.split('. ')[1]}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Modal Footer Call to Action */}
+            <div className="p-4 sm:p-5 bg-[#121212] flex flex-col sm:flex-row items-center justify-between gap-3">
+              <span className="text-xs text-neutral-400 text-center sm:text-left">
+                Ready to launch with guaranteed honest pricing in PKR?
+              </span>
+
+              <div className="flex items-center gap-2.5 w-full sm:w-auto">
+                <a
+                  href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                    `Hello Aqeel, I watched your 30-second highlights reel and would like to discuss ${videoChapters[activeChapter].title} for my business.`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 sm:flex-none px-4 py-2.5 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 shadow"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-black" />
+                  <span>Start on WhatsApp (03099489168)</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setVideoModalOpen(false)}
+                  className="px-3.5 py-2.5 rounded-lg bg-[#1a1a1a] hover:bg-neutral-800 text-xs text-neutral-300 hover:text-white transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </section>
   );
 };
