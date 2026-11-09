@@ -207,11 +207,36 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
     const resizeObserver = new ResizeObserver(handleResize);
     resizeObserver.observe(container);
 
-    // 9. Animation Loop with 60 FPS Smooth Inertia
-    let animationFrameId: number;
+    // 9. Animation Loop with Visibility & Focus optimization (stops when out of view/not in focus)
+    let animationFrameId: number = 0;
     let clock = new THREE.Clock();
+    let isIntersecting = true;
+    let isWindowActive = typeof document !== 'undefined' ? !document.hidden : true;
+    let isRunning = false;
+
+    const startAnimate = () => {
+      if (isRunning || !isIntersecting || !isWindowActive) return;
+      isRunning = true;
+      clock.start();
+      animate();
+    };
+
+    const stopAnimate = () => {
+      if (!isRunning) return;
+      isRunning = false;
+      clock.stop();
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = 0;
+      }
+    };
 
     const animate = () => {
+      if (!isRunning || !isIntersecting || !isWindowActive) {
+        isRunning = false;
+        return;
+      }
+
       animationFrameId = requestAnimationFrame(animate);
       const elapsedTime = clock.getElapsedTime();
 
@@ -269,11 +294,58 @@ export const HeroScene3D: React.FC<HeroScene3DProps> = ({ activeMode, className 
       renderer.render(scene, camera);
     };
 
-    animate();
+    // IntersectionObserver to halt rendering when scrolled out of view
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isIntersecting = entry.isIntersecting;
+          if (isIntersecting && isWindowActive) {
+            startAnimate();
+          } else {
+            stopAnimate();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    intersectionObserver.observe(container);
+
+    // Visibility & Focus listeners
+    const handleVisibilityChange = () => {
+      isWindowActive = !document.hidden;
+      if (isWindowActive && isIntersecting) {
+        startAnimate();
+      } else {
+        stopAnimate();
+      }
+    };
+
+    const handleWindowBlur = () => {
+      isWindowActive = false;
+      stopAnimate();
+    };
+
+    const handleWindowFocus = () => {
+      isWindowActive = true;
+      if (isIntersecting) {
+        startAnimate();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleWindowBlur);
+    window.addEventListener('focus', handleWindowFocus);
+
+    // Initial start if visible
+    startAnimate();
 
     // Cleanup
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      stopAnimate();
+      intersectionObserver.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
       resizeObserver.disconnect();
       container.removeEventListener('mousemove', handleMouseMove);
       container.removeEventListener('mousedown', handleMouseDown);

@@ -223,19 +223,19 @@ export const TechMatrixSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-              Technology & Delivery Stacks
+              Our Tools & Platforms
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Engineered for Measurable Commercial Results
+              The Best Tools We Use to Grow Your Business
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-3">
-              We select battle-tested tools engineered for maximum speed, reliable POS operations, and high-ROI digital marketing.
+              We select reliable, modern technologies that guarantee ultra-fast website loading, lag-free shop billing, and high-return advertising campaigns.
             </p>
           </div>
 
           <div className="flex items-center gap-2 text-xs font-mono text-neutral-300 bg-[#0c0c0c] border border-[#222222] px-3.5 py-2 rounded-lg self-start md:self-auto">
-            <ShieldCheck className="w-4 h-4 text-blue-500" />
-            <span>100% Client Ownership • Direct Founder Execution</span>
+            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+            <span>100% Client Ownership • Fixed Transparent Pricing</span>
           </div>
         </div>
 

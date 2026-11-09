@@ -49,38 +49,25 @@ export const ServicesSection: React.FC = () => {
         <div className="relative mb-12 rounded-xl border border-[#222222] bg-[#0c0c0c] overflow-hidden p-6 sm:p-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             
-            {/* Heading Typography */}
+            {/* Heading Typography in Plain Layman Language */}
             <div className="lg:col-span-7">
               <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-                Official Agency Services
+                Services & Fixed Rates
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-                Engineering Services Built for Scale
+                Everything Your Business Needs to Grow
               </h2>
-              <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-                From high-speed Next.js websites and custom POS software to Shopify store integrations, Page-1 SEO, and high-ROI Meta & Google ads.
+              <p className="text-neutral-400 text-sm sm:text-base mt-2.5 leading-relaxed">
+                Clear pricing in PKR with zero hidden agency costs. We build your website, set up your shop billing, connect your Shopify store, and run ads that bring you customers.
               </p>
-              
-              {/* Architecture tags */}
-              <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-[#1c1c1c]">
-                <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
-                  Websites & POS Software
-                </span>
-                <span className="text-[11px] font-mono text-neutral-400 px-2.5 py-1 rounded bg-[#111111] border border-[#222222]">
-                  Shopify & E-Commerce
-                </span>
-                <span className="text-[11px] font-mono text-blue-400 px-2.5 py-1 rounded bg-blue-950/40 border border-blue-800/40">
-                  SEO, Meta Ads & 12 Reels/Mo
-                </span>
-              </div>
             </div>
 
-            {/* Interactive Blue SQX Bricks Animation Canvas in Heading */}
+            {/* Interactive Blue SQX Bricks Animation Canvas in Heading (stops when not in focus) */}
             <div className="lg:col-span-5 relative rounded-lg overflow-hidden border border-[#1f2430] bg-black">
               <div className="px-3 py-2 bg-[#0a0d14] border-b border-[#1f2430] flex items-center justify-between text-[11px] font-mono text-neutral-400">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                  <span>Modular Building Blocks</span>
+                  <span>Interactive Visual Grid</span>
                 </span>
                 <span className="text-[10px] text-neutral-500">
                   Hover to illuminate
@@ -104,11 +91,9 @@ export const ServicesSection: React.FC = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {activeServices.map((service) => (
-            <Card3D
+            <div
               key={service.id}
-              intensity={6}
-              className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors flex flex-col justify-between cursor-pointer"
-              onClick={() => setActiveServiceDetails(service)}
+              className="p-6 rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors flex flex-col justify-between"
             >
               <div>
                 {/* Icon & Badge */}
@@ -116,7 +101,7 @@ export const ServicesSection: React.FC = () => {
                   <div className="w-10 h-10 rounded-lg bg-[#141414] border border-[#262626] flex items-center justify-center">
                     {getServiceIcon(service.iconName)}
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#141414] text-neutral-300 border border-[#262626]">
+                  <span className="px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[#141414] text-blue-400 border border-[#262626]">
                     {service.badge}
                   </span>
                 </div>
@@ -129,8 +114,16 @@ export const ServicesSection: React.FC = () => {
                   {service.shortDescription}
                 </p>
 
+                {/* Price Display */}
+                {service.startingPrice && (
+                  <div className="mb-4 p-2.5 rounded-lg bg-[#111111] border border-[#222222]">
+                    <span className="text-[10px] font-mono text-neutral-400 block uppercase">Price in PKR</span>
+                    <span className="text-sm font-bold text-white">{service.startingPrice}</span>
+                  </div>
+                )}
+
                 {/* Deliverables snippet */}
-                <div className="space-y-1.5 mb-6 pt-3 border-t border-[#1c1c1c]">
+                <div className="space-y-1.5 mb-6 pt-2 border-t border-[#1c1c1c]">
                   {service.deliverables.slice(0, 3).map((item, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-xs text-neutral-300">
                       <CheckCircle2 className="w-3.5 h-3.5 text-blue-500 shrink-0" />
@@ -140,19 +133,29 @@ export const ServicesSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom Card Action */}
+              {/* Bottom Card Actions (Real Working Buttons) */}
               <div className="pt-3 border-t border-[#1c1c1c] flex items-center justify-between gap-2">
-                <span className="text-xs font-medium text-blue-400 flex items-center gap-1 shrink-0">
-                  <span>View Details</span>
+                <button
+                  type="button"
+                  onClick={() => setActiveServiceDetails(service)}
+                  className="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1 transition-colors"
+                >
+                  <span>See Full Details</span>
                   <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-                {service.startingPrice && (
-                  <span className="text-[11px] font-mono text-neutral-300 font-medium text-right truncate">
-                    {service.startingPrice}
-                  </span>
-                )}
+                </button>
+
+                <a
+                  href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                    `Hello Aqeel, I am interested in ${service.title} (${service.startingPrice}). Please provide details.`
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] border border-[#262626] text-xs font-medium text-emerald-400 transition-colors"
+                >
+                  WhatsApp
+                </a>
               </div>
-            </Card3D>
+            </div>
           ))}
         </div>
 

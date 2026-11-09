@@ -92,12 +92,12 @@ interface AgencyContextType {
 const AgencyContext = createContext<AgencyContextType | undefined>(undefined);
 
 const STORAGE_KEYS = {
-  SETTINGS: 'bluds_site_settings_v2',
-  SERVICES: 'bluds_services_v2',
-  CASES: 'bluds_cases_v2',
-  TESTIMONIALS: 'bluds_testimonials_v2',
-  FOUNDERS: 'bluds_founders_v2',
-  INQUIRIES: 'bluds_inquiries_v2',
+  SETTINGS: 'bluds_site_settings_v3',
+  SERVICES: 'bluds_services_v3',
+  CASES: 'bluds_cases_v3',
+  TESTIMONIALS: 'bluds_testimonials_v3',
+  FOUNDERS: 'bluds_founders_v3',
+  INQUIRIES: 'bluds_inquiries_v3',
   AUTH: 'bluds_admin_auth_v1',
 };
 

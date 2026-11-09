@@ -191,8 +191,27 @@ export const BricksAnimation: React.FC<BricksAnimationProps> = ({
     canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
     canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
 
-    // Animation Loop
+    // Animation Loop with Visibility & Focus optimization
     let startTime = performance.now();
+    let isIntersecting = true;
+    let isWindowActive = typeof document !== 'undefined' ? !document.hidden : true;
+    let isRunning = false;
+
+    const startAnimation = () => {
+      if (isRunning || !isIntersecting || !isWindowActive) return;
+      isRunning = true;
+      startTime = performance.now();
+      animationFrameRef.current = requestAnimationFrame(render);
+    };
+
+    const stopAnimation = () => {
+      if (!isRunning) return;
+      isRunning = false;
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = 0;
+      }
+    };
 
     const drawRoundedRect = (
       context: CanvasRenderingContext2D,
@@ -221,6 +240,11 @@ export const BricksAnimation: React.FC<BricksAnimationProps> = ({
     };
 
     const render = (time: number) => {
+      if (!isRunning || !isIntersecting || !isWindowActive) {
+        isRunning = false;
+        return;
+      }
+
       const elapsed = (time - startTime) * 0.001;
       const rect = container.getBoundingClientRect();
       const w = rect.width || 800;
@@ -339,10 +363,57 @@ export const BricksAnimation: React.FC<BricksAnimationProps> = ({
       animationFrameRef.current = requestAnimationFrame(render);
     };
 
-    animationFrameRef.current = requestAnimationFrame(render);
+    // IntersectionObserver to pause when not in viewport
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isIntersecting = entry.isIntersecting;
+          if (isIntersecting && isWindowActive) {
+            startAnimation();
+          } else {
+            stopAnimation();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+    intersectionObserver.observe(container);
+
+    // Visibility & Focus listeners to pause when tab/window is not in focus
+    const handleVisibilityChange = () => {
+      isWindowActive = !document.hidden;
+      if (isWindowActive && isIntersecting) {
+        startAnimation();
+      } else {
+        stopAnimation();
+      }
+    };
+
+    const handleWindowBlur = () => {
+      isWindowActive = false;
+      stopAnimation();
+    };
+
+    const handleWindowFocus = () => {
+      isWindowActive = true;
+      if (isIntersecting) {
+        startAnimation();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('blur', handleWindowBlur);
+    window.addEventListener('focus', handleWindowFocus);
+
+    // Initial start if visible
+    startAnimation();
 
     return () => {
-      cancelAnimationFrame(animationFrameRef.current);
+      stopAnimation();
+      intersectionObserver.disconnect();
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('blur', handleWindowBlur);
+      window.removeEventListener('focus', handleWindowFocus);
       resizeObserver.disconnect();
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
-import { Shield, Github, Linkedin, Twitter, MapPin, Mail, Phone, Lock } from 'lucide-react';
+import { Shield, Github, Linkedin, Twitter, MapPin, Mail, Phone, Lock, MessageSquare } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const { siteSettings, navigate } = useAgency();
@@ -17,19 +18,14 @@ export const Footer: React.FC = () => {
           
           {/* Identity */}
           <div className="lg:col-span-2 space-y-3">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
-                B
-              </div>
-              <span className="font-semibold text-sm text-white tracking-tight">
-                {siteSettings.agencyName}
-              </span>
+            <div className="cursor-pointer" onClick={() => scrollTo('#top')}>
+              <Logo size="md" />
             </div>
             <p className="text-neutral-400 text-xs leading-relaxed max-w-sm">
-              {siteSettings.shortPitch}
+              We build fast websites, shop POS billing software, Shopify stores, and run high-ROI Facebook, Instagram & Google ads.
             </p>
             <div className="text-[11px] text-neutral-500 font-mono pt-1">
-              {siteSettings.operationalModel.currentPhase} • {siteSettings.operationalModel.nextMilestone}
+              Direct founder supervision • 24/7 WhatsApp: 03099489168
             </div>
           </div>
 
@@ -44,15 +40,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#services')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Core Services
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollTo('#technology')}
-                  className="hover:text-white transition-colors text-left"
-                >
-                  Technology Benchmarks
+                  Services & Prices
                 </button>
               </li>
               <li>
@@ -60,7 +48,15 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#case-studies')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Production Deployments
+                  Live Projects
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollTo('#technology')}
+                  className="hover:text-white transition-colors text-left"
+                >
+                  Tools & Platforms
                 </button>
               </li>
               <li>
@@ -68,7 +64,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#estimator')}
                   className="hover:text-white transition-colors text-left text-blue-400"
                 >
-                  Scope Estimator
+                  Price Calculator
                 </button>
               </li>
             </ul>
@@ -77,7 +73,7 @@ export const Footer: React.FC = () => {
           {/* Company */}
           <div className="space-y-2.5">
             <h4 className="font-mono text-neutral-300 font-medium uppercase text-[11px]">
-              Organization
+              About BLUDS
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
@@ -85,7 +81,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#founders')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  The 3 Founders
+                  About Us & Team
                 </button>
               </li>
               <li>
@@ -93,7 +89,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#process')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  5-Stage Agile Engine
+                  How It Works
                 </button>
               </li>
               <li>
@@ -101,7 +97,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#faq')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  FAQ & IP Standards
+                  Frequently Asked Questions
                 </button>
               </li>
               <li>
@@ -109,7 +105,7 @@ export const Footer: React.FC = () => {
                   onClick={() => scrollTo('#contact')}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Schedule Discovery
+                  Contact Aqeel Ahmad
                 </button>
               </li>
             </ul>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAgency } from '../../context/AgencyContext';
-import { X, ExternalLink, ArrowRight, Cpu, TrendingUp } from 'lucide-react';
+import { X, ExternalLink, ArrowRight, Cpu, TrendingUp, MessageSquare } from 'lucide-react';
 
 export const CaseStudyModal: React.FC = () => {
   const { activeModalCaseStudy, setActiveModalCaseStudy, navigate } = useAgency();
@@ -55,10 +55,21 @@ export const CaseStudyModal: React.FC = () => {
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0c] via-black/40 to-transparent" />
-            <div className="absolute bottom-3 left-4 right-4">
+            <div className="absolute bottom-3 left-4 right-4 flex items-end justify-between gap-4">
               <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 {activeModalCaseStudy.title}
               </h2>
+              {activeModalCaseStudy.liveUrl && (
+                <a
+                  href={activeModalCaseStudy.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center gap-1.5 shrink-0 transition-colors shadow-lg"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Visit Live Website</span>
+                </a>
+              )}
             </div>
           </div>
 
@@ -86,7 +97,7 @@ export const CaseStudyModal: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 rounded-lg bg-[#111111] border border-[#222222] space-y-1.5">
               <h4 className="text-xs font-mono font-medium text-rose-400">
-                Challenge
+                The Problem
               </h4>
               <p className="text-xs text-neutral-300 leading-relaxed">
                 {activeModalCaseStudy.challenge}
@@ -95,7 +106,7 @@ export const CaseStudyModal: React.FC = () => {
 
             <div className="p-4 rounded-lg bg-[#111111] border border-[#222222] space-y-1.5">
               <h4 className="text-xs font-mono font-medium text-blue-400">
-                Solution
+                What We Delivered
               </h4>
               <p className="text-xs text-neutral-300 leading-relaxed">
                 {activeModalCaseStudy.solution}
@@ -107,7 +118,7 @@ export const CaseStudyModal: React.FC = () => {
           <div>
             <h4 className="text-xs font-mono font-medium text-neutral-400 mb-2 flex items-center gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-neutral-400" />
-              <span>Technology Stack Deployed</span>
+              <span>Tools & Platforms Used</span>
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {activeModalCaseStudy.techStack.map((tech) => (
@@ -125,7 +136,7 @@ export const CaseStudyModal: React.FC = () => {
         {/* Footer Actions */}
         <div className="p-4 sm:p-5 border-t border-[#1f1f1f] bg-[#121212] flex flex-col sm:flex-row items-center justify-between gap-3">
           <span className="text-xs text-neutral-400">
-            Have a similar system to architect?
+            Want something similar for your business?
           </span>
           <div className="flex items-center gap-2.5 w-full sm:w-auto">
             {activeModalCaseStudy.liveUrl && (
@@ -133,19 +144,23 @@ export const CaseStudyModal: React.FC = () => {
                 href={activeModalCaseStudy.liveUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="px-3.5 py-2 rounded-lg bg-[#1a1a1a] hover:bg-neutral-800 text-xs text-neutral-300 hover:text-white transition-colors flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold text-white transition-colors flex items-center gap-1.5"
               >
-                <span>Live Preview</span>
+                <span>Visit Live Website</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
-            <button
-              onClick={handleInquireFromCase}
-              className="flex-1 sm:flex-none px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-medium text-white transition-colors flex items-center justify-center gap-1.5"
+            <a
+              href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                `Hello Aqeel, I am looking at ${activeModalCaseStudy.title} on BLUDS Agency and want a similar solution.`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-xs font-semibold text-black transition-colors flex items-center justify-center gap-1.5 shadow"
             >
-              <span>Build This With Founders</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+              <MessageSquare className="w-3.5 h-3.5 fill-black" />
+              <span>Order on WhatsApp</span>
+            </a>
           </div>
         </div>
       </div>

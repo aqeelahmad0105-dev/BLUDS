@@ -2,42 +2,42 @@ import { CaseStudy, Founder, Inquiry, Service, SiteSettings, Testimonial } from 
 
 export const initialSiteSettings: SiteSettings = {
   agencyName: 'BLUDS Agency',
-  tagline: 'High-Performance Website Development, POS Software & Digital Growth Systems',
-  shortPitch: 'Founded by three technical partners, BLUDS is a software house delivering custom websites, retail POS systems, Shopify store connections, page-one SEO, and high-ROI Meta & Google Ads campaigns.',
+  tagline: 'We Build Websites, Shop Billing Software & Run Ads That Actually Bring You Customers',
+  shortPitch: 'BLUDS Agency helps retail shops, brands, and businesses launch custom websites, fast POS billing software, Shopify stores, and sales-generating Facebook, Instagram & Google ads.',
   announcement: {
     enabled: true,
-    text: '🚀 Currently taking new projects: Website Development, POS Software, Shopify & Ads/SEO.',
-    tag: 'INTAKE OPEN • WHATSAPP: 03099489168',
+    text: '🚀 Currently taking new projects: Websites, Shop Billing (POS), Shopify & Meta Ads.',
+    tag: 'WHATSAPP: 03099489168',
     actionText: 'Message on WhatsApp',
     actionTarget: '#contact'
   },
   operationalModel: {
-    currentPhase: 'Phase 1: 100% Online & Distributed Global Engine',
-    phaseBadge: 'ONLINE FIRST • DIRECT LEAD DELIVERY',
-    description: 'We run as a hyper-agile digital software house providing direct WhatsApp and email communication with transparent milestone pricing.',
-    nextMilestone: 'Phase 2: Launching Onsite Experience Labs & Tech Studios in 2026'
+    currentPhase: 'Direct Founder Service • Online Across Pakistan & Worldwide',
+    phaseBadge: 'DIRECT FOUNDER DELIVERY',
+    description: 'You talk directly with Aqeel Ahmad and our 3 lead builders on WhatsApp. No sales reps, no confusion, and honest fixed pricing.',
+    nextMilestone: 'Physical Onsite Walk-In Studios Launching in 2026'
   },
   contactInfo: {
     email: 'm.bluds2@gmail.com',
     phone: '03099489168',
     whatsapp: '923099489168',
     leadContact: 'Aqeel Ahmad',
-    headquarters: 'Global Online Hub (Direct WhatsApp & Email Support)',
-    physicalStudioNote: 'Direct consultation & project discovery available 24/7 on WhatsApp & Email.',
-    businessHours: '24/7 Direct WhatsApp & Email Support (Aqeel Ahmad)',
-    calendlyLink: 'https://calendly.com'
+    headquarters: 'Lahore & Online Across Pakistan (Direct WhatsApp & Call Support)',
+    physicalStudioNote: 'Instant consultation & fast pricing available 24/7 on WhatsApp & Phone.',
+    businessHours: '24/7 Direct WhatsApp & Call Support (Aqeel Ahmad: 03099489168)',
+    calendlyLink: 'https://wa.me/923099489168'
   },
   socialLinks: {
     github: 'https://github.com/bluds-agency',
     linkedin: 'https://linkedin.com/company/bluds-agency',
     twitter: 'https://x.com/bludsagency',
-    discord: 'https://discord.gg/bluds'
+    discord: 'https://wa.me/923099489168'
   },
   metrics: {
     projectsShipped: '64+',
     clientSatisfactionRate: '99.6%',
-    averageDeliveryWeeks: '1 - 4 wks',
-    uptimeSLA: '99.99%'
+    averageDeliveryWeeks: '1 - 2 Weeks',
+    uptimeSLA: '100% Guaranteed'
   }
 };
 
@@ -45,52 +45,69 @@ export const initialFounders: Founder[] = [
   {
     id: 'founder-1',
     name: 'Ghulam',
-    role: 'Co-Founder & Chief Technology Officer',
-    focus: 'Website Development, Cloud Architecture & Domain Hosting',
-    bio: 'Lead technical architect specializing in high-speed responsive website development (Next.js, React, Tailwind CSS), cloud deployment, and zero-downtime annual hosting infrastructures.',
-    expertise: ['Website Development', 'Next.js & React', 'Speed Optimization', 'Domain & Cloud Hosting', 'Admin CMS Systems'],
+    role: 'Co-Founder & Website Specialist',
+    focus: 'Custom Websites, Mobile Speed & Hosting',
+    bio: 'Specialist in building fast, beautiful websites that look great on smartphones, load in under 1 second, and give your business a trusted, professional look.',
+    expertise: ['Custom Websites', 'Fast on Mobile', 'WhatsApp Integration', 'Domain Setup', 'Annual Hosting'],
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/ghulam-founder',
       github: 'https://github.com/ghulam-tech',
       twitter: 'https://x.com/ghulam_eng'
     },
-    location: 'Remote Lead / Future Onsite Hub',
+    location: 'Lead Website Builder',
     onlineStatusBadge: 'Available for Web Inquiries',
     active: true
   },
   {
     id: 'founder-2',
     name: 'Hamza',
-    role: 'Co-Founder & Head of Product Solutions',
-    focus: 'POS Software, Retail Systems & Shopify Integrations',
-    bio: 'Solutions engineer engineering high-speed Point of Sale (POS) software for retail, supermarkets, and restaurants alongside seamless Shopify store connections, catalog sync, and checkout flows.',
-    expertise: ['POS Software Systems', 'Shopify Connection', 'Barcode Scanning', 'Inventory Deductions', 'Payment Gateways'],
+    role: 'Co-Founder & Shop Systems Specialist',
+    focus: 'Shop Billing (POS) & Shopify Online Stores',
+    bio: 'Builds easy-to-use billing software for shops and retail stores with barcode scanning and instant receipt printing, alongside Shopify stores with Cash on Delivery.',
+    expertise: ['Shop POS Billing', 'Shopify Stores', 'Barcode Scanners', 'Receipt Printers', 'Stock Tracking'],
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/hamza-product',
       github: 'https://github.com/hamza-builds',
       twitter: 'https://x.com/hamza_cpo'
     },
-    location: 'Global Delivery Lead',
+    location: 'Shop Software Lead',
     onlineStatusBadge: 'Configuring Client POS',
     active: true
   },
   {
     id: 'founder-3',
     name: 'Daniyal',
-    role: 'Co-Founder & Head of Growth & Creative Engineering',
-    focus: 'SEO Optimization, Meta & Google Ads, and Viral Reels',
-    bio: 'Growth strategist and creative video engineer running high-ROI Meta & Google Ads campaigns, technical Page-1 SEO optimization, and producing 12 high-retention short-form video reels each month.',
-    expertise: ['SEO Optimization', 'Meta Ads (FB/IG)', 'Google Search & PMax', '12 Viral Reels/Mo', 'GA4 & Tracking'],
+    role: 'Co-Founder & Growth Marketing Lead',
+    focus: 'Google Page-1 Ranking, 12 Video Reels & Ads',
+    bio: 'Helps businesses get more customers through Page-1 Google ranking, targeted Facebook/Instagram/Google ads, and 12 monthly video reels with viral hooks.',
+    expertise: ['Google Ranking (SEO)', 'Facebook & Instagram Ads', '12 Video Reels/Mo', 'Google Ads', 'Monthly Reports'],
     avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80',
     socials: {
       linkedin: 'https://linkedin.com/in/daniyal-ai',
       github: 'https://github.com/daniyal-dev',
       twitter: 'https://x.com/daniyal_ux'
     },
-    location: 'Design & Marketing Lab',
+    location: 'Marketing & Video Lead',
     onlineStatusBadge: 'Scaling Client Ad Campaigns',
+    active: true
+  },
+  {
+    id: 'founder-4',
+    name: 'Aqeel Ahmad',
+    role: 'Lead Solutions Manager & Direct Client Contact',
+    focus: 'Direct Client Communication & WhatsApp Support',
+    bio: 'Your primary contact at BLUDS Agency. Available 24/7 on WhatsApp (03099489168) and email for quick quotes, project status, and questions in plain language.',
+    expertise: ['WhatsApp: 03099489168', 'Direct Quotes', 'Fast Delivery', 'Zero Middlemen', 'Customer Support'],
+    avatarUrl: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80',
+    socials: {
+      linkedin: 'https://linkedin.com/in/aqeel-ahmad',
+      github: 'https://github.com/aqeelahmad0105-dev',
+      twitter: 'https://x.com/aqeel_bluds'
+    },
+    location: 'Client Solutions Lead',
+    onlineStatusBadge: 'Online on WhatsApp: 03099489168',
     active: true
   }
 ];
@@ -99,126 +116,126 @@ export const initialServices: Service[] = [
   {
     id: 'srv-web-dev',
     title: 'Website Development',
-    tagline: 'High-speed, responsive, professional websites with modern animations and clean architecture.',
+    tagline: 'Fast, beautiful websites that look great on smartphones and turn visitors into paying customers.',
     iconName: 'Globe',
-    badge: 'CORE OFFERING',
-    shortDescription: 'Custom website development with modern UI, mobile responsiveness, fast load speeds, and intuitive CMS/admin panel integration.',
-    fullDescription: 'We build fast, secure, and conversion-optimized websites tailored to your brand. From corporate landing pages to agency platforms, we deliver clean semantic code, 3D interactive touches, mobile-first responsiveness, and full SEO foundations.',
+    badge: 'MOST POPULAR',
+    shortDescription: 'Custom business website with mobile-friendly design, fast loading, domain, hosting, and WhatsApp inquiry buttons.',
+    fullDescription: 'We design and build a clean, modern website specifically for your business. It works smoothly on all mobile phones, loads instantly, and includes your domain name, high-speed annual hosting, and direct WhatsApp messaging for new inquiries.',
     deliverables: [
-      'One-time development: Rs. 20,000',
-      'Monthly maintenance & security: Rs. 10,000/month',
-      'Domain & Hosting: Rs. 7,000 - 8,000/year (based on domain)',
-      'Fully responsive on mobile, tablet & desktop',
-      'Admin dashboard & inquiry handling',
-      'Google PageSpeed 95+ performance optimization'
+      'One-time website creation: Rs. 20,000',
+      'Monthly updates, security & maintenance: Rs. 10,000/month',
+      'Domain name & cloud hosting setup: Rs. 7,000 - 8,000/year',
+      '100% mobile-friendly on all phones and tablets',
+      'WhatsApp chat button so customers can message you instantly',
+      'Easy-to-use admin panel to view all customer inquiries'
     ],
-    techStack: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'Node.js', 'Cloud Hosting'],
-    startingPrice: 'Rs. 20,000 (one-time) + Rs. 10,000/mo',
+    techStack: ['Mobile-Friendly Design', 'Fast Cloud Hosting', 'WhatsApp Button', 'Domain & Security', 'Admin Panel'],
+    startingPrice: 'Rs. 20,000 setup + Rs. 10,000/mo',
+    active: true,
+    featured: true
+  },
+  {
+    id: 'srv-pos',
+    title: 'POS Software (Shop Billing)',
+    tagline: 'Fast billing software for retail shops and supermarkets with barcode scanning and receipt printing.',
+    iconName: 'Store',
+    badge: 'RETAIL & SHOPS',
+    shortDescription: 'Easy-to-use checkout software that scans barcodes, prints receipts in seconds, tracks stock, and records daily profit.',
+    fullDescription: 'Say goodbye to slow handwritten receipts and inventory loss. Our custom POS software lets cashiers scan barcodes and print receipts in under 2 seconds. It automatically updates inventory, warns you when stock is low, supports multiple cashiers, and shows your daily sales and net profit.',
+    deliverables: [
+      'One-time software setup: Rs. 20,000',
+      'Cloud backup & priority support: Rs. 3,000/month subscription',
+      'Barcode scanner and thermal receipt printer setup',
+      'Automatic inventory deduction when products are sold',
+      'Daily, weekly, and monthly sales and profit/loss reports',
+      'Multiple cashier accounts with shift closing summaries'
+    ],
+    techStack: ['Barcode Scanning', 'Receipt Printing', 'Inventory Tracking', 'Daily Profit Reports', 'Cashier Accounts'],
+    startingPrice: 'Rs. 20,000 setup + Rs. 3,000/mo',
+    active: true,
+    featured: true
+  },
+  {
+    id: 'srv-shopify',
+    title: 'Shopify Store Setup',
+    tagline: 'Get your products online with a complete Shopify store and Cash on Delivery.',
+    iconName: 'ShoppingBag',
+    badge: 'START SELLING',
+    shortDescription: 'We set up your Shopify store, upload your products, connect your custom domain, and configure Cash on Delivery.',
+    fullDescription: 'Start selling across the country. We configure your complete Shopify store, set up your product catalog, link your custom domain, enable Cash on Delivery (COD), and configure instant WhatsApp order notifications so you never miss a sale.',
+    deliverables: [
+      'One-time setup fee: Rs. 5,000',
+      'Full online store setup with your custom brand logo and colors',
+      'Cash on Delivery (COD) and courier delivery setup',
+      'Product catalog, prices, and photo upload assistance',
+      'WhatsApp and email notifications whenever a customer orders',
+      'Fast, clean 1-click checkout on mobile phones'
+    ],
+    techStack: ['Shopify Store', 'Cash on Delivery (COD)', 'Domain Setup', 'WhatsApp Order Alerts', 'Product Catalog'],
+    startingPrice: 'Rs. 5,000 (one-time)',
     active: true,
     featured: true
   },
   {
     id: 'srv-seo',
-    title: 'SEO Optimization',
-    tagline: 'Boost organic rankings, keyword visibility, and continuous search traffic on Google.',
+    title: 'SEO Optimization (Google Ranking)',
+    tagline: 'Rank on Page 1 of Google so customers find your business before your competitors.',
     iconName: 'Search',
-    badge: 'ORGANIC GROWTH',
-    shortDescription: 'Comprehensive on-page, off-page, and technical search engine optimization to rank your business higher on Google search.',
-    fullDescription: 'Our data-driven SEO strategies help your website dominate local and global search results. We perform extensive keyword research, competitor analysis, meta tags optimization, speed enhancement, backlink building, and monthly search progress tracking.',
+    badge: 'ORGANIC CALLS',
+    shortDescription: 'We optimize your website to show up on Google search when local customers look for your products or services.',
+    fullDescription: 'When people search for what you sell, they choose businesses on the first page of Google. We optimize your website, fix indexing issues, and get your business ranked high so you receive continuous calls and inquiries.',
     deliverables: [
-      'Monthly Retainer: Rs. 15,000/month',
-      'Complete technical SEO audit & indexing fixes',
-      'Targeted keyword research & content mapping',
-      'Meta tags, schema markup & heading optimization',
-      'Google Search Console & GA4 analytics configuration',
-      'Monthly ranking, impressions & organic traffic report'
+      'Monthly service fee: Rs. 15,000/month',
+      'Google Page-1 ranking optimization for your core services',
+      'Google Search and Google Maps local business setup',
+      'Fix all website errors that prevent Google from ranking you',
+      'Target high-intent keywords that bring actual customers',
+      'Clear monthly report showing your visitor increase & keyword rank'
     ],
-    techStack: ['Google Search Console', 'Google Analytics 4', 'Ahrefs', 'Semrush', 'Schema.org', 'Technical SEO'],
+    techStack: ['Google Search Console', 'Google Maps Business', 'Keyword Research', 'Monthly Reports'],
     startingPrice: 'Rs. 15,000 / month',
     active: true,
     featured: true
   },
   {
     id: 'srv-ads',
-    title: 'Meta Ads & Google Ads Management',
-    tagline: 'High-converting paid advertising campaigns that drive immediate qualified leads and sales.',
+    title: 'Meta & Google Ads Management',
+    tagline: 'Targeted ads on Facebook, Instagram & Google to bring you direct calls and orders.',
     iconName: 'Megaphone',
-    badge: 'PAID TRAFFIC',
-    shortDescription: 'End-to-end paid campaign setup, audience targeting, ad creatives, pixel tracking, and continuous ROI optimization across Meta & Google.',
-    fullDescription: 'Turn ad spend into measurable revenue. We design, launch, and optimize high-ROI advertising campaigns on Facebook, Instagram, and Google Search. Note: Service fee covers full campaign management, copywriting, creative angles, and optimization; ad spend is paid directly by the client.',
+    badge: 'FAST SALES',
+    shortDescription: 'We write, design, and manage high-converting ad campaigns that reach buyers interested in your business.',
+    fullDescription: 'Stop wasting money on boosted posts that bring zero sales. We design professional ad creatives, write compelling offers, and run targeted campaigns on Facebook, Instagram, and Google Search to bring real customer calls and WhatsApp inquiries. (Note: Ad spend is paid directly to Facebook/Google).',
     deliverables: [
-      'Management Fee: Rs. 12,000/month (ad spend paid by client)',
-      'Facebook & Instagram (Meta Ads) campaign architecture',
-      'Google Search & Performance Max ads setup',
-      'High-converting ad copywriting & creative angles',
-      'Meta Pixel & Google Tag Manager conversion tracking',
-      'Weekly A/B split testing & ROAS optimization'
+      'Monthly management fee: Rs. 12,000/month (ad budget paid by client)',
+      'Facebook & Instagram ads setup with high-converting designs',
+      'Google Search ads targeting customers actively searching to buy',
+      'Eye-catching ad copy and persuasive promotional offers',
+      'Sales and inquiry tracking so you know which ads perform best',
+      'Weekly review and adjustments to get the most sales for your budget'
     ],
-    techStack: ['Meta Ads Manager', 'Google Ads', 'Meta Pixel', 'Google Tag Manager', 'Canva Pro', 'Looker Studio'],
+    techStack: ['Facebook Ads', 'Instagram Ads', 'Google Ads', 'WhatsApp Ad Funnel', 'Weekly Tracking'],
     startingPrice: 'Rs. 12,000 / month',
     active: true,
     featured: true
   },
   {
-    id: 'srv-shopify',
-    title: 'Shopify Connection & Store Integration',
-    tagline: 'Seamless Shopify e-commerce store linkage, payment gateway setup, and inventory sync.',
-    iconName: 'ShoppingBag',
-    badge: 'E-COMMERCE',
-    shortDescription: 'Connect your website to Shopify, sync product catalogs, configure payment gateways, and streamline your checkout process.',
-    fullDescription: 'Expand your sales footprint with seamless Shopify store integration. We configure custom domain routing, link payment gateways (Credit Card, Cash on Delivery, Bank Transfer), sync product inventories with webhooks, and ensure a friction-free mobile checkout flow.',
-    deliverables: [
-      'One-time setup: Rs. 5,000',
-      'Shopify store integration & custom domain mapping',
-      'Product catalog & collection structure configuration',
-      'Payment gateway & Cash on Delivery (COD) integration',
-      'Inventory auto-sync & webhook setup',
-      'Mobile-optimized checkout and order notification emails'
-    ],
-    techStack: ['Shopify', 'Liquid', 'Storefront API', 'Webhooks', 'Payment Gateways', 'SSL Security'],
-    startingPrice: 'Rs. 5,000 (one-time)',
-    active: true,
-    featured: false
-  },
-  {
     id: 'srv-social-media',
-    title: 'Social Media Management',
-    tagline: '12 engaging short-form reels per month, strategic posting, and monthly growth analytics.',
+    title: 'Social Media & Video Reels',
+    tagline: '12 short video reels filmed & edited every month to grow your followers and brand.',
     iconName: 'Video',
-    badge: 'VIRAL BRANDING',
-    shortDescription: 'Grow your brand presence across Instagram, TikTok, and Facebook with 12 professionally produced reels and in-depth performance reports.',
-    fullDescription: 'Social media consistency that drives attention and trust. We script, edit, and post 12 high-retention short-form reels every month with trending audio, engaging captions, and hashtag strategies, followed by an actionable monthly analytics report.',
+    badge: 'VIRAL CONTENT',
+    shortDescription: 'Professional video editing with viral hooks, trending music, and dynamic captions posted to Instagram, Facebook & TikTok.',
+    fullDescription: 'Consistent short-form video is the #1 way to grow today. We write engaging hooks, professionally edit 12 short video reels each month with trending audio and subtitles, post them across your social platforms, and give you monthly growth reports.',
     deliverables: [
-      'Monthly Package: Rs. 20,000/month',
-      '12 professional short-form Reels / Videos per month',
-      'Viral hook scripting, dynamic captions & trending music',
-      'Multi-channel publishing (Instagram, Facebook, TikTok)',
-      'Engagement monitoring & community interaction guidelines',
-      'Comprehensive monthly analytics & growth report'
+      'Monthly package: Rs. 20,000/month',
+      '12 professionally edited video reels / shorts per month',
+      'Viral hooks and captivating on-screen subtitles',
+      'Trending music selection and hashtag strategy',
+      'Publishing to Instagram, Facebook, and TikTok',
+      'Monthly report showing views, follower growth, and engagement'
     ],
-    techStack: ['Premiere Pro', 'CapCut Pro', 'Meta Business Suite', 'TikTok Creative Center', 'Canva'],
+    techStack: ['12 Video Reels/Mo', 'Instagram & Facebook', 'TikTok', 'Trending Audio', 'Monthly Growth Analytics'],
     startingPrice: 'Rs. 20,000 / month',
-    active: true,
-    featured: true
-  },
-  {
-    id: 'srv-pos',
-    title: 'POS Software (Point of Sale)',
-    tagline: 'Fast billing, inventory control, and multi-user retail/restaurant management software.',
-    iconName: 'Store',
-    badge: 'BUSINESS OS',
-    shortDescription: 'Complete Point of Sale software for retail shops, supermarkets, and restaurants with offline-first speed and cloud sync.',
-    fullDescription: 'Automate your retail or food establishment with our custom POS solution. Features fast barcode scanning, instant thermal receipt printing, real-time stock deductions, low-inventory notifications, multi-counter cashier accounts, and cloud reporting for business owners.',
-    deliverables: [
-      'One-time software license: Rs. 20,000',
-      'Ongoing cloud sync & support: Rs. 3,000/month subscription',
-      'Barcode scanner & thermal receipt printer integration',
-      'Real-time inventory management & low-stock alerts',
-      'Multi-cashier access control & shift closing reports',
-      'Daily, weekly & monthly profit/loss accounting analytics'
-    ],
-    techStack: ['React/Electron', 'Node.js', 'PostgreSQL/SQLite', 'ESC/POS Thermal', 'Cloud Sync', 'Barcode Engine'],
-    startingPrice: 'Rs. 20,000 (one-time) + Rs. 3,000/mo',
     active: true,
     featured: true
   }
@@ -227,121 +244,121 @@ export const initialServices: Service[] = [
 export const initialCaseStudies: CaseStudy[] = [
   {
     id: 'case-1',
-    title: 'LuxeMart: Multi-Counter Retail POS Software System',
+    title: 'LuxeMart: Retail Shop Billing & POS Software',
     client: 'LuxeMart Superstore',
     category: 'POS Software',
-    summary: 'A fast, offline-first Point of Sale system with barcode scanner integration, instant thermal receipt printing, real-time inventory deduction, and cloud sync.',
-    challenge: 'The retail client suffered from sluggish billing queues during peak hours, inventory stock mismatches, and lacked real-time daily profit and loss accounting.',
-    solution: 'Engineered a modern desktop/tablet POS system with local SQLite offline resilience, automated barcode lookup, cashier shift closing, and cloud data backup.',
+    summary: 'Fast billing software for retail shops and supermarkets. Features barcode scanning, instant receipt printing, real-time inventory deduction, and daily profit tracking.',
+    challenge: 'Long customer checkout queues during evening rush hours, frequent stock counting mistakes, and no way to know exact daily profits.',
+    solution: 'Installed our custom desktop & tablet POS system with instant barcode scanning, thermal receipt printing, and daily profit/loss reports.',
     heroImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1200&q=80',
-    tags: ['POS Software', 'Barcode Scanner', 'Inventory Sync', 'Receipt Printing'],
+    tags: ['Live POS Software', 'Barcode Scanner', 'Thermal Receipts', 'Inventory Sync'],
     metrics: [
       { label: 'Billing Speed', value: '< 2.0s / bill' },
-      { label: 'Stock Accuracy', value: '100% synced' },
+      { label: 'Stock Accuracy', value: '100% Synced' },
       { label: 'Daily Bills Processed', value: '3,800+' }
     ],
-    techStack: ['React/Electron', 'Node.js', 'PostgreSQL/SQLite', 'Thermal ESC/POS', 'Barcode Engine'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Barcode Scanner', 'Thermal Printer', 'Inventory OS', 'Profit Reports'],
+    liveUrl: 'https://luxemart-pos.vercel.app',
     featured: true,
     active: true
   },
   {
     id: 'case-2',
-    title: 'Aura Studio: High-Speed Custom Website & 3D Polish',
+    title: 'Aura Studio: High-Speed Architecture & Design Website',
     client: 'Aura Architecture Group',
     category: 'Web Development',
-    summary: 'Custom responsive corporate website featuring modern dark aesthetic, clean typography, 3D interactive canvas, and sub-second load times.',
-    challenge: 'Their previous template website took 7+ seconds to load, looked outdated on mobile, and failed to generate qualified enterprise architectural inquiries.',
-    solution: 'Built a bespoke Next.js 14 and Tailwind CSS platform with 98/100 Google PageSpeed, mobile-first layouts, and an integrated client inquiry dashboard.',
+    summary: 'Custom mobile-friendly website with instant load speeds, clean modern layout, and direct WhatsApp customer inquiries.',
+    challenge: 'Their previous template website took 7+ seconds to load, looked broken on mobile phones, and brought zero inquiries.',
+    solution: 'Designed and built a fast custom website that loads in under 1 second, displays their project portfolio cleanly, and connects directly to WhatsApp.',
     heroImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Web Development', 'Next.js', 'Speed Optimization', 'Admin Dashboard'],
+    tags: ['Live Website', 'Mobile Fast', 'WhatsApp Inquiries', 'Admin Panel'],
     metrics: [
-      { label: 'Google PageSpeed', value: '98 / 100' },
-      { label: 'Mobile Bounce Rate', value: '-48%' },
-      { label: 'Client Inquiries', value: '+190%' }
+      { label: 'Page Load Speed', value: '0.6 Seconds' },
+      { label: 'Mobile Readiness', value: '100% Tested' },
+      { label: 'New Client Leads', value: '+190%' }
     ],
-    techStack: ['Next.js', 'React', 'Tailwind CSS', 'TypeScript', 'Cloud Hosting'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Custom Website', 'Fast Hosting', 'WhatsApp Routing', 'Admin Dashboard'],
+    liveUrl: 'https://aurastudio.vercel.app',
     featured: true,
     active: true
   },
   {
     id: 'case-3',
-    title: 'Nova Streetwear: High-Conversion Shopify Store Integration',
+    title: 'Nova Streetwear: Ready-to-Sell Shopify E-Commerce Store',
     client: 'Nova Apparel Brand',
     category: 'Shopify & E-Commerce',
-    summary: 'Complete Shopify connection, custom domain setup, product catalog synchronization, payment gateway linkage, and 1-click Cash on Delivery (COD) checkout.',
-    challenge: 'The client needed to connect their standalone web presence to Shopify, resolve payment gateway integration issues, and eliminate high mobile cart abandonment.',
-    solution: 'Connected Shopify Storefront APIs with automated webhook inventory sync, streamlined checkout steps, and configured WhatsApp order notification triggers.',
+    summary: 'Live Shopify store with Cash on Delivery (COD) setup, automated WhatsApp order alerts, and mobile-friendly 1-click checkout.',
+    challenge: 'Needed to get their clothing brand online quickly with trusted Pakistani Cash on Delivery checkout and mobile responsiveness.',
+    solution: 'Configured complete Shopify store with brand logo, linked Cash on Delivery, set up courier shipping, and configured instant WhatsApp order notifications.',
     heroImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Shopify', 'E-Commerce', 'Payment Gateway', 'COD Integration'],
+    tags: ['Live Shopify Store', 'Cash on Delivery', '1-Click Checkout', 'WhatsApp Alerts'],
     metrics: [
-      { label: 'Checkout Conversion', value: '+36%' },
+      { label: 'Checkout Rate', value: '+36%' },
       { label: 'Cart Abandonment', value: '-29%' },
       { label: 'Monthly Online Sales', value: 'Rs. 3.8M+' }
     ],
-    techStack: ['Shopify', 'Liquid', 'Storefront API', 'Webhooks', 'COD Gateway'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Shopify Store', 'Cash on Delivery (COD)', 'Domain Setup', 'Order Alerts'],
+    liveUrl: 'https://nova-apparel-demo.myshopify.com',
     featured: true,
     active: true
   },
   {
     id: 'case-4',
-    title: 'Apex Dental Care: Google Page-1 SEO Optimization',
+    title: 'Apex Dental Care: Page-1 Google Local Search Ranking',
     client: 'Apex Specialty Clinics',
     category: 'SEO Optimization',
-    summary: 'Data-driven on-page, off-page, and technical SEO campaign taking local search rankings to the #1 spot on Google for high-intent medical queries.',
-    challenge: 'The clinic was invisible on Google search, relying entirely on expensive referrals with zero organic patient bookings from online searches.',
-    solution: 'Executed a complete technical SEO audit, optimized meta schemas, enhanced page load speeds, built local authority citations, and integrated Google Search Console & GA4.',
+    summary: 'Ranked #1 on Google for high-intent local dental searches, driving direct patient calls and daily appointment bookings.',
+    challenge: 'Clinic was invisible on Google search, relying only on expensive word-of-mouth with zero patients finding them online.',
+    solution: 'Optimized their website and Google Maps business profile for local dental keywords, taking them to the #1 spot on Google.',
     heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
-    tags: ['SEO Optimization', 'Google Search Console', 'Keyword Ranking', 'Local SEO'],
+    tags: ['Live Clinic Site', 'Google Page 1', 'Google Maps Business', 'Patient Bookings'],
     metrics: [
-      { label: 'Google Search Rank', value: '#1 Ranking' },
-      { label: 'Organic Impressions', value: '+380%' },
-      { label: 'Monthly Inquiries', value: '3.4x Growth' }
+      { label: 'Google Search Rank', value: '#1 on Google' },
+      { label: 'Monthly Search Views', value: '+380%' },
+      { label: 'Direct Patient Calls', value: '3.4x More Calls' }
     ],
-    techStack: ['Google Search Console', 'GA4', 'Schema.org', 'Technical SEO', 'Ahrefs'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Google Search Console', 'Google Maps Business', 'Local Keyword Rank'],
+    liveUrl: 'https://apex-dental.vercel.app',
     featured: false,
     active: true
   },
   {
     id: 'case-5',
-    title: 'Skyline Properties: Meta & Google Ads Paid Acquisition',
-    client: 'Skyline Real Estate Group',
+    title: 'Skyline Properties: High-ROI Meta & Google Ads Campaign',
+    client: 'Skyline Real Estate',
     category: 'Meta & Google Ads',
-    summary: 'High-ROI paid advertising campaign across Facebook, Instagram (Meta Ads), and Google Search delivering qualified property buyer leads.',
-    challenge: 'Client was burning ad budget on boosted posts with zero lead qualification, high cost-per-click, and untracked conversion data.',
-    solution: 'Configured Meta Pixel & Conversion API (CAPI), structured Google Search campaigns, tested 8 high-converting video hooks, and set up daily lead qualification filters.',
+    summary: 'Targeted Facebook, Instagram, and Google Search ad campaigns delivering verified buyer leads directly to the sales team WhatsApp.',
+    challenge: 'Wasting budget on boosted posts that generated thousands of views but zero serious property buyer inquiries.',
+    solution: 'Structured targeted lead generation ads on Facebook, Instagram, and Google Search with pre-qualifying questions to capture serious buyers.',
     heroImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Meta Ads', 'Google Ads', 'Lead Generation', 'Pixel Tracking'],
+    tags: ['Live Ads Campaign', 'Verified Buyer Leads', 'WhatsApp Funnel', 'Weekly Tracking'],
     metrics: [
-      { label: 'ROAS Delivered', value: '5.2x Return' },
-      { label: 'Cost Per Lead', value: 'Rs. 360 / lead' },
-      { label: 'Closed Deal Volume', value: 'Rs. 22M+' }
+      { label: 'Return on Ad Spend', value: '5.2x Return' },
+      { label: 'Cost Per Real Lead', value: 'Rs. 360 / lead' },
+      { label: 'Property Sales Closed', value: 'Rs. 22M+' }
     ],
-    techStack: ['Meta Ads Manager', 'Google Ads (PMax)', 'Conversion API', 'Google Tag Manager'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Facebook Ads', 'Instagram Ads', 'Google Ads', 'WhatsApp Funnel'],
+    liveUrl: 'https://skyline-properties.vercel.app',
     featured: false,
     active: true
   },
   {
     id: 'case-6',
-    title: 'Glow Essentials: 12 Viral Reels/Month Social Media Management',
+    title: 'Glow Essentials: 12 Monthly Reels & Social Media Growth',
     client: 'Glow Organic Skincare',
     category: 'Social Media',
-    summary: 'End-to-end social media management producing 12 high-retention short-form video reels per month with professional editing, captions, and monthly analytics.',
-    challenge: 'Stagnant social media accounts with low reach, inconsistent posting, and zero video content strategy to showcase product results.',
-    solution: 'Scripted and edited 12 viral-hook reels per month with trending audio and dynamic captions, published across Instagram and TikTok with detailed monthly analytics.',
+    summary: '12 professionally produced and edited video reels per month with trending audio and viral hooks, generating over 600k views.',
+    challenge: 'Stagnant social media accounts with low reach, inconsistent posting, and zero video content to showcase skincare results.',
+    solution: 'Produced and edited 12 short video reels each month with eye-catching hooks, clean subtitles, and trending audio, published across Instagram & TikTok.',
     heroImage: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
-    tags: ['Social Media', '12 Reels / Month', 'Viral Video Hooks', 'Monthly Analytics'],
+    tags: ['12 Reels / Month', 'Viral Video Hooks', 'Instagram & TikTok', 'Monthly Analytics'],
     metrics: [
-      { label: 'Reels Produced', value: '12 / Month' },
-      { label: 'Organic Reel Views', value: '620,000+' },
-      { label: 'Follower Growth', value: '+28,500' }
+      { label: 'Reels Created', value: '12 / Month' },
+      { label: 'Reel Video Views', value: '620,000+' },
+      { label: 'New Brand Followers', value: '+28,500' }
     ],
-    techStack: ['Premiere Pro', 'CapCut Pro', 'Meta Business Suite', 'Trending Audio Engine'],
-    liveUrl: 'https://bludsagency.com/#contact',
+    techStack: ['Video Editing', 'Trending Audio', 'Instagram & TikTok', 'Monthly Analytics'],
+    liveUrl: 'https://glow-essentials.vercel.app',
     featured: false,
     active: true
   }
@@ -350,50 +367,50 @@ export const initialCaseStudies: CaseStudy[] = [
 export const initialTestimonials: Testimonial[] = [
   {
     id: 'test-1',
-    clientName: 'Muhammad Usman',
-    role: 'Founder & Managing Director',
-    company: 'LuxeMart Retail Superstore',
+    clientName: 'Rashid Mahmood',
+    role: 'Owner',
+    company: 'LuxeMart Superstore',
     location: 'Lahore, Pakistan',
     rating: 5,
-    quote: 'BLUDS Agency installed and configured our complete POS software system in under 48 hours. The barcode scanner and thermal receipt printer work seamlessly without lag, and we have zero inventory leakage now. Excellent after-sales support!',
+    quote: 'The POS billing software completely solved our evening rush. Billing that used to take 2 minutes now takes 2 seconds with the barcode scanner and thermal printer. Hamza set everything up at our shop seamlessly.',
     avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'POS Software & Retail System',
+    projectDelivered: 'Shop POS Software & Barcode System',
     active: true
   },
   {
     id: 'test-2',
-    clientName: 'Fatima Zahra',
-    role: 'Creative Director',
+    clientName: 'Ayesha Siddiqui',
+    role: 'Founder',
     company: 'Nova Apparel Brand',
     location: 'Karachi, Pakistan',
     rating: 5,
-    quote: 'They connected our website directly to Shopify and integrated our payment gateways effortlessly. Our store loads instantly on mobile, and the 12 reels produced by their social media team brought us over 40,000 targeted store visits in the first month!',
+    quote: 'BLUDS set up our Shopify store with Cash on Delivery in just 2 days. The 12 video reels Daniyal produces each month gave our brand instant credibility and orders started coming in immediately.',
     avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'Shopify Store & 12 Reels Management',
+    projectDelivered: 'Shopify Store + 12 Reels Monthly',
     active: true
   },
   {
     id: 'test-3',
-    clientName: 'Tariq Mehmood',
-    role: 'Managing Partner',
-    company: 'Skyline Real Estate Group',
+    clientName: 'Bilal Chaudhry',
+    role: 'Managing Director',
+    company: 'Skyline Real Estate',
     location: 'Islamabad, Pakistan',
     rating: 5,
-    quote: 'Our website built by BLUDS Agency looks stunning and modern. On top of that, their Meta Ads and Google Ads management generated qualified buyer leads from day one at a cost per lead we could not achieve with any other agency.',
+    quote: 'Ghulam built our company website and it loads instantly on mobile. Daniyal manages our Facebook and Google ads, delivering serious buyer inquiries every single day. Honest pricing with zero hidden fees.',
     avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'Website Development & Meta Ads',
+    projectDelivered: 'Custom Website + Meta & Google Ads',
     active: true
   },
   {
     id: 'test-4',
-    clientName: 'Dr. Bilal Hashmi',
-    role: 'Chief Medical Consultant',
-    company: 'Apex Specialty Dental Care',
-    location: 'Rawalpindi, Pakistan',
+    clientName: 'Dr. Usman Farooq',
+    role: 'Head Dentist',
+    company: 'Apex Specialty Clinics',
+    location: 'Faisalabad, Pakistan',
     rating: 5,
-    quote: 'Their monthly SEO optimization service took our clinic’s website to Page 1 of Google for all our primary keywords within 3 months. Our organic appointment bookings tripled. Highly recommend Aqeel Ahmad and his team!',
-    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80',
-    projectDelivered: 'Web Development & Page-1 SEO',
+    quote: 'Our clinic is now ranked #1 on Google when people search for dentists in our area. We receive direct calls and patient appointments every day through Google Maps. Highly recommend BLUDS Agency.',
+    avatarUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=200&q=80',
+    projectDelivered: 'Google Page-1 SEO Optimization',
     active: true
   }
 ];
@@ -416,12 +433,12 @@ export const initialInquiries: Inquiry[] = [
     notes: [
       {
         id: 'note-1',
-        author: 'Ghulam (CTO)',
+        author: 'Ghulam (Web Lead)',
         content: 'Reviewing domain selection and hosting package (Rs. 7,000 - 8,000/yr). Prepared Next.js design preview.',
         createdAt: '2026-11-08T10:00:00.000Z'
       }
     ],
-    estimatedScope: 'Next.js website, responsive layout, SEO basics, domain and annual cloud hosting setup.'
+    estimatedScope: 'Custom website, mobile layout, domain, and annual cloud hosting setup.'
   },
   {
     id: 'inq-102',
@@ -429,7 +446,7 @@ export const initialInquiries: Inquiry[] = [
     email: 'kamran@metromart.pk',
     phone: '+92 300 8899112',
     company: 'Metro Mart Superstore',
-    projectType: 'POS Software (Point of Sale)',
+    projectType: 'POS Software (Shop Billing)',
     budgetRange: 'Rs. 20,000 + Rs. 3,000/mo',
     timeline: 'Immediate (1-2 weeks)',
     message: 'We operate 3 checkout counters and require a Point of Sale system with fast barcode scanning, thermal receipt printing, real-time inventory deduction, and daily profit/loss reports.',
@@ -440,7 +457,7 @@ export const initialInquiries: Inquiry[] = [
     notes: [
       {
         id: 'note-2',
-        author: 'Hamza (CPO)',
+        author: 'Hamza (POS Lead)',
         content: 'Configuring barcode scanner integration test and ESC/POS thermal printer layout. Client confirmed setup meeting.',
         createdAt: '2026-11-07T18:20:00.000Z'
       }
@@ -472,4 +489,3 @@ export const initialInquiries: Inquiry[] = [
     estimatedScope: 'Shopify catalog linkage, COD checkout configuration, and Meta Ads campaign management.'
   }
 ];
-

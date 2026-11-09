@@ -99,20 +99,20 @@ export const WorkSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
             <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-              Portfolio & Deployments
+              Our Work & Live Demos
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-              Selected Production Case Studies
+              Real Live Websites & Projects We Built
             </h2>
             <p className="text-neutral-400 text-sm sm:text-base mt-2.5 leading-relaxed">
-              Explore the technical blueprints, architecture decisions, and real-world metrics behind our client engagements.
+              Explore real businesses, live websites, Shopify stores, and shop billing POS systems we have deployed. Click any live link to see them running.
             </p>
           </div>
 
           {/* Staggered Animation Feature Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0c0c0c] border border-[#262626] text-xs font-mono text-neutral-300 self-start md:self-auto">
             <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            <span>Interactive Staggered Reveal Engine</span>
+            <span>Verified Live Client Deployments</span>
           </div>
         </div>
 
@@ -205,7 +205,7 @@ export const WorkSection: React.FC = () => {
                   }
                 />
                 <div className="mt-2 flex items-center justify-between text-[11px] text-neutral-500 font-mono px-1">
-                  <span>✦ Click image to open architectural deep-dive</span>
+                  <span>✦ Click image or button to view project story</span>
                   <span>{currentCase.tags.slice(0, 3).join(' • ')}</span>
                 </div>
               </div>
@@ -226,11 +226,11 @@ export const WorkSection: React.FC = () => {
                 {/* Challenge & Solution Summary */}
                 <div className="space-y-2 text-xs text-neutral-300 leading-relaxed bg-[#111111] p-3.5 rounded-xl border border-[#222222]">
                   <div>
-                    <span className="text-rose-400 font-mono block text-[10px] uppercase font-semibold">Challenge</span>
+                    <span className="text-rose-400 font-mono block text-[10px] uppercase font-semibold">The Problem</span>
                     <p className="line-clamp-2 text-neutral-400 mt-0.5">{currentCase.challenge}</p>
                   </div>
                   <div className="pt-2 border-t border-[#1f1f1f]">
-                    <span className="text-blue-400 font-mono block text-[10px] uppercase font-semibold">Solution</span>
+                    <span className="text-blue-400 font-mono block text-[10px] uppercase font-semibold">What We Delivered</span>
                     <p className="line-clamp-2 text-neutral-300 mt-0.5">{currentCase.solution}</p>
                   </div>
                 </div>
@@ -238,7 +238,7 @@ export const WorkSection: React.FC = () => {
                 {/* Key Metrics Grid */}
                 <div>
                   <span className="text-[10px] font-mono uppercase text-neutral-500 tracking-wider block mb-1.5">
-                    Verified Deployment Impact
+                    Real Results Achieved
                   </span>
                   <div className="grid grid-cols-3 gap-2">
                     {currentCase.metrics.map((m, idx) => (
@@ -271,24 +271,36 @@ export const WorkSection: React.FC = () => {
 
                 {/* Action Buttons */}
                 <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+                  {currentCase.liveUrl && (
+                    <a
+                      href={currentCase.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5" />
+                      <span>Visit Live Website</span>
+                    </a>
+                  )}
+
                   <button
                     onClick={() => setActiveModalCaseStudy(currentCase)}
                     className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2"
                   >
-                    <span>View Case Study Blueprint</span>
+                    <span>View Project Story</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
                   <a
                     href={`https://wa.me/923099489168?text=${encodeURIComponent(
-                      `Hello Aqeel, I saw your ${currentCase.title} case study and want similar services.`
+                      `Hello Aqeel, I saw your ${currentCase.title} project on BLUDS Agency and want something similar.`
                     )}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="px-4 py-2.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] text-neutral-200 border border-[#262626] text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
+                    className="px-3.5 py-2.5 rounded-lg bg-[#141414] hover:bg-[#1a1a1a] text-neutral-200 border border-[#262626] text-xs font-medium transition-colors flex items-center justify-center gap-1.5"
                   >
                     <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
-                    <span>Inquire on WhatsApp</span>
+                    <span>WhatsApp</span>
                   </a>
                 </div>
 
@@ -361,10 +373,10 @@ export const WorkSection: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pt-4 border-t border-[#1a1a1a]">
           <div>
             <h3 className="text-lg font-semibold text-white">
-              All Case Studies Directory
+              Browse All Projects & Live Websites
             </h3>
             <p className="text-xs text-neutral-400">
-              Filter by specific service specialization
+              Filter by service category to explore live demos
             </p>
           </div>
 
@@ -391,11 +403,13 @@ export const WorkSection: React.FC = () => {
           {filteredCases.map((project) => (
             <Card3D key={project.id} intensity={4}>
               <div
-                onClick={() => setActiveModalCaseStudy(project)}
-                className="group cursor-pointer rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors overflow-hidden flex flex-col h-full"
+                className="group rounded-xl bg-[#0c0c0c] border border-[#222222] hover:border-neutral-700 transition-colors overflow-hidden flex flex-col h-full"
               >
                 {/* Image Frame */}
-                <div className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f]">
+                <div 
+                  onClick={() => setActiveModalCaseStudy(project)}
+                  className="relative aspect-[16/9] overflow-hidden bg-black border-b border-[#1f1f1f] cursor-pointer"
+                >
                   <img
                     src={project.heroImage}
                     alt={project.title}
@@ -407,9 +421,18 @@ export const WorkSection: React.FC = () => {
                       {project.category}
                     </span>
                   </div>
-                  <div className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/85 border border-neutral-700 flex items-center justify-center text-neutral-300 group-hover:text-white group-hover:border-blue-500 transition-colors">
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="absolute top-3 right-3 w-8 h-8 rounded-lg bg-black/85 border border-neutral-700 flex items-center justify-center text-neutral-300 hover:text-white hover:border-emerald-500 hover:bg-emerald-600 transition-colors"
+                      title="Visit Live Website"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+                  )}
                 </div>
 
                 {/* Card Body */}
@@ -418,7 +441,10 @@ export const WorkSection: React.FC = () => {
                     <div className="text-xs text-neutral-400 mb-1">
                       Client: <span className="text-neutral-200 font-medium">{project.client}</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                    <h3 
+                      onClick={() => setActiveModalCaseStudy(project)}
+                      className="text-lg font-semibold text-white mb-2 hover:text-blue-400 transition-colors cursor-pointer"
+                    >
                       {project.title}
                     </h3>
                     <p className="text-xs text-neutral-400 line-clamp-2 leading-relaxed mb-4">
@@ -427,7 +453,7 @@ export const WorkSection: React.FC = () => {
                   </div>
 
                   {/* Metrics Highlight Pills */}
-                  <div className="pt-3 border-t border-[#1c1c1c]">
+                  <div className="pt-3 border-t border-[#1c1c1c] mb-4">
                     <div className="grid grid-cols-3 gap-2">
                       {project.metrics.map((m, idx) => (
                         <div key={idx} className="p-2 rounded bg-[#111111] border border-[#1f1f1f]">
@@ -440,6 +466,40 @@ export const WorkSection: React.FC = () => {
                         </div>
                       ))}
                     </div>
+                  </div>
+
+                  {/* Real Action Buttons */}
+                  <div className="pt-3 border-t border-[#1a1a1a] flex items-center gap-2">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Visit Live Website</span>
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalCaseStudy(project)}
+                      className="py-2 px-3 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-neutral-200 hover:text-white text-xs font-medium flex items-center justify-center gap-1 transition-colors"
+                    >
+                      <span>Story</span>
+                      <ArrowRight className="w-3 h-3 text-neutral-400" />
+                    </button>
+                    <a
+                      href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                        `Hello Aqeel, I saw ${project.title} on BLUDS Agency and want something similar for my business.`
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-2 rounded-lg bg-[#141414] hover:bg-[#1f1f1f] border border-[#262626] text-[#25D366] hover:text-[#20bd5a] transition-colors"
+                      title="Inquire on WhatsApp"
+                    >
+                      <MessageSquare className="w-4 h-4 fill-[#25D366]" />
+                    </a>
                   </div>
 
                 </div>

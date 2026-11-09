@@ -101,7 +101,7 @@ export const ServiceDetailModal: React.FC = () => {
           {/* Deliverables Checklist */}
           <div>
             <h4 className="text-xs font-mono font-medium text-neutral-300 uppercase tracking-wider mb-2.5">
-              Deliverables & Sprints
+              What Is Included in This Service
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {activeServiceDetails.deliverables.map((item, idx) => (
@@ -116,10 +116,10 @@ export const ServiceDetailModal: React.FC = () => {
             </div>
           </div>
 
-          {/* Tech Stack */}
+          {/* Features / Capabilities */}
           <div>
             <h4 className="text-xs font-mono font-medium text-neutral-400 uppercase tracking-wider mb-2">
-              Technology Stack
+              Key Features & Setup
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {activeServiceDetails.techStack.map((tech) => (
@@ -136,26 +136,38 @@ export const ServiceDetailModal: React.FC = () => {
           {activeServiceDetails.startingPrice && (
             <div className="p-3.5 rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-between text-xs font-mono">
               <div>
-                <span className="text-neutral-500 block text-[10px]">Investment Guideline</span>
+                <span className="text-neutral-500 block text-[10px]">Price in PKR</span>
                 <span className="font-semibold text-white">{activeServiceDetails.startingPrice}</span>
               </div>
-              <span className="text-neutral-400">100% Transparent Sprints</span>
+              <span className="text-emerald-400">Fixed & Honest Rates</span>
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="p-4 sm:p-5 border-t border-[#1f1f1f] bg-[#121212] flex items-center justify-between gap-3">
-          <span className="text-xs text-neutral-400 hidden sm:inline font-mono">
-            Directly supervised by Ghulam, Hamza & Daniyal
+        <div className="p-4 sm:p-5 border-t border-[#1f1f1f] bg-[#121212] flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-xs text-neutral-400 font-mono">
+            Direct WhatsApp Support: 03099489168
           </span>
-          <button
-            onClick={handleStartWithService}
-            className="w-full sm:w-auto px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-medium text-white transition-colors flex items-center justify-center gap-1.5"
-          >
-            <span>Configure Project Scope</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <a
+              href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                `Hello Aqeel, I want to get started with ${activeServiceDetails.title} (${activeServiceDetails.startingPrice}).`
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 sm:flex-initial px-4 py-2 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-xs font-bold text-black transition-colors text-center"
+            >
+              Order on WhatsApp
+            </a>
+            <button
+              onClick={handleStartWithService}
+              className="flex-1 sm:flex-initial px-4 py-2 rounded-lg bg-[#1a1a1a] hover:bg-[#262626] text-xs font-medium text-white transition-colors flex items-center justify-center gap-1.5"
+            >
+              <span>Calculate Price</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

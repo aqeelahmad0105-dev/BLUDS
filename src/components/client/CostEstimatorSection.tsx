@@ -99,13 +99,13 @@ export const CostEstimatorSection: React.FC = () => {
         {/* Header */}
         <div className="max-w-2xl mb-12">
           <span className="text-xs font-mono font-medium text-blue-500 uppercase tracking-wider block mb-2">
-            Scope Estimator
+            Price Calculator
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
-            Project Sizing & Investment Forecast
+            Instant Price & Delivery Calculator
           </h2>
           <p className="text-neutral-400 text-sm sm:text-base mt-3 leading-relaxed">
-            Select your technical parameters to calculate an initial timeline and investment projection.
+            Pick what your business needs below to calculate an honest, fixed price estimate. You can send this directly to Aqeel Ahmad on WhatsApp for instant confirmation.
           </p>
         </div>
 
@@ -118,8 +118,8 @@ export const CostEstimatorSection: React.FC = () => {
             {/* Step 1: Platform */}
             <div className="p-5 rounded-xl bg-[#0c0c0c] border border-[#222222] space-y-3">
               <div className="flex items-center justify-between text-xs text-neutral-400">
-                <span className="font-medium text-neutral-300">1. Architecture / Platform</span>
-                <span className="font-mono">Required</span>
+                <span className="font-medium text-neutral-300">1. Select What You Need Built</span>
+                <span className="font-mono text-blue-400">Select one</span>
               </div>
               <div className="grid grid-cols-1 gap-2">
                 {platformOptions.map((opt) => (
@@ -151,7 +151,7 @@ export const CostEstimatorSection: React.FC = () => {
             {/* Step 2: Scale */}
             <div className="p-5 rounded-xl bg-[#0c0c0c] border border-[#222222] space-y-3">
               <span className="text-xs font-medium text-neutral-300 block">
-                2. Concurrency & Scale Tier
+                2. Project Scope & Speed
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                 {scaleOptions.map((opt) => (
@@ -176,7 +176,7 @@ export const CostEstimatorSection: React.FC = () => {
             {/* Step 3: Add-ons */}
             <div className="p-5 rounded-xl bg-[#0c0c0c] border border-[#222222] space-y-3">
               <span className="text-xs font-medium text-neutral-300 block">
-                3. Technical Add-ons & SLA
+                3. Extra Services & Monthly Subscriptions
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {addonOptions.map((addon) => {
@@ -224,30 +224,30 @@ export const CostEstimatorSection: React.FC = () => {
                   Estimated Summary
                 </span>
                 <span className="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2 py-0.5 rounded">
-                  Fixed Milestone Sprints
+                  Fixed Honest Price
                 </span>
               </div>
 
               {/* Price Projection */}
               <div>
-                <div className="text-xs text-neutral-400">Estimated Investment Bracket</div>
+                <div className="text-xs text-neutral-400">Total Estimated Price (PKR)</div>
                 <div className="text-2xl sm:text-3xl font-bold text-white mt-1">
                   Rs. {minEstimated.toLocaleString()} - Rs. {maxEstimated.toLocaleString()}
                 </div>
                 <div className="text-xs text-neutral-400 mt-1 flex items-center gap-2 font-mono">
                   <Clock className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Estimated {estimatedWeeks} Weeks to Production</span>
+                  <span>Ready in ~{estimatedWeeks} Weeks</span>
                 </div>
               </div>
 
               {/* Scope Breakdown */}
               <div className="space-y-2 pt-3 border-t border-[#1f1f1f] text-xs">
                 <div className="flex justify-between text-neutral-300">
-                  <span className="text-neutral-500">Platform:</span>
+                  <span className="text-neutral-500">Service:</span>
                   <span className="font-medium text-white">{platform}</span>
                 </div>
                 <div className="flex justify-between text-neutral-300">
-                  <span className="text-neutral-500">Scale Tier:</span>
+                  <span className="text-neutral-500">Scope:</span>
                   <span className="font-medium text-white">{scale.split('(')[0]}</span>
                 </div>
                 <div className="flex justify-between text-neutral-300">
@@ -264,39 +264,39 @@ export const CostEstimatorSection: React.FC = () => {
               <div className="pt-3 border-t border-[#1f1f1f]">
                 {submitted ? (
                   <div className="p-4 rounded-lg bg-emerald-950/40 border border-emerald-600/40 text-center space-y-2.5">
-                    <div className="text-xs font-bold text-white">Specification Received</div>
+                    <div className="text-xs font-bold text-white">Quote Saved & Ready</div>
                     <p className="text-xs text-neutral-300">
-                      Thank you! Aqeel Ahmad will review your estimate. Send it directly on WhatsApp for instant confirmation:
+                      Send your quote directly to Aqeel Ahmad on WhatsApp for instant confirmation:
                     </p>
                     <a
                       href={`https://wa.me/923099489168?text=${encodeURIComponent(
-                        `*Project Estimate Specification - BLUDS Agency*\n\n` +
+                        `*Project Estimate - BLUDS Agency*\n\n` +
                         `👤 *Client Name:* ${clientName}\n` +
                         `📧 *Email:* ${clientEmail}\n` +
-                        `🛠️ *Platform / Service:* ${platform}\n` +
-                        `📈 *Scale Tier:* ${scale}\n` +
+                        `🛠️ *Service:* ${platform}\n` +
+                        `📈 *Scope:* ${scale}\n` +
                         `🧩 *Selected Add-ons:* ${addons.join(', ') || 'None'}\n` +
-                        `💰 *Estimated Bracket:* Rs. ${minEstimated.toLocaleString()} - Rs. ${maxEstimated.toLocaleString()}\n` +
-                        `⏱️ *Estimated Delivery:* ${estimatedWeeks} Weeks`
+                        `💰 *Estimated Price:* Rs. ${minEstimated.toLocaleString()} - Rs. ${maxEstimated.toLocaleString()}\n` +
+                        `⏱️ *Delivery Time:* ~${estimatedWeeks} Weeks`
                       )}`}
                       target="_blank"
                       rel="noreferrer"
                       className="w-full py-2.5 px-3 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors shadow"
                     >
                       <MessageSquare className="w-3.5 h-3.5 fill-black" />
-                      <span>Send Estimate to Aqeel on WhatsApp</span>
+                      <span>Send Quote to Aqeel on WhatsApp</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmitEstimate} className="space-y-2.5">
                     <span className="text-xs text-neutral-300 block font-medium">
-                      Submit estimate to Aqeel Ahmad:
+                      Enter details to send quote to Aqeel Ahmad:
                     </span>
                     <input
                       type="text"
                       required
-                      placeholder="Your Full Name / Company"
+                      placeholder="Your Full Name / Business"
                       value={clientName}
                       onChange={(e) => setClientName(e.target.value)}
                       className="w-full px-3 py-2 rounded-lg bg-[#141414] border border-[#262626] text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500"
@@ -311,10 +311,10 @@ export const CostEstimatorSection: React.FC = () => {
                     />
                     <button
                       type="submit"
-                      className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-medium text-white transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Send className="w-3.5 h-3.5" />
-                      <span>Submit Specification to Aqeel Ahmad</span>
+                      <span>Calculate & Send Quote to Aqeel</span>
                     </button>
                     <p className="text-[10px] text-center text-neutral-500 font-mono">
                       Direct WhatsApp: 03099489168 • Email: m.bluds2@gmail.com
