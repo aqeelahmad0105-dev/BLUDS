@@ -36,6 +36,7 @@ import {
   Upload,
   Image as ImageIcon
 } from 'lucide-react';
+import { Logo } from '../common/Logo';
 
 export const AdminDashboard: React.FC = () => {
   const {
@@ -361,9 +362,7 @@ export const AdminDashboard: React.FC = () => {
       {/* Top Admin Navigation Bar */}
       <header className="bg-[#0c0c0c] border-b border-[#222222] px-4 sm:px-6 py-3.5 sticky top-0 z-30 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
-            B
-          </div>
+          <Logo size="sm" />
           <div>
             <div className="flex items-center gap-2">
               <span className="font-semibold text-base text-white tracking-tight">
