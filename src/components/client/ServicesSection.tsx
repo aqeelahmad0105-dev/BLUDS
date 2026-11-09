@@ -47,6 +47,23 @@ export const ServicesSection: React.FC = () => {
 
   const discountBundles = [
     {
+      id: 'bundle-web-seo',
+      name: 'Website + SEO Growth Package',
+      badge: 'POPULAR COMBO',
+      badgeColor: 'text-emerald-400 bg-emerald-950/40 border-emerald-800/40',
+      price: 'Rs. 22,000',
+      priceDetail: 'per month (+ Rs. 20k custom web setup — Save Rs. 3k/mo)',
+      description: 'High-speed business website + monthly Google Page-1 ranking to capture organic clients actively searching for your service.',
+      features: [
+        'Custom responsive business website built by Ghulam (loads in <1s)',
+        'Google Page-1 ranking SEO optimization managed by Daniyal',
+        'Google Search Console & Google Maps local profile setup',
+        'Domain, annual hosting, SSL security & WhatsApp chat buttons',
+        'Monthly keyword ranking reports & visitor growth analysis'
+      ],
+      whatsappText: 'Hello Aqeel, I am interested in the Website + SEO Growth Package (Rs. 22,000/mo). Let us discuss my business website and Google ranking.'
+    },
+    {
       id: 'bundle-retail',
       name: 'Retail Shop Complete Setup',
       badge: 'BEST FOR SHOPS',
@@ -66,7 +83,7 @@ export const ServicesSection: React.FC = () => {
     {
       id: 'bundle-ecom',
       name: 'E-Commerce Online Growth Bundle',
-      badge: 'MOST POPULAR',
+      badge: 'FOR BRANDS',
       badgeColor: 'text-blue-400 bg-blue-950/40 border-blue-800/40',
       price: 'Rs. 32,000',
       priceDetail: 'per month (+ Rs. 5k one-time store setup)',
@@ -83,8 +100,8 @@ export const ServicesSection: React.FC = () => {
     {
       id: 'bundle-authority',
       name: 'Full Authority Brand Bundle',
-      badge: 'MAXIMUM VISIBILITY',
-      badgeColor: 'text-emerald-400 bg-emerald-950/40 border-emerald-800/40',
+      badge: 'MAXIMUM REACH',
+      badgeColor: 'text-purple-400 bg-purple-950/40 border-purple-800/40',
       price: 'Rs. 40,000',
       priceDetail: 'per month (+ Rs. 20k custom web setup)',
       description: 'For corporate companies, clinics, agencies, and high-ticket service businesses wanting total market authority.',
@@ -264,7 +281,7 @@ export const ServicesSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {discountBundles.map((b) => (
               <div
                 key={b.id}

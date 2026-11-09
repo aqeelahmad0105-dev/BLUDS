@@ -18,13 +18,95 @@ interface RateCardModalProps {
 export const RateCardModal: React.FC<RateCardModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
+  const handleDownloadTextRateCard = () => {
+    const content = `================================================================
+BLUDS AGENCY — OFFICIAL CORPORATE RATE CARD (2026)
+Digital Engineering, POS Billing Software & Performance Marketing
+Lead Contact: Aqeel Ahmad | WhatsApp: 03099489168 | Email: m.bluds2@gmail.com
+Website: https://bludsagency.com
+================================================================
+
+1. CORE INDIVIDUAL SERVICES & PRICING (PKR)
+----------------------------------------------------------------
+• Website Development:
+  - Initial Setup: Rs. 20,000 (one-time)
+  - Maintenance & Updates: Rs. 10,000/month
+  - Domain Name & Cloud Hosting: Rs. 7,000 - 8,000/year
+  - Turnaround: 1 - 2 Weeks
+  - Deliverables: Sub-second loading, mobile-first design, WhatsApp inquiry integration, admin panel.
+
+• POS Software (Shop & Supermarket Billing):
+  - Initial Setup: Rs. 20,000 (one-time)
+  - Cloud Backup & Support: Rs. 3,000/month
+  - Turnaround: 1 - 2 Weeks
+  - Deliverables: Barcode scanning, 2-second thermal printing, inventory deduction, daily profit reports.
+
+• Shopify E-Commerce Store:
+  - Setup Fee: Rs. 5,000 (one-time)
+  - Turnaround: 2 - 3 Days
+  - Deliverables: Full brand store setup, Cash on Delivery (COD) couriers, mobile 1-click checkout.
+
+• SEO Optimization (Google Page-1 Ranking):
+  - Monthly Retainer: Rs. 15,000/month
+  - Deliverables: Google Search & Google Maps local ranking, keyword targeting, monthly traffic reports.
+
+• Meta & Google Ads Management:
+  - Monthly Retainer: Rs. 12,000/month (ad spend paid directly by client)
+  - Deliverables: High-converting creatives, copy, weekly ROI tracking & continuous scaling.
+
+• Social Media Management (12 Video Reels):
+  - Monthly Retainer: Rs. 20,000/month
+  - Deliverables: 12 edited short-form video reels with viral hooks, trending audio, and subtitles.
+
+----------------------------------------------------------------
+2. PRE-PACKAGED DISCOUNT BUNDLES (BEST VALUE)
+----------------------------------------------------------------
+★ BUNDLE A: Website + SEO Growth Package
+  - Price: Rs. 20,000 setup + Rs. 22,000/month (Save Rs. 3,000/mo)
+  - Includes: Custom responsive business website + Google Page-1 ranking + ongoing maintenance.
+
+★ BUNDLE B: Retail Shop Complete Setup
+  - Price: Rs. 35,000 one-time (Save Rs. 5,000)
+  - Includes: Custom POS software + barcode scanner setup + receipt printer config + Google Maps listing.
+
+★ BUNDLE C: E-Commerce Online Growth Bundle
+  - Price: Rs. 32,000/month (+ Rs. 5,000 setup)
+  - Includes: Complete Shopify store + Meta ads management + 12 monthly video reels.
+
+★ BUNDLE D: Full Authority Brand Bundle
+  - Price: Rs. 40,000/month (+ Rs. 20,000 setup)
+  - Includes: Custom website + Page-1 SEO ranking + Meta/Google ads + WhatsApp CRM lead tracking.
+
+----------------------------------------------------------------
+3. CLIENT GUARANTEES & TERMS
+----------------------------------------------------------------
+✓ 100% Client Ownership from Day 1 (No hostage fees, full access to source code and accounts)
+✓ Direct Founder Supervision (Aqeel Ahmad, Ghulam, Hamza, Daniyal)
+✓ Fixed Honest Rates in PKR (Zero hidden agency charges)
+
+To order or discuss any service:
+WhatsApp: 03099489168 (https://wa.me/923099489168)
+Email: m.bluds2@gmail.com
+================================================================`;
+
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'BLUDS_Agency_Official_Rate_Card_2026.txt';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
-      <div onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-md transition-opacity" />
+      <div onClick={onClose} className="fixed inset-0 bg-black/90 backdrop-blur-md transition-opacity print:hidden" />
 
       {/* Printable Sheet */}
-      <div className="relative w-full max-w-4xl bg-[#0c0c0c] border border-[#262626] rounded-2xl overflow-hidden z-10 shadow-2xl flex flex-col text-white max-h-[90vh]">
+      <div className="print-rate-card relative w-full max-w-4xl bg-[#0c0c0c] border border-[#262626] rounded-2xl overflow-hidden z-10 shadow-2xl flex flex-col text-white max-h-[90vh]">
         
         {/* Header Toolbar */}
         <div className="flex items-center justify-between p-4 sm:p-5 border-b border-[#1f1f1f] bg-[#121212] print:hidden">
@@ -38,6 +120,15 @@ export const RateCardModal: React.FC<RateCardModalProps> = ({ isOpen, onClose })
           </div>
 
           <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleDownloadTextRateCard}
+              className="px-3 py-1.5 rounded-lg bg-[#1a1a1a] hover:bg-[#252525] border border-[#333333] text-xs font-semibold text-neutral-200 hover:text-white transition-colors flex items-center gap-1.5 shadow"
+              title="Download text proposal file"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-400" />
+              <span className="hidden sm:inline">Download Card</span>
+            </button>
             <button
               type="button"
               onClick={() => window.print()}
@@ -183,29 +274,42 @@ export const RateCardModal: React.FC<RateCardModalProps> = ({ isOpen, onClose })
               <span>2. Popular Pre-Packaged Discount Bundles</span>
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div className="p-3.5 rounded-xl bg-[#111111] border border-[#222222] space-y-1.5">
+                <span className="text-[10px] font-mono text-emerald-400 uppercase font-semibold">Website + SEO Bundle</span>
+                <div className="text-sm font-bold text-white">Custom Web + Page-1 SEO</div>
+                <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 22,000/mo <span className="line-through text-neutral-500 text-[10px]">Rs. 25,000</span></div>
+                <div className="text-[10px] text-blue-400 font-mono">+ Rs. 20k setup (Save Rs. 3k/mo)</div>
+                <p className="text-[11px] text-neutral-400 leading-snug">
+                  High-speed business website + monthly Page-1 Google ranking to attract organic buyers.
+                </p>
+              </div>
+
               <div className="p-3.5 rounded-xl bg-[#111111] border border-[#222222] space-y-1.5">
                 <span className="text-[10px] font-mono text-blue-400 uppercase font-semibold">Retail Shop Bundle</span>
                 <div className="text-sm font-bold text-white">POS Software + Website</div>
                 <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 35,000 <span className="line-through text-neutral-500 text-[10px]">Rs. 40,000</span></div>
+                <div className="text-[10px] text-blue-400 font-mono">One-time (Save Rs. 5,000)</div>
                 <p className="text-[11px] text-neutral-400 leading-snug">
-                  Save Rs. 5,000 setup. Full supermarket POS barcode setup + mobile-friendly business website.
+                  Full supermarket POS barcode setup + mobile-friendly business website.
                 </p>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#111111] border border-[#222222] space-y-1.5">
                 <span className="text-[10px] font-mono text-blue-400 uppercase font-semibold">E-Commerce Brand Bundle</span>
                 <div className="text-sm font-bold text-white">Shopify + Ads + 12 Reels</div>
-                <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 32,000/mo <span className="text-[10px] text-neutral-500">+ Rs. 5k setup</span></div>
+                <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 32,000/mo</div>
+                <div className="text-[10px] text-blue-400 font-mono">+ Rs. 5k one-time store setup</div>
                 <p className="text-[11px] text-neutral-400 leading-snug">
                   Complete store + daily Meta ads management + 12 viral video reels edited with hooks.
                 </p>
               </div>
 
               <div className="p-3.5 rounded-xl bg-[#111111] border border-[#222222] space-y-1.5">
-                <span className="text-[10px] font-mono text-blue-400 uppercase font-semibold">Full Authority Bundle</span>
-                <div className="text-sm font-bold text-white">Website + SEO + 12 Reels</div>
-                <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 40,000/mo <span className="text-[10px] text-neutral-500">+ Rs. 20k setup</span></div>
+                <span className="text-[10px] font-mono text-purple-400 uppercase font-semibold">Full Authority Bundle</span>
+                <div className="text-sm font-bold text-white">Website + SEO + Ads + Reels</div>
+                <div className="text-xs text-emerald-400 font-mono font-bold">Rs. 40,000/mo</div>
+                <div className="text-[10px] text-blue-400 font-mono">+ Rs. 20k custom web setup</div>
                 <p className="text-[11px] text-neutral-400 leading-snug">
                   Custom high-speed website, Page-1 Google search ranking, and active social media presence.
                 </p>
@@ -251,3 +355,4 @@ export const RateCardModal: React.FC<RateCardModalProps> = ({ isOpen, onClose })
     </div>
   );
 };
+

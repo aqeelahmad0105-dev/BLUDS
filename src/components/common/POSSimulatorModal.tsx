@@ -336,3 +336,4 @@ export const POSSimulatorModal: React.FC<POSSimulatorModalProps> = ({ isOpen, on
     </div>
   );
 };
+
