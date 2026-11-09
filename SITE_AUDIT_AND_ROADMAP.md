@@ -39,6 +39,7 @@
 | 26 | **Footer** | Live | Quick navigation, legal ownership guarantees, contact info |
 | 27 | **Admin Portal (`/login`)** | Live | Protected dashboard, inquiries manager, CSV lead export |
 | 28 | **SEO & Schema.org JSON-LD** | Live | `LocalBusiness` + `ProfessionalService` markup & rich cards |
+| 29 | **Cloud Database Sync (Supabase)** | Live | Real-time multi-device Postgres sync with WebSocket listener & offline fallback |
 
 ---
 
@@ -158,6 +159,12 @@ Turn-key packages listed directly below the services grid:
 - CRUD editors for Services, Case Studies, and Testimonials with local storage persistence.
 - One-click CSV export of all inquiries.
 
+### 20. Cloud Database Synchronization (Supabase PostgreSQL)
+- **Zero-Backend Architecture:** Directly connected to Supabase using official `@supabase/supabase-js`.
+- **Multi-Device Real-Time Sync:** Automatically synchronizes incoming client leads across all founders' devices simultaneously via WebSocket channel (`postgres_changes` on `inquiries`).
+- **Offline / Local Fallback:** Retains 100% offline functionality and local storage persistence automatically if cloud keys are not configured or network drops.
+- **Admin Control Center:** Live sync status indicator pills, connection health testing, and copyable 1-click SQL setup script located in Admin Portal Settings.
+
 ---
 
 ## 3. Completed Improvements & Future Roadmap
@@ -177,7 +184,7 @@ Turn-key packages listed directly below the services grid:
 | **Done** | **Compact Floating WhatsApp Blob** | Completed | Stationed compact 48px circle blob at bottom-right; removed obstructive top card. |
 | **Done** | **Schema.org Structured Data** | Completed | Added complete `LocalBusiness` / `ProfessionalService` JSON-LD markup in `index.html`. |
 | **Done** | **Automated Serverless Email (EmailJS)** | Completed | Client form submissions dispatch automated emails to m.bluds2@gmail.com in the background without needing a mail client. |
-| **High** | **Cloud Database Sync (Supabase / Firebase)** | Planned | Connect Admin Dashboard to cloud DB so inquiries sync across all founders' devices simultaneously. |
+| **Done** | **Cloud Database Sync (Supabase PostgreSQL)** | Completed | Multi-device real-time syncing of client inquiries across all founders' devices with WebSocket listeners & local storage fallback. |
 | **Medium** | **Image Format Upgrade (WebP / AVIF)** | Planned | Convert static demo images to WebP/AVIF to accelerate loading on cellular data networks. |
 | **Low** | **Urdu / Roman Urdu Toggle** | Planned | Add optional toggle for Urdu explanations for local shop owners who prefer business discussions in Urdu. |
 | **Low** | **Founder Voice Note / Video Greeting** | Planned | Add 20-second authentic greeting from Aqeel Ahmad to reinforce personal connection. |

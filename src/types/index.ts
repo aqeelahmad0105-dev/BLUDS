@@ -118,6 +118,15 @@ export interface SiteEmailConfig {
   formspreeId?: string;
 }
 
+export interface SiteCloudSyncConfig {
+  enabled: boolean;
+  provider: 'supabase' | 'firebase';
+  supabaseUrl?: string;
+  supabaseAnonKey?: string;
+  autoSync?: boolean;
+  lastSyncedAt?: string;
+}
+
 export interface SiteSettings {
   agencyName: string;
   tagline: string;
@@ -158,6 +167,7 @@ export interface SiteSettings {
     uptimeSLA: string;
   };
   emailConfig?: SiteEmailConfig;
+  cloudSync?: SiteCloudSyncConfig;
 }
 
 export interface EstimatorChoice {

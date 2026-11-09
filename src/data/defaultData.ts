@@ -48,6 +48,14 @@ export const initialSiteSettings: SiteSettings = {
     emailjsPublicKey: '',
     web3formsAccessKey: '',
     formspreeId: ''
+  },
+  cloudSync: {
+    enabled: true,
+    provider: 'supabase',
+    supabaseUrl: '',
+    supabaseAnonKey: '',
+    autoSync: true,
+    lastSyncedAt: undefined
   }
 };
 

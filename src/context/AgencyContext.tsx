@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import {
   CaseStudy,
   Founder,
@@ -17,6 +17,15 @@ import {
   initialSiteSettings,
   initialTestimonials
 } from '../data/defaultData';
+import {
+  getSupabaseClient,
+  isSupabaseConfigured,
+  fetchCloudInquiries,
+  insertCloudInquiry,
+  updateCloudInquiryStatus,
+  addCloudInquiryNote,
+  deleteCloudInquiry
+} from '../services/supabaseClient';
 
 interface Toast {
   id: string;
@@ -91,6 +100,11 @@ interface AgencyContextType {
   setIsPOSSimulatorOpen: (open: boolean) => void;
   isRateCardOpen: boolean;
   setIsRateCardOpen: (open: boolean) => void;
+
+  // Cloud Database Sync (Supabase)
+  isCloudConnected: boolean;
+  isCloudSyncing: boolean;
+  syncWithCloud: () => Promise<void>;
 }
 
 const AgencyContext = createContext<AgencyContextType | undefined>(undefined);
@@ -242,6 +256,102 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [isPOSSimulatorOpen, setIsPOSSimulatorOpen] = useState<boolean>(false);
   const [isRateCardOpen, setIsRateCardOpen] = useState<boolean>(false);
 
+  // Cloud Database Sync State (Supabase / Firebase)
+  const [isCloudConnected, setIsCloudConnected] = useState<boolean>(() => isSupabaseConfigured(siteSettings.cloudSync));
+  const [isCloudSyncing, setIsCloudSyncing] = useState<boolean>(false);
+
+  // Sync inquiries from Supabase
+  const syncWithCloud = useCallback(async () => {
+    if (!isSupabaseConfigured(siteSettings.cloudSync)) return;
+    setIsCloudSyncing(true);
+    try {
+      const cloudInquiries = await fetchCloudInquiries(siteSettings.cloudSync);
+      if (cloudInquiries && cloudInquiries.length > 0) {
+        setInquiries((prev) => {
+          const map = new Map<string, Inquiry>();
+          cloudInquiries.forEach((item) => map.set(item.id, item));
+          prev.forEach((item) => {
+            if (!map.has(item.id)) map.set(item.id, item);
+          });
+          const merged = Array.from(map.values()).sort(
+            (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+          );
+          try {
+            localStorage.setItem(STORAGE_KEYS.INQUIRIES, JSON.stringify(merged));
+          } catch (e) {
+            console.error(e);
+          }
+          return merged;
+        });
+        setIsCloudConnected(true);
+      }
+    } catch (err) {
+      console.warn('Sync with cloud failed:', err);
+    } finally {
+      setIsCloudSyncing(false);
+    }
+  }, [siteSettings.cloudSync]);
+
+  // Initial cloud sync & Real-time Supabase listener
+  useEffect(() => {
+    if (!isSupabaseConfigured(siteSettings.cloudSync)) {
+      setIsCloudConnected(false);
+      return;
+    }
+
+    syncWithCloud();
+
+    const client = getSupabaseClient(siteSettings.cloudSync);
+    if (!client) return;
+
+    const channel = client
+      .channel('public:inquiries')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'inquiries' },
+        (payload) => {
+          if (payload.eventType === 'INSERT') {
+            const row = payload.new as any;
+            const newInq: Inquiry = {
+              id: row.id,
+              clientName: row.clientName,
+              email: row.email,
+              phone: row.phone || undefined,
+              company: row.company || undefined,
+              projectType: row.projectType,
+              budgetRange: row.budgetRange,
+              timeline: row.timeline,
+              message: row.message,
+              source: row.source || 'contact_form',
+              status: (row.status as InquiryStatus) || 'new',
+              priority: row.priority || 'high',
+              createdAt: row.createdAt,
+              notes: Array.isArray(row.notes) ? row.notes : [],
+              estimatedScope: row.estimatedScope || undefined,
+            };
+            setInquiries((prev) => {
+              if (prev.some((item) => item.id === newInq.id)) return prev;
+              return [newInq, ...prev];
+            });
+            showToast('info', 'Cloud Sync: New Lead', `Inquiry received from ${newInq.clientName}`);
+          } else if (payload.eventType === 'UPDATE') {
+            const row = payload.new as any;
+            setInquiries((prev) =>
+              prev.map((item) => (item.id === row.id ? { ...item, ...row } : item))
+            );
+          } else if (payload.eventType === 'DELETE') {
+            const oldRow = payload.old as any;
+            setInquiries((prev) => prev.filter((item) => item.id !== oldRow.id));
+          }
+        }
+      )
+      .subscribe();
+
+    return () => {
+      client.removeChannel(channel);
+    };
+  }, [siteSettings.cloudSync?.supabaseUrl, siteSettings.cloudSync?.supabaseAnonKey, syncWithCloud]);
+
   // Sync to local storage
   useEffect(() => {
     try {
@@ -310,6 +420,12 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     };
 
     setInquiries((prev) => [newInquiry, ...prev]);
+
+    // Dispatch to Cloud Database (Supabase) in background
+    if (isSupabaseConfigured(siteSettings.cloudSync)) {
+      insertCloudInquiry(newInquiry, siteSettings.cloudSync);
+    }
+
     showToast('success', 'Inquiry Dispatched!', 'The 3 founders will analyze your architecture request within 24 hours.');
     return id;
   };
@@ -318,6 +434,12 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     setInquiries((prev) =>
       prev.map((inq) => (inq.id === id ? { ...inq, status } : inq))
     );
+
+    // Update in Cloud Database (Supabase) in background
+    if (isSupabaseConfigured(siteSettings.cloudSync)) {
+      updateCloudInquiryStatus(id, status, siteSettings.cloudSync);
+    }
+
     showToast('info', 'Status Updated', `Inquiry #${id} moved to status: ${status.toUpperCase()}`);
   };
 
@@ -329,15 +451,28 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       createdAt: new Date().toISOString(),
     };
     setInquiries((prev) =>
-      prev.map((inq) =>
-        inq.id === id ? { ...inq, notes: [...inq.notes, note] } : inq
-      )
+      prev.map((inq) => {
+        if (inq.id === id) {
+          const updatedNotes = [...inq.notes, note];
+          if (isSupabaseConfigured(siteSettings.cloudSync)) {
+            addCloudInquiryNote(id, updatedNotes, siteSettings.cloudSync);
+          }
+          return { ...inq, notes: updatedNotes };
+        }
+        return inq;
+      })
     );
     showToast('success', 'Note Logged', 'Internal team note added to inquiry.');
   };
 
   const deleteInquiry = (id: string) => {
     setInquiries((prev) => prev.filter((inq) => inq.id !== id));
+
+    // Delete in Cloud Database (Supabase) in background
+    if (isSupabaseConfigured(siteSettings.cloudSync)) {
+      deleteCloudInquiry(id, siteSettings.cloudSync);
+    }
+
     showToast('info', 'Inquiry Removed', `Inquiry #${id} was deleted.`);
   };
 
@@ -540,6 +675,9 @@ export const AgencyProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setIsPOSSimulatorOpen,
         isRateCardOpen,
         setIsRateCardOpen,
+        isCloudConnected,
+        isCloudSyncing,
+        syncWithCloud,
       }}
     >
       {children}
