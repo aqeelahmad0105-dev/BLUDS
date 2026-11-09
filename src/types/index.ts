@@ -45,6 +45,18 @@ export interface CaseStudyMetric {
   value: string;
 }
 
+export interface CaseStudyVideoTestimonial {
+  speakerName: string;
+  role: string;
+  company: string;
+  avatarUrl?: string;
+  videoUrl?: string;
+  posterImage: string;
+  duration: string;
+  quote: string;
+  rating: number;
+}
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -58,6 +70,7 @@ export interface CaseStudy {
   metrics: CaseStudyMetric[];
   techStack: string[];
   liveUrl?: string;
+  videoTestimonial?: CaseStudyVideoTestimonial;
   featured: boolean;
   active: boolean;
 }

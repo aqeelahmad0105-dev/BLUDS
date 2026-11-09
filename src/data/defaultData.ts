@@ -259,6 +259,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Barcode Scanner', 'Thermal Printer', 'Inventory OS', 'Profit Reports'],
     liveUrl: 'https://luxemart-pos.vercel.app',
+    videoTestimonial: {
+      speakerName: 'Mian Tariq',
+      role: 'General Manager',
+      company: 'LuxeMart Superstore (Gulberg, Lahore)',
+      posterImage: 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=80',
+      duration: '0:45',
+      rating: 5,
+      quote: 'Hamza and the BLUDS team set up our entire supermarket checkout in 48 hours. Billing time dropped from 30 seconds to under 2 seconds per customer. Our evening cashier queues are completely smooth now.'
+    },
     featured: true,
     active: true
   },
@@ -279,6 +288,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Custom Website', 'Fast Hosting', 'WhatsApp Routing', 'Admin Dashboard'],
     liveUrl: 'https://aurastudio.vercel.app',
+    videoTestimonial: {
+      speakerName: 'Ar. Zainab Malik',
+      role: 'Principal Architect',
+      company: 'Aura Architecture Group (F-7, Islamabad)',
+      posterImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+      duration: '0:38',
+      rating: 5,
+      quote: 'Ghulam built us a custom site that loads instantly on iPhones and showcases our design renderings with zero lag. In the first month alone, we received 14 qualified commercial inquiries through the WhatsApp button.'
+    },
     featured: true,
     active: true
   },
@@ -299,6 +317,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Shopify Store', 'Cash on Delivery (COD)', 'Domain Setup', 'Order Alerts'],
     liveUrl: 'https://nova-apparel-demo.myshopify.com',
+    videoTestimonial: {
+      speakerName: 'Usman Sheikh',
+      role: 'Founder & CEO',
+      company: 'Nova Apparel Brand (Karachi)',
+      posterImage: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+      duration: '0:52',
+      rating: 5,
+      quote: 'Setting up Cash on Delivery and Trax courier integration was completely seamless. We went from zero online sales to doing over Rs. 3.8M in our second month on Shopify.'
+    },
     featured: true,
     active: true
   },
@@ -319,6 +346,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Google Search Console', 'Google Maps Business', 'Local Keyword Rank'],
     liveUrl: 'https://apex-dental.vercel.app',
+    videoTestimonial: {
+      speakerName: 'Dr. Haris Mehmood',
+      role: 'Chief Dental Surgeon',
+      company: 'Apex Dental Care (DHA Phase 5, Lahore)',
+      posterImage: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80',
+      duration: '0:41',
+      rating: 5,
+      quote: 'Within 60 days of Daniyal managing our local SEO, Apex Dental ranked #1 on Google for dental implants and cosmetic dentistry in Lahore. Direct patient bookings tripled.'
+    },
     featured: false,
     active: true
   },
@@ -339,6 +375,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Facebook Ads', 'Instagram Ads', 'Google Ads', 'WhatsApp Funnel'],
     liveUrl: 'https://skyline-properties.vercel.app',
+    videoTestimonial: {
+      speakerName: 'Chaudhry Bilal',
+      role: 'Managing Director',
+      company: 'Skyline Properties (Bahria Town)',
+      posterImage: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80',
+      duration: '0:49',
+      rating: 5,
+      quote: 'BLUDS ran our Meta & Google search campaigns with real buyer filters. Instead of time-wasters, our sales team closed Rs. 22M in verified property and villa bookings.'
+    },
     featured: false,
     active: true
   },
@@ -359,6 +404,15 @@ export const initialCaseStudies: CaseStudy[] = [
     ],
     techStack: ['Video Editing', 'Trending Audio', 'Instagram & TikTok', 'Monthly Analytics'],
     liveUrl: 'https://glow-essentials.vercel.app',
+    videoTestimonial: {
+      speakerName: 'Mahnoor Khan',
+      role: 'Brand Director',
+      company: 'Glow Organic Skincare',
+      posterImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+      duration: '0:36',
+      rating: 5,
+      quote: 'Their 12 monthly video reels with viral hooks completely transformed our Instagram. One reel hit 340,000 views, bringing thousands of new customers without paying for ads.'
+    },
     featured: false,
     active: true
   }

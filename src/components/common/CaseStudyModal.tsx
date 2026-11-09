@@ -1,9 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAgency } from '../../context/AgencyContext';
-import { X, ExternalLink, ArrowRight, Cpu, TrendingUp, MessageSquare } from 'lucide-react';
+import { 
+  X, 
+  ExternalLink, 
+  ArrowRight, 
+  Cpu, 
+  TrendingUp, 
+  MessageSquare,
+  Play,
+  Pause,
+  Star,
+  Quote,
+  CheckCircle2,
+  Sparkles,
+  Volume2
+} from 'lucide-react';
 
 export const CaseStudyModal: React.FC = () => {
   const { activeModalCaseStudy, setActiveModalCaseStudy, navigate } = useAgency();
+  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+  const [videoProgress, setVideoProgress] = useState(0);
+
+  // Reset video state when switching case studies
+  useEffect(() => {
+    setIsPlayingVideo(false);
+    setVideoProgress(0);
+  }, [activeModalCaseStudy?.id]);
+
+  // Simulate video playback progress
+  useEffect(() => {
+    if (!isPlayingVideo) return;
+    const interval = setInterval(() => {
+      setVideoProgress((prev) => {
+        if (prev >= 100) {
+          setIsPlayingVideo(false);
+          return 0;
+        }
+        return prev + 2;
+      });
+    }, 120);
+    return () => clearInterval(interval);
+  }, [isPlayingVideo]);
 
   if (!activeModalCaseStudy) return null;
 
@@ -113,6 +150,114 @@ export const CaseStudyModal: React.FC = () => {
               </p>
             </div>
           </div>
+
+          {/* Verified Video Client Testimonial */}
+          {activeModalCaseStudy.videoTestimonial && (
+            <div className="rounded-xl border border-[#222222] bg-[#111111] overflow-hidden">
+              <div className="p-3 sm:p-4 bg-[#141414] border-b border-[#1f1f1f] flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-mono font-semibold text-emerald-400 uppercase tracking-wider">
+                    Client Video Review
+                  </span>
+                </div>
+                <div className="flex items-center gap-1">
+                  {[...Array(activeModalCaseStudy.videoTestimonial.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+                {/* Video Screen Reel */}
+                <div className="md:col-span-5 relative rounded-lg overflow-hidden aspect-[4/3] bg-black border border-[#262626] group shadow-inner">
+                  <img
+                    src={activeModalCaseStudy.videoTestimonial.posterImage}
+                    alt={activeModalCaseStudy.videoTestimonial.speakerName}
+                    className={`w-full h-full object-cover transition-transform duration-500 ${isPlayingVideo ? 'scale-105' : 'group-hover:scale-102'}`}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
+
+                  {/* Play / Pause Overlay Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button
+                      type="button"
+                      onClick={() => setIsPlayingVideo(!isPlayingVideo)}
+                      className="w-12 h-12 rounded-full bg-blue-600/90 hover:bg-blue-500 text-white flex items-center justify-center shadow-lg transition-transform hover:scale-110 active:scale-95"
+                      aria-label={isPlayingVideo ? 'Pause Video' : 'Play Video'}
+                    >
+                      {isPlayingVideo ? (
+                        <Pause className="w-5 h-5 fill-white" />
+                      ) : (
+                        <Play className="w-5 h-5 fill-white ml-0.5" />
+                      )}
+                    </button>
+                  </div>
+
+                  {/* Duration Badge */}
+                  <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded text-[10px] font-mono bg-black/80 text-white border border-neutral-700 backdrop-blur-sm">
+                    {isPlayingVideo ? 'Playing • ' : ''}{activeModalCaseStudy.videoTestimonial.duration}
+                  </div>
+
+                  {/* Speaker Label On Video */}
+                  <div className="absolute bottom-2 left-2.5 right-2.5 text-left">
+                    <div className="text-xs font-bold text-white leading-tight">
+                      {activeModalCaseStudy.videoTestimonial.speakerName}
+                    </div>
+                    <div className="text-[10px] text-neutral-300 font-mono truncate">
+                      {activeModalCaseStudy.videoTestimonial.role}
+                    </div>
+                  </div>
+
+                  {/* Video Progress Bar */}
+                  {isPlayingVideo && (
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-neutral-800">
+                      <div
+                        className="h-full bg-blue-500 transition-all duration-100 ease-linear"
+                        style={{ width: `${videoProgress}%` }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Testimonial Quote & Speaker Info */}
+                <div className="md:col-span-7 space-y-3">
+                  <div className="flex items-center gap-2 text-xs text-neutral-400 font-mono">
+                    <Quote className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span>Verified Project Story</span>
+                  </div>
+
+                  <blockquote className="text-xs sm:text-sm font-medium text-neutral-200 leading-relaxed italic">
+                    "{activeModalCaseStudy.videoTestimonial.quote}"
+                  </blockquote>
+
+                  <div className="pt-2 border-t border-[#1f1f1f] flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <div className="text-xs font-bold text-white flex items-center gap-1.5">
+                        <span>{activeModalCaseStudy.videoTestimonial.speakerName}</span>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                      </div>
+                      <div className="text-[11px] text-neutral-400 font-mono">
+                        {activeModalCaseStudy.videoTestimonial.role} • <strong className="text-neutral-300">{activeModalCaseStudy.videoTestimonial.company}</strong>
+                      </div>
+                    </div>
+
+                    <a
+                      href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                        `Hello Aqeel, I watched the video review from ${activeModalCaseStudy.videoTestimonial.speakerName} (${activeModalCaseStudy.client}) and want similar results for my company.`
+                      )}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-1.5 rounded-lg bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-800/50 text-[11px] font-semibold text-emerald-400 flex items-center gap-1 transition-colors"
+                    >
+                      <MessageSquare className="w-3 h-3 text-[#25D366]" />
+                      <span>Ask About This</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Tech Stack */}
           <div>

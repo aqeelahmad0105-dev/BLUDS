@@ -13,14 +13,83 @@ import {
   CheckCircle2,
   ExternalLink,
   MessageSquare,
-  Barcode
+  Barcode,
+  Printer,
+  Trash2,
+  Plus,
+  Maximize2
 } from 'lucide-react';
 import { Card3D } from '../common/Card3D';
 import { StaggeredImageReveal, RevealMode } from '../common/StaggeredImageReveal';
 
+interface MiniPOSItem {
+  id: string;
+  name: string;
+  price: number;
+  qty: number;
+}
+
 export const WorkSection: React.FC = () => {
   const { caseStudies, setActiveModalCaseStudy, setIsPOSSimulatorOpen } = useAgency();
   const [activeCategory, setActiveCategory] = useState<string>('All');
+
+  // In-Page Interactive Barcode Scanner State
+  const samplePOSProducts = [
+    { id: 'item-1', name: 'Olper’s Milk 1L Pack', price: 290, barcode: '896400012345' },
+    { id: 'item-2', name: 'Super Basmati Rice 5kg', price: 1750, barcode: '896400098765' },
+    { id: 'item-3', name: 'Shan Biryani Masala Double', price: 160, barcode: '896400033445' },
+    { id: 'item-4', name: 'Nestle Mineral Water 1.5L', price: 130, barcode: '896400011223' }
+  ];
+
+  const [posCart, setPosCart] = useState<MiniPOSItem[]>([
+    { id: 'item-1', name: 'Olper’s Milk 1L Pack', price: 290, qty: 2 },
+    { id: 'item-2', name: 'Super Basmati Rice 5kg', price: 1750, qty: 1 }
+  ]);
+  const [lastScannedName, setLastScannedName] = useState<string | null>('Super Basmati Rice 5kg');
+  const [isScanningAnim, setIsScanningAnim] = useState(false);
+
+  const playScanBeep = () => {
+    try {
+      const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1850, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.08);
+    } catch {
+      // AudioContext fallback
+    }
+  };
+
+  const handleScanProduct = (product: { id: string; name: string; price: number }) => {
+    playScanBeep();
+    setIsScanningAnim(true);
+    setTimeout(() => setIsScanningAnim(false), 350);
+    setLastScannedName(product.name);
+    setPosCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id);
+      if (existing) {
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
+        );
+      }
+      return [...prev, { ...product, qty: 1 }];
+    });
+  };
+
+  const handleClearPosCart = () => {
+    setPosCart([]);
+    setLastScannedName(null);
+  };
+
+  const posSubtotal = posCart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const posTax = Math.round(posSubtotal * 0.05);
+  const posTotal = posSubtotal + posTax;
 
   // Featured Showcase State
   const featuredCases = caseStudies.filter((item) => item.active);
@@ -409,6 +478,184 @@ export const WorkSection: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* ============================================================== */}
+        {/* EMBEDDED IN-PAGE LIVE POS BARCODE SCANNER SIMULATOR           */}
+        {/* ============================================================== */}
+        {(activeCategory === 'All' || activeCategory === 'POS Software') && (
+          <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-[#0c0c0c] border border-blue-900/40 relative overflow-hidden">
+            {/* Header info */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[#1c1c1c]">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[11px] font-mono font-bold text-emerald-400 uppercase tracking-wider">
+                    Interactive POS Barcode Register • Try Scanning Live
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                  <span>Supermarket Checkout Barcode Simulator</span>
+                  <span className="text-xs font-mono font-normal text-blue-400 bg-blue-950/60 border border-blue-800/50 px-2 py-0.5 rounded">
+                    LuxeMart Engine
+                  </span>
+                </h3>
+                <p className="text-xs text-neutral-400 mt-1">
+                  Click any sample retail product below to trigger an instant laser beep scan and watch the digital receipt calculate in under 2 seconds.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsPOSSimulatorOpen(true)}
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+                >
+                  <Maximize2 className="w-3.5 h-3.5" />
+                  <span>Full Screen Register</span>
+                </button>
+                <a
+                  href={`https://wa.me/923099489168?text=${encodeURIComponent(
+                    'Hello Aqeel, I tried the live POS barcode scanner on BLUDS Agency and want this billing software for my retail store.'
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-[#25D366] hover:bg-[#20bd5a] text-black text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 fill-black" />
+                  <span>Get POS For Shop</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Interactive Grid: Left Items to Scan, Right Live Receipt */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-5 items-start">
+              {/* Left Column: Products to scan */}
+              <div className="lg:col-span-7 space-y-3">
+                <div className="flex items-center justify-between text-xs font-mono text-neutral-400">
+                  <span className="flex items-center gap-1.5">
+                    <Barcode className="w-4 h-4 text-blue-400" />
+                    <span>Click Any Product to Scan with Beep:</span>
+                  </span>
+                  <span className="text-[11px] text-neutral-500">
+                    Audio enabled • Web Audio API
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {samplePOSProducts.map((p) => (
+                    <button
+                      key={p.id}
+                      type="button"
+                      onClick={() => handleScanProduct(p)}
+                      className="p-3 rounded-xl bg-[#121212] hover:bg-[#181818] border border-[#222222] hover:border-blue-500/60 text-left transition-all group flex items-center justify-between"
+                    >
+                      <div className="space-y-0.5">
+                        <div className="text-xs font-semibold text-white group-hover:text-blue-300 transition-colors">
+                          {p.name}
+                        </div>
+                        <div className="text-[10px] font-mono text-neutral-500">
+                          SKU: {p.barcode}
+                        </div>
+                        <div className="text-xs font-bold text-emerald-400 font-mono">
+                          Rs. {p.price.toLocaleString()}
+                        </div>
+                      </div>
+
+                      <div className="w-8 h-8 rounded-lg bg-blue-600/20 group-hover:bg-blue-600 text-blue-400 group-hover:text-white flex items-center justify-center transition-all shrink-0">
+                        <Plus className="w-4 h-4" />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+
+                {lastScannedName && (
+                  <div className={`p-2.5 rounded-lg border text-xs font-mono flex items-center justify-between transition-all ${
+                    isScanningAnim
+                      ? 'bg-blue-950/80 border-blue-400 text-blue-200 ring-2 ring-blue-500/50'
+                      : 'bg-[#111111] border-[#222222] text-neutral-300'
+                  }`}>
+                    <span className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
+                      <span>Last Scanned: <strong className="text-white">{lastScannedName}</strong></span>
+                    </span>
+                    <span className="text-[10px] text-emerald-400 font-bold">✓ Added to Bill in 0.1s</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Right Column: Live Calculated Receipt */}
+              <div className="lg:col-span-5 rounded-xl border border-[#222222] bg-[#141414] p-4 text-neutral-300 font-mono text-xs space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-[#222222]">
+                  <span className="font-bold text-white text-[11px] uppercase tracking-wider">
+                    Receipt #LXM-9021
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleClearPosCart}
+                    className="text-[11px] text-neutral-400 hover:text-rose-400 flex items-center gap-1 transition-colors"
+                  >
+                    <Trash2 className="w-3 h-3" />
+                    <span>Clear</span>
+                  </button>
+                </div>
+
+                {posCart.length === 0 ? (
+                  <div className="py-6 text-center text-neutral-500 text-xs">
+                    Cart is empty. Click a product on the left to scan.
+                  </div>
+                ) : (
+                  <div className="space-y-2 max-h-36 overflow-y-auto pr-1">
+                    {posCart.map((item) => (
+                      <div key={item.id} className="flex items-center justify-between text-[11px]">
+                        <span className="truncate max-w-[170px] text-white">
+                          {item.name} <span className="text-neutral-500">×{item.qty}</span>
+                        </span>
+                        <span className="font-bold text-neutral-200">
+                          Rs. {(item.price * item.qty).toLocaleString()}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className="pt-2 border-t border-[#222222] space-y-1 text-[11px]">
+                  <div className="flex justify-between text-neutral-400">
+                    <span>Subtotal:</span>
+                    <span>Rs. {posSubtotal.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between text-neutral-400">
+                    <span>GST (5%):</span>
+                    <span>Rs. {posTax.toLocaleString()}</span>
+                  </div>
+                  <div className="flex justify-between text-white font-bold text-sm pt-1 border-t border-[#2a2a2a]">
+                    <span>Total Due:</span>
+                    <span className="text-emerald-400">Rs. {posTotal.toLocaleString()}</span>
+                  </div>
+                </div>
+
+                <div className="pt-2 flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => window.print()}
+                    disabled={posCart.length === 0}
+                    className="flex-1 py-1.5 px-3 rounded-lg bg-[#222222] hover:bg-[#2c2c2c] text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors disabled:opacity-40"
+                  >
+                    <Printer className="w-3.5 h-3.5" />
+                    <span>Print Slip</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsPOSSimulatorOpen(true)}
+                    className="flex-1 py-1.5 px-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors"
+                  >
+                    <Barcode className="w-3.5 h-3.5" />
+                    <span>Live Register</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
