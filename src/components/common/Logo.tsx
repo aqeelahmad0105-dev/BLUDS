@@ -4,12 +4,16 @@ interface LogoProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   showWordmark?: boolean;
+  variant?: 'default' | 'dark' | 'light' | 'mono';
+  format?: 'svg' | 'png';
 }
 
 export const Logo: React.FC<LogoProps> = ({
   className = '',
   size = 'md',
   showWordmark = false,
+  variant = 'dark',
+  format = 'svg',
 }) => {
   const sizeClasses = {
     sm: 'h-8 w-8',
@@ -25,12 +29,29 @@ export const Logo: React.FC<LogoProps> = ({
     xl: 'text-2xl',
   };
 
+  const getLogoSrc = () => {
+    if (format === 'png') {
+      return '/bluds-logo.png';
+    }
+    switch (variant) {
+      case 'light':
+        return '/bluds-logo-light.svg';
+      case 'mono':
+        return '/bluds-logo-mono.svg';
+      case 'default':
+        return '/bluds-logo.svg';
+      case 'dark':
+      default:
+        return '/bluds-logo-dark.svg';
+    }
+  };
+
   return (
     <div className={`inline-flex items-center gap-3 select-none ${className}`}>
-      {/* The Stylish B Logo from the file */}
+      {/* Scalable Vector Stylish B Logo */}
       <div className={`relative ${sizeClasses[size]} shrink-0 flex items-center justify-center`}>
         <img
-          src="/bluds-logo.png"
+          src={getLogoSrc()}
           alt="BLUDS Logo"
           className="w-full h-full object-contain filter drop-shadow-[0_2px_8px_rgba(37,99,235,0.35)] hover:drop-shadow-[0_4px_14px_rgba(37,99,235,0.6)] transition-all duration-200"
         />
